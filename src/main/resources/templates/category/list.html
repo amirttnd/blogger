@@ -13,7 +13,7 @@
 
 <div class="container">
     <div class="categories">
-        <a href="" class="btn">Add Category</a>
+        <a href="/category/create" class="btn">Add Category</a>
 
         <div class="list clearfix">
             <div class="row heading">
@@ -21,10 +21,10 @@
                 <span>Active</span>
                 <span>Action</span>
             </div>
-            <div class="row">
-                <a class="name">Java</a>
-                <span>Yes</span>
-                <span>Delete</span>
+            <div class="row" th:each="category: ${categories}">
+                <a class="name" th:text="${category.name}"></a>
+                <span th:text="${category.active?'Yes':'No'}"></span>
+                <a th:href="@{/category/delete(id=${category.id})}">Delete</a>
             </div>
         </div>
     </div>

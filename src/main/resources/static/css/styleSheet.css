@@ -308,8 +308,8 @@ label {
     background: #f5f5f5;
 }
 
-.categories .list .row span {
-   width: 15%;
+.categories .list .row span, .categories .list .row a {
+   min-width: 15%;
 }
 
 .categories .list .row .name {

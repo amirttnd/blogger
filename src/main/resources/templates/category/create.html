@@ -15,10 +15,10 @@
 <div th:replace="layout/layout::adminHeader"></div>
 <div class="container">
 
-    <form class="blog-form">
+    <form class="blog-form" action="/category/save" method="post">
         <div class="row">
             <label>Name:</label>
-            <input type="text" name="title" class="textbox" placeholder="Category name"/>
+            <input type="text" name="name" class="textbox" placeholder="Category name"/>
 
         </div>
 

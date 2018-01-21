@@ -29,7 +29,7 @@ spring:
     password: igdefault
   jpa:
     hibernate:
-     ddl-auto: create-drop
+     ddl-auto: update
 
 ---
 

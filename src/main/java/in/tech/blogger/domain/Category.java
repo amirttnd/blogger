@@ -1,5 +1,7 @@
 package in.tech.blogger.domain;
 
+import in.tech.blogger.modal.CategoryModal;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -15,7 +17,7 @@ public class Category {
     String name;
 
     @Column
-    Boolean publish = false;
+    Boolean active = false;
 
     @Column
     Date dateCreated;
@@ -34,6 +36,11 @@ public class Category {
         lastUpdated = new Date();
     }
 
+    public void bind(CategoryModal categoryModal) {
+        this.setName(categoryModal.getName());
+        this.setActive(categoryModal.getActive());
+    }
+
     public String getName() {
         return name;
     }
@@ -50,12 +57,12 @@ public class Category {
         this.id = id;
     }
 
-    public Boolean getPublish() {
-        return publish;
+    public Boolean getActive() {
+        return active;
     }
 
-    public void setPublish(Boolean publish) {
-        this.publish = publish;
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     public Date getDateCreated() {
