@@ -10,10 +10,27 @@
 <div th:fragment="header" class="header">
     <ul class="menu">
         <li>
-            <a href="">Home</a>
+            <a href="/">Home</a>
         </li>
         <li>
             <a href="">Contact</a>
+        </li>
+    </ul>
+    <div class="signup">
+        <a href="">Sign up</a>
+    </div>
+</div>
+
+<div th:fragment="adminHeader" class="header">
+    <ul class="menu">
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li>
+            <a href="/blog/list">Blogs</a>
+        </li>
+        <li>
+            <a href="/category/list">Categories</a>
         </li>
     </ul>
     <div class="signup">

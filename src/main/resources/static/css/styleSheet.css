@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: "Lato", sans-serif;
@@ -8,9 +12,14 @@ ul {
     padding: 0;
 }
 
+span {
+    display: inline-block;
+}
+
 a {
     text-decoration: none;
     cursor: pointer;
+    display: inline-block;
 }
 
 .clearfix {
@@ -28,6 +37,8 @@ a {
 .container {
     padding: 25px 150px;
     background: rgba(128, 128, 128, 0.04);
+    width: 100%;
+    min-height: 500px;
 
 }
 
@@ -70,7 +81,7 @@ a {
     padding-top: 27px;
 }
 
-.header .signup a{
+.header .signup a {
     border: 1px solid lightgray;
     padding: 5px 27px;
     background: #f7f7f7;
@@ -80,7 +91,7 @@ a {
     font-size: 14px;
 }
 
-.categories{
+.categories {
     margin-bottom: 100px;
 }
 
@@ -92,8 +103,8 @@ a {
 
 .container .categories .menu li {
     display: inline-block;
-    margin-right: 50px;
-    font-weight: 300;
+    margin-right: 40px;
+    font-weight: 500;
     color: rgb(58, 55, 55);
     font-size: 16px;
     letter-spacing: 1px;
@@ -128,23 +139,22 @@ a {
     outline: none;
 }
 
-
 .grid ul {
     margin: 0;
 
 }
 
-.grid ul li{
+.grid ul li {
     display: inline-block;
     width: 455px;
     padding: 22px 15px 0 10px;
     margin: 0 5px 11px 3px;
-    height: 275px;
+    height: 232px;
     border-bottom: 3px solid lightgray;
     background: white;
 }
 
-.grid ul li .top .user-icon, .grid ul li .top .detail, .grid ul li .top .share {
+.grid ul li .top span {
     display: inline-block;
 }
 
@@ -152,6 +162,7 @@ a {
     color: gray;
     font-size: 12px;
     margin-left: 15px;
+    display: inline-block;
 }
 
 .grid ul li .top .user-icon {
@@ -168,24 +179,140 @@ a {
     margin-bottom: 4px;
 }
 
-
-.grid ul li h1{
-    font-size: 20px;
-    margin-top: 22px;
+.grid ul li h1 {
+    font-size: 18px;
+    margin-top: 20px;
     font-weight: 500;
+    height: 22px;
+    overflow: hidden;
 }
 
-.grid ul li p{
+.grid ul li p {
     color: #595958;
-    padding-bottom: 18px;
+    padding-bottom: 22px;
     border-bottom: 1px solid rgba(128, 128, 128, 0.37);
     text-align: justify;
     margin: 0 0 10px 0;
     line-height: 23px;
-    font-size: 14px;
+    height: 75px;
+    overflow: hidden;
+    font-size: 13px;
 }
 
-.grid ul li .footer .views{
+.grid ul li .footer span, .grid ul li .footer a {
     font-size: 13px;
+}
+
+.grid ul li .footer span {
     color: gray;
 }
+
+a {
+    color: #7aafce;
+}
+
+a:hover {
+    color: #608fab;
+}
+
+.shadow-effect {
+    position: relative;
+}
+
+.shadow-effect:before, .shadow-effect:after {
+    z-index: -1;
+    position: absolute;
+    content: "";
+    bottom: 39px;
+    left: 10px;
+    width: 50%;
+    top: 80%;
+    max-width: 300px;
+    background: #777;
+    -webkit-box-shadow: 0 35px 20px #777;
+    -moz-box-shadow: 0 35px 20px #777;
+    box-shadow: 0 35px 20px #777;
+    -webkit-transform: rotate(-8deg);
+    -moz-transform: rotate(-8deg);
+    -o-transform: rotate(-8deg);
+    -ms-transform: rotate(-8deg);
+    transform: rotate(-8deg);
+}
+
+.shadow-effect:after {
+    -webkit-transform: rotate(8deg);
+    -moz-transform: rotate(8deg);
+    -o-transform: rotate(8deg);
+    -ms-transform: rotate(8deg);
+    transform: rotate(8deg);
+    right: 10px;
+    left: auto;
+}
+
+.blog-form .row {
+    padding: 10px 20px
+}
+
+label {
+    display: inline-block;
+    font-weight: 600;
+    padding: 9px 0;
+}
+
+.blog-form .row label {
+    width: 15%;
+}
+
+.textbox, select {
+    border: 1px solid lightgray;
+    padding: 6px 2px;
+    background: white;
+}
+
+.blog-form .row .textbox, .blog-form .row select {
+    width: 70%;
+}
+
+.textbox:focus, select:focus {
+    outline: none;
+}
+
+.btn {
+    border: none;
+    padding: 10px 20px;
+    background: #4d7e9a;
+    color: white;
+    font-size: 15px;
+}
+
+.btn:hover {
+    background: #426c84;
+}
+
+.categories .list {
+    margin-top: 15px;
+}
+.categories .list .row.heading {
+    font-weight: 700;
+}
+
+.categories .list .row {
+    padding: 18px 15px;
+    border-bottom: 1px solid lightgray;
+}
+.categories .list .row:nth-child(odd){
+    background: #dae8f1;
+}
+
+.categories .list .row:nth-child(even){
+    background: #f5f5f5;
+}
+
+.categories .list .row span {
+   width: 15%;
+}
+
+.categories .list .row .name {
+    width: 60%;
+}
+
