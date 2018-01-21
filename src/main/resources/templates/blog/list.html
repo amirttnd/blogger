@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <meta th:replace="layout/layout::viewport"/>
+    <link rel="stylesheet" th:href="@{/css/styleSheet.css}" type="text/css"/>
+
+    <title>Blogs</title>
+</head>
+<body>
+<div th:replace="layout/layout::header"></div>
+
+<div class="container">
+    <div class="categories">
+        <ul class="menu">
+            <li><a href=""> All post</a></li>
+            <li><a href="">Java</a></li>
+            <li><a href="">Spring Boot</a></li>
+            <li><a href="">Angular JS</a></li>
+        </ul>
+        <div class="search">
+            <input type="text" name="search" class="search-box" placeholder="Search"/>
+        </div>
+    </div>
+    <div class="clearfix grid">
+        <ul>
+            <li>
+                <div class="top">
+                    <img class="user-icon" th:src="@{/images/search-icon.png}"/>
+
+                    <div class="detail">
+                        <span class="user-name">Admin</span>
+                        <span class="date-created">Oct 22, 2017</span>
+                        <span class="time-ago">1 min</span>
+                    </div>
+                    <div class="share">
+
+                    </div>
+                </div>
+                <h1>Uncovering the online marketing type</h1>
+
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur.
+                </p>
+
+                <div class="footer">
+                    <span class="views">775 views</span>
+                    <span class="favourite"></span>
+                </div>
+            </li>
+            <li>
+                <div class="top">
+                    <img class="user-icon" th:src="@{/images/search-icon.png}"/>
+
+                    <div class="detail">
+                        <span class="user-name">Admin</span>
+                        <span class="date-created">Oct 22, 2017</span>
+                        <span class="time-ago">1 min</span>
+                    </div>
+                    <div class="share">
+
+                    </div>
+                </div>
+                <h1>Uncovering the online marketing type</h1>
+
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur.
+                </p>
+
+                <div class="footer">
+                    <span class="views">775 views</span>
+                    <span class="favourite"></span>
+                </div>
+            </li>
+            <li>
+                <div class="top">
+                    <img class="user-icon" th:src="@{/images/search-icon.png}"/>
+
+                    <div class="detail">
+                        <span class="user-name">Admin</span>
+                        <span class="date-created">Oct 22, 2017</span>
+                        <span class="date-created">1 min</span>
+                    </div>
+                    <div class="share">
+
+                    </div>
+                </div>
+                <h1>Uncovering the online marketing type</h1>
+
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur.
+                </p>
+
+                <div class="footer">
+                    <span class="views">775 views</span>
+                    <span class="favourite"></span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

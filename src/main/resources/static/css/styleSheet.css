@@ -1,0 +1,175 @@
+body {
+    margin: 0;
+    font-family: "Lato", sans-serif;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.container {
+    padding: 25px 150px
+}
+
+.header {
+    height: 75px;
+    background: #7aafce;
+}
+
+.header .menu {
+    display: inline-block;
+    padding: 0;
+    line-height: 38px;
+    color: white;
+    padding-left: 150px
+}
+
+.header .menu li {
+    display: inline-block;
+    color: white;
+    min-width: 110px;
+    font-size: 18px;
+}
+
+.header .menu li a {
+    display: block;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.header .menu li a:hover {
+    color: rgba(253, 253, 253, 0.84);
+}
+
+.header .social {
+    display: inline-block;
+    width: 150px;
+    float: right;
+    height: 75px;
+    padding-top: 20px;
+}
+
+.header .social .icon {
+    width: 32px;
+    height: 32px;
+}
+
+.categories{
+    margin-bottom: 100px;
+}
+
+.container .categories .menu {
+    float: left;
+    display: inline-block;
+    margin: 0;
+}
+
+.container .categories .menu li {
+    display: inline-block;
+    margin-right: 50px;
+    font-weight: 300;
+    color: rgb(58, 55, 55);
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.container .categories .menu li a {
+    color: rgb(58, 55, 55);
+}
+
+.container .categories .menu li a:hover {
+    color: rgb(158, 148, 148);
+}
+
+.container .categories .search {
+    float: right;
+    margin-top: -5px;
+}
+
+.container .categories .search .search-box {
+    padding: 5px 1px;
+    width: 224px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.48);
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    background: url(/images/search-icon.png) no-repeat scroll;
+    background-position: right;
+    background-size: 15px;
+}
+
+.container .categories .search .search-box:focus {
+    outline: none;
+}
+
+
+.grid ul {
+    margin: 0;
+
+}
+
+.grid ul li{
+    display: inline-block;
+    width: 455px;
+    padding: 7px 15px 0 10px;
+    margin: 0 5px 7px 3px;
+    height: 290px;
+    border: 1px solid lightgray;
+}
+
+.grid ul li .top .user-icon, .grid ul li .top .detail, .grid ul li .top .share {
+    display: inline-block;
+}
+
+.grid ul li .top .detail {
+    color: gray;
+    font-size: 12px;
+    margin-left: 15px;
+}
+
+.grid ul li .top .detail .time-ago {
+    margin-left: 15px;
+}
+
+.grid ul li .top .detail .user-name {
+    display: block;
+    margin-bottom: 4px;
+}
+
+
+.grid ul li h1{
+    font-size: 22px;
+    margin-top: 32px;
+}
+
+.grid ul li p{
+    color: #595958;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.37);
+    text-align: justify;
+    margin: 0 0 10px 0px;
+}
+
+.grid ul li .footer .views{
+    font-size: 13px;
+    color: gray;
+}
