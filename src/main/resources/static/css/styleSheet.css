@@ -92,7 +92,7 @@ a {
 }
 
 .categories {
-    margin-bottom: 100px;
+    margin-bottom: 45px;
 }
 
 .container .categories .menu {
@@ -107,7 +107,6 @@ a {
     font-weight: 500;
     color: rgb(58, 55, 55);
     font-size: 16px;
-    letter-spacing: 1px;
 }
 
 .container .categories .menu li a {
