@@ -112,6 +112,7 @@ a {
 
 .container .categories .menu li a {
     color: rgb(58, 55, 55);
+    text-transform: capitalize;
 }
 
 .container .categories .menu li a:hover {

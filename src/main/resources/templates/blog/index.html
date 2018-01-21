@@ -14,10 +14,10 @@
 <div class="container">
     <div class="categories">
         <ul class="menu">
-            <li><a href=""> All post</a></li>
-            <li><a href="">Java</a></li>
-            <li><a href="">Spring Boot</a></li>
-            <li><a href="">Angular JS</a></li>
+            <li><a href="/"> All post</a></li>
+            <li th:each="category:${categories}">
+                <a th:href="@{/(categoryId=${category.id})}" th:text="${category.name}"></a>
+            </li>
         </ul>
         <div class="search">
             <input type="text" name="search" class="search-box" placeholder="Search"/>
