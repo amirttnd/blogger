@@ -26,7 +26,9 @@ a {
 }
 
 .container {
-    padding: 25px 150px
+    padding: 25px 150px;
+    background: rgba(128, 128, 128, 0.04);
+
 }
 
 .header {
@@ -60,17 +62,22 @@ a {
     color: rgba(253, 253, 253, 0.84);
 }
 
-.header .social {
+.header .signup {
     display: inline-block;
     width: 150px;
     float: right;
     height: 75px;
-    padding-top: 20px;
+    padding-top: 27px;
 }
 
-.header .social .icon {
-    width: 32px;
-    height: 32px;
+.header .signup a{
+    border: 1px solid lightgray;
+    padding: 5px 27px;
+    background: #f7f7f7;
+    border-radius: 5px;
+    outline: 0;
+    color: #3c87b3;
+    font-size: 14px;
 }
 
 .categories{
@@ -130,10 +137,11 @@ a {
 .grid ul li{
     display: inline-block;
     width: 455px;
-    padding: 7px 15px 0 10px;
-    margin: 0 5px 7px 3px;
-    height: 290px;
-    border: 1px solid lightgray;
+    padding: 22px 15px 0 10px;
+    margin: 0 5px 11px 3px;
+    height: 275px;
+    border-bottom: 3px solid lightgray;
+    background: white;
 }
 
 .grid ul li .top .user-icon, .grid ul li .top .detail, .grid ul li .top .share {
@@ -144,6 +152,11 @@ a {
     color: gray;
     font-size: 12px;
     margin-left: 15px;
+}
+
+.grid ul li .top .user-icon {
+    width: 32px;
+    vertical-align: bottom;
 }
 
 .grid ul li .top .detail .time-ago {
@@ -157,8 +170,9 @@ a {
 
 
 .grid ul li h1{
-    font-size: 22px;
-    margin-top: 32px;
+    font-size: 20px;
+    margin-top: 22px;
+    font-weight: 500;
 }
 
 .grid ul li p{
@@ -166,7 +180,9 @@ a {
     padding-bottom: 18px;
     border-bottom: 1px solid rgba(128, 128, 128, 0.37);
     text-align: justify;
-    margin: 0 0 10px 0px;
+    margin: 0 0 10px 0;
+    line-height: 23px;
+    font-size: 14px;
 }
 
 .grid ul li .footer .views{
