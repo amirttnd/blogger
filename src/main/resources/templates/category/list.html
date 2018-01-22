@@ -24,7 +24,10 @@
             <div class="row" th:each="category: ${categories}">
                 <a class="name" th:text="${category.name}"></a>
                 <span th:text="${category.active?'Yes':'No'}"></span>
-                <a th:href="@{/category/delete(id=${category.id})}">Delete</a>
+                <a th:href="@{/category/toggle(id=${category.id})}"
+                   th:text="${category.active?'Disable':'Enable'}">
+
+                </a>
             </div>
         </div>
     </div>

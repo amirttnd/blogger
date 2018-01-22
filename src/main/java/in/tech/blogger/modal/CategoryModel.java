@@ -1,6 +1,6 @@
 package in.tech.blogger.modal;
 
-public class CategoryModal {
+public class CategoryModel {
     String name;
     Boolean active;
 

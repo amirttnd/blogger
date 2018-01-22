@@ -1,10 +1,12 @@
 package in.tech.blogger.domain;
 
 
+import in.tech.blogger.modal.BlogModel;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import java.util.Date;
 
 @Entity(name = "blog")
@@ -22,13 +24,11 @@ public class Blog {
     @Type(type = "text")
     String content;
 
-    @Column(unique = true, nullable = false)
-    String friendlyUrl;
-
     @Column
     Boolean active;
 
     @OneToOne
+    @Null
     User creator;
 
     @OneToOne
@@ -50,6 +50,12 @@ public class Blog {
     @PreUpdate
     public void beforeUpdate() {
         lastUpdated = new Date();
+    }
+
+    public void bind(BlogModel blogModal) {
+        this.setActive(blogModal.getActive());
+        this.setTitle(blogModal.getTitle());
+        this.setContent(blogModal.getContent());
     }
 
     public Long getId() {
@@ -76,20 +82,12 @@ public class Blog {
         this.content = content;
     }
 
-    public String getFriendlyUrl() {
-        return friendlyUrl;
-    }
-
-    public void setFriendlyUrl(String friendlyUrl) {
-        this.friendlyUrl = friendlyUrl;
-    }
-
     public Boolean getActive() {
         return active;
     }
 
     public void setActive(Boolean active) {
-        this.active = active;
+        this.active = (active != null && active);
     }
 
     public User getCreator() {

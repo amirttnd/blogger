@@ -12,14 +12,20 @@ public class CategoryVO {
     String name;
     Boolean active;
 
+    public CategoryVO() {
+
+    }
+
     public CategoryVO(Category category) {
         bind(category);
     }
 
     public void bind(Category category) {
-        this.id = category.getId();
-        this.name = category.getName();
-        this.active = category.getActive();
+        if (category != null) {
+            this.id = category.getId();
+            this.name = category.getName();
+            this.active = category.getActive();
+        }
     }
 
     public static List<CategoryVO> toCategoryVO(List<Category> categories) {

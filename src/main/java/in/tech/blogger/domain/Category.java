@@ -1,6 +1,6 @@
 package in.tech.blogger.domain;
 
-import in.tech.blogger.modal.CategoryModal;
+import in.tech.blogger.modal.CategoryModel;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -36,7 +36,7 @@ public class Category {
         lastUpdated = new Date();
     }
 
-    public void bind(CategoryModal categoryModal) {
+    public void bind(CategoryModel categoryModal) {
         this.setName(categoryModal.getName());
         this.setActive(categoryModal.getActive());
     }

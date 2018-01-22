@@ -13,18 +13,20 @@
 
 <div class="container">
     <div class="categories">
-        <a href="/blog/create" class="btn">New Blog</a>
+        <a href="/blog/edit" class="btn">New Blog</a>
 
         <div class="list clearfix">
             <div class="row heading">
                 <span class="name">Title</span>
-                <span>Published</span>
+                <span>Category</span>
+                <span>Status</span>
                 <span>Action</span>
             </div>
-            <div class="row">
-                <a class="name">String vs StringBuilder</a>
-                <span>Yes</span>
-                <a href="">Delete</a>
+            <div class="row" th:each="blog:${blogs}">
+                <a class="name" th:href="@{/blog/edit(id=${blog.id})}" th:text="${blog.title}"></a>
+                <a th:href="@{/category/edit(id=${blog.category.id})}" th:text="${blog.category.name}"></a>
+                <span th:text="${blog.active?'Published':'Draft'}"></span>
+                <a th:href="@{/blog/edit(id=${blog.id})}" target="_blank">View</a>
             </div>
         </div>
     </div>

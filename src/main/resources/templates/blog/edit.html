@@ -15,28 +15,35 @@
 <div th:replace="layout/layout::adminHeader"></div>
 <div class="container">
 
-    <form class="blog-form">
+    <form class="blog-form" action="/blog/save" method="post">
+        <input type="hidden" name="id" th:value="${blog.id}"/>
+
         <div class="row">
             <label>Title:</label>
-            <input type="text" name="title" class="textbox" placeholder="Blog title"/>
+            <input type="text" name="title" class="textbox" th:value="${blog.title}" placeholder="Blog title"/>
 
         </div>
         <div class="row">
             <label>Category:</label>
-            <select name="category">
+            <select name="categoryId">
                 <option>Select</option>
+                <option th:each="category:${categories}"
+                        th:selected="${category.id==blog.category.id}"
+                        th:value="${category.id}"
+                        th:text="${category.name}">
+                </option>
             </select>
         </div>
 
         <div class="row">
             <label>Content:</label>
-            <textarea name="content" class="ckTextEditor">
+            <textarea name="content" class="ckTextEditor" th:text="${blog.content}">
             </textarea>
         </div>
 
         <div class="row">
             <label>Publish:</label>
-            <input type="checkbox" name="publish"/>
+            <input type="checkbox" name="active" th:checked="${blog.active}"/>
         </div>
         <div class="row">
             <input type="submit" value="Save" class="btn"/>

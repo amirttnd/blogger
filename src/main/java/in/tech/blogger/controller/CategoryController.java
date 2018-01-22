@@ -1,13 +1,14 @@
 package in.tech.blogger.controller;
 
 import in.tech.blogger.domain.Category;
-import in.tech.blogger.modal.CategoryModal;
+import in.tech.blogger.modal.CategoryModel;
 import in.tech.blogger.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public class CategoryController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    ModelAndView save(@ModelAttribute CategoryModal categoryModal) {
+    ModelAndView save(@ModelAttribute CategoryModel categoryModal) {
         ModelAndView modelAndView = new ModelAndView();
         if (categoryService.save(categoryModal)) {
             modelAndView.setViewName("redirect:/category/list");
@@ -41,6 +42,13 @@ public class CategoryController {
             modelAndView.setViewName("/category/create");
         }
         modelAndView.addObject("category", categoryModal);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/toggle", method = RequestMethod.GET)
+    ModelAndView toggle(@RequestParam Long id) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/category/list");
+        categoryService.toggle(id);
         return modelAndView;
     }
 }
