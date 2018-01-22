@@ -4,6 +4,7 @@ import in.tech.blogger.domain.Category;
 import in.tech.blogger.modal.CategoryModel;
 import in.tech.blogger.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class CategoryService {
     }
 
     public List<Category> findAll() {
-        return categoryRepository.findAll();
+        return categoryRepository.findAll(new Sort(Sort.Direction.DESC, "id"));
     }
 
     public Boolean toggle(Long id) {

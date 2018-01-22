@@ -34,18 +34,25 @@ public class BlogController {
         return modelAndView;
     }
 
+    @RequestMapping({"/blog/show", "/blog/show.html"})
+    ModelAndView show(@RequestParam(required = false) Long id) {
+        ModelAndView modelAndView = new ModelAndView("/blog/show");
+        modelAndView.addObject("blog", new BlogVO(blogService.findById(id)));
+        return modelAndView;
+    }
 
-    @RequestMapping(value = "/blog/list")
+
+    @RequestMapping(value = "/admin/blog/list")
     ModelAndView list() {
-        ModelAndView modelAndView = new ModelAndView("/blog/list");
+        ModelAndView modelAndView = new ModelAndView("/blog/admin/list");
         List<Blog> blogs = blogService.findAll();
         modelAndView.addObject("blogs", blogs);
         return modelAndView;
     }
 
-    @RequestMapping("/blog/edit")
+    @RequestMapping("/admin/blog/edit")
     ModelAndView edit(@RequestParam(required = false) Long id) {
-        ModelAndView modelAndView = new ModelAndView("/blog/edit");
+        ModelAndView modelAndView = new ModelAndView("/blog/admin/edit");
         List<CategoryVO> categories = CategoryVO.toCategoryVO(categoryService.findAll());
         BlogVO blogVO = new BlogVO(blogService.findById(id));
         modelAndView.addObject("blog", blogVO);

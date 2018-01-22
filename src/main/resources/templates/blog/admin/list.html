@@ -23,10 +23,10 @@
                 <span>Action</span>
             </div>
             <div class="row" th:each="blog:${blogs}">
-                <a class="name" th:href="@{/blog/edit(id=${blog.id})}" th:text="${blog.title}"></a>
+                <a class="name" th:href="@{/admin/blog/edit(id=${blog.id})}" th:text="${blog.title}"></a>
                 <a th:href="@{/category/edit(id=${blog.category.id})}" th:text="${blog.category.name}"></a>
                 <span th:text="${blog.active?'Published':'Draft'}"></span>
-                <a th:href="@{/blog/edit(id=${blog.id})}" target="_blank">View</a>
+                <a th:href="@{/blog/show(id=${blog.id})}">View</a>
             </div>
         </div>
     </div>
