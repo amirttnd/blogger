@@ -62,12 +62,19 @@ public class BlogController {
 
     @RequestMapping(value = "/blog/save", method = RequestMethod.POST)
     ModelAndView save(@ModelAttribute BlogModel blogModel) {
-        ModelAndView modelAndView = new ModelAndView("/blog/edit");
+        ModelAndView modelAndView = new ModelAndView("/blog/admin/edit");
         if (blogService.save(blogModel)) {
-            modelAndView.setViewName("redirect:/blog/list");
+            modelAndView.setViewName("redirect:/blog/admin/list");
         } else {
             modelAndView.addObject("blog", new BlogVO(blogModel));
         }
         return modelAndView;
     }
+    @RequestMapping(value = "/home.html", method = RequestMethod.GET)
+    ModelAndView home(@ModelAttribute BlogModel blogModel) {
+        ModelAndView modelAndView = new ModelAndView("/blog/home");
+        return modelAndView;
+    }
+
+
 }
