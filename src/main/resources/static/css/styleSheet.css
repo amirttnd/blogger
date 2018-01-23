@@ -485,7 +485,7 @@ label {
 .blog-area .blog {
     margin-top: -120px;
     position: relative;
-    width: 77%;
+    width: 71%;
     float: left;
 }
 
@@ -580,11 +580,11 @@ span.divider.divider.divider.divider {
 }
 
 .blog-area .right-panel {
-    width: 20%;
+    width: 24%;
 }
 
 .blog-area .right-panel .search-form {
-
+    width: 100%;
 }
 
 .blog-area .right-panel .search-form .search-box {
