@@ -4,31 +4,158 @@
     <meta charset="UTF-8"/>
     <meta th:replace="layout/layout::viewport"/>
     <script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>
-    <script type="text/javascript" th:src="@{/js/ckeditor/ckeditor.js}"></script>
-    <script type="text/javascript" th:src="@{/js/application.js}"></script>
-
+    <link rel="stylesheet" th:href="@{/css/font-awesome-4.7.0/css/font-awesome.min.css}" type="text/css"/>
     <link rel="stylesheet" th:href="@{/css/styleSheet.css}" type="text/css"/>
     <link rel="stylesheet" th:href="@{/css/media.css}" type="text/css"/>
-    <title></title>
+    <title>Blogs</title>
 </head>
 <body>
-<div th:replace="layout/layout::adminHeader"></div>
-<div class="container">
-    <div class="blog-detail">
-        <h1 class="title" th:text="${blog.title}"></h1>
+<div class="brand">
+    <div class="brand-wrapper">
+        <h1 class="title"><a href="" rel="home">Lovecraft</a></h1>
 
-        <div class="publish-detail">
-            Last modified: <span th:text="${#dates.format(blog.lastUpdated,'MMMM dd, yyyy')}">November 3, 2017</span>
-        </div>
+        <p class="description">Lovecraft is a beautiful two-column theme for bloggers</p>
+    </div>
+</div>
 
-        <div class="user-detail">
-            by <a href=""> Eugen Paraschiv</a>
-        </div>
-        <div class="blog-content" th:utext="${blog.content}">
+<nav id="navigation" class="main-navigation">
+    <div id="primary-menu" class="menu">
+        <ul class="nav-menu">
+            <li class="" aria-haspopup="true">
+                <a href="">A Parent Page</a>
+            </li>
+            <li class="">
+                <a href="">HTML Elements</a>
+            </li>
+            <li class="">
+                <a href="">Image Alignment and&nbsp;Styles</a>
+            </li>
+            <li class="">
+                <a href="">Readability</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<a class="header-image-wrapper" href="">
+    <div class="header-image bg-image">
+        <img src="https://s0.wp.com/wp-content/themes/pub/lovecraft/images/header.jpg"/>
+    </div>
+</a>
 
+<div class="blog-area">
+    <div class="blog">
+        <article>
+            <img class="thumbnail"
+                 src="https://lovecraftdemo.files.wordpress.com/2014/09/digital-camera-349873_1280.jpg?w=900"/>
+
+            <div class="blog-entry">
+                <h1 class="title" th:text="${blog.title}"></h1>
+
+                <div class="blog-meta">
+                    <span>
+                        <i class="fa fa-calendar"></i>
+                        <a th:text="${#dates.format(blog.dateCreated,'MMMM dd, yyyy')}"></a>
+                    </span>
+                    <span class="divider">/</span>
+                    <span>
+                        <i class="fa fa-user-circle"></i>
+                        <a>JOAN SMITH</a>
+                    </span>
+                    <span class="divider">/</span>
+                    <span>
+                        <i class="fa fa-bars"></i>
+                        <a>BOOKS</a>&nbsp;
+                        <a>WRITING</a>
+                    </span>
+                    <span class="divider">/</span>
+                    <span>
+                        <i class="fa fa-comment-o"></i>
+                        <a>1 COMMENT</a>
+                    </span>
+                </div>
+                <div class="blog-content" th:utext="${blog.content}">
+
+                </div>
+            </div>
+        </article>
+        <div class="related-blog">
+            <h2>Related Blogs</h2>
+
+            <div class="related-blog-wrapper">
+                <ul>
+                    <li>
+                        <h1 class="head">
+                            String vs StringBuffer
+                        </h1>
+
+                        <div class="content">
+                            <h3>Difference between String vs StringBuffer</h3>
+
+                            <p>
+                                No ratings.
+                                Version: 1.0.1Melos Business is the free version of the multi-purpose professional theme
+                                (Melos Pro) ideal for a business or blog website. The theme has a responsive layout, HD
+                                retina ready and comes with a powerful theme options panel with can be used
+                            </p>
+
+                        </div>
+                        <div class="bottom">
+                            <span>JAN 22, 2017</span>
+                            <a href="">View</a>
+                        </div>
+                    </li>
+                    <li>
+                        <h1 class="head">
+                            String vs StringBuffer
+                        </h1>
+
+                        <div class="content">
+                            <h3>Difference between String vs StringBuffer</h3>
+
+                            <p>
+                                No ratings.
+                                Version: 1.0.1Melos Business is the free version of the multi-purpose professional theme
+
+                            </p>
+
+                        </div>
+                        <div class="bottom">
+                            <span>JAN 22, 2017</span>
+                            <a href="">View</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
+    <div class="right-panel right">
+        <form class="search-form">
+            <input type="text" class="search-box" value="" placeholder="Search"/>
+        </form>
 
+        <div class="tags">
+            <div class="title">
+                <span>Tags</span>
+            </div>
+            <ul class="name">
+                <li>
+                    <a href="">Spring</a>
+                </li>
+                <li>
+                    <a href="">Java</a>
+                </li>
+                <li>
+                    <a href="">SpringBoot</a>
+                </li>
+                <li>
+                    <a href="">Hibernate</a>
+                </li>
+                <li>
+                    <a href="">Spring Data JPA</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
 </body>
 </html>

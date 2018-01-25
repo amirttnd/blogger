@@ -26,6 +26,10 @@ a {
     text-decoration: none;
     cursor: pointer;
     display: inline-block;
+    -webkit-transition: background-color 400ms ease;
+    -moz-transition: background-color 400ms ease;
+    -o-transition: background-color 400ms ease;
+    transition: background-color 400ms ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -374,7 +378,8 @@ label {
 
 .blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 {
     color: #444;
-    margin: 40px 0 15px 0
+    margin: 40px 0 15px 0;
+    line-height: 125%;
 }
 
 .blog-content h1 {
@@ -382,11 +387,11 @@ label {
 }
 
 .blog-content h2 {
-    font-size: 28px;
+    font-size: 25px;
 }
 
 .blog-content h3 {
-    font-size: 24px;
+    font-size: 22px;
 }
 
 .blog-content h4 {
@@ -545,7 +550,7 @@ label {
 }
 
 .blog .blog-entry .blog-content p {
-    line-height: 170%;
+    line-height: 30px;
     margin-bottom: 1.5em;
 }
 
@@ -561,10 +566,10 @@ label {
     text-transform: uppercase;
     letter-spacing: 1px;
     color: #111;
-    -webkit-transition: background-color 500ms ease;
-    -moz-transition: background-color 500ms ease;
-    -o-transition: background-color 500ms ease;
-    transition: background-color 500ms ease;
+    -webkit-transition: background-color 400ms ease;
+    -moz-transition: background-color 400ms ease;
+    -o-transition: background-color 400ms ease;
+    transition: background-color 400ms ease;
 }
 
 .blog .blog-entry .blog-content .more:hover {
@@ -608,3 +613,151 @@ span.divider.divider.divider.divider {
 .search-box:focus {
     outline: 0;
 }
+
+.blog-area .right-panel .tags {
+    margin: 1.5em 0;
+    padding: 1em 0;
+}
+
+.blog-area .right-panel .tags .title {
+    margin-bottom: .5em;
+}
+
+.blog-area .right-panel .tags .title span {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    /*color: #0980d7;*/
+    border-bottom: 2px solid #0980d7;
+    padding-bottom: 3px;
+    letter-spacing: 1px;
+}
+
+.blog-area .right-panel .tags .name {
+    list-style-type: none;
+    margin: 12px 0;
+}
+
+.blog-area .right-panel .tags .name li {
+    display: inline-block;
+    font-size: 14px;
+    margin: 5px 5px 5px 0;
+    color: white;
+    background: #0980d7;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+.blog-area .right-panel .tags .name li a {
+    color: white;
+    display: block;
+    padding: 5px 10px;
+
+}
+
+.blog-area .right-panel .tags .name li a:hover {
+    background: #444;
+}
+
+.blog-area .blog .related-blog {
+    margin-top: 2em;
+}
+
+.blog-area .blog .related-blog h2{
+    color: #cccccc;
+    text-align: center;
+    font-size: 28px;
+    margin: 3px 0;
+}
+
+.blog-area .blog .related-blog .related-blog-wrapper {
+    padding: 5px 15px;
+}
+
+.blog-area .blog .related-blog .related-blog-wrapper ul {
+    text-align: center;
+}
+
+.blog-area .blog .related-blog .related-blog-wrapper ul li {
+    display: inline-block;
+    width: 248px;
+    background: white;
+    overflow: hidden;
+    height: 324px;
+    margin: 0 15px 15px 0;
+    position: relative;
+}
+
+.blog-area .blog .related-blog .related-blog-wrapper ul li h1 {
+    font-size: 18px;
+    line-height: 67px;
+    color: white;
+    background: #0980d7;
+    text-align: center;
+    margin: 0;
+}
+
+.blog-area .blog .related-blog .related-blog-wrapper ul li .title {
+    text-align: center;
+}
+
+.blog-area .blog .related-blog .related-blog-wrapper ul li .content {
+    padding: 0 15px;
+}
+
+.blog-area .blog .related-blog .related-blog-wrapper ul li .content h3 {
+    font-size: 15px;
+    color: #444;
+    text-align: center;
+    line-height: 20px;
+}
+
+.blog-area .blog .related-blog .related-blog-wrapper ul li .content p {
+    font-size: 13px;
+    font-weight: normal;
+    color: rgba(68, 68, 68, 0.88);
+    line-height: 20px;
+    overflow: hidden;
+    max-height: 137px;
+    letter-spacing: 0.3px;
+}
+
+.blog-area .blog .related-blog .related-blog-wrapper ul li .content .bottom {
+    text-align: left;
+    padding: 5px 0;
+    border-top: 1px solid rgba(128, 128, 128, 0.44);
+}
+
+.blog-area .blog .related-blog .related-blog-wrapper ul li .bottom{
+    position: absolute;
+    bottom: 0;
+    display: block;
+    padding: 5px 15px;
+    width: 100%;
+    text-align: left;
+    border-top: 1px solid #cccccc;
+    height: 37px;
+}
+.blog-area .blog .related-blog .related-blog-wrapper ul li .bottom span {
+    font-size: 12px;
+    font-weight: 500;
+    color: #666;
+}
+
+.blog-area .blog .related-blog .related-blog-wrapper ul li .bottom a {
+    font-size: 12px;
+    float: right;
+    padding: 3px 14px;
+    color: #222;
+    background: #f8f8f8;
+    border: 1px solid #ccc;
+    margin-top: 1px;
+}
+
+.blog-area .blog .related-blog .related-blog-wrapper ul li .bottom a:hover {
+    background: #0980d7;
+    color: #fff;
+    border: 1px solid #0980d7;
+}
+
+
