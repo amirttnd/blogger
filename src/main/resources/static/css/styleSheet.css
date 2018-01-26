@@ -672,6 +672,7 @@ span.divider.divider.divider.divider {
 
 .blog-area .blog .related-blog .related-blog-wrapper {
     padding: 5px 15px;
+    margin-top: .5em;
 }
 
 .blog-area .blog .related-blog .related-blog-wrapper ul {
@@ -680,7 +681,7 @@ span.divider.divider.divider.divider {
 
 .blog-area .blog .related-blog .related-blog-wrapper ul li {
     display: inline-block;
-    width: 248px;
+    width: 45%;
     background: white;
     overflow: hidden;
     height: 324px;
@@ -713,7 +714,7 @@ span.divider.divider.divider.divider {
 }
 
 .blog-area .blog .related-blog .related-blog-wrapper ul li .content p {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: normal;
     color: rgba(68, 68, 68, 0.88);
     line-height: 24px;
@@ -746,7 +747,7 @@ span.divider.divider.divider.divider {
 }
 
 .blog-area .blog .related-blog .related-blog-wrapper ul li .bottom a {
-    font-size: 12px;
+    font-size: 13px;
     float: right;
     padding: 3px 0;
     color: #0980d7;;
