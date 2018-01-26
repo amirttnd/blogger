@@ -655,7 +655,7 @@ span.divider.divider.divider.divider {
 
 }
 
-.blog-area .right-panel .tags .name li a:hover {
+.blog-area .right-panel .tags .name li a:hover, .blog-area .blog .social .comment:hover {
     background: #444;
 }
 
@@ -663,7 +663,7 @@ span.divider.divider.divider.divider {
     margin-top: 2em;
 }
 
-.blog-area .blog .related-blog h2{
+.blog-area .blog .related-blog h2 {
     color: #cccccc;
     text-align: center;
     font-size: 28px;
@@ -716,9 +716,9 @@ span.divider.divider.divider.divider {
     font-size: 13px;
     font-weight: normal;
     color: rgba(68, 68, 68, 0.88);
-    line-height: 20px;
+    line-height: 24px;
     overflow: hidden;
-    max-height: 137px;
+    max-height: 143px;
     letter-spacing: 0.3px;
 }
 
@@ -728,7 +728,7 @@ span.divider.divider.divider.divider {
     border-top: 1px solid rgba(128, 128, 128, 0.44);
 }
 
-.blog-area .blog .related-blog .related-blog-wrapper ul li .bottom{
+.blog-area .blog .related-blog .related-blog-wrapper ul li .bottom {
     position: absolute;
     bottom: 0;
     display: block;
@@ -738,6 +738,7 @@ span.divider.divider.divider.divider {
     border-top: 1px solid #cccccc;
     height: 37px;
 }
+
 .blog-area .blog .related-blog .related-blog-wrapper ul li .bottom span {
     font-size: 12px;
     font-weight: 500;
@@ -747,17 +748,57 @@ span.divider.divider.divider.divider {
 .blog-area .blog .related-blog .related-blog-wrapper ul li .bottom a {
     font-size: 12px;
     float: right;
-    padding: 3px 14px;
-    color: #222;
-    background: #f8f8f8;
-    border: 1px solid #ccc;
+    padding: 3px 0;
+    color: #0980d7;;
+    /*background: #f8f8f8;*/
+    /*border: 1px solid #ccc;*/
     margin-top: 1px;
 }
 
 .blog-area .blog .related-blog .related-blog-wrapper ul li .bottom a:hover {
+    color: #444;
+}
+
+.blog-area .blog .social {
+    margin: 1em 0;
+    background: white;
+    border: 1px solid #cccccc;
+}
+
+.blog-area .blog .social .social-wrapper {
+    padding: 1em 1em;
+    font-size: 16px;
+}
+
+.blog-area .blog .social .share {
+
+}
+
+.blog-area .blog .social .share a {
+    padding: 5px .5em;
+    font-size: 16px;
+    margin-right: 1em;
+}
+
+.blog-area .blog .social .share a.facebook {
+    background: #4267b2;
+    color: white;
+}
+
+.blog-area .blog .social .share a.twitter {
+    background: #1b95e0;
+    color: white;
+}
+
+a.facebook:hover, a.twitter:hover {
+    opacity: .8;
+}
+
+.blog-area .blog .social .comment {
+    float: right;
+    padding: 5px 25px;
     background: #0980d7;
-    color: #fff;
-    border: 1px solid #0980d7;
+    color: white;
 }
 
 
