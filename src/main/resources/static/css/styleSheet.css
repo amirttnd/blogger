@@ -672,20 +672,22 @@ span.divider.divider.divider.divider {
 
 .blog-area .blog .related-blog .related-blog-wrapper {
     padding: 5px 15px;
-    margin-top: .5em;
+    margin-top: 1.2em;
+    background: #fff;
 }
 
 .blog-area .blog .related-blog .related-blog-wrapper ul {
     text-align: center;
+    margin: 0;
 }
 
 .blog-area .blog .related-blog .related-blog-wrapper ul li {
     display: inline-block;
     width: 45%;
-    background: white;
+    background: #fafafa;
     overflow: hidden;
     height: 324px;
-    margin: 0 15px 15px 0;
+    margin: 15px 15px;
     position: relative;
 }
 
