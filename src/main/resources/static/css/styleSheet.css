@@ -834,10 +834,11 @@ a.facebook:hover, a.twitter:hover {
 
 .comment-area .comment-wrapper .comments .comment-row img {
     width: 59px;
-    margin-right: 1.5em;
+    margin-right: 1.3em;
     border: 1px solid #cccccc;
     border-radius: 50%;
     padding: 5px;
+    margin-top: 5px;
 }
 
 .comment-area .comment-wrapper .comments .comment-row .display-comment {
