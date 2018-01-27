@@ -32,6 +32,10 @@ a {
     transition: background-color 400ms ease;
 }
 
+input[type='text']:focus{
+    outline: 0;
+}
+
 h1, h2, h3, h4, h5, h6 {
     clear: both;
     font-family: "Playfair Display", Georgia, serif;
@@ -656,7 +660,7 @@ span.divider.divider.divider.divider {
 }
 
 .blog-area .right-panel .tags .name li a:hover, .blog-area .blog .social .comment:hover {
-    background: #444;
+    background: #000;
 }
 
 .blog-area .blog .related-blog, .blog-area .blog .comment-area {
@@ -776,7 +780,7 @@ span.divider.divider.divider.divider {
 }
 
 .blog-area .blog .related-blog .related-blog-wrapper .more-blog a:hover {
-    background: #777;
+    background: #000;
 }
 
 .blog-area .blog .social {
@@ -828,8 +832,8 @@ a.facebook:hover, a.twitter:hover {
     border: 1px solid #cccccc;
 }
 
-.comment-area .comment-wrapper .comments {
-
+.comment-area .comment-wrapper .comments .comment-row {
+    margin-bottom: 1.5em;
 }
 
 .comment-area .comment-wrapper .comments .comment-row img {
@@ -875,13 +879,26 @@ a.facebook:hover, a.twitter:hover {
     font-weight: 600;
 }
 
+
+.comments .comment-row .display-comment .btn-group .reply-box input[type='text']{
+    width: 100%;
+    margin: 18px 0 5px 0;
+    border-bottom: 1px solid #cccccc;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    height: 31px;
+    font-size: 15px;
+}
+
 .comments .comment-row .display-comment .btn-group a:hover{
-   background: #777;
+   background: #000;
 }
 
 .comment-area .comment-wrapper .comments .comment-row .reply {
     padding-left: 40px;
     margin-top: 5px;
 }
+
 
 
