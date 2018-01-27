@@ -763,6 +763,22 @@ span.divider.divider.divider.divider {
     color: #444;
 }
 
+.blog-area .blog .related-blog .related-blog-wrapper .more-blog {
+    text-align: center;
+    padding: .5em 0;
+    margin-top: .6em;
+}
+
+.blog-area .blog .related-blog .related-blog-wrapper .more-blog a {
+    padding: .8em 2em;
+    background: #444;
+    color: white;
+}
+
+.blog-area .blog .related-blog .related-blog-wrapper .more-blog a:hover {
+    background: #777;
+}
+
 .blog-area .blog .social {
     margin: 1em 0;
     background: white;
