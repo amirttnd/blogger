@@ -660,7 +660,7 @@ span.divider.divider.divider.divider {
 }
 
 .blog-area .blog .related-blog, .blog-area .blog .comment-area {
-    margin-top: 2em;
+    margin-top: 3em;
 }
 
 .blog-area .blog .related-blog h2, .blog-area .blog .comment-area h2 {
@@ -822,10 +822,65 @@ a.facebook:hover, a.twitter:hover {
 }
 
 .blog-area .blog .comment-area .comment-wrapper {
-    padding: 5px 15px;
+    padding: 5px 30px;
     margin-top: 1.2em;
     background: #fff;
     border: 1px solid #cccccc;
+}
+
+.comment-area .comment-wrapper .comments {
+
+}
+
+.comment-area .comment-wrapper .comments .comment-row img {
+    width: 59px;
+    margin-right: 1.5em;
+    border: 1px solid #cccccc;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.comment-area .comment-wrapper .comments .comment-row .display-comment {
+    display: inline-block;
+    width: 85%;
+    vertical-align: top;
+    margin-bottom: 1.5em;
+}
+
+.comment-area .comment-wrapper .comments .comment-row .display-comment .user-name {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.comment-area .comment-wrapper .comments .comment-row .display-comment .date {
+    font-size: 12px;
+    color: gray;
+    padding: 0 6px;
+}
+
+.comment-area .comment-wrapper .comments .comment-row .display-comment .text {
+    padding: 0;
+    margin: 4px 0 9px 0;
+    font-size: 16px;
+    line-height: 1.4em;
+    color: #444444;
+}
+
+.comments .comment-row .display-comment .btn-group a{
+    padding: 5px 10px;
+    background: #0980d7;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.comments .comment-row .display-comment .btn-group a:hover{
+   background: #777;
+}
+
+.comment-area .comment-wrapper .comments .comment-row .reply {
+    padding-left: 40px;
+    margin-top: 5px;
 }
 
 
