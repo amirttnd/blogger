@@ -659,11 +659,11 @@ span.divider.divider.divider.divider {
     background: #444;
 }
 
-.blog-area .blog .related-blog {
+.blog-area .blog .related-blog, .blog-area .blog .comment-area {
     margin-top: 2em;
 }
 
-.blog-area .blog .related-blog h2 {
+.blog-area .blog .related-blog h2, .blog-area .blog .comment-area h2 {
     color: #cccccc;
     text-align: center;
     font-size: 28px;
@@ -719,11 +719,11 @@ span.divider.divider.divider.divider {
 .blog-area .blog .related-blog .related-blog-wrapper ul li .content p {
     font-size: 14px;
     font-weight: normal;
-    color: rgba(68, 68, 68, 0.88);
+    color: #444444;
     line-height: 24px;
     overflow: hidden;
     max-height: 143px;
-    letter-spacing: 0.3px;
+    text-align: justify;
 }
 
 .blog-area .blog .related-blog .related-blog-wrapper ul li .content .bottom {
@@ -803,6 +803,13 @@ a.facebook:hover, a.twitter:hover {
     padding: 5px 25px;
     background: #0980d7;
     color: white;
+}
+
+.blog-area .blog .comment-area .comment-wrapper {
+    padding: 5px 15px;
+    margin-top: 1.2em;
+    background: #fff;
+    border: 1px solid #cccccc;
 }
 
 
