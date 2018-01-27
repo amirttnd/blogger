@@ -674,6 +674,7 @@ span.divider.divider.divider.divider {
     padding: 5px 15px;
     margin-top: 1.2em;
     background: #fff;
+    border: 1px solid #cccccc;
 }
 
 .blog-area .blog .related-blog .related-blog-wrapper ul {
