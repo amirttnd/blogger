@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head lang="en">
     <meta charset="UTF-8"/>
     <meta th:replace="layout/layout::viewport"/>
@@ -43,8 +43,8 @@
 <div class="blog-area">
     <div class="blog">
         <article>
-            <img class="thumbnail"
-                 src="https://lovecraftdemo.files.wordpress.com/2014/09/digital-camera-349873_1280.jpg?w=900"/>
+            <!--<img class="thumbnail"-->
+                 <!--src="https://lovecraftdemo.files.wordpress.com/2014/09/digital-camera-349873_1280.jpg?w=900"/>-->
 
             <div class="blog-entry">
                 <h1 class="title" th:text="${blog.title}"></h1>
@@ -307,6 +307,18 @@
                 </li>
             </ul>
         </div>
+    </div>
+</div>
+<div class="footer clearfix">
+    <div class="footer-wrapper">
+        <h2>A community that learn together</h2>
+        <ul class="links">
+            <li><a href=""> Blog</a></li>
+            <li><a href=""> About</a></li>
+            <li><a href=""> Contact</a></li>
+            <li><a href=""> Privacy Policy</a></li>
+        </ul>
+        <span class="copyright">&copy; 2018 <span class="logo"><span class="first">Tech</span><span class="second">blogger</span></span>. All right reserved</span>
     </div>
 </div>
 </body>
