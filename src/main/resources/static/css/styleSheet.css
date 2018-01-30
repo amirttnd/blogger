@@ -597,7 +597,7 @@ span.divider.divider.divider.divider {
 }
 
 .blog-area .right-panel .tags {
-    margin: 1.5em 0;
+    margin: 3em 0;
     padding: 1em 0;
 }
 
@@ -639,6 +639,44 @@ span.divider.divider.divider.divider {
 
 .blog-area .right-panel .tags .name li a:hover, .blog-area .blog .social .comment:hover {
     background: #000;
+}
+.sub-categories{
+
+}
+
+.sub-categories .sub-category{
+    margin-bottom: 2em;
+}
+
+.sub-categories .sub-category h1{
+    margin: 0;
+    font-size: 17px;
+    font-weight: normal;
+    padding: 6px 0;
+    text-align: center;
+    background: #444;
+    color: white;
+}
+.sub-categories .sub-category{
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.sub-categories .sub-category .sub-category-blog{
+    margin-top: 10px;
+}
+.sub-categories .sub-category .sub-category-blog li{
+    border-bottom: 1px solid #ccc;
+    overflow: hidden;
+    line-height: 40px;
+}
+
+.sub-categories .sub-category .sub-category-blog li a{
+    display: block;
+}
+
+.sub-categories .sub-category .sub-category-blog li:last-child{
+    border: 0;
 }
 
 .blog-area .blog .related-blog, .blog-area .blog .comment-area {
@@ -894,7 +932,7 @@ a.facebook:hover, a.twitter:hover {
     font-size: 28px;
     font-weight: 300;
     text-align: center;
-    color: #ccc;
+    color: #bbb;
 }
 
 .footer .footer-wrapper .links {
