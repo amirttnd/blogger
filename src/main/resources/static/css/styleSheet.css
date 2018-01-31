@@ -911,11 +911,11 @@ a.facebook:hover, a.twitter:hover {
 }
 
 .comments .comment-row .display-comment .btn-group .reply-box input[type='text'] {
-    margin: 12px 0 22px 0;
+    margin: 13px 0;
     border: 1px solid #cccccc;
-    height: 31px;
+    height: 38px;
     font-size: 15px;
-    padding: 5px 7px;
+    padding: 5px;
 }
 
 .comments .comment-row .display-comment .btn-group .reply-box p {
