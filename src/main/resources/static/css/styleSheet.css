@@ -53,6 +53,10 @@ h1, h2, h3, h4, h5, h6 {
     float: right;
 }
 
+.full-width {
+    width: 100%;
+}
+
 .container {
     padding: 82px 150px 0 150px;
     background: rgba(128, 128, 128, 0.04);
@@ -261,13 +265,13 @@ label {
 .btn {
     border: none;
     padding: 10px 20px;
-    background: #4d7e9a;
+    background: #0980d7;
     color: white;
     font-size: 15px;
 }
 
 .btn:hover {
-    background: #426c84;
+    background: #000;
 }
 
 .categories .list {
@@ -381,19 +385,20 @@ label {
     text-rendering: optimizeLegibility;
 }
 
-.brand-wrapper .title a {
+.brand-wrapper .title {
     font-style: italic;
 }
 
-.brand-wrapper .title a .first {
+.brand-wrapper .title .first {
     color: #46bfbc;
 }
 
-.brand-wrapper .title a .second {
+.brand-wrapper .title .second {
     color: #999;
     opacity: 1 !important;
 }
-.logo{
+
+.logo {
     font-weight: bold;
 }
 
@@ -640,15 +645,17 @@ span.divider.divider.divider.divider {
 .blog-area .right-panel .tags .name li a:hover, .blog-area .blog .social .comment:hover {
     background: #000;
 }
-.sub-categories{
 
+.sub-categories {
+    font-family: 'Lato', sans-serif;
 }
 
-.sub-categories .sub-category{
+.sub-categories .sub-category {
     margin-bottom: 2em;
+    font-family: 'Lato', sans-serif
 }
 
-.sub-categories .sub-category h1{
+.sub-categories .sub-category h1 {
     margin: 0;
     font-size: 17px;
     font-weight: normal;
@@ -656,26 +663,29 @@ span.divider.divider.divider.divider {
     text-align: center;
     background: #444;
     color: white;
+    font-family: 'Lato', sans-serif
 }
-.sub-categories .sub-category{
+
+.sub-categories .sub-category {
     font-size: 16px;
     margin-top: 10px;
 }
 
-.sub-categories .sub-category .sub-category-blog{
+.sub-categories .sub-category .sub-category-blog {
     margin-top: 10px;
 }
-.sub-categories .sub-category .sub-category-blog li{
+
+.sub-categories .sub-category .sub-category-blog li {
     border-bottom: 1px solid #ccc;
     overflow: hidden;
     line-height: 40px;
 }
 
-.sub-categories .sub-category .sub-category-blog li a{
+.sub-categories .sub-category .sub-category-blog li a {
     display: block;
 }
 
-.sub-categories .sub-category .sub-category-blog li:last-child{
+.sub-categories .sub-category .sub-category-blog li:last-child {
     border: 0;
 }
 
@@ -896,15 +906,45 @@ a.facebook:hover, a.twitter:hover {
     font-weight: 600;
 }
 
+.comments .comment-row .display-comment .btn-group .reply-box {
+    width: 80%;
+}
+
 .comments .comment-row .display-comment .btn-group .reply-box input[type='text'] {
-    width: 100%;
-    margin: 18px 0 5px 0;
-    border-bottom: 1px solid #cccccc;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
+    margin: 12px 0 22px 0;
+    border: 1px solid #cccccc;
     height: 31px;
     font-size: 15px;
+    padding: 5px 7px;
+}
+
+.comments .comment-row .display-comment .btn-group .reply-box p {
+    margin: 2em 0 0 0;
+    font-size: 17px;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.display-comment .btn-group .reply-box .full-name, .display-comment .btn-group .reply-box .email {
+    width: 48%;
+}
+
+.display-comment .btn-group .reply-box .full-name {
+    float: right;
+}
+
+.comments .comment-row .display-comment .btn-group .reply-box textarea {
+    width: 100%;
+    min-height: 66px;
+    border: 1px solid #ccc;
+}
+
+.comments .comment-row .display-comment .btn-group .reply-box .btn {
+    margin-top: 0;
+}
+
+.comments .comment-row .display-comment .btn-group .reply-box .web-site-url {
+    width: 100%;
 }
 
 .comments .comment-row .display-comment .btn-group a:hover {
@@ -915,7 +955,8 @@ a.facebook:hover, a.twitter:hover {
     padding-left: 40px;
     margin-top: 5px;
 }
-.footer{
+
+.footer {
     background: white;
     top: 2em;
     position: relative;
@@ -940,11 +981,11 @@ a.facebook:hover, a.twitter:hover {
     margin: 2em 0;
 }
 
-.footer .footer-wrapper .links li{
+.footer .footer-wrapper .links li {
     display: inline-block;
 }
 
-.footer .footer-wrapper .links li a{
+.footer .footer-wrapper .links li a {
     padding: 0 12px;
     font-size: 18px;
 }
