@@ -8,9 +8,11 @@ import java.util.stream.Collectors;
 
 public class CategoryVO {
 
-    Long id;
+    String id;
     String name;
     Boolean active;
+    Integer level;
+    CategoryVO parent;
 
     public CategoryVO() {
 
@@ -25,6 +27,10 @@ public class CategoryVO {
             this.id = category.getId();
             this.name = category.getName();
             this.active = category.getActive();
+            this.level = category.getLevel();
+            if (category.getParent() != null) {
+                this.parent = category.getParent().toCategoryVO();
+            }
         }
     }
 
@@ -45,11 +51,11 @@ public class CategoryVO {
         this.name = name;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -59,5 +65,21 @@ public class CategoryVO {
 
     public void setActive(Boolean active) {
         this.active = active;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
+
+    public CategoryVO getParent() {
+        return parent;
+    }
+
+    public void setParent(CategoryVO parent) {
+        this.parent = parent;
     }
 }

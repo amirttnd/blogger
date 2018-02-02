@@ -1,28 +1,21 @@
 package in.tech.blogger.domain;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import org.springframework.data.annotation.Id;
 
-@Entity(name = "user")
 public class User {
 
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
-    @Column
-    @NotNull
     String firstName;
 
     String lastName;
 
-    @Column(unique = true)
     String userName;
 
-    @Column(unique = true, nullable = false)
     String email;
 
-    @Column
     Boolean enable = true;
 
     public Long getId() {

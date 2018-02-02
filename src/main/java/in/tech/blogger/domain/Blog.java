@@ -1,124 +1,44 @@
 package in.tech.blogger.domain;
 
 
-import in.tech.blogger.modal.BlogModel;
-import org.hibernate.annotations.Type;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
-import java.util.Date;
+import java.util.List;
 
-@Entity(name = "blog")
+
+@Document(collection = "blog")
 public class Blog {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
+    String id;
 
-    @Column
+    String shortHeading;
+
     @NotNull
     String title;
 
-    @Column
-    @Type(type = "text")
+    String briefIntroduction;
+
+    @NotNull
     String content;
 
-    @Column
-    Boolean active;
-
-    @OneToOne
-    @Null
-    User creator;
-
-    @OneToOne
-    @NotNull
+    @DBRef
     Category category;
 
-    @Column
-    Date dateCreated;
+    @DBRef
+    List<Category> relatedCategories;
 
-    @Column
-    Date lastUpdated;
+    Boolean isPublished;
 
-    @PrePersist
-    public void beforeInsert() {
-        dateCreated = new Date();
-        lastUpdated = new Date();
-    }
+    List<String> tags;
 
-    @PreUpdate
-    public void beforeUpdate() {
-        lastUpdated = new Date();
-    }
+    @DBRef
+    List<Blog> relatedBlog;
 
-    public void bind(BlogModel blogModal) {
-        this.setActive(blogModal.getActive());
-        this.setTitle(blogModal.getTitle());
-        this.setContent(blogModal.getContent());
-    }
+    @DBRef
+    User user;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = (active != null && active);
-    }
-
-    public User getCreator() {
-        return creator;
-    }
-
-    public void setCreator(User creator) {
-        this.creator = creator;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public Date getDateCreated() {
-        return dateCreated;
-    }
-
-    public void setDateCreated(Date dateCreated) {
-        this.dateCreated = dateCreated;
-    }
-
-    public Date getLastUpdated() {
-        return lastUpdated;
-    }
-
-    public void setLastUpdated(Date lastUpdated) {
-        this.lastUpdated = lastUpdated;
-    }
 }

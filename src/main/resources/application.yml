@@ -23,13 +23,11 @@ spring:
 spring:
   profiles: development
   address: localhost:8080
-  datasource:
-    url: jdbc:mysql://localhost:3306/blogger
-    username: root
-    password: igdefault
-  jpa:
-    hibernate:
-     ddl-auto: update
+  data:
+    mongodb:
+      uri: mongodb://localhost/blogger
+      repositories:
+        enabled: true
 
 ---
 

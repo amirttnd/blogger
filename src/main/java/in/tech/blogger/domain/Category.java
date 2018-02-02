@@ -1,44 +1,40 @@
 package in.tech.blogger.domain;
 
-import in.tech.blogger.modal.CategoryModel;
+import in.tech.blogger.vo.CategoryVO;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
 
-@Entity(name = "category")
+@Document(collection = "category")
 public class Category {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
 
-    @Column
-    @NotNull
+    @Id
+    String id;
+
+    @Field
+    @NotEmpty
+    @Indexed
     String name;
 
-    @Column
-    Boolean active = false;
+    Boolean active;
 
-    @Column
-    Date dateCreated;
+    @NotNull
+    Integer level;
 
-    @Column
-    Date lastUpdated;
+    @DBRef
+    Category parent;
 
-    @PrePersist
-    public void beforeInsert() {
-        dateCreated = new Date();
-        lastUpdated = new Date();
+    public String getId() {
+        return id;
     }
 
-    @PreUpdate
-    public void beforeUpdate() {
-        lastUpdated = new Date();
-    }
-
-    public void bind(CategoryModel categoryModal) {
-        this.setName(categoryModal.getName());
-        this.setActive(categoryModal.getActive());
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -49,12 +45,20 @@ public class Category {
         this.name = name;
     }
 
-    public Long getId() {
-        return id;
+    public Integer getLevel() {
+        return level;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
+
+    public Category getParent() {
+        return parent;
+    }
+
+    public void setParent(Category parent) {
+        this.parent = parent;
     }
 
     public Boolean getActive() {
@@ -65,19 +69,18 @@ public class Category {
         this.active = active;
     }
 
-    public Date getDateCreated() {
-        return dateCreated;
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", active=" + active +
+                ", level=" + level +
+                ", parent=" + parent +
+                '}';
     }
 
-    public void setDateCreated(Date dateCreated) {
-        this.dateCreated = dateCreated;
-    }
-
-    public Date getLastUpdated() {
-        return lastUpdated;
-    }
-
-    public void setLastUpdated(Date lastUpdated) {
-        this.lastUpdated = lastUpdated;
+    public CategoryVO toCategoryVO() {
+        return new CategoryVO(this);
     }
 }

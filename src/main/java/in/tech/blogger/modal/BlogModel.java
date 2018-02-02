@@ -1,50 +1,30 @@
 package in.tech.blogger.modal;
 
+import in.tech.blogger.domain.Category;
+
+import java.util.List;
+
 public class BlogModel {
 
-    Long id;
+
+    String id;
+
+    String shortHeading;
+
     String title;
+
+    String briefIntroduction;
+
     String content;
-    Boolean active;
-    Long categoryId;
 
-    public Long getId() {
-        return id;
-    }
+    String categoryId;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    List<Category> relatedCategories;
 
-    public String getTitle() {
-        return title;
-    }
+    Boolean isPublished;
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    List<String> tags;
 
-    public String getContent() {
-        return content;
-    }
+    List relatedBlog;
 
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
-
-    public Long getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
-    }
 }

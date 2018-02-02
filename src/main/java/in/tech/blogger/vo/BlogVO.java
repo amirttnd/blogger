@@ -16,25 +16,11 @@ public class BlogVO {
     CategoryVO category = new CategoryVO();
 
     public BlogVO(Blog blog) {
-        if (blog != null) {
-            this.id = blog.getId();
-            this.title = blog.getTitle();
-            this.content = blog.getContent();
-            this.active = blog.getActive();
-            this.dateCreated = blog.getDateCreated();
-            this.lastUpdated = blog.getLastUpdated();
-            this.category = new CategoryVO(blog.getCategory());
-        }
+
     }
 
     public BlogVO(BlogModel blog) {
-        if (blog != null) {
-            this.id = blog.getId();
-            this.title = blog.getTitle();
-            this.content = blog.getContent();
-            this.active = blog.getActive();
-            this.getCategory().setId(blog.getCategoryId());
-        }
+
     }
 
     public Long getId() {
