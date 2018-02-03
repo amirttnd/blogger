@@ -30,6 +30,15 @@ public class CategoryService {
         return null;
     }
 
+    public Category update(CategoryModel categoryModel) {
+        Category category=categoryRepository.findById(categoryModel.getId());
+        if (categoryModel.getName() != null) {
+            category.setName(categoryModel.getName());
+            return categoryRepository.save(category);
+        }
+        return null;
+    }
+
     public Category addChild(CategoryModel categoryModel) {
         System.out.println(categoryModel.toString());
         Category parent = categoryRepository.findById(categoryModel.getId());

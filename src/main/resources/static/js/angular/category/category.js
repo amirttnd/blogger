@@ -18,6 +18,11 @@ angular
                     action: "save"
                 }
             },
+            update: {
+                params: {
+                    action: "update"
+                }
+            },
             toggle: {
                 params: {
                     action: "toggle"

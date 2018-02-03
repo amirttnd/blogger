@@ -50,7 +50,7 @@ angular
 
         };
 
-        self.save = function () {
+        self.newCategory = function () {
             if (self.categoryName) {
                 Category.save({name: self.categoryName}, function (response) {
                     self.tree = self.tree || [];
@@ -60,6 +60,21 @@ angular
                     }
                 })
             }
+        };
+
+        self.update = function (category) {
+            if (category) {
+                Category.update(category, function (response) {
+                    self.tree = self.tree || [];
+                    if (response.status) {
+                        category.canEdit = false;
+                    }
+                })
+            }
+        };
+
+        self.toggleCanEdit = function (category) {
+            category.canEdit = !category.canEdit;
         };
 
         self.categoryTree()
