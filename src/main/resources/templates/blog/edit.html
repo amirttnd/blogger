@@ -40,80 +40,94 @@
 <body>
 <div th:replace="layout/layout::adminHeader"></div>
 <div class="container" ng-controller="BlogController as blogCtrl">
-    <h3 class="category-heading">Make blog</h3>
+    <br/>
 
-    <div class="blog-editor">
-        <div class="col-md-8">
-            <form action="/action_page.php">
-                <div class="form-group">
-                    <label for="shortHeading">Short Heading:</label>
-                    <input type="text" class="form-control"
-                           id="shortHeading" placeholder="Enter short heading" name="shortHeading"/>
-                </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>Create or Edit your blog</h3>
+        </div>
+        <div class="panel-body">
+            <div class="blog-editor">
+                <div class="col-md-8">
+                    <form action="/action_page.php">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="shortHeading">Short Heading:</label>
+                                <input type="text" class="form-control"
+                                       id="shortHeading" placeholder="Enter short heading" name="shortHeading"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="title">Title:</label>
+                                <input type="text" class="form-control"
+                                       id="title" placeholder="Enter title" name="title"/>
+                            </div>
+                        </div>
 
-                <div class="form-group">
-                    <label for="title">Title:</label>
-                    <input type="text" class="form-control"
-                           id="title" placeholder="Enter title" name="title"/>
-                </div>
 
-                <div class="panel panel-warning">
-                    <div class="panel-heading">
-                        Main category
-                        <span class="label label-default pull-right">
-                            Choose main category from tree
-                            <i class="fa fa-hand-o-right"></i>
-                        </span>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Tags:</label>
+                                <tags-input ng-model="blogCtrl.tags"></tags-input>
+                            </div>
+                            
+                            <div class="panel panel-warning">
+                                <div class="panel-heading">
+                                    Main category
+                                    <span class="label label-default pull-right">
+                                        Choose main category from tree
+                                        <i class="fa fa-hand-o-right"></i>
+                                    </span>
 
-                    </div>
-                    <div class="panel-body">Panel Content</div>
-                </div>
+                                </div>
+                                <div class="panel-body">Panel Content</div>
+                            </div>
 
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        Related Categories
-                        <span class="label label-default pull-right">
-                            You can choose more than one related category
-                            <i class="fa fa-hand-o-right"></i>
-                        </span>
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    Related Categories
+                                    <span class="label label-default pull-right">
+                                        You can choose more than one related category
+                                        <i class="fa fa-hand-o-right"></i>
+                                    </span>
 
-                    </div>
-                    <div class="panel-body">Panel Content</div>
-                </div>
+                                </div>
+                                <div class="panel-body">Panel Content</div>
+                            </div>
 
-                <div class="form-group">
-                    <label>Tags:</label>
-                   <tags-input ng-model="blogCtrl.tags"></tags-input>
-                </div>
-
-                <div class="form-group">
-                    <label for="briefIntroduction">Brief Introduction:</label>
+                            <div class="form-group">
+                                <label for="briefIntroduction">Brief Introduction:</label>
                 <textarea class="form-control ckTextEditor"
                           id="briefIntroduction" placeholder="Enter short heading" name="briefIntroduction"></textarea>
-                </div>
+                            </div>
 
-                <div class="form-group">
-                    <label for="content">Content:</label>
+                            <div class="form-group">
+                                <label for="content">Content:</label>
                 <textarea class="form-control ckTextEditor"
                           id="content" placeholder="Enter short heading" name="content"></textarea>
+                            </div>
+
+                            <div class="checkbox">
+                                <label><input type="checkbox" name="isPublished"/> Publish</label>
+                            </div>
+
+                            <button type="submit" class="btn btn-default">Submit</button>
+
+                        </div>
+
+                    </form>
+
                 </div>
+                <div class="col-md-4">
+                    <div ng-cloak="" class="tree">
 
-                <div class="checkbox">
-                    <label><input type="checkbox" name="isPublished"/> Publish</label>
-                </div>
-
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
-
-        </div>
-        <div class="col-md-4">
-            <div ng-cloak="" class="tree">
-
-                <div class="category-search-wrapper" data-ng-show="blogCtrl.tree.length>0">
-                    <input class="search form-control" ng-model="search" type="text" placeholder="Search category"/>
-                </div>
-                <ul class="tree">
-                    <li class="node" ng-repeat="node in blogCtrl.tree|filter:search track by $index">
+                        <div class="category-search-wrapper" data-ng-show="blogCtrl.tree.length>0">
+                            <input class="search form-control" ng-model="search" type="text"
+                                   placeholder="Search category"/>
+                        </div>
+                        <ul class="tree">
+                            <li class="node" ng-repeat="node in blogCtrl.tree|filter:search track by $index">
 
                 <span class="text" ng-class="{disabled: !node.category.active}">
                     <a>
@@ -126,9 +140,9 @@
                         </button>
                     </span>
                 </span>
-                        <ul class="child">
-                            <li class="node"
-                                ng-repeat="subCategory in node.subCategories|filter:search track by $index">
+                                <ul class="child">
+                                    <li class="node"
+                                        ng-repeat="subCategory in node.subCategories|filter:search track by $index">
                         <span class="text" ng-class="{disabled: !subCategory.active}">
                             <a href="">
                                 <i class="fa fa-flash"></i>
@@ -143,13 +157,14 @@
                         </button>
                             </span>
                         </span>
+                                    </li>
+
+                                </ul>
                             </li>
-
                         </ul>
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </div>
-
         </div>
     </div>
 </div>
