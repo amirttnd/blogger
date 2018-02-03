@@ -16,5 +16,10 @@ public class BlogController {
     @Autowired
     BlogService blogService;
 
+    @RequestMapping("/blog/edit")
+    String edit() {
+        return "/blog/edit";
+    }
+
 
 }

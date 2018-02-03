@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html ng-app="techBlogger" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <meta th:replace="layout/layout::viewport"/>
+    <link rel="stylesheet" th:href="@{/css/jsTree/themes/default/style.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/font-awesome-4.7.0/css/font-awesome.min.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/css/ng-tags-input.css}" type="text/css"/>
+
+    <link rel="stylesheet" th:href="@{/css/admin/styleSheet.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/css/media.css}" type="text/css"/>
+
+
+    <script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/jstree.min.v3.3.4.js}"></script>
+
+    <script type="text/javascript" th:src="@{/js/angular/library/angular1.6.4.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/angular/library/ngJsTree.js}"></script>
+    <script type="text/javascript" th:src="@{/js/angular/library/ngJsTree.js}"></script>
+    <script type="text/javascript" th:src="@{/js/angular/library/angular-resource.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/angular/library/ng-tags-input.js}"></script>
+
+
+    <script type="text/javascript" th:src="@{/js/angular/module/techBlogger.js}"></script>
+    <script type="text/javascript" th:src="@{/js/angular/category/category.js}"></script>
+    <script type="text/javascript" th:src="@{/js/angular/category/category.controller.js}"></script>
+    <script type="text/javascript" th:src="@{/js/angular/blog/blog.js}"></script>
+    <script type="text/javascript" th:src="@{/js/angular/blog/blog.controller.js}"></script>
+
+    <script th:src="@{/js/jstree.min.v3.3.4.js}" type="text/javascript"></script>
+
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+
+    <script type="text/javascript" th:src="@{/js/ckeditor/ckeditor.js}"></script>
+    <script type="text/javascript" th:src="@{/js/application.js}"></script>
+
+    <title></title>
+</head>
+<body>
+<div th:replace="layout/layout::adminHeader"></div>
+<div class="container" ng-controller="BlogController as blogCtrl">
+    <h3 class="category-heading">Make blog</h3>
+
+    <div class="blog-editor">
+        <div class="col-md-7">
+            <form action="/action_page.php">
+                <div class="form-group">
+                    <label for="shortHeading">Short Heading:</label>
+                    <input type="text" class="form-control"
+                           id="shortHeading" placeholder="Enter short heading" name="shortHeading"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input type="text" class="form-control"
+                           id="title" placeholder="Enter short heading" name="title"/>
+                </div>
+
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        Main category
+                        <span class="label label-default pull-right">
+                            Choose main category from tree
+                            <i class="fa fa-hand-o-right"></i>
+                        </span>
+
+                    </div>
+                    <div class="panel-body">Panel Content</div>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        Related Categories
+                        <span class="label label-default pull-right">
+                            You can choose more than one related category
+                            <i class="fa fa-hand-o-right"></i>
+                        </span>
+
+                    </div>
+                    <div class="panel-body">Panel Content</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Tags:</label>
+                   <tags-input ng-model="blogCtrl.tags"></tags-input>
+                </div>
+
+                <div class="form-group">
+                    <label for="briefIntroduction">Brief Introduction:</label>
+                <textarea class="form-control ckTextEditor"
+                          id="briefIntroduction" placeholder="Enter short heading" name="briefIntroduction"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="content">Content:</label>
+                <textarea class="form-control ckTextEditor"
+                          id="content" placeholder="Enter short heading" name="content"></textarea>
+                </div>
+
+                <div class="checkbox">
+                    <label><input type="checkbox" name="isPublished"/> Publish</label>
+                </div>
+
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+
+        </div>
+        <div class="col-md-4">
+            <div ng-cloak="" class="tree">
+
+                <div class="category-search-wrapper" data-ng-show="blogCtrl.tree.length>0">
+                    <input class="search form-control" ng-model="search" type="text" placeholder="Search category"/>
+                </div>
+                <ul class="tree">
+                    <li class="node" ng-repeat="node in blogCtrl.tree|filter:search track by $index">
+
+                <span class="text" ng-class="{disabled: !node.category.active}">
+                    <a>
+                        <i class="fa fa-flash"></i>
+                        <span>{{node.category.name}}</span>
+                    </a>
+                    <span class="actions btn-group">
+                        <button type="button" class="btn btn-success btn-xs">
+                            Main
+                        </button>
+                        <button type="button" class="btn btn-warning btn-xs">
+                            Related
+                        </button>
+                    </span>
+                </span>
+                        <ul class="child">
+                            <li class="node"
+                                ng-repeat="subCategory in node.subCategories|filter:search track by $index">
+                        <span class="text" ng-class="{disabled: !subCategory.active}">
+                            <a href="">
+                                <i class="fa fa-flash"></i>
+                                <span ng-hide="subCategory.canEdit">{{subCategory.name}}</span>
+                            </a>
+                            <span class="actions btn-group">
+                                <button type="button" class="btn btn-success btn-xs">
+                                    Main
+                                </button>
+                                <button type="button" class="btn btn-danger btn-xs">
+                                    Related
+                                </button>
+                            </span>
+                        </span>
+                            </li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

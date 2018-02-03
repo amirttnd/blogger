@@ -1,2 +1,2 @@
 angular
-    .module("techBlogger", ['ngJsTree','ngResource']);
+    .module("techBlogger", ['ngJsTree', 'ngResource', 'ngTagsInput']);

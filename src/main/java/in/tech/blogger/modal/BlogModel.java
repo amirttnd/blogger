@@ -1,7 +1,5 @@
 package in.tech.blogger.modal;
 
-import in.tech.blogger.domain.Category;
-
 import java.util.List;
 
 public class BlogModel {
@@ -19,7 +17,7 @@ public class BlogModel {
 
     String categoryId;
 
-    List<Category> relatedCategories;
+    List<String> relatedCategories;
 
     Boolean isPublished;
 
