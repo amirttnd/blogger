@@ -7,6 +7,21 @@ angular
                 params: {
                     action: "tree"
                 }
+            },
+            addChild: {
+                params: {
+                    action: "addChild"
+                }
+            },
+            save: {
+                params: {
+                    action: "save"
+                }
+            },
+            toggle: {
+                params: {
+                    action: "toggle"
+                }
             }
         })
     }]);

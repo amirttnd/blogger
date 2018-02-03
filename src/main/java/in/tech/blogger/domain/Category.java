@@ -62,6 +62,9 @@ public class Category {
     }
 
     public Boolean getActive() {
+        if (active == null) {
+            return false;
+        }
         return active;
     }
 

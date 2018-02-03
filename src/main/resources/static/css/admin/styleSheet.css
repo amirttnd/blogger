@@ -2,9 +2,14 @@ ul {
     padding: 0;
 }
 
-li{
+li {
     list-style-type: none;
 }
+
+.disabled{
+    opacity: .6;
+}
+
 .container {
     margin-top: 3.5em;
 }
@@ -21,7 +26,7 @@ span {
 .category-tree {
 }
 
-.category-tree .tree{
+.category-tree .tree {
 
 }
 
@@ -65,29 +70,40 @@ span {
     vertical-align: middle;
 }
 
-.tree{
+.tree {
 
 }
 
-.tree .node{
-    margin-top: 2px;
+.tree .node {
+    margin-top: 5px;
 }
-.tree a{
+
+.tree a {
     text-decoration: none;
+    color: #000000;
+    cursor: pointer;
 }
-.tree .node .text{
+
+.tree .node .text {
     min-width: 25em;
     display: inline-block;
     border: 1px solid #ccc;
     padding: 7px 0 7px 10px;
 }
 
-.tree .node .text .fa-flash{
+.tree .node .fa-flash {
     width: 25px;
+    margin-left: 5px;
 }
 
-.tree .node .text .actions{
+.tree .node .actions {
     float: right;
+}
+
+.tree .node .toggle-icon {
+    font-size: 20px;
+    vertical-align: sub;
+    margin-right: 6px;
 }
 
 .tree .node .actions i.fa:first-child {
@@ -101,10 +117,29 @@ span {
     padding: 0 10px;
     font-size: 14px;
     vertical-align: middle;
+    cursor: pointer;
 }
 
-.tree .node .child{
+.tree .node .child {
     margin-left: 25px;
 }
 
+.tree .node .text a {
+    text-transform: capitalize;
+}
+
+.tree .node .text .category-box {
+    font-size: 12px;
+    /* height: 26px; */
+    padding: 2px 3px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #ccc;
+    width: 60%;
+}
+
+.tree .node .text .category-box:focus {
+    outline: none;
+}
 

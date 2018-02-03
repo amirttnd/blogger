@@ -16,4 +16,6 @@ public interface CategoryRepository extends MongoRepository<Category, String> {
     List<Category> getCategoryParents();
 
     List<Category> findAllByParent(Category category);
+
+    Category findById(String id);
 }

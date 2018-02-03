@@ -38,53 +38,47 @@
 <div class="container" ng-controller="CategoryController as categoryCtrl">
     <h3 class="category-heading">Category Tree</h3>
 
-    <div id="category-tree" class="category-tree">
-        <ul class="tree">
-            <li class="parent-node" ng-repeat="node in categoryCtrl.tree track by $index">
-                <a class="parent-text">
-                    {{node.category.name}}
-                    <span class="actions">
-                        <i class="fa fa-plus" ng-click="categoryCtrl.addChild(node)"></i>
-                        <i class="fa fa-edit"></i>
-                        <i class="fa fa-trash-o"></i>
-                    </span>
-                </a>
-                <ul class="child" ng-if="node.subCategories">
-                    <li class="child-node" ng-repeat="subCategory in node.subCategories">
-                        <a href="" class="child-text">
-                            <span>{{subCategory.name}}</span>
-                             <span class="actions" ng-if="subCategory.id">
-                                <i class="fa fa-edit"></i>
-                                <i class="fa fa-trash-o"></i>
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-<br/>
-    <br/>
-    <div id="category-tre" class="category-tre">
+    <div ng-cloak="">
         <ul class="tree">
             <li class="node" ng-repeat="node in categoryCtrl.tree track by $index">
-                <a class="text">
-                    <i class="fa fa-flash"></i>{{node.category.name}}
+
+                <span class="text" ng-class="{disabled: !node.category.active}">
+                    <a><i class="fa fa-flash"></i>{{node.category.name}}</a>
                     <span class="actions">
-                        <i class="fa fa-plus" ng-click="categoryCtrl.addChild(node)"></i>
+                        <i class="fa fa-plus" ng-click="categoryCtrl.allowAddToChild(node)"></i>
                         <i class="fa fa-edit"></i>
-                        <i class="fa fa-trash-o"></i>
+                        <i class="fa"
+                           ng-class="{'fa-toggle-on':node.category.active,'fa-toggle-off':!node.category.active}"
+                           data-ng-click="categoryCtrl.toggle(node.category)"></i>
                     </span>
-                </a>
+                </span>
                 <ul class="child" ng-if="node.subCategories">
                     <li class="node" ng-repeat="subCategory in node.subCategories">
-                        <a href="" class="text">
-                            <i class="fa fa-flash"></i><span>{{subCategory.name}}</span>
-                             <span class="actions" ng-if="subCategory.id">
+                        <span class="text" ng-class="{disabled: !subCategory.active}">
+                            <a href="">
+                                <i class="fa fa-flash"></i><span>{{subCategory.name}}</span>
+                            </a>
+                            <span class="actions" ng-if="subCategory.id">
                                 <i class="fa fa-edit"></i>
-                                <i class="fa fa-trash-o"></i>
+                                <i class="fa"
+                                   ng-class="{'fa-toggle-on':subCategory.active,'fa-toggle-off':!subCategory.active}"
+
+                                   data-ng-click="categoryCtrl.toggle(subCategory)"></i>
                             </span>
-                        </a>
+                        </span>
+                    </li>
+                    <li class="node" ng-show="node.canAddChild">
+                        <span class="text">
+                            <i class="fa fa-flash"></i>
+                            <input class="category-box" ng-model="node.name"
+                                   type="text" placeholder="Enter category name"/>
+                            <span class="actions">
+                                <i class="fa fa-save"
+                                   data-ng-click="categoryCtrl.addChild(node,node.category.id)">
+                                </i>
+                                <i class="fa fa-close"></i>
+                            </span>
+                        </span>
                     </li>
                 </ul>
             </li>
