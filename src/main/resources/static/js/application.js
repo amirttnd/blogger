@@ -7,5 +7,7 @@ $(document).ready(function () {
 
 
     };
-    CKEDITOR.replaceAll("ckTextEditor")
+    CKEDITOR.replaceAll("ckTextEditor");
+
+
 });

@@ -1,2 +1,2 @@
 angular
-    .module("techBlogger", ['ngJsTree']);
+    .module("techBlogger", ['ngJsTree','ngResource']);
