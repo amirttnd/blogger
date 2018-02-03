@@ -39,8 +39,11 @@
     <h3 class="category-heading">Category Tree</h3>
 
     <div ng-cloak="">
+        <div class="category-search-wrapper">
+            <input class="search form-control"  ng-model="search" type="text" placeholder="Search category"/>
+        </div>
         <ul class="tree">
-            <li class="node" ng-repeat="node in categoryCtrl.tree track by $index">
+            <li class="node" ng-repeat="node in categoryCtrl.tree|filter:search track by $index">
 
                 <span class="text" ng-class="{disabled: !node.category.active}">
                     <a><i class="fa fa-flash"></i>{{node.category.name}}</a>
@@ -53,7 +56,7 @@
                     </span>
                 </span>
                 <ul class="child" ng-if="node.subCategories">
-                    <li class="node" ng-repeat="subCategory in node.subCategories">
+                    <li class="node" ng-repeat="subCategory in node.subCategories|filter:search track by $index">
                         <span class="text" ng-class="{disabled: !subCategory.active}">
                             <a href="">
                                 <i class="fa fa-flash"></i><span>{{subCategory.name}}</span>

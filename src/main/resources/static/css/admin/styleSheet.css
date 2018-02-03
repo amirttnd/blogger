@@ -6,7 +6,7 @@ li {
     list-style-type: none;
 }
 
-.disabled{
+.disabled {
     opacity: .6;
 }
 
@@ -71,7 +71,9 @@ span {
 }
 
 .tree {
-
+    margin-top: 2em;
+    clear: both;
+    display: block;
 }
 
 .tree .node {
@@ -89,6 +91,7 @@ span {
     display: inline-block;
     border: 1px solid #ccc;
     padding: 7px 0 7px 10px;
+    border-radius: 20px;
 }
 
 .tree .node .fa-flash {
@@ -143,3 +146,7 @@ span {
     outline: none;
 }
 
+.category-search-wrapper .search{
+    width: 30em;
+
+}
