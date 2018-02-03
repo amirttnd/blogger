@@ -39,8 +39,8 @@
     <h3 class="category-heading">Category Tree</h3>
 
     <div ng-cloak="">
-        <div class="category-search-wrapper">
-            <input class="search form-control"  ng-model="search" type="text" placeholder="Search category"/>
+        <div class="category-search-wrapper" data-ng-show="categoryCtrl.tree.length>0">
+            <input class="search form-control" ng-model="search" type="text" placeholder="Search category"/>
         </div>
         <ul class="tree">
             <li class="node" ng-repeat="node in categoryCtrl.tree|filter:search track by $index">
@@ -48,14 +48,19 @@
                 <span class="text" ng-class="{disabled: !node.category.active}">
                     <a><i class="fa fa-flash"></i>{{node.category.name}}</a>
                     <span class="actions">
-                        <i class="fa fa-plus" ng-click="categoryCtrl.allowAddToChild(node)"></i>
+                        <i class="fa fa-plus-circle" data-ng-click="categoryCtrl.allowAddToChild(node)"></i>
                         <i class="fa fa-edit"></i>
                         <i class="fa"
                            ng-class="{'fa-toggle-on':node.category.active,'fa-toggle-off':!node.category.active}"
                            data-ng-click="categoryCtrl.toggle(node.category)"></i>
+                        <i class="fa fa-trash" data-ng-hide="node.subCategories.length>0"
+                           data-ng-click="categoryCtrl.deleteNode(node.category.id)"></i>
+                        <i class="fa fa-expand"></i>
                     </span>
                 </span>
-                <ul class="child" ng-if="node.subCategories">
+
+
+                <ul class="child">
                     <li class="node" ng-repeat="subCategory in node.subCategories|filter:search track by $index">
                         <span class="text" ng-class="{disabled: !subCategory.active}">
                             <a href="">
@@ -65,25 +70,38 @@
                                 <i class="fa fa-edit"></i>
                                 <i class="fa"
                                    ng-class="{'fa-toggle-on':subCategory.active,'fa-toggle-off':!subCategory.active}"
-
                                    data-ng-click="categoryCtrl.toggle(subCategory)"></i>
+                                <i class="fa fa-trash" data-ng-click="categoryCtrl.deleteNode(subCategory.id)"></i>
                             </span>
                         </span>
                     </li>
                     <li class="node" ng-show="node.canAddChild">
-                        <span class="text">
-                            <i class="fa fa-flash"></i>
-                            <input class="category-box" ng-model="node.name"
-                                   type="text" placeholder="Enter category name"/>
-                            <span class="actions">
-                                <i class="fa fa-save"
-                                   data-ng-click="categoryCtrl.addChild(node,node.category.id)">
-                                </i>
-                                <i class="fa fa-close"></i>
+                        <form data-ng-submit="categoryCtrl.addChild(node, node.category.id)">
+                            <span class="text">
+                                <i class="fa fa-flash"></i>
+                                <input class="category-box" ng-model="node.name"
+                                       type="text" placeholder="Enter category name"/>
+                                <input type="submit" value="Add" class="btn btn-success btn-xs"/>
                             </span>
-                        </span>
+                        </form>
                     </li>
                 </ul>
+            </li>
+
+            <li class="new-category-form">
+                <form data-ng-submit="categoryCtrl.save()">
+                    <div class="form-group">
+                        <label for="name"><i class="fa fa-plus-square">&nbsp;</i>Add new category</label>
+                        <input type="text"
+                               placeholder="Enter categor name or title"
+                               ng-model="categoryCtrl.categoryName"
+                               class="form-control" id="name"/>
+                    </div>
+                    <button type="submit"
+                            class="btn btn-success">Save
+                    </button>
+                </form>
+
             </li>
         </ul>
     </div>

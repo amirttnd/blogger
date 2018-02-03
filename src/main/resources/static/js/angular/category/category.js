@@ -22,6 +22,11 @@ angular
                 params: {
                     action: "toggle"
                 }
+            },
+            delete: {
+                params: {
+                    action: "delete"
+                }
             }
         })
     }]);

@@ -39,7 +39,7 @@ public class CategoryJsonController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.GET)
-    ResponseEntity<Map<String, Object>> update(@ModelAttribute CategoryModel categoryModel) {
+    ResponseEntity<Map<String, Object>> save(@ModelAttribute CategoryModel categoryModel) {
         Map<String, Object> responseMap = new HashMap<>();
         Category category = categoryService.save(categoryModel);
         responseMap.put("status", category != null);
@@ -57,5 +57,11 @@ public class CategoryJsonController {
         return new ResponseEntity<Map<String, Object>>(responseMap, HttpStatus.OK);
     }
 
-
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    ResponseEntity<Map<String, Boolean>> delete(@RequestParam String id) {
+        Map<String, Boolean> responseMap = new HashMap<>();
+        Boolean staus = categoryService.delete(id);
+        responseMap.put("status", staus);
+        return new ResponseEntity<Map<String, Boolean>>(responseMap, HttpStatus.OK);
+    }
 }

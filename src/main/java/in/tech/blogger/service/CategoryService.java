@@ -53,6 +53,15 @@ public class CategoryService {
         return category;
     }
 
+    public Boolean delete(String id) {
+        Category category = categoryRepository.findById(id);
+        if (category != null) {
+            categoryRepository.delete(category);
+            return true;
+        }
+        return false;
+    }
+
     public List<Category> getCategoryParents() {
         return categoryRepository.getCategoryParents();
     }

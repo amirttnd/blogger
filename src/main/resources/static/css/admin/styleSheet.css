@@ -91,7 +91,7 @@ span {
     display: inline-block;
     border: 1px solid #ccc;
     padding: 7px 0 7px 10px;
-    border-radius: 20px;
+    border-left: 4px solid darkcyan;
 }
 
 .tree .node .fa-flash {
@@ -101,6 +101,7 @@ span {
 
 .tree .node .actions {
     float: right;
+    font-size: 0;
 }
 
 .tree .node .toggle-icon {
@@ -115,16 +116,16 @@ span {
 }
 
 .tree .node .actions i.fa {
-    margin-top: 0;
     border-left: 1px solid #ccc;
     padding: 0 10px;
     font-size: 14px;
     vertical-align: middle;
     cursor: pointer;
+    margin-top: 4px;
 }
 
 .tree .node .child {
-    margin-left: 25px;
+    margin-left: 40px;
 }
 
 .tree .node .text a {
@@ -132,21 +133,26 @@ span {
 }
 
 .tree .node .text .category-box {
-    font-size: 12px;
-    /* height: 26px; */
+    font-size: 13px;
     padding: 2px 3px;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-    border-bottom: 1px solid #ccc;
-    width: 60%;
+    border: 0;
+    width: 76%;
 }
 
 .tree .node .text .category-box:focus {
     outline: none;
 }
 
-.category-search-wrapper .search{
+.category-search-wrapper .search {
     width: 30em;
 
+}
+
+.tree #add-new-category {
+    margin: 2em 0 1em 0;
+}
+
+.tree .new-category-form {
+    margin-top: 3em;
+    width: 30em;
 }
