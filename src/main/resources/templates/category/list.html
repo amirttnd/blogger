@@ -52,8 +52,8 @@
                 <ul class="child" ng-if="node.subCategories">
                     <li class="child-node" ng-repeat="subCategory in node.subCategories">
                         <a href="" class="child-text">
-                            <span>{{subCategory.name}} Multiple inharitance not supported</span>
-                             <span class="actions">
+                            <span>{{subCategory.name}}</span>
+                             <span class="actions" ng-if="subCategory.id">
                                 <i class="fa fa-edit"></i>
                                 <i class="fa fa-trash-o"></i>
                             </span>

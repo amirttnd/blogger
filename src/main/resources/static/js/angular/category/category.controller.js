@@ -26,7 +26,7 @@ angular
                     },
                     "plugins": ["state", "types"] // activate the state plugin on this instance
                 });
-            }, 100)
+            }, 0)
         });
 
     }]);
