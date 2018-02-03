@@ -38,7 +38,7 @@
 <div class="container" ng-controller="CategoryController as categoryCtrl">
     <h3 class="category-heading">Category Tree</h3>
 
-    <div id="category-tree">
+    <div id="category-tree" class="category-tree">
         <ul class="tree">
             <li class="parent-node" ng-repeat="node in categoryCtrl.tree track by $index">
                 <a class="parent-text">
@@ -53,6 +53,33 @@
                     <li class="child-node" ng-repeat="subCategory in node.subCategories">
                         <a href="" class="child-text">
                             <span>{{subCategory.name}}</span>
+                             <span class="actions" ng-if="subCategory.id">
+                                <i class="fa fa-edit"></i>
+                                <i class="fa fa-trash-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+<br/>
+    <br/>
+    <div id="category-tre" class="category-tre">
+        <ul class="tree">
+            <li class="node" ng-repeat="node in categoryCtrl.tree track by $index">
+                <a class="text">
+                    <i class="fa fa-flash"></i>{{node.category.name}}
+                    <span class="actions">
+                        <i class="fa fa-plus" ng-click="categoryCtrl.addChild(node)"></i>
+                        <i class="fa fa-edit"></i>
+                        <i class="fa fa-trash-o"></i>
+                    </span>
+                </a>
+                <ul class="child" ng-if="node.subCategories">
+                    <li class="node" ng-repeat="subCategory in node.subCategories">
+                        <a href="" class="text">
+                            <i class="fa fa-flash"></i><span>{{subCategory.name}}</span>
                              <span class="actions" ng-if="subCategory.id">
                                 <i class="fa fa-edit"></i>
                                 <i class="fa fa-trash-o"></i>
