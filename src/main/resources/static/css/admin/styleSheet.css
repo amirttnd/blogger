@@ -174,3 +174,15 @@ span {
 .blog-editor .tree .node .text {
     min-width: 100%;
 }
+
+.blog-editor .label{
+    margin: 0 2px;
+}
+
+.blog-editor .label:first-child{
+    margin-left: 0;
+}
+
+.blog-editor .label a{
+    color: white;
+}

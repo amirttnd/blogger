@@ -23,6 +23,7 @@
 
 
     <script type="text/javascript" th:src="@{/js/angular/module/techBlogger.js}"></script>
+    <script type="text/javascript" th:src="@{/js/angular/filter/filter.js}"></script>
     <script type="text/javascript" th:src="@{/js/angular/category/category.js}"></script>
     <script type="text/javascript" th:src="@{/js/angular/category/category.controller.js}"></script>
     <script type="text/javascript" th:src="@{/js/angular/blog/blog.js}"></script>
@@ -65,13 +66,15 @@
                             </div>
                         </div>
 
-
                         <div class="col-md-12">
+
                             <div class="form-group">
                                 <label>Tags:</label>
                                 <tags-input ng-model="blogCtrl.tags"></tags-input>
                             </div>
-                            
+
+                            <br/>
+
                             <div class="panel panel-warning">
                                 <div class="panel-heading">
                                     Main category
@@ -81,8 +84,14 @@
                                     </span>
 
                                 </div>
-                                <div class="panel-body">Panel Content</div>
+                                <div class="panel-body">
+                                    <h3 class="label label-warning" ng-show="blogCtrl.mainCategory.name">
+                                        {{blogCtrl.mainCategory.name}}
+                                    </h3>
+                                </div>
                             </div>
+
+                            <br/>
 
                             <div class="panel panel-info">
                                 <div class="panel-heading">
@@ -93,24 +102,40 @@
                                     </span>
 
                                 </div>
-                                <div class="panel-body">Panel Content</div>
+                                <div class="panel-body">
+
+                                      <span
+                                              ng-repeat="relatedCategory in blogCtrl.relatedCategories|unique:'id' track by $index"
+                                            class="label label-info">
+                                        {{relatedCategory.name}}
+                                        <a href="" class="fa fa-close"></a>
+                                    </span>
+
+                                </div>
                             </div>
+
+                            <br/>
 
                             <div class="form-group">
                                 <label for="briefIntroduction">Brief Introduction:</label>
-                <textarea class="form-control ckTextEditor"
-                          id="briefIntroduction" placeholder="Enter short heading" name="briefIntroduction"></textarea>
+                                <textarea class="form-control ckTextEditor"
+                                          id="briefIntroduction" placeholder="Enter short heading"
+                                          name="briefIntroduction"></textarea>
                             </div>
+
+                            <br/>
 
                             <div class="form-group">
                                 <label for="content">Content:</label>
-                <textarea class="form-control ckTextEditor"
-                          id="content" placeholder="Enter short heading" name="content"></textarea>
+                                <textarea class="form-control ckTextEditor"
+                                          id="content" placeholder="Enter short heading" name="content"></textarea>
                             </div>
 
                             <div class="checkbox">
                                 <label><input type="checkbox" name="isPublished"/> Publish</label>
                             </div>
+
+                            <br/>
 
                             <button type="submit" class="btn btn-default">Submit</button>
 
@@ -129,34 +154,40 @@
                         <ul class="tree">
                             <li class="node" ng-repeat="node in blogCtrl.tree|filter:search track by $index">
 
-                <span class="text" ng-class="{disabled: !node.category.active}">
-                    <a>
-                        <i class="fa fa-flash"></i>
-                        <span>{{node.category.name}}</span>
-                    </a>
-                    <span class="actions btn-group">
-                        <button type="button" class="btn btn-info btn-xs">
-                            Related
-                        </button>
-                    </span>
-                </span>
+                                <span class="text" ng-class="{disabled: !node.category.active}">
+                                    <a>
+                                        <i class="fa fa-flash"></i>
+                                        <span>{{node.category.name}}</span>
+                                    </a>
+                                    <span class="actions btn-group">
+                                        <button type="button"
+                                                data-ng-click="blogCtrl.addToRelatedCategory(node.category)"
+                                                class="btn btn-info btn-xs">
+                                            Related
+                                        </button>
+                                    </span>
+                                </span>
                                 <ul class="child">
                                     <li class="node"
                                         ng-repeat="subCategory in node.subCategories|filter:search track by $index">
-                        <span class="text" ng-class="{disabled: !subCategory.active}">
-                            <a href="">
-                                <i class="fa fa-flash"></i>
-                                <span ng-hide="subCategory.canEdit">{{subCategory.name}}</span>
-                            </a>
-                            <span class="actions btn-group">
-                                <button type="button" class="btn btn-warning btn-xs">
-                                    Main
-                                </button>
-                        <button type="button" class="btn btn-info btn-xs">
-                            Related
-                        </button>
-                            </span>
-                        </span>
+                                        <span class="text" ng-class="{disabled: !subCategory.active}">
+                                            <a href="">
+                                                <i class="fa fa-flash"></i>
+                                                <span ng-hide="subCategory.canEdit">{{subCategory.name}}</span>
+                                            </a>
+                                            <span class="actions btn-group">
+                                                <button type="button"
+                                                        data-ng-click="blogCtrl.setMainCategory(subCategory)"
+                                                        class="btn btn-warning btn-xs">
+                                                    Main
+                                                </button>
+                                                <button type="button"
+                                                        data-ng-click="blogCtrl.addToRelatedCategory(subCategory)"
+                                                        class="btn btn-info btn-xs">
+                                                    Related
+                                                </button>
+                                            </span>
+                                        </span>
                                     </li>
 
                                 </ul>
