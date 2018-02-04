@@ -78,22 +78,22 @@
 
                             <div class="panel panel-warning">
                                 <div class="panel-heading">
-                                    Main category
+                                    Category
                                     <span class="label label-default pull-right">
-                                        Choose main category from tree
+                                        Choose blog category from tree
                                         <i class="fa fa-hand-o-right"></i>
                                     </span>
 
                                 </div>
                                 <div class="panel-body">
 
-                                    <nav aria-label="breadcrumb" data-ng-show="blogCtrl.mainCategory.name">
+                                    <nav aria-label="breadcrumb" data-ng-show="blogCtrl.category.name">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item active" aria-current="page">
-                                                {{blogCtrl.mainCategory.parent.name}}
+                                                {{blogCtrl.category.parent.name}}
                                             </li>
                                             <li class="breadcrumb-item active" aria-current="page">
-                                                {{blogCtrl.mainCategory.name}}
+                                                {{blogCtrl.category.name}}
                                             </li>
                                         </ol>
                                     </nav>
@@ -186,9 +186,9 @@
                                             </a>
                                             <span class="actions btn-group">
                                                 <button type="button"
-                                                        data-ng-click="blogCtrl.setMainCategory(subCategory)"
+                                                        data-ng-click="blogCtrl.setCategory(subCategory)"
                                                         class="btn btn-warning btn-xs">
-                                                    Main
+                                                    Category
                                                 </button>
                                                 <button type="button"
                                                         data-ng-click="blogCtrl.addToRelatedCategory(subCategory)"

@@ -7,7 +7,7 @@ angular
 
         self.relatedCategories = [];
 
-        self.mainCategory = {};
+        self.category = {};
 
 
         Category.tree(function (response) {
@@ -15,8 +15,8 @@ angular
             console.log(self.tree)
         });
 
-        self.setMainCategory = function (category) {
-            self.mainCategory = category;
+        self.setCategory = function (category) {
+            self.category = category;
         };
 
         self.addToRelatedCategory = function (category) {
