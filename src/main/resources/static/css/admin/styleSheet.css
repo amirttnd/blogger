@@ -175,16 +175,17 @@ span {
     min-width: 100%;
 }
 
-.blog-editor .related-category-label {
+.related-category-label {
     margin: 0 2px;
     float: left;
-    margin-top: 3px;}
+    margin-top: 3px;
+}
 
-.blog-editor .related-category-label:first-child {
+.related-category-label:first-child {
     margin-left: 0;
 }
 
-.blog-editor .related-category-label a {
+.related-category-label a {
     color: white;
 }
 

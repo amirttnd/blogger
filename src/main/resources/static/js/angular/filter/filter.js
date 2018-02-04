@@ -1,4 +1,9 @@
 angular.module('techBlogger')
+    .filter("prettyBool", [function () {
+        return function (bool) {
+            return /^true$/.test(bool) ? 'Yes' : 'No'
+        }
+    }])
     .filter('unique', [function () {
         return function (items, filterOn) {
 

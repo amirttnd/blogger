@@ -32,7 +32,7 @@ angular
 
         self.save = function () {
             var params = {
-                id: '',
+                id: self.blog.id || '',
                 shortHeading: self.blog.shortHeading,
                 title: self.blog.title,
                 briefIntroduction: self.blog.briefIntroduction,
