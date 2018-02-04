@@ -8,7 +8,11 @@
 <body>
 <div th:replace="layout/layout::adminHeader"></div>
 <div class="container" ng-controller="CategoryController as categoryCtrl">
-
+    <ol class="breadcrumb">
+        <li><a href="#">Admin</a></li>
+        <li><a href="#">Category</a></li>
+        <li>List</li>
+    </ol>
     <div ng-cloak="">
         <div class="category-search-wrapper" data-ng-show="categoryCtrl.tree.length>0">
             <input class="search form-control" ng-model="search" type="text" placeholder="Search category"/>
