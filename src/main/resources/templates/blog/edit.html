@@ -14,6 +14,7 @@
 
     <script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/jstree.min.v3.3.4.js}"></script>
+    <script type="text/javascript" th:src="@{/js/lodash.min.js}"></script>
 
     <script type="text/javascript" th:src="@{/js/angular/library/angular1.6.4.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/angular/library/ngJsTree.js}"></script>
@@ -85,9 +86,17 @@
 
                                 </div>
                                 <div class="panel-body">
-                                    <h3 class="label label-warning" ng-show="blogCtrl.mainCategory.name">
-                                        {{blogCtrl.mainCategory.name}}
-                                    </h3>
+
+                                    <nav aria-label="breadcrumb" data-ng-show="blogCtrl.mainCategory.name">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item active" aria-current="page">
+                                                {{blogCtrl.mainCategory.parent.name}}
+                                            </li>
+                                            <li class="breadcrumb-item active" aria-current="page">
+                                                {{blogCtrl.mainCategory.name}}
+                                            </li>
+                                        </ol>
+                                    </nav>
                                 </div>
                             </div>
 
@@ -108,7 +117,7 @@
                                               ng-repeat="relatedCategory in blogCtrl.relatedCategories|unique:'id' track by $index"
                                             class="label label-info">
                                         {{relatedCategory.name}}
-                                        <a href="" class="fa fa-close"></a>
+                                        <a href="" data-ng-click="blogCtrl.removeFromCategories(relatedCategory.id)" class="fa fa-close"></a>
                                     </span>
 
                                 </div>

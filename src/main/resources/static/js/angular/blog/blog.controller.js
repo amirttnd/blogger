@@ -20,6 +20,22 @@ angular
         };
 
         self.addToRelatedCategory = function (category) {
-            self.relatedCategories.push(category);
+            var index = _.findIndex(self.relatedCategories, function (obj) {
+                return category.id == obj.id;
+            });
+
+            if (index == -1) {
+                self.relatedCategories.push(category);
+            } else {
+                console.log("Category already exist")
+            }
+        };
+
+        self.removeFromCategories = function (id) {
+            angular.forEach(self.relatedCategories, function (item, index) {
+                if (item.id == id) {
+                    self.relatedCategories.splice(index, 1)
+                }
+            });
         }
     }]);
