@@ -1,2 +1,2 @@
 angular
-    .module("techBlogger", ['ngJsTree', 'ngResource', 'ngTagsInput']);
+    .module("techBlogger", ['ngJsTree', 'ngResource', 'ngTagsInput', 'ckeditor']);

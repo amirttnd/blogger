@@ -15,12 +15,15 @@
     <script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/jstree.min.v3.3.4.js}"></script>
     <script type="text/javascript" th:src="@{/js/lodash.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/ckeditor/ckeditor.js}"></script>
+
 
     <script type="text/javascript" th:src="@{/js/angular/library/angular1.6.4.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/angular/library/ngJsTree.js}"></script>
     <script type="text/javascript" th:src="@{/js/angular/library/ngJsTree.js}"></script>
     <script type="text/javascript" th:src="@{/js/angular/library/angular-resource.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/angular/library/ng-tags-input.js}"></script>
+    <script type="text/javascript" th:src="@{/js/angular/library/angular-ckeditor.js}"></script>
 
 
     <script type="text/javascript" th:src="@{/js/angular/module/techBlogger.js}"></script>
@@ -34,7 +37,6 @@
 
     <script th:src="@{/js/bootstrap.min.js}"></script>
 
-    <script type="text/javascript" th:src="@{/js/ckeditor/ckeditor.js}"></script>
     <script type="text/javascript" th:src="@{/js/application.js}"></script>
 
     <title></title>
@@ -115,9 +117,10 @@
 
                                       <span
                                               ng-repeat="relatedCategory in blogCtrl.relatedCategories|unique:'id' track by $index"
-                                            class="label label-info">
+                                              class="label label-info">
                                         {{relatedCategory.name}}
-                                        <a href="" data-ng-click="blogCtrl.removeFromCategories(relatedCategory.id)" class="fa fa-close"></a>
+                                        <a href="" data-ng-click="blogCtrl.removeFromCategories(relatedCategory.id)"
+                                           class="fa fa-close"></a>
                                     </span>
 
                                 </div>
@@ -126,18 +129,16 @@
                             <br/>
 
                             <div class="form-group">
-                                <label for="briefIntroduction">Brief Introduction:</label>
-                                <textarea class="form-control ckTextEditor"
-                                          id="briefIntroduction" placeholder="Enter short heading"
-                                          name="briefIntroduction"></textarea>
+                                <label>Brief Introduction:</label>
+
+                                <div ckeditor="" ng-model="blogCtrl.briefIntroduction"></div>
                             </div>
 
                             <br/>
 
                             <div class="form-group">
-                                <label for="content">Content:</label>
-                                <textarea class="form-control ckTextEditor"
-                                          id="content" placeholder="Enter short heading" name="content"></textarea>
+                                <label>Content:</label>
+                                <div ckeditor="" ng-model="blogCtrl.content"></div>
                             </div>
 
                             <div class="checkbox">
