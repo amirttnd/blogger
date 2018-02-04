@@ -32,10 +32,8 @@ angular
         };
 
         self.removeFromCategories = function (id) {
-            angular.forEach(self.relatedCategories, function (item, index) {
-                if (item.id == id) {
-                    self.relatedCategories.splice(index, 1)
-                }
+            _.remove(self.relatedCategories, function (category) {
+                return category.id == id
             });
         }
     }]);
