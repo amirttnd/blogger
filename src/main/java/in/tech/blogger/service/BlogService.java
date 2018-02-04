@@ -35,4 +35,12 @@ public class BlogService {
         }
         return null;
     }
+
+    public List<Blog> findAll() {
+        return blogRepository.findAll();
+    }
+
+    public Blog findById(String id) {
+        return blogRepository.findById(id);
+    }
 }

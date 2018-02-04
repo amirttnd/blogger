@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="techBlogger" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+
+    <title>Create or Edit your blog</title>
+
+    <th:block th:replace="layout/layout::common_head"/>
+
+</head>
+<body>
+<div th:replace="layout/layout::adminHeader"></div>
+<div class="container" ng-controller="BlogController as blogCtrl" ng-init="blogCtrl.list()">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Category</th>
+            <th>Heading</th>
+            <th>Published</th>
+            <th>Tags</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="blog in blogCtrl.blogs track by $index">
+            <td class="col-md-3">
+                <a href="#">{{blog.category.parent.name}}</a>
+                <span>&nbsp;/&nbsp;</span>
+                <a href="#">{{blog.category.name}}</a>
+
+            </td>
+            <td><a href="/blog/edit?id={{blog.id}}" target="_blank"> {{blog.shortHeading}}</a></td>
+            <td>{{blog.isPublished}}</td>
+            <td>
+                <span ng-repeat="tag in blog.tags track by $index"
+                      class="label label-info">
+                    {{tag}}
+                </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

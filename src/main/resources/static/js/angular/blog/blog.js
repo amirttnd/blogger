@@ -7,6 +7,18 @@ angular
                 params: {
                     action: "save"
                 }
+            },
+            list: {
+                method: "GET",
+                params: {
+                    action: "list"
+                }
+            },
+            get: {
+                method: "GET",
+                params: {
+                    action: "get"
+                }
             }
         })
     }]);

@@ -7,12 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -28,6 +26,23 @@ public class BlogJsonController {
         System.out.println(blogModel.toString());
         Map<String, Object> responseMap = new LinkedHashMap<>();
         Blog blog = blogService.save(blogModel);
+        responseMap.put("status", blog != null);
+        responseMap.put("blog", blog);
+        return new ResponseEntity<Map<String, Object>>(responseMap, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/list", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    ResponseEntity<Map<String, Object>> list() {
+        Map<String, Object> responseMap = new LinkedHashMap<>();
+        List<Blog> blogs = blogService.findAll();
+        responseMap.put("blogs", blogs);
+        return new ResponseEntity<Map<String, Object>>(responseMap, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/get", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    ResponseEntity<Map<String, Object>> list(@RequestParam String id) {
+        Map<String, Object> responseMap = new LinkedHashMap<>();
+        Blog blog = blogService.findById(id);
         responseMap.put("status", blog != null);
         responseMap.put("blog", blog);
         return new ResponseEntity<Map<String, Object>>(responseMap, HttpStatus.OK);

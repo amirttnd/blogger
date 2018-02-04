@@ -9,7 +9,7 @@
 </head>
 <body>
 <div th:replace="layout/layout::adminHeader"></div>
-<div class="container" ng-controller="BlogController as blogCtrl">
+<div class="container" ng-controller="BlogController as blogCtrl" ng-init="blogCtrl.edit()">
     <br/>
 
     <div class="panel panel-default">
@@ -84,7 +84,7 @@
                                 <div class="panel-body">
 
                                       <span ng-repeat="relatedCategory in blogCtrl.blog.relatedCategories|unique:'id' track by $index"
-                                              class="related-category-label label label-info">
+                                            class="related-category-label label label-info">
                                         {{relatedCategory.name}}
                                         <a href="" data-ng-click="blogCtrl.removeFromCategories(relatedCategory.id)"
                                            class="fa fa-close"></a>

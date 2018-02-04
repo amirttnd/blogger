@@ -1,6 +1,6 @@
 angular
     .module("techBlogger")
-    .controller("BlogController", ["Blog", "Category", "$scope", function (Blog, Category, $scope) {
+    .controller("BlogController", ["Blog", "Category", "$scope", "$location", function (Blog, Category, $scope, $location) {
         var self = this;
         self.blog = {};
 
@@ -9,6 +9,21 @@ angular
         self.blog.relatedCategories = [];
 
         self.blog.category = {};
+
+        self.list = function () {
+            Blog.list(function (response) {
+                self.blogs = response.blogs
+            })
+        };
+
+        self.edit = function () {
+            var id = $location.search()['id'];
+            if (id) {
+                Blog.get({id: id}, function (response) {
+                    self.blog = response.blog || {};
+                })
+            }
+        };
 
 
         Category.tree(function (response) {
