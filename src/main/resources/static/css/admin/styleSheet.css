@@ -175,14 +175,19 @@ span {
     min-width: 100%;
 }
 
-.blog-editor .label{
+.blog-editor .related-category-label {
     margin: 0 2px;
-}
+    float: left;
+    margin-top: 3px;}
 
-.blog-editor .label:first-child{
+.blog-editor .related-category-label:first-child {
     margin-left: 0;
 }
 
-.blog-editor .label a{
+.blog-editor .related-category-label a {
     color: white;
+}
+
+.blog-editor .panel-body {
+    min-height: 6em;
 }

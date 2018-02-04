@@ -83,9 +83,8 @@
                                 </div>
                                 <div class="panel-body">
 
-                                      <span
-                                              ng-repeat="relatedCategory in blogCtrl.blog.relatedCategories|unique:'id' track by $index"
-                                              class="label label-info">
+                                      <span ng-repeat="relatedCategory in blogCtrl.blog.relatedCategories|unique:'id' track by $index"
+                                              class="related-category-label label label-info">
                                         {{relatedCategory.name}}
                                         <a href="" data-ng-click="blogCtrl.removeFromCategories(relatedCategory.id)"
                                            class="fa fa-close"></a>
