@@ -53,11 +53,12 @@
         <div class="panel-body">
             <div class="blog-editor">
                 <div class="col-md-8">
-                    <form action="/action_page.php">
+                    <form data-ng-submit="blogCtrl.save()">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="shortHeading">Short Heading:</label>
                                 <input type="text" class="form-control"
+                                       ng-model="blogCtrl.blog.shortHeading"
                                        id="shortHeading" placeholder="Enter short heading" name="shortHeading"/>
                             </div>
                         </div>
@@ -65,6 +66,7 @@
                             <div class="form-group">
                                 <label for="title">Title:</label>
                                 <input type="text" class="form-control"
+                                       ng-model="blogCtrl.blog.title"
                                        id="title" placeholder="Enter title" name="title"/>
                             </div>
                         </div>
@@ -73,7 +75,7 @@
 
                             <div class="form-group">
                                 <label>Tags:</label>
-                                <tags-input ng-model="blogCtrl.tags" use-strings="true"></tags-input>
+                                <tags-input ng-model="blogCtrl.blog.tags" use-strings="true"></tags-input>
                             </div>
 
                             <br/>
@@ -89,13 +91,13 @@
                                 </div>
                                 <div class="panel-body">
 
-                                    <nav aria-label="breadcrumb" data-ng-show="blogCtrl.category.name">
+                                    <nav aria-label="breadcrumb" data-ng-show="blogCtrl.blog.category.name">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item active" aria-current="page">
-                                                {{blogCtrl.category.parent.name}}
+                                                {{blogCtrl.blog.category.parent.name}}
                                             </li>
                                             <li class="breadcrumb-item active" aria-current="page">
-                                                {{blogCtrl.category.name}}
+                                                {{blogCtrl.blog.category.name}}
                                             </li>
                                         </ol>
                                     </nav>
@@ -116,7 +118,7 @@
                                 <div class="panel-body">
 
                                       <span
-                                              ng-repeat="relatedCategory in blogCtrl.relatedCategories|unique:'id' track by $index"
+                                              ng-repeat="relatedCategory in blogCtrl.blog.relatedCategories|unique:'id' track by $index"
                                               class="label label-info">
                                         {{relatedCategory.name}}
                                         <a href="" data-ng-click="blogCtrl.removeFromCategories(relatedCategory.id)"
@@ -131,23 +133,29 @@
                             <div class="form-group">
                                 <label>Brief Introduction:</label>
 
-                                <div ckeditor="" ng-model="blogCtrl.briefIntroduction"></div>
+                                <div ckeditor="" ng-model="blogCtrl.blog.briefIntroduction"></div>
                             </div>
 
                             <br/>
 
                             <div class="form-group">
                                 <label>Content:</label>
-                                <div ckeditor="" ng-model="blogCtrl.content"></div>
+
+                                <div ckeditor="" ng-model="blogCtrl.blog.content"></div>
                             </div>
 
                             <div class="checkbox">
-                                <label><input type="checkbox" name="isPublished"/> Publish</label>
+                                <label>
+                                    <input type="checkbox"
+                                           ng-model="blogCtrl.blog.isPublished"
+                                           name="isPublished"/>
+                                    Publish
+                                </label>
                             </div>
 
                             <br/>
 
-                            <button type="submit" class="btn btn-default">Submit</button>
+                            <button type="submit" class="btn btn-default">Save</button>
 
                         </div>
 

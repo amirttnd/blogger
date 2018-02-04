@@ -18,4 +18,7 @@ public interface CategoryRepository extends MongoRepository<Category, String> {
     List<Category> findAllByParent(Category category);
 
     Category findById(String id);
+
+    @Query("{'_id':{$in:?0}}")
+    List<Category> findAllByIdInList(List<String> id);
 }

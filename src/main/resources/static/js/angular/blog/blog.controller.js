@@ -2,37 +2,55 @@ angular
     .module("techBlogger")
     .controller("BlogController", ["Blog", "Category", "$scope", function (Blog, Category, $scope) {
         var self = this;
+        self.blog = {};
 
-        self.tags = [];
+        self.blog.tags = [];
 
-        self.relatedCategories = [];
+        self.blog.relatedCategories = [];
 
-        self.category = {};
+        self.blog.category = {};
 
 
         Category.tree(function (response) {
             self.tree = response.tree;
-            console.log(self.tree)
         });
 
+        self.save = function () {
+            var params = {
+                id: '',
+                shortHeading: self.blog.shortHeading,
+                title: self.blog.title,
+                briefIntroduction: self.blog.briefIntroduction,
+                content: self.blog.content,
+                categoryId: self.blog.category.id,
+                relatedCategories: _.map(self.blog.relatedCategories, "id"),
+                isPublished: self.blog.isPublished,
+                tags: self.blog.tags
+            };
+            console.log(params);
+            Blog.save(params, function (response) {
+                console.log(response)
+            })
+        };
+
         self.setCategory = function (category) {
-            self.category = category;
+            self.blog.category = category;
         };
 
         self.addToRelatedCategory = function (category) {
-            var index = _.findIndex(self.relatedCategories, function (obj) {
+            var index = _.findIndex(self.blog.relatedCategories, function (obj) {
                 return category.id == obj.id;
             });
 
             if (index == -1) {
-                self.relatedCategories.push(category);
+                self.blog.relatedCategories.push(category);
             } else {
                 console.log("Category already exist")
             }
         };
 
         self.removeFromCategories = function (id) {
-            _.remove(self.relatedCategories, function (category) {
+            _.remove(self.blog.relatedCategories, function (category) {
                 return category.id == id
             });
         }
