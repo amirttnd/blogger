@@ -1,10 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head lang="en">
+<head lang="en" th:fragment="common_head">
     <meta charset="UTF-8"/>
-    <meta th:fragment="viewport" name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" th:href="@{/css/jsTree/themes/default/style.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/font-awesome-4.7.0/css/font-awesome.min.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/css/ng-tags-input.css}" type="text/css"/>
 
-    <title></title>
+    <link rel="stylesheet" th:href="@{/css/admin/styleSheet.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/css/media.css}" type="text/css"/>
+
+
+    <script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/jstree.min.v3.3.4.js}"></script>
+    <script type="text/javascript" th:src="@{/js/lodash.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/ckeditor/ckeditor.js}"></script>
+
+
+    <script type="text/javascript" th:src="@{/js/angular/library/angular1.6.4.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/angular/library/ngJsTree.js}"></script>
+    <script type="text/javascript" th:src="@{/js/angular/library/ngJsTree.js}"></script>
+    <script type="text/javascript" th:src="@{/js/angular/library/angular-resource.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/angular/library/ng-tags-input.js}"></script>
+    <script type="text/javascript" th:src="@{/js/angular/library/angular-ckeditor.js}"></script>
+
+
+    <script type="text/javascript" th:src="@{/js/angular/module/techBlogger.js}"></script>
+    <script type="text/javascript" th:src="@{/js/angular/filter/filter.js}"></script>
+    <script type="text/javascript" th:src="@{/js/angular/category/category.js}"></script>
+    <script type="text/javascript" th:src="@{/js/angular/category/category.controller.js}"></script>
+    <script type="text/javascript" th:src="@{/js/angular/blog/blog.js}"></script>
+    <script type="text/javascript" th:src="@{/js/angular/blog/blog.controller.js}"></script>
+
+    <script th:src="@{/js/jstree.min.v3.3.4.js}" type="text/javascript"></script>
+
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+
+    <script type="text/javascript" th:src="@{/js/application.js}"></script>
 </head>
 <body>
 <div th:fragment="header" class="header">

@@ -27,7 +27,7 @@ angular
                 isPublished: self.blog.isPublished,
                 tags: self.blog.tags
             };
-            console.log(params);
+
             Blog.save(params, function (response) {
                 console.log(response)
             })
