@@ -43,4 +43,9 @@ public class BlogService {
     public Blog findById(String id) {
         return blogRepository.findById(id);
     }
+
+    public List<Blog> findAllByCategory(String id) {
+        Category category = categoryRepository.findById(id);
+        return blogRepository.findAllByCategory(category);
+    }
 }

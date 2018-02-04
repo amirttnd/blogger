@@ -25,6 +25,4 @@ public class BlogController {
     String list() {
         return "/blog/list";
     }
-
-
 }

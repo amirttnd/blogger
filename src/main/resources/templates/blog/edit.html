@@ -10,11 +10,16 @@
 <body>
 <div th:replace="layout/layout::adminHeader"></div>
 <div class="container" ng-controller="BlogController as blogCtrl" ng-init="blogCtrl.edit()">
-    <br/>
+
+    <ol class="breadcrumb">
+        <li><a href="#">Admin</a></li>
+        <li><a th:href="@{/blog/list}" target="_self">Blog</a></li>
+        <li>Edit</li>
+    </ol>
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3>Create or Edit your blog</h3>
+            <h4>Create or Edit your blog</h4>
         </div>
         <div class="panel-body">
             <div class="blog-editor">
