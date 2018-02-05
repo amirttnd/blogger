@@ -48,4 +48,9 @@ public class BlogService {
         Category category = categoryRepository.findById(id);
         return blogRepository.findAllByCategory(category);
     }
+
+    public Blog findByFriendlyUrl(String friendlyUrl) {
+        return blogRepository.findByFriendlyUrl(friendlyUrl);
+    }
+
 }

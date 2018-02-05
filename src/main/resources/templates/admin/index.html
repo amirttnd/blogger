@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="techBlogger" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+
+    <title>Create or Edit your blog</title>
+
+    <th:block th:replace="layout/layout::common_head"/>
+
+</head>
+<body>
+<div th:replace="layout/layout::adminHeader"></div>
+<div class="container" ng-controller="BlogController as blogCtrl" ng-init="blogCtrl.edit()">
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-3">Read Lead, Succeed</h1>
+            <p class="lead">The best advice I ever got was that knowledge is power and to keep reading.</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

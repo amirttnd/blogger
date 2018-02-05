@@ -2,16 +2,20 @@ package in.tech.blogger.domain;
 
 import in.tech.blogger.vo.CategoryVO;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.domain.Persistable;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @Document(collection = "category")
-public class Category {
+public class Category implements Persistable<String> {
 
     @Id
     String id;
@@ -28,6 +32,19 @@ public class Category {
 
     @DBRef
     Category parent;
+
+    String friendlyUrl;
+
+    @CreatedDate
+    Date dateCreated;
+
+    @LastModifiedDate
+    Date lastUpdated;
+
+    @Override
+    public boolean isNew() {
+        return id == null;
+    }
 
     public String getId() {
         return id;
@@ -72,6 +89,34 @@ public class Category {
         this.active = active;
     }
 
+    public String getFriendlyUrl() {
+        return friendlyUrl;
+    }
+
+    public void setFriendlyUrl(String friendlyUrl) {
+        this.friendlyUrl = friendlyUrl;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public Date getLastUpdated() {
+        return lastUpdated;
+    }
+
+    public void setLastUpdated(Date lastUpdated) {
+        this.lastUpdated = lastUpdated;
+    }
+
+    public CategoryVO toCategoryVO() {
+        return new CategoryVO(this);
+    }
+
     @Override
     public String toString() {
         return "Category{" +
@@ -80,10 +125,9 @@ public class Category {
                 ", active=" + active +
                 ", level=" + level +
                 ", parent=" + parent +
+                ", friendlyUrl='" + friendlyUrl + '\'' +
+                ", dateCreated=" + dateCreated +
+                ", lastUpdated=" + lastUpdated +
                 '}';
-    }
-
-    public CategoryVO toCategoryVO() {
-        return new CategoryVO(this);
     }
 }

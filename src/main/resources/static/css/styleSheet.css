@@ -500,13 +500,13 @@ label {
 .blog-area .blog .blog-entry .title {
     font-size: 2em;
     font-weight: 900;
-    margin: 0;
+    margin: 0 0 1em 0;
 }
 
 .blog-area .blog .blog-entry .blog-meta {
-    border-top: 1px solid #ddd;
-    margin-top: 20px;
-    padding-top: 20px;
+    border-top: 0 solid #ddd;
+    margin-bottom: 2em;
+    padding-top: 0;
 }
 
 .blog .blog-entry .blog-meta span {
@@ -531,7 +531,6 @@ label {
 }
 
 .blog .blog-entry .blog-content {
-    margin-top: 30px;
     padding-top: 1em;
 }
 
@@ -600,16 +599,16 @@ span.divider.divider.divider.divider {
     outline: 0;
 }
 
-.blog-area .right-panel .tags {
+.blog-area .right-panel .related-categories {
     margin: 3em 0;
     padding: 1em 0;
 }
 
-.blog-area .right-panel .tags .title {
+.blog-area .right-panel .related-categories .title {
     margin-bottom: .5em;
 }
 
-.blog-area .right-panel .tags .title span {
+.blog-area .right-panel .related-categories .title span {
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 700;
@@ -619,12 +618,12 @@ span.divider.divider.divider.divider {
     letter-spacing: 1px;
 }
 
-.blog-area .right-panel .tags .name {
+.blog-area .right-panel .related-categories .name {
     list-style-type: none;
     margin: 12px 0;
 }
 
-.blog-area .right-panel .tags .name li {
+.blog-area .right-panel .related-categories .name li {
     display: inline-block;
     font-size: 14px;
     margin: 5px 5px 5px 0;
@@ -634,14 +633,14 @@ span.divider.divider.divider.divider {
     letter-spacing: 1px;
 }
 
-.blog-area .right-panel .tags .name li a {
+.blog-area .right-panel .related-categories .name li a {
     color: white;
     display: block;
     padding: 5px 10px;
 
 }
 
-.blog-area .right-panel .tags .name li a:hover, .blog-area .blog .social .comment:hover {
+.blog-area .right-panel .related-categories .name li a:hover, .blog-area .blog .social .comment:hover {
     background: #000;
 }
 
@@ -996,4 +995,22 @@ a.facebook:hover, a.twitter:hover {
     color: #bbb;
 }
 
+article .breadcrumb {
+    margin-bottom: 2em;
+    background: rgba(204, 204, 204, 0.08);
+    padding: 5px 7px;
+    color: white;
+    border: 1px solid #ccc;
+}
+
+article .breadcrumb a {
+    color: #666;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+article .breadcrumb a:hover {
+    color: #0980d7;
+}
 

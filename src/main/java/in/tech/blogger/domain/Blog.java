@@ -2,16 +2,23 @@ package in.tech.blogger.domain;
 
 
 import in.tech.blogger.modal.BlogModel;
+import in.tech.blogger.util.Util;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.domain.Persistable;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Document(collection = "blog")
-public class Blog {
+public class Blog implements Persistable<String> {
 
     @Id
     String id;
@@ -42,6 +49,14 @@ public class Blog {
     @DBRef
     User user;
 
+    String friendlyUrl;
+
+    @CreatedDate
+    Date dateCreated;
+
+    @LastModifiedDate
+    Date lastUpdated;
+
     public Blog() {
 
     }
@@ -58,6 +73,7 @@ public class Blog {
             content = blogModel.getContent();
             tags = blogModel.getTags();
             isPublished = blogModel.getIsPublished();
+            friendlyUrl = Util.toFriendlyURL(shortHeading);
         }
     }
 
@@ -67,6 +83,11 @@ public class Blog {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    @Override
+    public boolean isNew() {
+        return id == null;
     }
 
     public String getShortHeading() {
@@ -147,5 +168,38 @@ public class Blog {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getFriendlyUrl() {
+        return friendlyUrl;
+    }
+
+    public void setFriendlyUrl(String friendlyUrl) {
+        this.friendlyUrl = friendlyUrl;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public Date getLastUpdated() {
+        return lastUpdated;
+    }
+
+    public void setLastUpdated(Date lastUpdated) {
+        this.lastUpdated = lastUpdated;
+    }
+
+    public List<Category> getSortedCategories() {
+        if (relatedCategories != null) {
+            return relatedCategories.stream().sorted((category1, category2) -> {
+                return category1.getName().compareTo(category2.getName());
+            }).collect(Collectors.toList());
+        }
+        return Arrays.asList();
     }
 }

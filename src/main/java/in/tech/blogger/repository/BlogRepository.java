@@ -16,4 +16,6 @@ public interface BlogRepository extends MongoRepository<Blog, String> {
     List<Blog> findAll(Sort sort);
 
     List<Blog> findAllByCategory(Category category);
+
+    Blog findByFriendlyUrl(String friendlyUrl);
 }

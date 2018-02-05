@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.mongodb.config.EnableMongoAuditing;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @SpringBootApplication
 @EnableMongoRepositories
+@EnableMongoAuditing
 public class BloggerApplication implements CommandLineRunner {
 
     @Autowired
@@ -41,6 +43,7 @@ public class BloggerApplication implements CommandLineRunner {
 //        grandChild.setLevel(3);
 //        grandChild.setParent(child);
 //        categoryRepository.save(grandChild);
+
 
         for (Category category : categoryRepository.getCategoryParents()) {
             System.out.println(category.toString());

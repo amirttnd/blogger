@@ -3,13 +3,13 @@ package in.tech.blogger.service;
 import in.tech.blogger.domain.Category;
 import in.tech.blogger.modal.CategoryModel;
 import in.tech.blogger.repository.CategoryRepository;
+import in.tech.blogger.util.Util;
 import in.tech.blogger.vo.CategoryTreeVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CategoryService {
@@ -18,20 +18,20 @@ public class CategoryService {
     CategoryRepository categoryRepository;
 
     public Category save(CategoryModel categoryModel) {
-        Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findById(categoryModel.getId()));
         if (categoryModel.getName() != null) {
-            Category category = categoryOptional.orElse(new Category());
+            Category category = new Category();
             category.setActive(true);
             category.setParent(null);
             category.setName(categoryModel.getName());
             category.setLevel(1);
+            category.setFriendlyUrl(Util.toFriendlyURL(category.getName()));
             return categoryRepository.save(category);
         }
         return null;
     }
 
     public Category update(CategoryModel categoryModel) {
-        Category category=categoryRepository.findById(categoryModel.getId());
+        Category category = categoryRepository.findById(categoryModel.getId());
         if (categoryModel.getName() != null) {
             category.setName(categoryModel.getName());
             return categoryRepository.save(category);
@@ -40,7 +40,6 @@ public class CategoryService {
     }
 
     public Category addChild(CategoryModel categoryModel) {
-        System.out.println(categoryModel.toString());
         Category parent = categoryRepository.findById(categoryModel.getId());
         if (parent != null) {
             Category child = new Category();
@@ -48,6 +47,7 @@ public class CategoryService {
             child.setParent(parent);
             child.setName(categoryModel.getName());
             child.setLevel(parent.getLevel() + 1);
+            child.setFriendlyUrl(Util.toFriendlyURL(parent.getName() + " " + child.getName()));
             return categoryRepository.save(child);
         }
         return null;

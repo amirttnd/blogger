@@ -1,20 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
-    <meta charset="UTF-8"/>
-    <meta th:replace="layout/layout::viewport"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-    <link rel="stylesheet" th:href="@{/css/styleSheet.css}" type="text/css"/>
-    <link rel="stylesheet" th:href="@{/css/media.css}" type="text/css"/>
-
-
-    <script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>
-    <script type="text/javascript" th:src="@{/js/angular1.6.4.min.js}"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <script type="text/javascript" th:src="@{/js/ckeditor/ckeditor.js}"></script>
-    <script type="text/javascript" th:src="@{/js/application.js}"></script>
-
+    <th:block th:replace="layout/layout::common_head"/>
     <title></title>
 </head>
 <body>

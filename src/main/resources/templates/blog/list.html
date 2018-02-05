@@ -43,6 +43,7 @@
             <th>Heading</th>
             <th>Published</th>
             <th>Tags</th>
+            <th class="col-md-1">Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -50,7 +51,7 @@
             <td class="col-md-3">
                 {{blog.category.parent.name}}
                 <span>&nbsp;/&nbsp;</span>
-                <a href="#">{{blog.category.name}}</a>
+                <a href="/category/{{blog.category.friendlyUrl}}" target="_self">{{blog.category.name}}</a>
 
             </td>
             <td><a href="/blog/edit?id={{blog.id}}" target="_self"> {{blog.shortHeading}}</a></td>
@@ -62,6 +63,9 @@
                       class="label label-info related-category-label">
                     {{tag}}
                 </span>
+            </td>
+            <td>
+                <a href="/{{blog.friendlyUrl}}" target="_blank">Live view</a>
             </td>
         </tr>
         </tbody>
