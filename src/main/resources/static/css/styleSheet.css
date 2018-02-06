@@ -474,7 +474,6 @@ label {
 }
 
 .blog-area .blog {
-    margin-top: -120px;
     position: relative;
     width: 71%;
     float: left;
@@ -532,6 +531,7 @@ label {
 
 .blog .blog-entry .blog-content {
     padding-top: 1em;
+    margin-bottom: 3em;
 }
 
 .blog .blog-entry .blog-content p {
@@ -955,7 +955,7 @@ a.facebook:hover, a.twitter:hover {
 }
 
 .footer {
-    background: white;
+    background: #000000;
     top: 2em;
     position: relative;
     height: 246px;
@@ -986,6 +986,7 @@ a.facebook:hover, a.twitter:hover {
 .footer .footer-wrapper .links li a {
     padding: 0 12px;
     font-size: 18px;
+    color: #ffffff;
 }
 
 .footer .footer-wrapper .copyright {
@@ -1062,7 +1063,7 @@ article .breadcrumb a:hover {
     background: #0e74bf;
 }
 
-.header-image .advertisement{
+.header-image .advertisement {
     width: 260px;
     height: 300px;
     position: absolute;
@@ -1070,3 +1071,20 @@ article .breadcrumb a:hover {
     background: #0000ff;
 }
 
+.tags {
+
+}
+
+.tags .tag-info {
+    display: inline-block;
+    background: #0980d7;
+    color: white;
+    padding: 5px 15px;
+    font-size: 14px;
+    text-transform: capitalize;
+    margin-right: 6px;
+}
+
+.tags a.tag-info:hover {
+    background: #333;
+}

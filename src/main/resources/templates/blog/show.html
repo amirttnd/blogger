@@ -70,6 +70,12 @@
                 <div class="blog-content" th:utext="${blog.content}">
 
                 </div>
+
+                <div class="tags">
+                    <a class="tag-info" th:each="tag:${blog.tags}" th:text="${tag}">
+
+                    </a>
+                </div>
             </div>
         </article>
         <div class="social">
