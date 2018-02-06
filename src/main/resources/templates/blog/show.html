@@ -43,8 +43,12 @@
                 <h1 class="title" th:text="${blog.title}"></h1>
 
                 <div class="breadcrumb">
-                    <a href="" th:text="${blog.category.parent.name}"></a>
+                    <a href=""><i class="fa fa-home"></i></a>
                     <span class="divider">|</span>
+                    <th:block th:if="${blog.category.parent!=null}">
+                        <a href="" th:text="${blog.category.parent.name}"></a>
+                        <span class="divider">|</span>
+                    </th:block>
 
                     <a href="" th:text="${blog.category.name}"></a>
                 </div>
