@@ -27,10 +27,12 @@
         </ul>
     </div>
 </nav>
-<div>
-    <a href="" class="header-image">
-        <img src="https://s0.wp.com/wp-content/themes/pub/lovecraft/images/header.jpg"/>
-    </a>
+<div class="header-image">
+    <div class="search-container">
+        <input type="text" placeholder="Search blog...!" class="search-box"/>
+        <input type="button" value="Search" class="search-btn"/>
+    </div>
+    <img src="https://s0.wp.com/wp-content/themes/pub/lovecraft/images/header.jpg"/>
 </div>
 
 <div class="blog-area">
@@ -39,6 +41,7 @@
 
             <div class="blog-entry">
                 <h1 class="title" th:text="${blog.title}"></h1>
+
                 <div class="breadcrumb">
                     <a href="" th:text="${blog.category.parent.name}"></a>
                     <span class="divider">|</span>
@@ -280,9 +283,6 @@
 
     </div>
     <div class="right-panel right">
-        <form class="search-form">
-            <input type="text" class="search-box" value="" placeholder="Search"/>
-        </form>
 
         <div class="related-categories">
             <div class="title">

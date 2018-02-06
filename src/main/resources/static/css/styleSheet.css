@@ -600,7 +600,7 @@ span.divider.divider.divider.divider {
 }
 
 .blog-area .right-panel .related-categories {
-    margin: 3em 0;
+    margin-bottom: 3em;
     padding: 1em 0;
 }
 
@@ -1012,5 +1012,61 @@ article .breadcrumb a {
 
 article .breadcrumb a:hover {
     color: #0980d7;
+}
+
+.header-image {
+    position: relative;
+}
+
+.header-image .search-container {
+
+    position: absolute;
+    top: 4em;
+    left: 5%;
+    width: 64%;
+    padding: 1.5em 3em;
+    text-align: center;
+    background: rgba(14, 14, 14, 0.6);
+    border-radius: 10px;
+}
+
+.header-image .search-container .search-box {
+    min-width: 82%;
+    height: 40px;
+    padding: 0 9px;
+    font-size: 18px;
+    border: 0;
+    float: left;
+    color: #555;
+}
+
+.header-image .search-container .search-btn {
+    border: 0;
+    height: 40px;
+    margin-left: -4px;
+    float: left;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 0 4%;;
+    font-weight: bold;
+    color: white;
+    background: #0980d7;
+    cursor: pointer;
+}
+
+.header-image .search-container .search-btn:focus {
+    outline: 0;
+}
+
+.header-image .search-container .search-btn:hover {
+    background: #0e74bf;
+}
+
+.header-image .advertisement{
+    width: 260px;
+    height: 300px;
+    position: absolute;
+    right: 0;
+    background: #0000ff;
 }
 
