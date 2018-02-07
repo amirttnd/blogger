@@ -19,6 +19,8 @@ public interface CategoryRepository extends MongoRepository<Category, String> {
 
     Category findById(String id);
 
+    Category findByFriendlyUrl(String friendlyUrl);
+
     @Query("{'_id':{$in:?0}}")
     List<Category> findAllByIdInList(List<String> id);
 }

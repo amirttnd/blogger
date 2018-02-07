@@ -1,10 +1,13 @@
 package in.tech.blogger.service;
 
+import in.tech.blogger.domain.Blog;
 import in.tech.blogger.domain.Category;
 import in.tech.blogger.modal.CategoryModel;
+import in.tech.blogger.repository.BlogRepository;
 import in.tech.blogger.repository.CategoryRepository;
 import in.tech.blogger.util.Util;
 import in.tech.blogger.vo.CategoryTreeVO;
+import in.tech.blogger.vo.CategoryVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +19,9 @@ public class CategoryService {
 
     @Autowired
     CategoryRepository categoryRepository;
+
+    @Autowired
+    BlogRepository blogRepository;
 
     public Category save(CategoryModel categoryModel) {
         if (categoryModel.getName() != null) {
@@ -90,6 +96,17 @@ public class CategoryService {
             treeVOs.add(categoryTreeVO);
         }
         return treeVOs;
+    }
+
+    public CategoryVO detail(String friendlyUrl) {
+        CategoryVO categoryVO = new CategoryVO();
+        if (friendlyUrl != null) {
+            Category category = categoryRepository.findByFriendlyUrl(friendlyUrl);
+            categoryVO.bind(category);
+            List<Blog> blogs = blogRepository.findAllByCategory(category);
+            categoryVO.setBlogs(blogs);
+        }
+        return categoryVO;
     }
 
 }

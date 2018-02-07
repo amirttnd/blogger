@@ -274,7 +274,7 @@
             </div>
             <ul class="name">
                 <li th:each="relatedCategory:${blog.sortedCategories}">
-                    <a th:href="@{/category/blogs(id=${relatedCategory.id})}"
+                    <a th:href="@{/blogs(categoryId=${relatedCategory.id})}"
                        th:text="${relatedCategory.name}">
                     </a>
                 </li>

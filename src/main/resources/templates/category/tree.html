@@ -9,9 +9,9 @@
 <div th:replace="layout/layout::adminHeader"></div>
 <div class="container" ng-controller="CategoryController as categoryCtrl">
     <ol class="breadcrumb">
-        <li><a href="#">Admin</a></li>
+        <li><a href="/admin/index">Admin</a></li>
         <li><a href="#">Category</a></li>
-        <li>List</li>
+        <li>Tree</li>
     </ol>
     <div ng-cloak="">
         <div class="category-search-wrapper" data-ng-show="categoryCtrl.tree.length>0">
@@ -24,7 +24,9 @@
                     <a>
                         <i class="fa fa-flash"></i>
 
-                        <span ng-hide="node.category.canEdit">{{node.category.name}}</span>
+                        <a target="_self"
+                           href="/category/show?friendlyUrl={{node.category.friendlyUrl}}"
+                           ng-hide="node.category.canEdit">{{node.category.name}}</a>
 
                         <span ng-show="node.category.canEdit">
                             <form data-ng-submit="categoryCtrl.update(node.category)">
@@ -54,7 +56,9 @@
                         <span class="text" ng-class="{disabled: !subCategory.active}">
                             <a href="">
                                 <i class="fa fa-flash"></i>
-                                <span ng-hide="subCategory.canEdit">{{subCategory.name}}</span>
+                                <a target="_self"
+                                   href="/category/show?friendlyUrl={{subCategory.friendlyUrl}}"
+                                   ng-hide="subCategory.canEdit">{{subCategory.name}}</a>
                                 <span ng-show="subCategory.canEdit">
                                 <form data-ng-submit="categoryCtrl.update(subCategory)">
                                     <input type="text"

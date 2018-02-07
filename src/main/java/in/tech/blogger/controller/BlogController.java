@@ -28,12 +28,12 @@ public class BlogController {
         return "/blog/list";
     }
 
-    @RequestMapping("/blog")
+    @RequestMapping(value = {"/blog", "/blog.html", "/blogs", "/blogs.html", "/search.html", "/search"})
     String index() {
-        return "/blog/home";
+        return "/blog/blogs";
     }
 
-    @RequestMapping("/{friendlyUrl}")
+    @RequestMapping("/blog/{friendlyUrl}")
     ModelAndView show(@PathVariable String friendlyUrl) {
         ModelAndView modelAndView = new ModelAndView("/blog/show");
         modelAndView.addObject("blog", blogService.findAndIncView(friendlyUrl));
