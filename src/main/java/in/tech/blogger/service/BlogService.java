@@ -4,9 +4,11 @@ package in.tech.blogger.service;
 import in.tech.blogger.domain.Blog;
 import in.tech.blogger.domain.Category;
 import in.tech.blogger.modal.BlogModel;
+import in.tech.blogger.query.BlogQuery;
 import in.tech.blogger.repository.BlogRepository;
 import in.tech.blogger.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +22,9 @@ public class BlogService {
 
     @Autowired
     CategoryRepository categoryRepository;
+
+    @Autowired
+    MongoTemplate mongoTemplate;
 
     public Blog save(BlogModel blogModel) {
         if (blogModel.getShortHeading() != null) {
@@ -57,6 +62,10 @@ public class BlogService {
         Blog blog = blogRepository.findByFriendlyUrl(friendlyUrl);
         blog.incViews();
         return blogRepository.save(blog);
+    }
+
+    public List<Blog> search(BlogQuery blogQuery) {
+        return mongoTemplate.find(blogQuery.build(),Blog.class);
     }
 
 }

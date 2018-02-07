@@ -220,4 +220,25 @@ public class Blog implements Persistable<String> {
         }
         return Arrays.asList();
     }
+
+    @Override
+    public String toString() {
+        return "Blog{" +
+                "views=" + views +
+                ", lastUpdated=" + lastUpdated +
+                ", dateCreated=" + dateCreated +
+                ", friendlyUrl='" + friendlyUrl + '\'' +
+                ", user=" + user +
+                ", relatedBlog=" + relatedBlog +
+                ", tags=" + tags +
+                ", isPublished=" + isPublished +
+                ", relatedCategories=" + relatedCategories +
+                ", category=" + category +
+                ", content='" + content + '\'' +
+                ", briefIntroduction='" + briefIntroduction + '\'' +
+                ", title='" + title + '\'' +
+                ", shortHeading='" + shortHeading + '\'' +
+                ", id='" + id + '\'' +
+                '}';
+    }
 }

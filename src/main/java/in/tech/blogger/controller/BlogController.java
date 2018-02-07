@@ -1,12 +1,17 @@
 package in.tech.blogger.controller;
 
+import in.tech.blogger.domain.Blog;
+import in.tech.blogger.query.BlogQuery;
 import in.tech.blogger.service.BlogService;
 import in.tech.blogger.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/")
@@ -29,8 +34,13 @@ public class BlogController {
     }
 
     @RequestMapping(value = {"/blog", "/blog.html", "/blogs", "/blogs.html", "/search.html", "/search"})
-    String index() {
-        return "/blog/blogs";
+    ModelAndView index(@ModelAttribute BlogQuery blogQuery) {
+        ModelAndView modelAndView = new ModelAndView("/blog/blogs");
+        List<Blog> blogs = blogService.search(blogQuery);
+
+        System.out.println(blogs);
+        modelAndView.addObject("blogs", blogs);
+        return modelAndView;
     }
 
     @RequestMapping("/blog/{friendlyUrl}")

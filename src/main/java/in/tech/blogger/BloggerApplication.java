@@ -1,7 +1,9 @@
 package in.tech.blogger;
 
-import in.tech.blogger.domain.Category;
+import in.tech.blogger.domain.Blog;
+import in.tech.blogger.query.BlogQuery;
 import in.tech.blogger.repository.CategoryRepository;
+import in.tech.blogger.service.BlogService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class BloggerApplication implements CommandLineRunner {
 
     @Autowired
     CategoryRepository categoryRepository;
+
+    @Autowired
+    BlogService blogService;
 
     Logger logger = LoggerFactory.getLogger(BloggerApplication.class);
 
@@ -46,9 +51,10 @@ public class BloggerApplication implements CommandLineRunner {
 //        grandChild.setParent(child);
 //        categoryRepository.save(grandChild);
 
-
-        for (Category category : categoryRepository.getCategoryParents()) {
-            System.out.println(category.toString());
+        BlogQuery blogQuery = new BlogQuery();
+//        blogQuery.setQuery("java");
+        for(Blog blog:blogService.search(blogQuery)){
+            System.out.println("================="+blog.toString());
         }
     }
 }

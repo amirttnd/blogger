@@ -35,8 +35,13 @@
     </nav>
     <div class="header-image">
         <div class="search-container">
-            <input type="text" placeholder="Search blog...!" class="search-box"/>
-            <input type="button" value="Search" class="search-btn"/>
+            <form action="/search.html" method="get">
+                <input type="text"
+                       th:value="${param.query!=null?param.query[0]:''}"
+                       name="query"
+                       placeholder="Search blog...!" class="search-box"/>
+                <input type="submit" value="Search" class="search-btn"/>
+            </form>
         </div>
         <img src="https://s0.wp.com/wp-content/themes/pub/lovecraft/images/header.jpg"/>
     </div>
