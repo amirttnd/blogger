@@ -11,5 +11,36 @@
 </head>
 <body>
 
+<div th:fragment="main-menu">
+    <div class="brand">
+        <div class="brand-wrapper">
+            <h1 class="title">
+                <span class="first">Tech</span><span class="second">blogger</span>
+            </h1>
+
+            <p class="description">A Community For One Purpose. One Mission. One Dream.</p>
+        </div>
+    </div>
+
+    <nav id="navigation" class="main-navigation">
+        <div id="primary-menu" class="menu">
+            <ul class="nav-menu">
+                <li><a href="">JAVA</a></li>
+                <li><a href="">Spring Boot</a></li>
+                <li><a href="">Angular JS</a></li>
+                <li><a href="">Interview Q</a></li>
+
+            </ul>
+        </div>
+    </nav>
+    <div class="header-image">
+        <div class="search-container">
+            <input type="text" placeholder="Search blog...!" class="search-box"/>
+            <input type="button" value="Search" class="search-btn"/>
+        </div>
+        <img src="https://s0.wp.com/wp-content/themes/pub/lovecraft/images/header.jpg"/>
+    </div>
+</div>
+
 </body>
 </html>

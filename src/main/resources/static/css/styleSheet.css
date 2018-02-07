@@ -1084,7 +1084,7 @@ article .breadcrumb a:hover {
 
 .tags .tag-info {
     display: inline-block;
-    background: #777;
+    background: #888    ;
     color: white;
     padding: 5px 15px;
     font-size: 14px;
@@ -1092,6 +1092,7 @@ article .breadcrumb a:hover {
     margin-right: 6px;
     font-weight: bold;
     border-left: 3px solid #444;
+    margin-top: 6px;
 }
 
 .tags a.tag-info:hover {

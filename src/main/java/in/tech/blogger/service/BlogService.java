@@ -53,4 +53,10 @@ public class BlogService {
         return blogRepository.findByFriendlyUrl(friendlyUrl);
     }
 
+    public Blog findAndIncView(String friendlyUrl) {
+        Blog blog = blogRepository.findByFriendlyUrl(friendlyUrl);
+        blog.incViews();
+        return blogRepository.save(blog);
+    }
+
 }

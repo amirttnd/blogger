@@ -57,6 +57,8 @@ public class Blog implements Persistable<String> {
     @LastModifiedDate
     Date lastUpdated;
 
+    Long views = 0l;
+
     public Blog() {
 
     }
@@ -192,6 +194,22 @@ public class Blog implements Persistable<String> {
 
     public void setLastUpdated(Date lastUpdated) {
         this.lastUpdated = lastUpdated;
+    }
+
+    public Long getViews() {
+        return views;
+    }
+
+    public void setViews(Long views) {
+        this.views = views;
+    }
+
+    public void incViews() {
+        this.views++;
+    }
+
+    public String getPrettyFormatViews() {
+        return Util.getPrettyFormat(this.views);
     }
 
     public List<Category> getSortedCategories() {
