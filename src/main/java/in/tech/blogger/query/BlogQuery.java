@@ -23,7 +23,7 @@ public class BlogQuery {
 
     Boolean onlyPublished = true;
 
-    List<String> fieldsToExclude = Arrays.asList("content");
+    List<String> fieldsToExclude = Arrays.asList("content", "relatedBlog");
 
     Integer max = 10;
 

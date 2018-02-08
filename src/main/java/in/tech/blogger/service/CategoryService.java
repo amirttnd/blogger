@@ -5,7 +5,7 @@ import in.tech.blogger.domain.Category;
 import in.tech.blogger.modal.CategoryModel;
 import in.tech.blogger.repository.BlogRepository;
 import in.tech.blogger.repository.CategoryRepository;
-import in.tech.blogger.util.Util;
+import in.tech.blogger.util.Utils;
 import in.tech.blogger.vo.CategoryTreeVO;
 import in.tech.blogger.vo.CategoryVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class CategoryService {
             category.setParent(null);
             category.setName(categoryModel.getName());
             category.setLevel(1);
-            category.setFriendlyUrl(Util.toFriendlyURL(category.getName()));
+            category.setFriendlyUrl(Utils.toFriendlyURL(category.getName()));
             return categoryRepository.save(category);
         }
         return null;
@@ -53,7 +53,7 @@ public class CategoryService {
             child.setParent(parent);
             child.setName(categoryModel.getName());
             child.setLevel(parent.getLevel() + 1);
-            child.setFriendlyUrl(Util.toFriendlyURL(parent.getName() + " " + child.getName()));
+            child.setFriendlyUrl(Utils.toFriendlyURL(parent.getName() + " " + child.getName()));
             return categoryRepository.save(child);
         }
         return null;

@@ -2,7 +2,7 @@ package in.tech.blogger.domain;
 
 
 import in.tech.blogger.modal.BlogModel;
-import in.tech.blogger.util.Util;
+import in.tech.blogger.util.Utils;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -12,6 +12,8 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -81,7 +83,7 @@ public class Blog implements Persistable<String> {
             content = blogModel.getContent();
             tags = blogModel.getTags();
             isPublished = blogModel.getIsPublished();
-            friendlyUrl = Util.toFriendlyURL(shortHeading);
+            friendlyUrl = Utils.toFriendlyURL(shortHeading);
         }
     }
 
@@ -215,7 +217,7 @@ public class Blog implements Persistable<String> {
     }
 
     public String getPrettyFormatViews() {
-        return Util.getPrettyFormat(this.views);
+        return Utils.getPrettyFormat(this.views);
     }
 
     public List<Category> getSortedCategories() {
@@ -246,5 +248,13 @@ public class Blog implements Persistable<String> {
                 ", shortHeading='" + shortHeading + '\'' +
                 ", id='" + id + '\'' +
                 '}';
+    }
+
+    public static List<String> getAllFields() {
+        List<String> fields = new ArrayList<String>();
+        for (Field field : new Blog().getClass().getDeclaredFields()) {
+            fields.add(field.getName());
+        }
+        return fields;
     }
 }

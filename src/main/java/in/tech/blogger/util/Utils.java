@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.NavigableMap;
 import java.util.TreeMap;
 
-public class Util {
+public class Utils {
     private static final NavigableMap<Long, String> suffixes = new TreeMap<>();
 
     static {
