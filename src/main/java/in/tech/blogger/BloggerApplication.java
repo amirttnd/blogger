@@ -52,7 +52,7 @@ public class BloggerApplication implements CommandLineRunner {
 //        categoryRepository.save(grandChild);
 
         BlogQuery blogQuery = new BlogQuery();
-//        blogQuery.setQuery("java");
+        blogQuery.setQuery("java");
         for(Blog blog:blogService.search(blogQuery)){
             System.out.println("================="+blog.toString());
         }

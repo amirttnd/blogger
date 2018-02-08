@@ -7,6 +7,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.domain.Persistable;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -23,11 +24,14 @@ public class Blog implements Persistable<String> {
     @Id
     String id;
 
+    @Indexed
     String shortHeading;
 
     @NotNull
+    @Indexed
     String title;
 
+    @Indexed
     String briefIntroduction;
 
     @NotNull
@@ -41,6 +45,7 @@ public class Blog implements Persistable<String> {
 
     Boolean isPublished;
 
+    @Indexed
     List<String> tags;
 
     @DBRef
@@ -49,6 +54,7 @@ public class Blog implements Persistable<String> {
     @DBRef
     User user;
 
+    @Indexed
     String friendlyUrl;
 
     @CreatedDate

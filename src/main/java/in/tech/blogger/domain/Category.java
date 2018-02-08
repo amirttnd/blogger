@@ -33,6 +33,7 @@ public class Category implements Persistable<String> {
     @DBRef
     Category parent;
 
+    @Indexed
     String friendlyUrl;
 
     @CreatedDate
