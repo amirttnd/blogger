@@ -30,7 +30,6 @@ public class BlogService {
         if (blogModel.getShortHeading() != null) {
             Category category = categoryRepository.findById(blogModel.getCategoryId());
             List<Category> relatedCategories = categoryRepository.findAllByIdInList(blogModel.getRelatedCategories());
-            System.out.println(relatedCategories);
             Optional<Blog> blogOptional = Optional.ofNullable(blogRepository.findById(blogModel.getId()));
             Blog blog = blogOptional.orElse(new Blog());
             blog.bind(blogModel);
@@ -65,7 +64,7 @@ public class BlogService {
     }
 
     public List<Blog> search(BlogQuery blogQuery) {
-        return mongoTemplate.find(blogQuery.build(),Blog.class);
+        return mongoTemplate.find(blogQuery.build(), Blog.class);
     }
 
 }

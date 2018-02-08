@@ -3,9 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8"/>
     <meta th:replace="layout/layout::viewport"/>
-    <script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>
-    <link rel="stylesheet" th:href="@{/css/styleSheet.css}" type="text/css"/>
-    <link rel="stylesheet" th:href="@{/css/media.css}" type="text/css"/>
+    <th:block th:include="layout/main::head"/>
     <title>Blogs</title>
 </head>
 <body>
@@ -14,98 +12,22 @@
 
 <div class="blog-area">
     <div class="blog">
-        <article>
+        <article th:each="blog:${blogs}">
             <div class="blog-entry">
-                <h1 class="title">String vs StringBuffer</h1>
+                <th:block th:replace="/blog/fragment/header::header(${blog})"/>
 
-                <div class="blog-meta">
-                    <span>On <a>SEPTEMBER 20, 2011</a></span>
-                    <span class="divider">/</span>
-                    <span>By <a>JOAN SMITH</a></span>
-                    <span class="divider">/</span>
-                    <span>In
-                        <a>BOOKS</a>&nbsp;
-                        <a>WRITING</a>
-                    </span>
-                    <span class="divider">/</span>
-                    <span>
-                        <a>1 COMMENT</a>
-                    </span>
-                </div>
                 <div class="blog-content">
-                    <p> For my own part, I had been feverishly excited all day. Something very like the war fever that
-                        occasionally runs through a civilised community had got into my blood, and in my heart I was not
-                        so
-                        very sorry that I had to return to Maybury that night.
-                    </p>
-                    <a href="" class="more">Continue reading
+                    <div th:utext="${blog.briefIntroduction}"></div>
 
+                    <div th:replace="/blog/fragment/tags::tags(${blog.tags})">
+
+                    </div>
+                    <a th:href="@{/blog/{friendlyUrl}(friendlyUrl=${blog.friendlyUrl})}" class="more">
+                        Continue reading
                     </a>
                 </div>
             </div>
         </article>
-        <article>
-            <div class="blog-entry">
-                <h1 class="title">String vs StringBuffer</h1>
-
-                <div class="blog-meta">
-                    <span>On <a>SEPTEMBER 20, 2011</a></span>
-                    <span class="divider">/</span>
-                    <span>By <a>JOAN SMITH</a></span>
-                    <span class="divider">/</span>
-                    <span>In
-                        <a>BOOKS</a>&nbsp;
-                        <a>WRITING</a>
-                    </span>
-                    <span class="divider">/</span>
-                    <span>
-                        <a>1 COMMENT</a>
-                    </span>
-                </div>
-                <div class="blog-content">
-                    <p> For my own part, I had been feverishly excited all day. Something very like the war fever that
-                        occasionally runs through a civilised community had got into my blood, and in my heart I was not
-                        so
-                        very sorry that I had to return to Maybury that night.
-                    </p>
-                    <a href="" class="more">Continue reading
-
-                    </a>
-                </div>
-            </div>
-        </article>
-
-        <article>
-            <div class="blog-entry">
-                <h1 class="title">String vs StringBuffer</h1>
-
-                <div class="blog-meta">
-                    <span>On <a>SEPTEMBER 20, 2011</a></span>
-                    <span class="divider">/</span>
-                    <span>By <a>JOAN SMITH</a></span>
-                    <span class="divider">/</span>
-                    <span>In
-                        <a>BOOKS</a>&nbsp;
-                        <a>WRITING</a>
-                    </span>
-                    <span class="divider">/</span>
-                    <span>
-                        <a>1 COMMENT</a>
-                    </span>
-                </div>
-                <div class="blog-content">
-                    <p> For my own part, I had been feverishly excited all day. Something very like the war fever that
-                        occasionally runs through a civilised community had got into my blood, and in my heart I was not
-                        so
-                        very sorry that I had to return to Maybury that night.
-                    </p>
-                    <a href="" class="more">Continue reading
-
-                    </a>
-                </div>
-            </div>
-        </article>
-
     </div>
     <div class="right-panel right">
 

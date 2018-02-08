@@ -7,6 +7,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.domain.Persistable;
+import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
 
 
 @Document(collection = "blog")
+@CompoundIndex(def = "{shortHeading:'text', title:'text', briefIntroduction:'text', tags:'text'}",name = "search_index")
 public class Blog implements Persistable<String> {
 
     @Id
@@ -33,10 +35,8 @@ public class Blog implements Persistable<String> {
     @Indexed
     String title;
 
-    @Indexed
     String briefIntroduction;
 
-    @NotNull
     String content;
 
     @DBRef

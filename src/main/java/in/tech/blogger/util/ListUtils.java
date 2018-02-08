@@ -15,6 +15,13 @@ public class ListUtils {
         return arr;
     }
 
+    /**
+     * @param from
+     * @param list
+     * @param <T>
+     * @return from -  list
+     */
+
     public static <T> List<T> minus(List<T> from, List<T> list) {
         ArrayList<T> arr = new ArrayList<T>();
         for (T element : from) {

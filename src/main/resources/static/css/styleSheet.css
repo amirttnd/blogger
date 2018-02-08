@@ -537,7 +537,7 @@ label {
 }
 
 .blog .blog-entry .blog-content {
-    padding-top: 1em;
+    padding-top: 0;
 }
 
 .blog .blog-entry .blog-content p {
@@ -546,6 +546,7 @@ label {
 }
 
 .blog .blog-entry .blog-content .more {
+    margin-top: 3em;
     display: inline-block;
     padding: 15px 18px;
     border: 2px solid #111;
@@ -1084,8 +1085,8 @@ article .breadcrumb a:hover {
 
 .tags .tag-info {
     display: inline-block;
-    background: #888;
-    color: white;
+    background: #f5f5f5;
+    color: #272222;
     padding: 5px 15px;
     font-size: 14px;
     text-transform: capitalize;
@@ -1096,10 +1097,10 @@ article .breadcrumb a:hover {
 }
 
 .tags a.tag-info:hover {
-    background: #333;
+    background: #ccc;
 }
 
-.wrapper{
+.wrapper {
     display: block;
     padding: 60px 0;
     width: 90%;

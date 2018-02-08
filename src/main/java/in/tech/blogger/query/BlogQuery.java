@@ -30,7 +30,7 @@ public class BlogQuery {
     Integer offset = 0;
 
     public String getQuery() {
-        return query;
+        return query != null ? query.trim() : "";
     }
 
     public void setQuery(String query) {
@@ -96,6 +96,12 @@ public class BlogQuery {
         this.onlyPublished = onlyPublished;
     }
 
+    public void addToFieldToExclude(String field) {
+        if (field != null) {
+            fieldsToExclude.add(field);
+        }
+    }
+
     public int getPage() {
         if (offset == 0 || offset < max) {
             return 0;
@@ -107,23 +113,24 @@ public class BlogQuery {
         Query textQuery = new Query();
 
         Pageable pageRequest = new PageRequest(getPage(), this.max);
+        Criteria criteria = Criteria.where("isPublished").is(getOnlyPublished());
 
-        textQuery.addCriteria(Criteria.where("isPublished").is(getOnlyPublished()));
+        textQuery.addCriteria(criteria);
 
-        if (query != null) {
+        if (getQuery().length() > 0) {
             textQuery = TextQuery.queryText(TextCriteria.forDefaultLanguage().matching(query)).sortByScore();
         }
 
         if (id != null) {
-            textQuery.addCriteria(Criteria.where("id").is(id));
+            textQuery.addCriteria(criteria.where("id").is(id));
         }
 
         if (ids != null) {
-            textQuery.addCriteria(Criteria.where("id").in(ids));
+            textQuery.addCriteria(criteria.where("id").in(ids));
         }
 
         if (categoryId != null) {
-            textQuery.addCriteria(Criteria.where("category.id").is(categoryId));
+            textQuery.addCriteria(criteria.where("category.id").is(categoryId));
         }
 
         if (fieldsToExclude != null) {
