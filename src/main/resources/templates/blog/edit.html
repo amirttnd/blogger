@@ -4,11 +4,11 @@
 
     <title>Create or Edit your blog</title>
 
-    <th:block th:replace="layout/layout::common_head"/>
+    <th:block th:replace="layout/admin::common_head"/>
 
 </head>
 <body>
-<div th:replace="layout/layout::adminHeader"></div>
+<div th:replace="layout/admin::adminHeader"></div>
 <div class="container" ng-controller="BlogController as blogCtrl" ng-init="blogCtrl.edit()">
 
     <ol class="breadcrumb">

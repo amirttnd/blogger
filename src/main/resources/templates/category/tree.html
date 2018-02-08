@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html ng-app="techBlogger" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head lang="en">
-    <th:block th:replace="layout/layout::common_head"/>
+    <th:block th:replace="layout/admin::common_head"/>
 
     <title>Category Tree</title>
 </head>
 <body>
-<div th:replace="layout/layout::adminHeader"></div>
+<div th:replace="layout/admin::adminHeader"></div>
 <div class="container" ng-controller="CategoryController as categoryCtrl">
     <ol class="breadcrumb">
         <li><a href="/admin/index">Admin</a></li>
