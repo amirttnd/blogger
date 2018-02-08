@@ -14,4 +14,16 @@ public class ListUtils {
         }
         return arr;
     }
+
+    public static <T> List<T> minus(List<T> from, List<T> list) {
+        ArrayList<T> arr = new ArrayList<T>();
+        for (T element : from) {
+            if (!list.contains(element)) {
+                arr.add(element);
+            }
+        }
+        return arr;
+    }
+
+
 }
