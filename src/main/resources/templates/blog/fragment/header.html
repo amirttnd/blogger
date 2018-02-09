@@ -9,11 +9,11 @@
         <a href="/blog.html"><i class="fa fa-home"></i></a>
         <span class="divider">|</span>
         <th:block th:if="${blog.category.parent!=null}">
-            <a href="" th:text="${blog.category.parent.name}"></a>
+            <a th:text="${blog.category.parent.name}"></a>
             <span class="divider">|</span>
         </th:block>
 
-        <a href="" th:text="${blog.category.name}"></a>
+        <a th:href="@{/search.html(categoryId=${blog.category.id})}" th:text="${blog.category.name}"></a>
     </div>
     <div class="blog-meta">
         <span>
