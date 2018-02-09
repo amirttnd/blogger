@@ -13,7 +13,7 @@
             <span class="divider">|</span>
         </th:block>
 
-        <a th:href="@{/search.html(categoryId=${blog.category.id})}" th:text="${blog.category.name}"></a>
+        <a th:href="@{/blogs(categoryId=${blog.category.id})}" th:text="${blog.category.name}"></a>
     </div>
     <div class="blog-meta">
         <span>
