@@ -7,7 +7,7 @@ body {
     padding: 0;
     border: none;
     color: #111;
-    background: #fafafa;
+    background: #ffffff;
     font-family: 'Lato', sans-serif;
     -webkit-font-smoothing: antialiased;
 }
@@ -125,7 +125,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0 5px 11px 3px;
     height: 232px;
     border-bottom: 3px solid lightgray;
-    background: white;
+    background: #fafafa;
 }
 
 .grid ul li .top span {
@@ -226,7 +226,7 @@ a:hover, a:focus, a:active {
 
 .blog-form {
     padding: 5px 0;
-    background: white;
+    background: #fafafa;
     border-radius: 15px;
     width: 90%;
     margin: auto;
@@ -250,7 +250,7 @@ label {
 .textbox, select {
     border: 1px solid lightgray;
     padding: 6px 2px;
-    background: white;
+    background: #fafafa;
 }
 
 .blog-form .row .textbox, .blog-form .row select {
@@ -422,7 +422,8 @@ label {
     text-align: center;
     font-size: .9em;
     border-top: 1px solid #ddd;
-    background: #ffffff;
+    background: #fafafa;
+    border-bottom: 1px solid #ddd;
 }
 
 .main-navigation ul {
@@ -445,7 +446,7 @@ label {
 .main-navigation a {
     display: inline-block;
     padding: 10px 20px;
-    color: #333;
+    color: #444;
     position: relative;
     font-weight: bold;
 }
@@ -457,7 +458,7 @@ label {
 }
 
 .header-image {
-    height: 280px;
+    height: 140px;
     width: 100%;
     padding: 0 2em;
 }
@@ -469,7 +470,7 @@ label {
     top: 0;
     left: 0;
     z-index: -1;
-    padding: 0 2em;
+    padding: 0;
 }
 
 .blog-area {
@@ -486,7 +487,7 @@ label {
 }
 
 .blog-area .blog article {
-    background: white;
+    background: #fafafa;
     border: 1px solid lightgray;
     margin-bottom: 1em;
 }
@@ -498,7 +499,7 @@ label {
 
 .blog-area .blog .blog-entry {
     width: 85%;
-    background: white;
+    background: #fafafa;
     margin: 0 auto;
     padding: 30px 0;
 }
@@ -577,7 +578,7 @@ span.divider.divider.divider.divider {
 }
 
 .blog-area .right-panel {
-    width: 24%;
+    width: 26%;
 }
 
 .blog-area .right-panel .search-form {
@@ -654,6 +655,7 @@ span.divider.divider.divider.divider {
 
 .sub-categories {
     font-family: 'Lato', sans-serif;
+    margin: 0;
 }
 
 .sub-categories .sub-category {
@@ -674,7 +676,7 @@ span.divider.divider.divider.divider {
 
 .sub-categories .sub-category {
     font-size: 16px;
-    margin-top: 10px;
+    margin-top: 0;
 }
 
 .sub-categories .sub-category .sub-category-blog {
@@ -709,7 +711,7 @@ span.divider.divider.divider.divider {
 .blog-area .blog .related-blog .related-blog-wrapper {
     padding: 5px 15px;
     margin-top: 1.2em;
-    background: #fff;
+    background: #fafafa;
     border: 1px solid #cccccc;
 }
 
@@ -818,7 +820,7 @@ span.divider.divider.divider.divider {
 
 .blog-area .blog .social {
     margin: 1em 0;
-    background: white;
+    background: #fafafa;
     border: 1px solid #cccccc;
 }
 
@@ -861,7 +863,7 @@ a.facebook:hover, a.twitter:hover {
 .blog-area .blog .comment-area .comment-wrapper {
     padding: 5px 30px;
     margin-top: 1.2em;
-    background: #fff;
+    background: #fafafa;
     border: 1px solid #cccccc;
 }
 
@@ -1006,7 +1008,7 @@ a.facebook:hover, a.twitter:hover {
 
 article .breadcrumb {
     margin-bottom: 2em;
-    background: rgba(204, 204, 204, 0.08);
+    background: #ffffff;
     padding: 5px 12px;
     color: white;
     border: 1px solid #ccc;
@@ -1025,12 +1027,13 @@ article .breadcrumb a:hover {
 
 .header-image {
     position: relative;
+    margin-top: 1em;
 }
 
 .header-image .search-container {
 
     position: absolute;
-    top: 4em;
+    top: 18%;
     left: 5%;
     width: 64%;
     padding: 1.5em 3em;
@@ -1043,7 +1046,7 @@ article .breadcrumb a:hover {
     min-width: 82%;
     height: 40px;
     padding: 0 9px;
-    font-size: 18px;
+    font-size: 16px;
     border: 0;
     float: left;
     color: #555;

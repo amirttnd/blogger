@@ -237,19 +237,6 @@
     </div>
     <div class="right-panel right">
 
-        <div class="related-categories">
-            <div class="title">
-                <span>Related categories</span>
-            </div>
-            <ul class="name">
-                <li th:each="relatedCategory:${blog.sortedCategories}">
-                    <a th:href="@{/blogs(categoryId=${relatedCategory.id})}"
-                       th:text="${relatedCategory.name}">
-                    </a>
-                </li>
-            </ul>
-        </div>
-
         <ul class="sub-categories">
             <li class="sub-category">
                 <h1>Exception Handling</h1>
@@ -280,6 +267,19 @@
                 </ul>
             </li>
         </ul>
+
+        <div class="related-categories">
+            <div class="title">
+                <span>Related categories</span>
+            </div>
+            <ul class="tags">
+                <li class="tag-info" th:each="relatedCategory:${blog.sortedCategories}">
+                    <a th:href="@{/blogs(categoryId=${relatedCategory.id})}"
+                       th:text="${relatedCategory.name}">
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
 <div class="footer clearfix">
