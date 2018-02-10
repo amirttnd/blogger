@@ -334,7 +334,7 @@ label {
 
 .blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 {
     color: #444;
-    margin: 40px 0 15px 0;
+    margin: 30px 0 12px 0;
     line-height: 125%;
 }
 
@@ -542,7 +542,7 @@ label {
 
 .blog .blog-entry .blog-content p {
     line-height: 30px;
-    margin-bottom: 1.5em;
+    margin-bottom: 1em;
 }
 
 .blog .blog-entry .blog-content .more {
