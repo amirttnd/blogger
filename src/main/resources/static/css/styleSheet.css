@@ -355,8 +355,8 @@ label {
 }
 
 .blog-content p {
-    font-size: 17px;
-    line-height: 30px;
+    font-size: 16px;
+    line-height: 28px;
     padding: 0;
     margin: 0;
 }
@@ -378,7 +378,7 @@ label {
     font-size: 2.25em;
     line-height: 110%;
     margin: 0;
-    padding-top: 35px;
+    padding-top: 25px;
     font-weight: 700;
     text-align: center;
     text-rendering: optimizeLegibility;
@@ -410,9 +410,8 @@ label {
 }
 
 .brand-wrapper .description {
-    margin-bottom: 0;
     margin-top: 15px;
-    padding-bottom: 35px;
+    margin-bottom: 15px;
     font-size: 1em;
     line-height: 120%;
     text-align: center;
@@ -423,6 +422,7 @@ label {
     text-align: center;
     font-size: .9em;
     border-top: 1px solid #ddd;
+    background: #ffffff;
 }
 
 .main-navigation ul {
@@ -434,8 +434,8 @@ label {
 .main-navigation li {
     display: inline-block;
     position: relative;
-    border-right: 1px solid #cccccc;
     font-size: 16px;
+    padding: 4px 0;
 }
 
 .main-navigation ul li:last-child {
@@ -444,7 +444,7 @@ label {
 
 .main-navigation a {
     display: inline-block;
-    padding: 18px 13px;
+    padding: 10px 20px;
     color: #333;
     position: relative;
     font-weight: bold;
@@ -457,7 +457,7 @@ label {
 }
 
 .header-image {
-    height: 300px;
+    height: 280px;
     width: 100%;
     padding: 0 2em;
 }
@@ -474,7 +474,7 @@ label {
 
 .blog-area {
     display: block;
-    padding: 60px 0;
+    padding: 45px 0;
     width: 90%;
     margin: 0 auto;
 }
@@ -500,7 +500,7 @@ label {
     width: 85%;
     background: white;
     margin: 0 auto;
-    padding: 60px 0;
+    padding: 30px 0;
 }
 
 .blog-area .blog .blog-entry .title {
