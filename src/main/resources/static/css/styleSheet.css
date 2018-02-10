@@ -563,6 +563,7 @@ label {
     -moz-transition: background-color 400ms ease;
     -o-transition: background-color 400ms ease;
     transition: background-color 400ms ease;
+    background: #ffffff;
 }
 
 .blog .blog-entry .blog-content .more:hover {
@@ -659,19 +660,15 @@ span.divider.divider.divider.divider {
 }
 
 .sub-categories .sub-category {
-    margin-bottom: 2em;
+    margin-bottom: 1.5em;
     font-family: 'Lato', sans-serif
 }
 
 .sub-categories .sub-category h1 {
     margin: 0;
-    font-size: 17px;
-    font-weight: normal;
-    padding: 6px 0;
-    text-align: center;
-    background: #444;
-    color: white;
-    font-family: 'Lato', sans-serif
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
 }
 
 .sub-categories .sub-category {
@@ -684,13 +681,14 @@ span.divider.divider.divider.divider {
 }
 
 .sub-categories .sub-category .sub-category-blog li {
-    border-bottom: 1px solid #ccc;
-    overflow: hidden;
-    line-height: 40px;
+    margin-top: 2px;
+    margin-left: 1.2em;
 }
 
 .sub-categories .sub-category .sub-category-blog li a {
-    display: block;
+    overflow: hidden;
+    line-height: 29px;
+    font-size: 14px;
 }
 
 .sub-categories .sub-category .sub-category-blog li:last-child {

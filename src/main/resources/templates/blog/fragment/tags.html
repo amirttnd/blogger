@@ -4,7 +4,7 @@
 
 <div class="tags" th:fragment="tags(tags)">
     <a class="tag-info"
-       th:href="@{/blog.html/(query=${tag})}"
+       th:href="@{/blog.html(query=${tag})}"
        th:each="tag:${tags}" th:text="${tag}">
 
     </a>
