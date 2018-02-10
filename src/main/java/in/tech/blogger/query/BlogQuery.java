@@ -113,9 +113,14 @@ public class BlogQuery {
         Query textQuery = new Query();
 
         Pageable pageRequest = new PageRequest(getPage(), this.max);
-        Criteria criteria = Criteria.where("isPublished").is(getOnlyPublished());
 
-        textQuery.addCriteria(criteria);
+        Criteria criteria = new Criteria();
+
+
+        if (onlyPublished != null) {
+            textQuery.addCriteria(criteria.where("isPublished").is(getOnlyPublished()));
+        }
+
 
         if (getQuery().length() > 0) {
             textQuery = TextQuery.queryText(TextCriteria.forDefaultLanguage().matching(query)).sortByScore();
@@ -142,5 +147,19 @@ public class BlogQuery {
         textQuery.with(pageRequest);
 
         return textQuery;
+    }
+
+    @Override
+    public String toString() {
+        return "BlogQuery{" +
+                "id='" + id + '\'' +
+                ", ids=" + ids +
+                ", query='" + query + '\'' +
+                ", categoryId='" + categoryId + '\'' +
+                ", onlyPublished=" + onlyPublished +
+                ", fieldsToExclude=" + fieldsToExclude +
+                ", max=" + max +
+                ", offset=" + offset +
+                '}';
     }
 }
