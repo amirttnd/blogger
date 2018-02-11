@@ -380,7 +380,7 @@ label {
     margin: 0;
     padding-top: 25px;
     font-weight: 700;
-    text-align: center;
+    text-align: left;
     text-rendering: optimizeLegibility;
 }
 
@@ -414,12 +414,12 @@ label {
     margin-bottom: 15px;
     font-size: 1em;
     line-height: 120%;
-    text-align: center;
+    text-align: left;
 
 }
 
 .main-navigation {
-    text-align: center;
+    /*text-align: center;*/
     font-size: .9em;
     border-top: 1px solid #ddd;
     background: #fafafa;
@@ -1106,4 +1106,8 @@ article .breadcrumb a:hover {
     padding: 60px 0;
     width: 90%;
     margin: 0 auto;
+}
+
+.main-navigation .menu .nav-menu{
+    margin-left: 3em;
 }

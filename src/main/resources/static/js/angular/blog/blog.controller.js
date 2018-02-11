@@ -27,7 +27,7 @@ angular
             Blog.list({query: self.query}, function (response) {
                 self.blogs = response.blogs
             })
-            
+
         };
 
         self.edit = function () {
