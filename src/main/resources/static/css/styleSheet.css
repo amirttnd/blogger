@@ -366,10 +366,14 @@ label {
     max-height: 600px;
 }
 
+.brand {
+    background: #1f2326;
+}
+
 .brand .brand-wrapper {
     margin-left: auto;
     margin-right: auto;
-    max-width: 90%;
+    max-width: 80%;
     text-align: center;
 }
 
@@ -410,19 +414,20 @@ label {
 }
 
 .brand-wrapper .description {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    padding-bottom: 2.5em;
     font-size: 1em;
     line-height: 120%;
     text-align: left;
+    color: white;
+    margin: 10px 0 0 0;
 
 }
 
 .main-navigation {
-    /*text-align: center;*/
+    /* text-align: center; */
     font-size: .9em;
-    border-top: 1px solid #ddd;
-    background: #fafafa;
+    /* border-top: 1px solid #ddd; */
+    background: #2e5251;
     border-bottom: 1px solid #ddd;
 }
 
@@ -445,16 +450,16 @@ label {
 
 .main-navigation a {
     display: inline-block;
-    padding: 10px 20px;
-    color: #444;
+    padding: 10px 15px;
+    color: white;
     position: relative;
     font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .main-navigation a:hover {
-    color: #fff;
-    background: #666;
-
+    color: #6ee4db;
 }
 
 .header-image {
@@ -487,8 +492,8 @@ label {
 }
 
 .blog-area .blog article {
-    background: #fafafa;
-    border: 1px solid lightgray;
+    background: #ffffff;
+    border: 0 solid lightgray;
     margin-bottom: 1em;
 }
 
@@ -499,15 +504,16 @@ label {
 
 .blog-area .blog .blog-entry {
     width: 85%;
-    background: #fafafa;
+    background: #ffffff;
     margin: 0 auto;
-    padding: 30px 0;
+    padding-bottom: 30px;
 }
 
 .blog-area .blog .blog-entry .title {
     font-size: 2em;
     font-weight: 900;
     margin: 0 0 1em 0;
+    text-transform: capitalize;
 }
 
 .blog-area .blog .blog-entry .blog-meta {
@@ -963,7 +969,7 @@ a.facebook:hover, a.twitter:hover {
 }
 
 .footer {
-    background: #000000;
+    background: #1f2326;
     top: 2em;
     position: relative;
     height: 246px;
@@ -1087,18 +1093,20 @@ article .breadcrumb a:hover {
 .tags .tag-info {
     display: inline-block;
     background: #f5f5f5;
-    color: #272222;
-    padding: 5px 15px;
+    padding: 11px 21px;
     font-size: 14px;
-    text-transform: capitalize;
     margin-right: 6px;
     font-weight: bold;
-    border-left: 3px solid #444;
+    color: #666;
     margin-top: 6px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .tags a.tag-info:hover {
-    background: #ccc;
+    background: #0980d7;
+    color: white;
 }
 
 .wrapper {
@@ -1109,5 +1117,6 @@ article .breadcrumb a:hover {
 }
 
 .main-navigation .menu {
-    padding-left: 3em;
+    width: 80%;
+    margin: 0 auto;
 }
