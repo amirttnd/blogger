@@ -1108,6 +1108,6 @@ article .breadcrumb a:hover {
     margin: 0 auto;
 }
 
-.main-navigation .menu .nav-menu{
-    margin-left: 3em;
+.main-navigation .menu {
+    padding-left: 3em;
 }
