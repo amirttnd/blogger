@@ -333,7 +333,7 @@ label {
 }
 
 .blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 {
-    color: #444;
+    color: #f56f2c;
     margin: 30px 0 12px 0;
     line-height: 125%;
 }
@@ -427,8 +427,7 @@ label {
     /* text-align: center; */
     font-size: .9em;
     /* border-top: 1px solid #ddd; */
-    background: #2e5251;
-    border-bottom: 1px solid #ddd;
+    background: #cc6b43;
 }
 
 .main-navigation ul {
@@ -450,13 +449,14 @@ label {
 
 .main-navigation a {
     display: inline-block;
-    padding: 10px 15px;
+    padding: 12px 15px;
     color: white;
     position: relative;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+
 
 .main-navigation a:hover {
     color: #6ee4db;
@@ -646,6 +646,10 @@ span.divider.divider.divider.divider {
     background: #0980d7;
     cursor: pointer;
     letter-spacing: 1px;
+}
+
+.blog-area .right-panel .related-categories .tags li{
+    display: inline-block;
 }
 
 .blog-area .right-panel .related-categories .name li a {
@@ -1104,8 +1108,8 @@ article .breadcrumb a:hover {
     letter-spacing: 1px;
 }
 
-.tags a.tag-info:hover {
-    background: #0980d7;
+.tags a.tag-info:hover{
+    background: #f56f2c;
     color: white;
 }
 
@@ -1119,4 +1123,13 @@ article .breadcrumb a:hover {
 .main-navigation .menu {
     width: 80%;
     margin: 0 auto;
+}
+
+#navigation.fixed {
+    position: fixed;
+    border: 0;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+    margin-bottom: 90px;
 }
