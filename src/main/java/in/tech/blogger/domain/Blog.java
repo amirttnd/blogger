@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 
 
 @Document(collection = "blog")
-@CompoundIndex(def = "{shortHeading:'text', title:'text', briefIntroduction:'text', tags:'text'}",name = "search_index")
+@CompoundIndex(def = "{shortHeading:'text', title:'text', briefIntroduction:'text', tags:'text'}", name = "search_index")
 public class Blog implements Persistable<String> {
 
     @Id
@@ -42,7 +42,7 @@ public class Blog implements Persistable<String> {
     @DBRef
     Category category;
 
-    @DBRef
+    @DBRef(lazy = true)
     List<Category> relatedCategories;
 
     Boolean isPublished;
@@ -50,7 +50,7 @@ public class Blog implements Persistable<String> {
     @Indexed
     List<String> tags;
 
-    @DBRef
+    @DBRef(lazy = true)
     List<Blog> relatedBlog;
 
     @DBRef

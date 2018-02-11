@@ -11,18 +11,23 @@ angular
         self.blog.category = {};
 
         self.list = function () {
-            Blog.list(function (response) {
+            var params = {};
+
+            if ($location.search()["query"]) {
+                self.query = params.query = $location.search()["query"];
+            }
+
+            Blog.list(params, function (response) {
                 self.blogs = response.blogs
             })
         };
 
         self.search = function () {
-            console.log(self.q)
-            if (self.q) {
-                Blog.list({query: self.q}, function (response) {
-                    self.blogs = response.blogs
-                })
-            }
+            $location.search({query: self.query});
+            Blog.list({query: self.query}, function (response) {
+                self.blogs = response.blogs
+            })
+            
         };
 
         self.edit = function () {
