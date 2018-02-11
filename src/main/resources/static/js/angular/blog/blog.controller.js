@@ -16,6 +16,15 @@ angular
             })
         };
 
+        self.search = function () {
+            console.log(self.q)
+            if (self.q) {
+                Blog.list({query: self.q}, function (response) {
+                    self.blogs = response.blogs
+                })
+            }
+        };
+
         self.edit = function () {
             var id = $location.search()['id'];
             if (id) {

@@ -46,7 +46,10 @@ public class BlogQuery {
     }
 
     public String getId() {
-        return id;
+        if (id != null && !id.trim().equals("")) {
+            return id;
+        }
+        return null;
     }
 
     public void setId(String id) {
@@ -126,7 +129,7 @@ public class BlogQuery {
             textQuery = TextQuery.queryText(TextCriteria.forDefaultLanguage().matching(query)).sortByScore();
         }
 
-        if (id != null) {
+        if (getId() != null) {
             textQuery.addCriteria(criteria.where("id").is(id));
         }
 

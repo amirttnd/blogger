@@ -28,13 +28,15 @@
             </a>
         </div>
     </div>
-    <div class=" input-group">
-        <input type="text" class="search-query form-control " value="" name="q"
-               placeholder="Search by short heading, title or category"/>
+    <form data-ng-submit="blogCtrl.search()" autocomplete="off">
+        <div class=" input-group">
+            <input type="text" class="search-query form-control " value="" name="q" ng-model="blogCtrl.q"
+                   placeholder="Search by short heading, title or category"/>
             <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">Search</button>
             </span>
-    </div>
+        </div>
+    </form>
     <br/>
     <table class="table table-striped table-bordered ">
         <thead>

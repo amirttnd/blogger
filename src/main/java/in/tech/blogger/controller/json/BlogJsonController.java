@@ -2,6 +2,7 @@ package in.tech.blogger.controller.json;
 
 import in.tech.blogger.domain.Blog;
 import in.tech.blogger.modal.BlogModel;
+import in.tech.blogger.query.BlogQuery;
 import in.tech.blogger.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,9 +33,10 @@ public class BlogJsonController {
     }
 
     @RequestMapping(value = "/list", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
-    ResponseEntity<Map<String, Object>> list() {
+    ResponseEntity<Map<String, Object>> list(@ModelAttribute BlogQuery blogQuery) {
         Map<String, Object> responseMap = new LinkedHashMap<>();
-        List<Blog> blogs = blogService.findAll();
+        blogQuery.setOnlyPublished(null);
+        List<Blog> blogs = blogService.search(blogQuery);
         responseMap.put("blogs", blogs);
         return new ResponseEntity<Map<String, Object>>(responseMap, HttpStatus.OK);
     }
