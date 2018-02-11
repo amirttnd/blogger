@@ -186,7 +186,7 @@ a {
 }
 
 a:hover, a:focus, a:active {
-    color: #0980d7;
+    color: #cc6b43;
     text-decoration: none;
 }
 
@@ -264,7 +264,7 @@ label {
 .btn {
     border: none;
     padding: 10px 20px;
-    background: #0980d7;
+    background: #cc6b43;
     color: white;
     font-size: 15px;
 }
@@ -393,7 +393,7 @@ label {
 }
 
 .brand-wrapper .title .first {
-    color: #46bfbc;
+    color: #cc6b43;
 }
 
 .brand-wrapper .title .second {
@@ -406,7 +406,7 @@ label {
 }
 
 .logo .first {
-    color: #46bfbc;
+    color: #cc6b43;
 }
 
 .logo .second {
@@ -459,7 +459,7 @@ label {
 
 
 .main-navigation a:hover {
-    color: #6ee4db;
+    color: #444;
 }
 
 .header-image {
@@ -534,13 +534,13 @@ label {
 }
 
 .blog .blog-entry .blog-meta a {
-    color: #0980d7;
+    color: #cc6b43;
     border-bottom: 1px solid #ddd;
     font-weight: 900;
 }
 
 .blog .blog-entry .blog-meta a:hover {
-    border-bottom: 1px solid #0980d7;
+    border-bottom: 1px solid #cc6b43;
 }
 
 .blog .blog-entry .blog-content {
@@ -573,7 +573,7 @@ label {
 }
 
 .blog .blog-entry .blog-content .more:hover {
-    background-color: #0980d7;
+    background-color: #cc6b43;
     color: #fff;
     text-decoration: none;
     border-color: #fff;
@@ -627,8 +627,8 @@ span.divider.divider.divider.divider {
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 700;
-    /*color: #0980d7;*/
-    border-bottom: 2px solid #0980d7;
+    /*color: #cc6b43;*/
+    border-bottom: 2px solid #cc6b43;
     padding-bottom: 3px;
     letter-spacing: 1px;
 }
@@ -643,7 +643,7 @@ span.divider.divider.divider.divider {
     font-size: 14px;
     margin: 5px 5px 5px 0;
     color: white;
-    background: #0980d7;
+    background: #cc6b43;
     cursor: pointer;
     letter-spacing: 1px;
 }
@@ -743,7 +743,7 @@ span.divider.divider.divider.divider {
     font-size: 18px;
     line-height: 67px;
     color: white;
-    background: #0980d7;
+    background: #cc6b43;
     text-align: center;
     margin: 0;
 }
@@ -800,7 +800,7 @@ span.divider.divider.divider.divider {
     font-size: 13px;
     float: right;
     padding: 3px 0;
-    color: #0980d7;;
+    color: #cc6b43;;
     /*background: #f8f8f8;*/
     /*border: 1px solid #ccc;*/
     margin-top: 1px;
@@ -818,7 +818,7 @@ span.divider.divider.divider.divider {
 
 .blog-area .blog .related-blog .related-blog-wrapper .more-blog a {
     padding: .8em 2em;
-    background: #0980d7;
+    background: #cc6b43;
     color: white;
 }
 
@@ -864,7 +864,7 @@ a.facebook:hover, a.twitter:hover {
 .blog-area .blog .social .comment {
     float: right;
     padding: 5px 25px;
-    background: #0980d7;
+    background: #cc6b43;
     color: white;
 }
 
@@ -916,7 +916,7 @@ a.facebook:hover, a.twitter:hover {
 
 .comments .comment-row .display-comment .btn-group a {
     padding: 5px 10px;
-    background: #0980d7;
+    background: #cc6b43;
     color: white;
     font-size: 12px;
     font-weight: 600;
@@ -1030,7 +1030,7 @@ article .breadcrumb a {
 }
 
 article .breadcrumb a:hover {
-    color: #0980d7;
+    color: #cc6b43;
 }
 
 .header-image {
@@ -1070,7 +1070,7 @@ article .breadcrumb a:hover {
     padding: 0 4%;;
     font-weight: bold;
     color: white;
-    background: #0980d7;
+    background: #cc6b43;
     cursor: pointer;
 }
 
