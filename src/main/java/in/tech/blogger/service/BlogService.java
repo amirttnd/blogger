@@ -66,7 +66,6 @@ public class BlogService {
 
         blogVO.setBlog(blog);
         blogVO.setRecommendations(blogRepository.findAllByCategoryAndIsRecommended(blog.getCategory(), true));
-        System.out.println(blogVO);
         return blogVO;
     }
 

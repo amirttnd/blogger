@@ -41,14 +41,18 @@
             <div class="related-blog-wrapper">
                 <ul>
                     <li th:each="recommendation:${recommendations}">
-                        <h1 class="head" th:text="${recommendation.shortHeading}">
-
+                        <h1 class="head" th:inline="text">
+                            [[${recommendation.shortHeading}]]
                         </h1>
 
                         <div class="content">
-                            <h3 th:text="${recommendation.title}"></h3>
+                            <h3 th:inline="text">
+                                [[${recommendation.title}]]
+                            </h3>
 
-                            <p th:text="${recommendation.briefIntroduction}"></p>
+                            <p th:inline="text">
+                                [[${recommendation.briefIntroduction}]]
+                            </p>
 
                         </div>
                         <div class="bottom">
