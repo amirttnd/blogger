@@ -7,7 +7,7 @@ body {
     padding: 0;
     border: none;
     color: #111;
-    background: #ffffff;
+    background: rgba(234, 234, 234, 0.87);
     font-family: 'Lato', sans-serif;
     -webkit-font-smoothing: antialiased;
 }
@@ -186,7 +186,7 @@ a {
 }
 
 a:hover, a:focus, a:active {
-    color: #cc6b43;
+    color: #e07844;
     text-decoration: none;
 }
 
@@ -264,7 +264,7 @@ label {
 .btn {
     border: none;
     padding: 10px 20px;
-    background: #cc6b43;
+    background: #e07844;
     color: white;
     font-size: 15px;
 }
@@ -367,7 +367,7 @@ label {
 }
 
 .brand {
-    background: #1f2326;
+    background: #f5f0f0;
 }
 
 .brand .brand-wrapper {
@@ -393,7 +393,7 @@ label {
 }
 
 .brand-wrapper .title .first {
-    color: #cc6b43;
+    color: #e07844;
 }
 
 .brand-wrapper .title .second {
@@ -406,7 +406,7 @@ label {
 }
 
 .logo .first {
-    color: #cc6b43;
+    color: #e07844;
 }
 
 .logo .second {
@@ -418,7 +418,7 @@ label {
     font-size: 1em;
     line-height: 120%;
     text-align: left;
-    color: white;
+    color: #000000;
     margin: 10px 0 0 0;
 
 }
@@ -427,7 +427,7 @@ label {
     /* text-align: center; */
     font-size: .9em;
     /* border-top: 1px solid #ddd; */
-    background: #cc6b43;
+    background: #e07844;
 }
 
 .main-navigation ul {
@@ -495,6 +495,7 @@ label {
     background: #ffffff;
     border: 0 solid lightgray;
     margin-bottom: 1em;
+    border-radius: 5px;
 }
 
 .blog-area .blog article .thumbnail {
@@ -514,6 +515,7 @@ label {
     font-weight: 900;
     margin: 0 0 1em 0;
     text-transform: capitalize;
+    padding-top: 1em;
 }
 
 .blog-area .blog .blog-entry .blog-meta {
@@ -534,13 +536,13 @@ label {
 }
 
 .blog .blog-entry .blog-meta a {
-    color: #cc6b43;
+    color: #e07844;
     border-bottom: 1px solid #ddd;
     font-weight: 900;
 }
 
 .blog .blog-entry .blog-meta a:hover {
-    border-bottom: 1px solid #cc6b43;
+    border-bottom: 1px solid #e07844;
 }
 
 .blog .blog-entry .blog-content {
@@ -573,7 +575,7 @@ label {
 }
 
 .blog .blog-entry .blog-content .more:hover {
-    background-color: #cc6b43;
+    background-color: #e07844;
     color: #fff;
     text-decoration: none;
     border-color: #fff;
@@ -627,8 +629,8 @@ span.divider.divider.divider.divider {
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 700;
-    /*color: #cc6b43;*/
-    border-bottom: 2px solid #cc6b43;
+    /*color: #e07844;*/
+    border-bottom: 2px solid #e07844;
     padding-bottom: 3px;
     letter-spacing: 1px;
 }
@@ -643,7 +645,7 @@ span.divider.divider.divider.divider {
     font-size: 14px;
     margin: 5px 5px 5px 0;
     color: white;
-    background: #cc6b43;
+    background: #e07844;
     cursor: pointer;
     letter-spacing: 1px;
 }
@@ -743,7 +745,7 @@ span.divider.divider.divider.divider {
     font-size: 18px;
     line-height: 67px;
     color: white;
-    background: #cc6b43;
+    background: #e07844;
     text-align: center;
     margin: 0;
 }
@@ -800,7 +802,7 @@ span.divider.divider.divider.divider {
     font-size: 13px;
     float: right;
     padding: 3px 0;
-    color: #cc6b43;;
+    color: #e07844;;
     /*background: #f8f8f8;*/
     /*border: 1px solid #ccc;*/
     margin-top: 1px;
@@ -818,7 +820,7 @@ span.divider.divider.divider.divider {
 
 .blog-area .blog .related-blog .related-blog-wrapper .more-blog a {
     padding: .8em 2em;
-    background: #cc6b43;
+    background: #e07844;
     color: white;
 }
 
@@ -864,7 +866,7 @@ a.facebook:hover, a.twitter:hover {
 .blog-area .blog .social .comment {
     float: right;
     padding: 5px 25px;
-    background: #cc6b43;
+    background: #e07844;
     color: white;
 }
 
@@ -916,7 +918,7 @@ a.facebook:hover, a.twitter:hover {
 
 .comments .comment-row .display-comment .btn-group a {
     padding: 5px 10px;
-    background: #cc6b43;
+    background: #e07844;
     color: white;
     font-size: 12px;
     font-weight: 600;
@@ -1030,7 +1032,7 @@ article .breadcrumb a {
 }
 
 article .breadcrumb a:hover {
-    color: #cc6b43;
+    color: #e07844;
 }
 
 .header-image {
@@ -1070,7 +1072,7 @@ article .breadcrumb a:hover {
     padding: 0 4%;;
     font-weight: bold;
     color: white;
-    background: #cc6b43;
+    background: #e07844;
     cursor: pointer;
 }
 
@@ -1121,7 +1123,7 @@ article .breadcrumb a:hover {
 }
 
 .main-navigation .menu {
-    width: 80%;
+    width: 83%;
     margin: 0 auto;
 }
 
