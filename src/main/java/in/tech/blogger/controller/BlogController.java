@@ -47,7 +47,7 @@ public class BlogController {
     @RequestMapping("/blog/{friendlyUrl}")
     ModelAndView show(@PathVariable String friendlyUrl) {
         ModelAndView modelAndView = new ModelAndView("/blog/show");
-        modelAndView.addObject("blog", blogService.findAndIncView(friendlyUrl));
+        modelAndView.addObject("blogVO", blogService.findAndIncView(friendlyUrl));
         return modelAndView;
     }
 

@@ -1,6 +1,7 @@
 package in.tech.blogger.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import in.tech.blogger.modal.BlogModel;
 import in.tech.blogger.util.Utils;
 import org.springframework.data.annotation.CreatedDate;
@@ -50,9 +51,6 @@ public class Blog implements Persistable<String> {
     @Indexed
     List<String> tags;
 
-    @DBRef(lazy = true)
-    List<Blog> relatedBlog;
-
     @DBRef
     User user;
 
@@ -64,6 +62,8 @@ public class Blog implements Persistable<String> {
 
     @LastModifiedDate
     Date lastUpdated;
+
+    Boolean isRecommended;
 
     Long views = 0l;
 
@@ -164,14 +164,6 @@ public class Blog implements Persistable<String> {
         this.tags = tags;
     }
 
-    public List<Blog> getRelatedBlog() {
-        return relatedBlog;
-    }
-
-    public void setRelatedBlog(List<Blog> relatedBlog) {
-        this.relatedBlog = relatedBlog;
-    }
-
     public User getUser() {
         return user;
     }
@@ -220,6 +212,18 @@ public class Blog implements Persistable<String> {
         return Utils.getPrettyFormat(this.views);
     }
 
+    public Boolean getIsRecommended() {
+        if (isRecommended == null) {
+            return false;
+        }
+        return isRecommended;
+    }
+
+    public void setIsRecommended(Boolean isRecommended) {
+        this.isRecommended = isRecommended;
+    }
+
+    @JsonIgnore
     public List<Category> getSortedCategories() {
         if (relatedCategories != null) {
             return relatedCategories.stream().sorted((category1, category2) -> {
@@ -229,26 +233,6 @@ public class Blog implements Persistable<String> {
         return Arrays.asList();
     }
 
-    @Override
-    public String toString() {
-        return "Blog{" +
-                "views=" + views +
-                ", lastUpdated=" + lastUpdated +
-                ", dateCreated=" + dateCreated +
-                ", friendlyUrl='" + friendlyUrl + '\'' +
-                ", user=" + user +
-                ", relatedBlog=" + relatedBlog +
-                ", tags=" + tags +
-                ", isPublished=" + isPublished +
-                ", relatedCategories=" + relatedCategories +
-                ", category=" + category +
-                ", content='" + content + '\'' +
-                ", briefIntroduction='" + briefIntroduction + '\'' +
-                ", title='" + title + '\'' +
-                ", shortHeading='" + shortHeading + '\'' +
-                ", id='" + id + '\'' +
-                '}';
-    }
 
     public static List<String> getAllFields() {
         List<String> fields = new ArrayList<String>();
@@ -256,5 +240,26 @@ public class Blog implements Persistable<String> {
             fields.add(field.getName());
         }
         return fields;
+    }
+
+    @Override
+    public String toString() {
+        return "Blog{" +
+                "id='" + id + '\'' +
+                ", shortHeading='" + shortHeading + '\'' +
+                ", title='" + title + '\'' +
+                ", briefIntroduction='" + briefIntroduction + '\'' +
+                ", content='" + content + '\'' +
+                ", category=" + category +
+                ", relatedCategories=" + relatedCategories +
+                ", isPublished=" + isPublished +
+                ", tags=" + tags +
+                ", user=" + user +
+                ", friendlyUrl='" + friendlyUrl + '\'' +
+                ", dateCreated=" + dateCreated +
+                ", lastUpdated=" + lastUpdated +
+                ", isRecommended=" + isRecommended +
+                ", views=" + views +
+                '}';
     }
 }

@@ -1,81 +1,42 @@
 package in.tech.blogger.vo;
 
 import in.tech.blogger.domain.Blog;
-import in.tech.blogger.modal.BlogModel;
 
-import java.util.Date;
+import java.util.List;
 
 public class BlogVO {
+    Blog blog;
+    List<Blog> recommendations;
 
-    Long id;
-    String title;
-    String content;
-    Boolean active;
-    Date dateCreated;
-    Date lastUpdated;
-    CategoryVO category = new CategoryVO();
+    public BlogVO() {
+
+    }
 
     public BlogVO(Blog blog) {
-
+        this.blog = blog;
     }
 
-    public BlogVO(BlogModel blog) {
-
+    public Blog getBlog() {
+        return blog;
     }
 
-    public Long getId() {
-        return id;
+    public void setBlog(Blog blog) {
+        this.blog = blog;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public List<Blog> getRecommendations() {
+        return recommendations;
     }
 
-    public CategoryVO getCategory() {
-        return category;
+    public void setRecommendations(List<Blog> recommendations) {
+        this.recommendations = recommendations;
     }
 
-    public void setCategory(CategoryVO categoryVO) {
-        this.category = categoryVO;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
-
-    public Date getDateCreated() {
-        return dateCreated;
-    }
-
-    public void setDateCreated(Date dateCreated) {
-        this.dateCreated = dateCreated;
-    }
-
-    public Date getLastUpdated() {
-        return lastUpdated;
-    }
-
-    public void setLastUpdated(Date lastUpdated) {
-        this.lastUpdated = lastUpdated;
+    @Override
+    public String toString() {
+        return "BlogVO{" +
+                "blog=" + blog +
+                ", recommendations=" + recommendations +
+                '}';
     }
 }

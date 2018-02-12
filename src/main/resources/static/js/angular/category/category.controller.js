@@ -1,7 +1,24 @@
 angular
     .module("techBlogger")
-    .controller("CategoryController", ["Category", "$compile", "$scope", function (Category, $compile, $scope) {
+    .controller("CategoryController", ["Blog", "Category", "$scope", "$location", function (Blog, Category, $scope, $location) {
         var self = this;
+        self.category = {};
+
+        self.show = function () {
+
+            var friendlyUrl = $location.search()["friendlyUrl"];
+
+            Category.show({friendlyUrl: friendlyUrl}, function (response) {
+                self.category = response.category;
+            })
+        };
+
+        self.toggleRecommendation = function (blog) {
+            Blog.toggleRecommendation({id: blog.id}, function (response) {
+                    blog.isRecommended = response.blog.isRecommended
+                }
+            )
+        };
 
 
         self.categoryTree = function () {

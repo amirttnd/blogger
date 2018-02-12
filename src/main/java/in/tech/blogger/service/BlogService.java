@@ -7,6 +7,7 @@ import in.tech.blogger.modal.BlogModel;
 import in.tech.blogger.query.BlogQuery;
 import in.tech.blogger.repository.BlogRepository;
 import in.tech.blogger.repository.CategoryRepository;
+import in.tech.blogger.vo.BlogVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
@@ -57,14 +58,29 @@ public class BlogService {
         return blogRepository.findByFriendlyUrl(friendlyUrl);
     }
 
-    public Blog findAndIncView(String friendlyUrl) {
+    public BlogVO findAndIncView(String friendlyUrl) {
+        BlogVO blogVO = new BlogVO();
         Blog blog = blogRepository.findByFriendlyUrl(friendlyUrl);
         blog.incViews();
-        return blogRepository.save(blog);
+        blogRepository.save(blog);
+
+        blogVO.setBlog(blog);
+        blogVO.setRecommendations(blogRepository.findAllByCategoryAndIsRecommended(blog.getCategory(), true));
+        System.out.println(blogVO);
+        return blogVO;
     }
 
     public List<Blog> search(BlogQuery blogQuery) {
         return mongoTemplate.find(blogQuery.build(), Blog.class);
+    }
+
+    public Blog toggleRecommendation(String id) {
+        Blog blog = blogRepository.findById(id);
+        if (blog != null) {
+            blog.setIsRecommended(!blog.getIsRecommended());
+            return blogRepository.save(blog);
+        }
+        return null;
     }
 
 }

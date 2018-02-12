@@ -772,7 +772,7 @@ span.divider.divider.divider.divider {
     line-height: 24px;
     overflow: hidden;
     max-height: 143px;
-    text-align: justify;
+    text-align: left;
 }
 
 .blog-area .blog .related-blog .related-blog-wrapper ul li .content .bottom {

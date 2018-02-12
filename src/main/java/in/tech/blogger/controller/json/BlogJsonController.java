@@ -24,7 +24,6 @@ public class BlogJsonController {
 
     @RequestMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
     ResponseEntity<Map<String, Object>> save(@RequestBody BlogModel blogModel) {
-        System.out.println(blogModel.toString());
         Map<String, Object> responseMap = new LinkedHashMap<>();
         Blog blog = blogService.save(blogModel);
         responseMap.put("status", blog != null);
@@ -42,9 +41,18 @@ public class BlogJsonController {
     }
 
     @RequestMapping(value = "/get", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
-    ResponseEntity<Map<String, Object>> list(@RequestParam String id) {
+    ResponseEntity<Map<String, Object>> get(@RequestParam String id) {
         Map<String, Object> responseMap = new LinkedHashMap<>();
         Blog blog = blogService.findById(id);
+        responseMap.put("status", blog != null);
+        responseMap.put("blog", blog);
+        return new ResponseEntity<Map<String, Object>>(responseMap, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/toggleRecommendation", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    ResponseEntity<Map<String, Object>> toggle(@RequestParam String id) {
+        Map<String, Object> responseMap = new LinkedHashMap<>();
+        Blog blog = blogService.toggleRecommendation(id);
         responseMap.put("status", blog != null);
         responseMap.put("blog", blog);
         return new ResponseEntity<Map<String, Object>>(responseMap, HttpStatus.OK);

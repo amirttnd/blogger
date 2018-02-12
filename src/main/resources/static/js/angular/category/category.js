@@ -32,6 +32,12 @@ angular
                 params: {
                     action: "delete"
                 }
+            },
+            show: {
+                method: "GET",
+                params: {
+                    action: "show"
+                }
             }
         })
     }]);

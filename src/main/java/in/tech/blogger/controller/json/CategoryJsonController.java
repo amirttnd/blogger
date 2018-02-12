@@ -5,6 +5,7 @@ import in.tech.blogger.domain.Category;
 import in.tech.blogger.modal.CategoryModel;
 import in.tech.blogger.service.CategoryService;
 import in.tech.blogger.vo.CategoryTreeVO;
+import in.tech.blogger.vo.CategoryVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -72,5 +73,13 @@ public class CategoryJsonController {
         Boolean staus = categoryService.delete(id);
         responseMap.put("status", staus);
         return new ResponseEntity<Map<String, Boolean>>(responseMap, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/show", method = RequestMethod.GET)
+    ResponseEntity<Map<String, Object>> show(@RequestParam String friendlyUrl) {
+        Map<String, Object> responseMap = new HashMap<>();
+        CategoryVO categoryVO = categoryService.detail(friendlyUrl);
+        responseMap.put("category", categoryVO);
+        return new ResponseEntity<Map<String, Object>>(responseMap, HttpStatus.OK);
     }
 }

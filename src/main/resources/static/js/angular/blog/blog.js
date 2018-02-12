@@ -19,6 +19,12 @@ angular
                 params: {
                     action: "get"
                 }
+            },
+            toggleRecommendation: {
+                method: "GET",
+                params: {
+                    action: "toggleRecommendation"
+                }
             }
         })
     }]);

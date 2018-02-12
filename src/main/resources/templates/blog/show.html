@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head lang="en">
-    <title th:text="${blog.shortHeading}+ ' - '+ ${blog.title}"></title>
+    <title th:text="${blogVO.blog.shortHeading}+ ' - '+ ${blogVO.blog.title}"></title>
     <th:block th:replace="layout/main::head"/>
 
 </head>
@@ -9,7 +9,7 @@
 
 <th:block th:include="layout/main::main-menu"/>
 
-<div class="blog-area">
+<div class="blog-area" th:with="blog=${blogVO.blog}">
     <div class="blog">
         <article>
 
@@ -34,56 +34,33 @@
                 <a href="" class="comment"><i class="fa fa-comment"></i>&nbsp;Comment</a>
             </div>
         </div>
-        <div class="related-blog">
+        <div class="related-blog" th:if="${#lists.isEmpty(blogVO.recommendations)==false}"
+             th:with="recommendations=${blogVO.recommendations}">
             <h2>Recommend for you</h2>
 
             <div class="related-blog-wrapper">
                 <ul>
-                    <li>
-                        <h1 class="head">
-                            String vs StringBuffer
+                    <li th:each="recommendation:${recommendations}">
+                        <h1 class="head" th:text="${recommendation.shortHeading}">
+
                         </h1>
 
                         <div class="content">
-                            <h3>Difference between String vs StringBuffer</h3>
+                            <h3 th:text="${recommendation.title}"></h3>
 
-                            <p>
-                                No ratings.
-                                Version: 1.0.1Melos Business is the free version of the multi-purpose professional theme
-                                (Melos Pro) ideal for a business or blog website. The theme has a responsive layout, HD
-                                retina ready and comes with a powerful theme options panel with can be used
-                            </p>
+                            <p th:text="${recommendation.briefIntroduction}"></p>
 
                         </div>
                         <div class="bottom">
-                            <span><i class="fa fa-calendar"></i>&nbsp;JAN 22, 2017</span>
-                            <a href="">Read more</a>
-                        </div>
-                    </li>
-                    <li>
-                        <h1 class="head">
-                            String vs StringBuffer
-                        </h1>
-
-                        <div class="content">
-                            <h3>Difference between String vs StringBuffer</h3>
-
-                            <p>
-                                No ratings.
-                                Version: 1.0.1Melos Business is the free version of the multi-purpose professional theme
-
-                            </p>
-
-                        </div>
-                        <div class="bottom">
-                            <span><i class="fa fa-calendar"></i>&nbsp;JAN 22, 2017</span>
-                            <a href="">Read more</a>
+                            <span>
+                                <i class="fa fa-calendar"></i>
+                                &nbsp;&nbsp;
+                                <span th:text="${#dates.format(recommendation.dateCreated,'MMMM  dd, yyyy')}"></span>
+                            </span>
+                            <a th:href="@{/blog/{friendlyUrl}(friendlyUrl=${recommendation.friendlyUrl})}">Read more</a>
                         </div>
                     </li>
                 </ul>
-                <div class="more-blog">
-                    <a href="">View more</a>
-                </div>
             </div>
         </div>
         <div class="comment-area">

@@ -23,7 +23,8 @@ public class BlogModel {
 
     List<String> tags;
 
-    List relatedBlog;
+    Boolean isRecommended;
+
 
     public String getId() {
         return id;
@@ -100,12 +101,12 @@ public class BlogModel {
         this.tags = tags;
     }
 
-    public List getRelatedBlog() {
-        return relatedBlog;
+    public Boolean getIsRecommended() {
+        return isRecommended;
     }
 
-    public void setRelatedBlog(List relatedBlog) {
-        this.relatedBlog = relatedBlog;
+    public void setIsRecommended(Boolean isRecommended) {
+        this.isRecommended = isRecommended;
     }
 
     @Override
@@ -120,7 +121,7 @@ public class BlogModel {
                 ", relatedCategories=" + relatedCategories +
                 ", isPublished=" + isPublished +
                 ", tags=" + tags +
-                ", relatedBlog=" + relatedBlog +
+                ", isRecommended=" + isRecommended +
                 '}';
     }
 }
