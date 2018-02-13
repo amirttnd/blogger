@@ -1,8 +1,12 @@
 package in.tech.blogger.domain;
 
 import in.tech.blogger.modal.CommentModel;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.Date;
 
 @Document
 public class Comment {
@@ -21,6 +25,12 @@ public class Comment {
     String websiteURL;
 
     String parentId;
+
+    @CreatedDate
+    Date dateCreated;
+
+    @LastModifiedDate
+    Date lastUpdated;
 
     public Comment() {
 
@@ -94,5 +104,21 @@ public class Comment {
 
     public void setParentId(String parentId) {
         this.parentId = parentId;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public Date getLastUpdated() {
+        return lastUpdated;
+    }
+
+    public void setLastUpdated(Date lastUpdated) {
+        this.lastUpdated = lastUpdated;
     }
 }
