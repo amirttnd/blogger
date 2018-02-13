@@ -1,6 +1,6 @@
 angular
     .module("techBlogger")
-    .controller("BlogController", ["Blog", "Category", "$scope", "$location", function (Blog, Category, $scope, $location) {
+    .controller("BlogController", ["Blog", "Category", "Comment", "$scope", "$window", "$location", function (Blog, Category, Comment, $scope, $window, $location) {
         var self = this;
         self.blog = {};
 
@@ -82,5 +82,13 @@ angular
             _.remove(self.blog.relatedCategories, function (category) {
                 return category.id == id
             });
+        };
+
+        self.comments = function () {
+            var blogId = window.blogId;
+            alert()
+            Comment.findAllByReferenceId({referenceId: blogId}, function (response) {
+                console.log(response)
+            })
         }
     }]);

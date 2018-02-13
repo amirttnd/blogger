@@ -1,7 +1,9 @@
 package in.tech.blogger.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 public class User {
 
 
@@ -12,11 +14,9 @@ public class User {
 
     String lastName;
 
-    String userName;
-
     String email;
 
-    Boolean enable = true;
+    Boolean enabled = true;
 
     public Long getId() {
         return id;
@@ -42,14 +42,6 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -58,11 +50,11 @@ public class User {
         this.email = email;
     }
 
-    public Boolean getEnable() {
-        return enable;
+    public Boolean getEnabled() {
+        return enabled;
     }
 
-    public void setEnable(Boolean enable) {
-        this.enable = enable;
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 }

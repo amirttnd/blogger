@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html ng-app="techBlogger" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head lang="en">
     <title th:text="${blogVO.blog.shortHeading}+ ' - '+ ${blogVO.blog.title}"></title>
     <th:block th:replace="layout/main::head"/>
-
+    <script type="text/javascript" th:inline="javascript">
+        window.friendlyUrl =/*[[${blogVO.blog.friendlyUrl}]]*/;
+        window.blogId =/*[[${blogVO.blog.id}]]*/;
+    </script>
 </head>
 <body>
 
 <th:block th:include="layout/main::main-menu"/>
 
-<div class="blog-area" th:with="blog=${blogVO.blog}">
+<div class="blog-area" th:with="blog=${blogVO.blog}" ng-controller="BlogController as blogCtrl" ng-init="blogCtrl.comments()">
     <div class="blog">
         <article>
 
@@ -97,72 +100,6 @@
                                     <input type="text" placeholder="Webiste URL" class="web-site-url"/>
 
                                     <input type="button" class="btn" value="As guest reply"/>
-                                </div>
-                            </div>
-
-
-                        </div>
-                        <ul class="reply">
-                            <li class="reply-row">
-                                <img src="/images/user-icon.png"/>
-
-                                <div class="display-comment">
-                                    <span class="user-name">mohd.amir</span>
-                                    <span class="date"><i class="fa fa-calendar">&nbsp;</i>JAN 20, 2017</span>
-
-                                    <p class="text">
-                                        No ratings. Version: 1.0.1Melos Business is the free version of the
-
-                                    </p>
-
-                                    <div class="btn-group">
-                                        <a href=""><i class="fa fa-trash"></i>&nbsp;Delete</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="reply-row">
-                                <img src="/images/user-icon.png"/>
-
-                                <div class="display-comment">
-                                    <span class="user-name">mohd.amir</span>
-                                    <span class="date"><i class="fa fa-calendar">&nbsp;</i>JAN 20, 2017</span>
-
-                                    <p class="text">
-                                        No ratings. Version: 1.0.1Melos Business is the free version of the. No ratings.
-                                        Version: 1.0.1Melos Business is the free version of the
-                                        No ratings. Version: 1.0.1Melos Business is the free version of the
-                                        No ratings. Version: 1.0.1Melos Business is the free version of the
-
-
-                                    </p>
-
-                                    <div class="btn-group">
-                                        <a href=""><i class="fa fa-trash"></i>&nbsp;Delete</a>
-                                    </div>
-
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="comment-row">
-                        <img src="/images/user-icon.png"/>
-
-                        <div class="display-comment">
-                            <span class="user-name">mohd.amir</span>
-
-                            <span class="date"><i class="fa fa-calendar">&nbsp;</i>JAN 20, 2017</span>
-
-                            <p class="text">
-                                No ratings. Version: 1.0.1Melos Business is the free version of the multi-purpose
-                                professional theme (Melos Pro)
-                            </p>
-
-                            <div class="btn-group">
-                                <a href=""><i class="fa fa-reply"></i>&nbsp;Reply</a>
-                                <a href=""><i class="fa fa-trash"></i>&nbsp;Delete</a>
-
-                                <div class="reply-box">
-                                    <input type="text" placeholder="Write a comment"/>
                                 </div>
                             </div>
 
