@@ -263,7 +263,7 @@ label {
 
 .btn {
     border: none;
-    padding: 10px 20px;
+    padding: 8px 18px;
     background: #e07844;
     color: white;
     font-size: 15px;
@@ -876,6 +876,7 @@ a.facebook:hover, a.twitter:hover {
     margin-top: 1.2em;
     background: #fafafa;
     border: 1px solid #cccccc;
+    font-family: serif;
 }
 
 .comment-area .comment-wrapper .comments .comment-row {
@@ -925,45 +926,53 @@ a.facebook:hover, a.twitter:hover {
     font-weight: 600;
 }
 
-.comments .comment-row .display-comment .btn-group .reply-box {
+.comments .comment-row .reply-box {
     width: 80%;
 }
 
-.comments .comment-row .display-comment .btn-group .reply-box input[type='text'] {
-    margin: 13px 0;
+.comments .comment-row .reply-box input[type='text'] {
+    margin-bottom: 13px;
     border: 1px solid #cccccc;
     height: 38px;
     font-size: 15px;
     padding: 5px;
+    font-family: serif;
 }
 
-.comments .comment-row .display-comment .btn-group .reply-box p {
-    margin: 2em 0 0 0;
+.comments .comment-row  .reply-box p {
+    margin: 1.5em 0 13px 0;
     font-size: 17px;
     font-style: italic;
     font-weight: 600;
 }
 
-.display-comment .btn-group .reply-box .full-name, .display-comment .btn-group .reply-box .email {
+ .reply-box .full-name, .reply-box .email {
     width: 48%;
 }
 
-.display-comment .btn-group .reply-box .full-name {
+ .reply-box .full-name {
     float: right;
 }
 
-.comments .comment-row .display-comment .btn-group .reply-box textarea {
+.comments .reply-box textarea {
     width: 100%;
     min-height: 66px;
     border: 1px solid #ccc;
+    margin-bottom: 9px;
+    font-family: serif;
 }
 
-.comments .comment-row .display-comment .btn-group .reply-box .btn {
+.comments .reply-box .btn {
     margin-top: 0;
 }
 
-.comments .comment-row .display-comment .btn-group .reply-box .web-site-url {
+.comments  .reply-box .web-site-url {
     width: 100%;
+}
+
+.comments .comment-from .reply-box{
+    margin: 0 auto;
+    width: 78%;
 }
 
 .comments .comment-row .display-comment .btn-group a:hover {

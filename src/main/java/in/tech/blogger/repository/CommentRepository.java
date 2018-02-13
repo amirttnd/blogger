@@ -17,4 +17,4 @@ public interface CommentRepository extends MongoRepository<Comment, String> {
     List<Comment> findAllByParentId(String parentId);
 
     Long countByReferenceId(String referenceId);
-}   
+}
