@@ -49,4 +49,8 @@ public class CommentService {
         }
         return commentVOs;
     }
+
+    public Long countByReferenceId(String referenceId) {
+        return commentRepository.countByReferenceId(referenceId);
+    }
 }

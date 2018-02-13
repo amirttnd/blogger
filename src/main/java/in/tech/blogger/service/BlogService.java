@@ -25,6 +25,9 @@ public class BlogService {
     CategoryRepository categoryRepository;
 
     @Autowired
+    CommentService commentService;
+
+    @Autowired
     MongoTemplate mongoTemplate;
 
     public Blog save(BlogModel blogModel) {
@@ -65,6 +68,7 @@ public class BlogService {
         blogRepository.save(blog);
 
         blogVO.setBlog(blog);
+        blogVO.setComments(commentService.countByReferenceId(blog.getId()));
         blogVO.setRecommendations(blogRepository.findAllByCategoryAndIsRecommended(blog.getCategory(), true));
         return blogVO;
     }

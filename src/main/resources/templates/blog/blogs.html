@@ -14,7 +14,7 @@
     <div class="blog">
         <article th:each="blog:${blogs}">
             <div class="blog-entry">
-                <th:block th:replace="/blog/fragment/header::header(${blog})"/>
+                <th:block th:replace="/blog/fragment/header::header(${blog},0)"/>
 
                 <div class="blog-content">
                     <div th:utext="${blog.briefIntroduction}"></div>

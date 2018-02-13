@@ -10,6 +10,8 @@ angular
 
         self.blog.category = {};
 
+        self.comments = [];
+
         self.list = function () {
             var params = {};
 
@@ -86,9 +88,16 @@ angular
 
         self.comments = function () {
             var blogId = window.blogId;
-            alert()
             Comment.findAllByReferenceId({referenceId: blogId}, function (response) {
                 console.log(response)
+                self.comments = response.comments
             })
+        };
+
+        self.getCommentSize = function () {
+            if (self.comments) {
+                return self.comments.length;
+            }
+            return 0;
         }
     }]);

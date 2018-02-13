@@ -12,12 +12,13 @@
 
 <th:block th:include="layout/main::main-menu"/>
 
-<div class="blog-area" th:with="blog=${blogVO.blog}" ng-controller="BlogController as blogCtrl" ng-init="blogCtrl.comments()">
+<div class="blog-area" th:with="blog=${blogVO.blog},comments=${blogVO.comments}"
+     ng-controller="BlogController as blogCtrl" ng-init="blogCtrl.comments()">
     <div class="blog">
         <article>
 
             <div class="blog-entry">
-                <th:block th:replace="/blog/fragment/header::header(${blog})"/>
+                <th:block th:replace="/blog/fragment/header::header(${blog},${comments})"/>
 
                 <div class="blog-content" th:utext="${blog.content}">
 
