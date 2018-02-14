@@ -482,6 +482,7 @@ label {
     padding: 45px 0;
     width: 90%;
     margin: 0 auto;
+    min-height: 198px;
 }
 
 .blog-area .blog {
@@ -574,7 +575,7 @@ label {
 }
 
 .blog .blog-entry .blog-content .more:hover {
-    background-color: #d65a1c;
+    background-color: #000000;
     text-decoration: none;
 }
 
@@ -606,7 +607,7 @@ span.divider.divider.divider.divider {
     background-position: 96%;
     background-color: white;
     background-size: 18px;
-    border-radius: 6px;
+    border-radius: 30px;
 }
 
 .search-box:focus {
@@ -907,14 +908,6 @@ a.facebook:hover, a.twitter:hover {
     padding: 0 6px;
 }
 
-.comment-area .comment-wrapper .comments .comment-row .display-comment .text {
-    padding: 0;
-    margin: 4px 0 9px 0;
-    font-size: 16px;
-    line-height: 1.4em;
-    color: #444444;
-}
-
 .comments .comment-row .display-comment .btn-group a {
     padding: 5px 10px;
     background: #e07844;
@@ -927,13 +920,18 @@ a.facebook:hover, a.twitter:hover {
     width: 80%;
 }
 
-.comments .comment-row .reply-box input[type='text'] {
+.comments .comment-row .reply-box .text {
     margin-bottom: 13px;
     border: 1px solid #cccccc;
     height: 38px;
     font-size: 15px;
-    padding: 5px;
+    padding: 20px 12px;
     font-family: serif;
+    border-radius: 4px;
+}
+
+.comments .comment-row .reply-box .text:focus {
+    outline: none;
 }
 
 .comments .comment-row .reply-box p {
@@ -953,10 +951,13 @@ a.facebook:hover, a.twitter:hover {
 
 .comments .reply-box textarea {
     width: 100%;
-    min-height: 66px;
+    min-height: 79px;
     border: 1px solid #ccc;
     margin-bottom: 9px;
     font-family: serif;
+    font-size: 15px;
+    padding: 14px 12px;
+    border-radius: 4px;
 }
 
 .comments .reply-box textarea:focus {
@@ -971,8 +972,8 @@ a.facebook:hover, a.twitter:hover {
     width: 100%;
 }
 
-.comments .comment-from .reply-box {
-    margin: 0 auto;
+.comments .comment-form .reply-box {
+    margin: 0 auto 3em auto;
     width: 78%;
 }
 
@@ -1145,4 +1146,8 @@ article .breadcrumb a:hover {
     top: 0;
     z-index: 1;
     margin-bottom: 90px;
+}
+
+.comment-wrapper .comment-header{
+    margin-bottom: 2em;
 }

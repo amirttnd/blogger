@@ -27,6 +27,10 @@ public class CommentService {
     public Boolean delete(String id) {
         Comment comment = commentRepository.findById(id);
         if (comment != null) {
+            if (comment.isParent()) {
+                List<Comment> replies = commentRepository.findAllByParentId(comment.getId());
+                commentRepository.delete(replies);
+            }
             commentRepository.delete(comment);
             return true;
         }

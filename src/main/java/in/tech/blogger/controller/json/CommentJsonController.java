@@ -23,7 +23,7 @@ public class CommentJsonController {
     CommentService commentService;
 
     @RequestMapping(value = "/save", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    ResponseEntity<Map<String, Object>> save(@ModelAttribute CommentModel commentModel) {
+    ResponseEntity<Map<String, Object>> save(@RequestBody CommentModel commentModel) {
         Map<String, Object> responseMap = new HashMap<>();
         Comment comment = commentService.save(commentModel);
         responseMap.put("status", comment != null);

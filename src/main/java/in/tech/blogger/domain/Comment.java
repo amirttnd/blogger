@@ -47,6 +47,7 @@ public class Comment {
             this.referenceId = model.getReferenceId();
             this.comment = model.getComment();
             this.parentId = model.getParentId();
+            this.websiteURL = model.getWebsiteURL();
         }
     }
 
@@ -120,5 +121,9 @@ public class Comment {
 
     public void setLastUpdated(Date lastUpdated) {
         this.lastUpdated = lastUpdated;
+    }
+
+    public Boolean isParent() {
+        return parentId == null;
     }
 }
