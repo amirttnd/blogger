@@ -5,6 +5,8 @@ import in.tech.blogger.modal.CommentModel;
 import in.tech.blogger.repository.CommentRepository;
 import in.tech.blogger.vo.CommentVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
@@ -44,7 +46,8 @@ public class CommentService {
     public List<CommentVO> findAllByReferenceId(String referenceId) {
         CommentVO commentVO;
         List<CommentVO> commentVOs = new ArrayList<>();
-        List<Comment> parents = commentRepository.findAllByReferenceIdAndParentIdIsNull(referenceId);
+        PageRequest pageRequest = new PageRequest(0, 100, Sort.Direction.ASC, "dateCreated");
+        List<Comment> parents = commentRepository.findAllByReferenceIdAndParentIdIsNull(referenceId, pageRequest);
         for (Comment parent : parents) {
             commentVO = new CommentVO();
             commentVO.setComment(parent);
