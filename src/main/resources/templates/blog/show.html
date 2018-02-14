@@ -145,6 +145,9 @@
 
     </div>
     <div class="right-panel right">
+        <th:block th:replace="layout/main::search-box">
+
+        </th:block>
 
         <ul class="sub-categories">
             <li class="sub-category">
@@ -183,7 +186,7 @@
             </div>
             <ul class="tags">
                 <li th:each="relatedCategory:${blog.sortedCategories}">
-                    <a class="tag-info" th:href="@{/blogs(categoryId=${relatedCategory.id})}"
+                    <a target="_self" class="tag-info" th:href="@{/blogs(categoryId=${relatedCategory.id})}"
                        th:text="${relatedCategory.name}">
                     </a>
                 </li>

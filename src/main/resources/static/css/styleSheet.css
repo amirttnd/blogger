@@ -456,7 +456,6 @@ label {
     letter-spacing: 1px;
 }
 
-
 .main-navigation a:hover {
     color: white;
     background: #d65a1c;
@@ -558,7 +557,7 @@ label {
     margin-top: 3em;
     display: inline-block;
     padding: 15px 18px;
-    border: 2px solid #111;
+    /* border: 2px solid #111; */
     font-family: Lato, Helvetica, sans-serif;
     font-size: .8rem;
     line-height: 1;
@@ -566,19 +565,17 @@ label {
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #111;
+    color: white;
     -webkit-transition: background-color 400ms ease;
     -moz-transition: background-color 400ms ease;
     -o-transition: background-color 400ms ease;
     transition: background-color 400ms ease;
-    background: #ffffff;
+    background: #e07844;
 }
 
 .blog .blog-entry .blog-content .more:hover {
-    background-color: #e07844;
-    color: #fff;
+    background-color: #d65a1c;
     text-decoration: none;
-    border-color: #fff;
 }
 
 span.divider.divider.divider.divider {
@@ -591,7 +588,7 @@ span.divider.divider.divider.divider {
 }
 
 .blog-area .right-panel .search-form {
-    width: 100%;
+    margin-bottom: 2em;
 }
 
 .blog-area .right-panel .search-form .search-box {
@@ -599,10 +596,9 @@ span.divider.divider.divider.divider {
     display: block;
     width: 100%;
     max-width: 100%;
-    padding: 20px 60px 20px 20px;
+    padding: 15px 15px;
     margin: 0;
-    border: 1px solid #ddd;
-    border-radius: 0;
+    border: 1px solid #D6D4CF;
     font-family: Lato, Helvetica, sans-serif;
     font-size: .9rem;
     color: #111;
@@ -610,6 +606,7 @@ span.divider.divider.divider.divider {
     background-position: 96%;
     background-color: white;
     background-size: 18px;
+    border-radius: 6px;
 }
 
 .search-box:focus {
@@ -651,7 +648,7 @@ span.divider.divider.divider.divider {
     letter-spacing: 1px;
 }
 
-.blog-area .right-panel .related-categories .tags li{
+.blog-area .right-panel .related-categories .tags li {
     display: inline-block;
 }
 
@@ -939,18 +936,18 @@ a.facebook:hover, a.twitter:hover {
     font-family: serif;
 }
 
-.comments .comment-row  .reply-box p {
+.comments .comment-row .reply-box p {
     margin: 1.5em 0 13px 0;
     font-size: 17px;
     font-style: italic;
     font-weight: 600;
 }
 
- .reply-box .full-name, .reply-box .email {
+.reply-box .full-name, .reply-box .email {
     width: 48%;
 }
 
- .reply-box .full-name {
+.reply-box .full-name {
     float: right;
 }
 
@@ -962,15 +959,19 @@ a.facebook:hover, a.twitter:hover {
     font-family: serif;
 }
 
+.comments .reply-box textarea:focus {
+    outline: none;
+}
+
 .comments .reply-box .btn {
     margin-top: 0;
 }
 
-.comments  .reply-box .web-site-url {
+.comments .reply-box .web-site-url {
     width: 100%;
 }
 
-.comments .comment-from .reply-box{
+.comments .comment-from .reply-box {
     margin: 0 auto;
     width: 78%;
 }
@@ -1114,13 +1115,13 @@ article .breadcrumb a:hover {
     margin-right: 6px;
     font-weight: bold;
     color: #666;
-    margin-top: 6px;
+    margin-top: 9px;
     border-radius: 5px;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-.tags a.tag-info:hover{
+.tags a.tag-info:hover {
     background: #f56f2c;
     color: white;
 }

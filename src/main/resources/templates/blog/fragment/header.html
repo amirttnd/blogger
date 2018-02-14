@@ -6,14 +6,14 @@
     <h1 class="title" th:text="${blog.title}"></h1>
 
     <div class="breadcrumb">
-        <a href="/blog.html"><i class="fa fa-home"></i></a>
+        <a target="_self" href="/blog.html"><i class="fa fa-home"></i></a>
         <span class="divider">|</span>
         <th:block th:if="${blog.category.parent!=null}">
-            <a th:text="${blog.category.parent.name}"></a>
+            <a target="_self" th:text="${blog.category.parent.name}"></a>
             <span class="divider">|</span>
         </th:block>
 
-        <a th:href="@{/blogs(categoryId=${blog.category.id})}" th:text="${blog.category.name}"></a>
+        <a target="_self" th:href="@{/blogs(categoryId=${blog.category.id})}" th:text="${blog.category.name}"></a>
     </div>
     <div class="blog-meta">
         <span>
