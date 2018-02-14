@@ -71,12 +71,13 @@
                 </ul>
             </div>
         </div>
-        <div class="comment-area" ng-controller="CommentController as commentCtrl" ng-init="commentCtrl.list()" data-ng-cloak="">
+        <div class="comment-area" ng-controller="CommentController as commentCtrl" ng-init="commentCtrl.list()"
+             data-ng-cloak="">
             <h2>Post Comment</h2>
 
             <div class="comment-wrapper">
                 <div class="comment-header">
-                    <h3><i class="fa fa-comment">&nbsp;&nbsp;</i>Comments (152)</h3>
+                    <h3><i class="fa fa-comment">&nbsp;&nbsp;</i>Comments ({{commentCtrl.getTotalComment()}})</h3>
                 </div>
                 <ul class="comments">
                     <li class="comment-row comment-form">
@@ -98,7 +99,7 @@
                         </div>
                     </li>
                     <li class="comment-row"
-                        ng-repeat="_comment in commentCtrl.comments|orderBy:'-comment.dateCreated' track by $index"
+                        ng-repeat="_comment in commentCtrl.comments track by $index"
                         ng-hide="_comment.comment.isDeleted">
                         <img src="/images/user-icon.png"/>
 
@@ -107,15 +108,21 @@
 
                             <span class="date"><i class="fa fa-calendar">&nbsp;</i>{{_comment.comment.dateCreated|date}}</span>
 
-                            <p class="text">
+                            <p class="comment-text">
                                 {{_comment.comment.comment}}
                             </p>
+                            <a data-ng-show="_comment.comment.websiteURL"
+                               target="_blank"
+                               data-ng-href="{{_comment.comment.websiteURL}}" class="website-url">
+                                {{_comment.comment.websiteURL}}
+                            </a>
 
                             <div class="btn-group">
-                                <a href="" data-ng-click="_comment.canShowReply=true"><i class="fa fa-reply"></i>&nbsp;Reply</a>
+                                <a href="" data-ng-click="_comment.canShowReply=true">
+                                    <i class="fa fa-reply"></i>
+                                </a>
                                 <a href="" data-ng-click="commentCtrl.delete(_comment.comment)">
-                                    <i class="fa fa-trash"></i>&nbsp;
-                                    Delete
+                                    <i class="fa fa-trash"></i>
                                 </a>
 
                                 <div class="reply-box" ng-show="_comment.canShowReply">
@@ -132,7 +139,8 @@
 
                         </div>
                         <ul class="reply">
-                            <li class="reply-row" ng-repeat="reply in _comment.replies track by $index" ng-hide="reply.isDeleted">
+                            <li class="reply-row" ng-repeat="reply in _comment.replies track by $index"
+                                ng-hide="reply.isDeleted">
                                 <img src="/images/user-icon.png"/>
 
                                 <div class="display-comment">

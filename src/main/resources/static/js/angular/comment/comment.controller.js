@@ -13,9 +13,11 @@ angular
             })
         };
 
-        self.getCommentSize = function () {
+        self.getTotalComment = function () {
             if (self.comments) {
-                return self.comments.length;
+                return _.reduce(self.comments, function (sum, elem) {
+                    return sum + _.size(elem.replies) + 1;
+                }, 0);
             }
             return 0;
         };
