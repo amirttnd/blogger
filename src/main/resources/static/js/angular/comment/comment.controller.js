@@ -35,6 +35,11 @@ angular
         self.delete = function (comment) {
             Comment.delete({id: comment.id}, function (response) {
                 comment.isDeleted = response.status;
+                if (comment.isDeleted) {
+                    _.remove(self.comments, function (c) {
+                        return c.comment.id == comment.id;
+                    })
+                }
             })
         }
     }]);
