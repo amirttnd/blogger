@@ -1,9 +1,9 @@
 package in.tech.blogger.controller;
 
-import in.tech.blogger.domain.Blog;
 import in.tech.blogger.query.BlogQuery;
 import in.tech.blogger.service.BlogService;
 import in.tech.blogger.service.CategoryService;
+import in.tech.blogger.vo.BlogVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -38,7 +38,7 @@ public class BlogController {
         ModelAndView modelAndView = new ModelAndView("/blog/blogs");
         blogQuery.setOnlyPublished(true);
 
-        List<Blog> blogs = blogService.search(blogQuery);
+        List<BlogVO> blogs = blogService.search(blogQuery);
 
         modelAndView.addObject("blogs", blogs);
         return modelAndView;

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -73,8 +74,17 @@ public class BlogService {
         return blogVO;
     }
 
-    public List<Blog> search(BlogQuery blogQuery) {
-        return mongoTemplate.find(blogQuery.build(), Blog.class);
+    public List<BlogVO> search(BlogQuery blogQuery) {
+        List<Blog> blogs = mongoTemplate.find(blogQuery.build(), Blog.class);
+        List<BlogVO> blogVOs = new ArrayList<BlogVO>();
+        BlogVO blogVO;
+        for (Blog blog : blogs) {
+            blogVO = new BlogVO();
+            blogVO.setBlog(blog);
+            blogVO.setComments(commentService.countByReferenceId(blog.getId()));
+            blogVOs.add(blogVO);
+        }
+        return blogVOs;
     }
 
     public Blog toggleRecommendation(String id) {

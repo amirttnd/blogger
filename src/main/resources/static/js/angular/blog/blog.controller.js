@@ -25,7 +25,7 @@ angular
         self.search = function () {
             $location.search({query: self.query});
             Blog.list({query: self.query}, function (response) {
-                self.blogs = response.blogs
+                self.blogs = response.blogs;
             })
 
         };

@@ -51,7 +51,7 @@ public class CommentService {
         for (Comment parent : parents) {
             commentVO = new CommentVO();
             commentVO.setComment(parent);
-            commentVO.setReplies(commentRepository.findAllByParentId(parent.getId()));
+            commentVO.setReplies(commentRepository.findAllByParentId(parent.getId(), pageRequest));
             commentVOs.add(commentVO);
         }
         return commentVOs;

@@ -1,6 +1,5 @@
 package in.tech.blogger;
 
-import in.tech.blogger.domain.Blog;
 import in.tech.blogger.query.BlogQuery;
 import in.tech.blogger.repository.CategoryRepository;
 import in.tech.blogger.service.BlogService;
@@ -53,9 +52,7 @@ public class BloggerApplication implements CommandLineRunner {
 
         BlogQuery blogQuery = new BlogQuery();
 //        blogQuery.setQuery("java");
-        for(Blog blog:blogService.search(blogQuery)){
-            System.out.println("================="+blog.toString());
-        }
+
 //        System.out.println(ListUtils.minus(Arrays.asList("a","b","c","e"),Arrays.asList("b","c","d")));
     }
 }

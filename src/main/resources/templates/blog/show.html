@@ -77,7 +77,7 @@
 
             <div class="comment-wrapper">
                 <div class="comment-header">
-                    <h3><i class="fa fa-comment">&nbsp;&nbsp;</i>Comments ({{commentCtrl.getTotalComment()}})</h3>
+                    <h3><i class="fa fa-comment">&nbsp;&nbsp;</i>Comments ({{commentCtrl.totalComments}})</h3>
                 </div>
                 <ul class="comments">
                     <li class="comment-row comment-form">
@@ -127,12 +127,17 @@
 
                                 <div class="reply-box" ng-show="_comment.canShowReply">
                                     <p>Leave a reply</p>
-                                    <input type="email" placeholder="Email" class="email text"/>
-                                    <input type="text" placeholder="Full name" class="full-name text"/>
-                                    <textarea placeholder="Enter comment"></textarea>
+                                    <input type="email" ng-model="_comment.reply.email"
+                                           placeholder="Email" class="email text"/>
+                                    <input type="text" ng-model="_comment.reply.fullName"
+                                           placeholder="Full name" class="full-name text"/>
+                                    <textarea ng-model="_comment.reply.comment"
+                                              placeholder="Enter comment"></textarea>
 
 
-                                    <input type="button" class="btn" value="As guest reply"/>
+                                    <input type="button"
+                                           data-ng-click="commentCtrl.saveReply(_comment, _comment.replies)"
+                                           class="btn" value="As guest reply"/>
                                 </div>
                             </div>
 
@@ -153,7 +158,9 @@
                                     </p>
 
                                     <div class="btn-group">
-                                        <a href=""><i class="fa fa-trash"></i>&nbsp;Delete</a>
+                                        <a href="" data-ng-click="commentCtrl.delete(reply)">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </li>

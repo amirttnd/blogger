@@ -12,6 +12,8 @@ public interface CommentRepository extends MongoRepository<Comment, String> {
 
     List<Comment> findAllByReferenceIdAndParentIdIsNull(String referenceId, Pageable pageable);
 
+    List<Comment> findAllByParentId(String parentId, Pageable pageable);
+
     List<Comment> findAllByParentId(String parentId);
 
     Long countByReferenceId(String referenceId);

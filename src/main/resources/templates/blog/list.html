@@ -49,17 +49,17 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="blog in blogCtrl.blogs track by $index">
+        <tr ng-repeat="blogVO in blogCtrl.blogs track by $index">
             <td class="col-md-3">
-                {{blog.category.parent.name}}
+                {{blogVO.blog.category.parent.name}}
                 <span>&nbsp;/&nbsp;</span>
-                <a href="/category/show?friendlyUrl={{blog.category.friendlyUrl}}"
-                   target="_self">{{blog.category.name}}</a>
+                <a href="/category/show?friendlyUrl={{blogVO.blog.category.friendlyUrl}}"
+                   target="_self">{{blogVO.blog.category.name}}</a>
 
             </td>
-            <td><a href="/blog/edit?id={{blog.id}}" target="_self"> {{blog.shortHeading}}</a></td>
+            <td><a href="/blog/edit?id={{blogVO.blog.id}}" target="_self"> {{blogVO.blog.shortHeading}}</a></td>
             <td>
-                {{blog.isPublished|prettyBool}}
+                {{blogVO.blog.isPublished|prettyBool}}
             </td>
             <td>
                 <span ng-repeat="tag in blog.tags track by $index"
@@ -68,7 +68,7 @@
                 </span>
             </td>
             <td>
-                <a href="/blog/{{blog.friendlyUrl}}" target="_blank">Live view</a>
+                <a href="/blog/{{blogVO.blog.friendlyUrl}}" target="_blank">Live view</a>
             </td>
         </tr>
         </tbody>

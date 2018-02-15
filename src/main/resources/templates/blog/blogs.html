@@ -12,9 +12,9 @@
 
 <div class="blog-area">
     <div class="blog">
-        <article th:if="${#lists.isEmpty(blogs)==false}" th:each="blog:${blogs}">
+        <article th:each="blogVO:${blogs}" th:with="blog=${blogVO.blog}">
             <div class="blog-entry">
-                <th:block th:replace="/blog/fragment/header::header(${blog},0)"/>
+                <th:block th:replace="/blog/fragment/header::header(${blog}, ${blogVO.comments})"/>
 
                 <div class="blog-content">
                     <div th:utext="${blog.briefIntroduction}"></div>
