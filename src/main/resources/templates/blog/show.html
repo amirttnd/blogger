@@ -84,17 +84,19 @@
                         <div class="reply-box">
                             <p>Leave a comment</p>
 
-                            <form data-ng-submit="commentCtrl.save()">
-                                <input type="email" ng-model="commentCtrl.commentModel.email"
+                            <form name="saveCommentForm" data-ng-submit="commentCtrl.save()">
+                                <input type="email" name="email" ng-model="commentCtrl.commentModel.email"
                                        placeholder="Email" class="email text"/>
-                                <input type="text" ng-model="commentCtrl.commentModel.fullName"
+                                <input type="text" name="fullName" ng-model="commentCtrl.commentModel.fullName"
                                        placeholder="Full name" class="full-name text"/>
-                                <textarea ng-model="commentCtrl.commentModel.comment"
+                                <textarea name="comment" ng-model="commentCtrl.commentModel.comment"
                                           placeholder="Enter comment"></textarea>
                                 <input type="url" ng-model="commentCtrl.commentModel.websiteURL"
                                        placeholder="Website URL" class="web-site-url text"/>
 
                                 <input type="submit" class="btn" value="As guest reply"/>
+                                <i ng-show="commentCtrl.commentModel.isInProgress"
+                                   class="fa fa-spinner fa-spin"/>
                             </form>
                         </div>
                     </li>
@@ -127,17 +129,20 @@
 
                                 <div class="reply-box" ng-show="_comment.canShowReply">
                                     <p>Leave a reply</p>
-                                    <input type="email" ng-model="_comment.reply.email"
+                                    <input type="email" required="required" ng-model="_comment.reply.email"
                                            placeholder="Email" class="email text"/>
-                                    <input type="text" ng-model="_comment.reply.fullName"
+                                    <input type="text" required="required" ng-model="_comment.reply.fullName"
                                            placeholder="Full name" class="full-name text"/>
-                                    <textarea ng-model="_comment.reply.comment"
+                                    <textarea required="required" ng-model="_comment.reply.comment"
                                               placeholder="Enter comment"></textarea>
 
 
                                     <input type="button"
                                            data-ng-click="commentCtrl.saveReply(_comment, _comment.replies)"
                                            class="btn" value="As guest reply"/>
+                                    <i ng-show="_comment.reply.isInProgress"
+                                       class="fa fa-spinner fa-spin"></i>
+
                                 </div>
                             </div>
 
@@ -153,7 +158,7 @@
                                     <span class="date"><i class="fa fa-calendar">
                                         &nbsp;</i>{{reply.dateCreated|date}}</span>
 
-                                    <p class="text">
+                                    <p class="comment-text">
                                         {{reply.comment}}
                                     </p>
 
@@ -222,6 +227,10 @@
         </div>
     </div>
 </div>
+<div th:replace="layout/main::alert">
+
+</div>
+
 <th:block th:replace="layout/main::footer">
 
 </th:block>

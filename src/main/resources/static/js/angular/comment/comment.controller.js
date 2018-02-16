@@ -25,21 +25,34 @@ angular
 
         self.save = function () {
             var params = jQuery.extend({referenceId: self.blogId}, self.commentModel);
-            Comment.save(params, function (response) {
-                if (response.status) {
-                    self.comments.unshift({comment: response.comment});
-                }
-            })
+            if (!self.commentModel.isInProgress) {
+                self.commentModel.isInProgress = true;
+                Comment.save(params, function (response) {
+                    if (response.status) {
+                        self.comments.unshift({comment: response.comment});
+                        self.totalComments++;
+                        self.commentModel.isInProgress = false;
+                        Notification.show("Thanks for your comment!");
+                    }
+                })
+            }
         };
 
         self.saveReply = function (comment, replies) {
             var params = jQuery.extend({referenceId: self.blogId, parentId: comment.comment.id}, comment.reply);
-            Comment.save(params, function (response) {
-                if (response.status) {
-                    replies = replies || [];
-                    replies.unshift(response.comment);
-                }
-            })
+            if (!comment.reply.isInProgress) {
+                comment.reply.isInProgress = true;
+                Comment.save(params, function (response) {
+                    if (response.status) {
+                        replies = replies || [];
+                        replies.unshift(response.comment);
+                        self.totalComments++;
+                        comment.reply.isInProgress = false;
+                        Notification.show("Added your reply!")
+
+                    }
+                })
+            }
         };
 
         self.delete = function (comment) {
@@ -47,6 +60,7 @@ angular
                 comment.isDeleted = response.status;
                 if (comment.isDeleted) {
                     self.totalComments--;
+                    Notification.show("Successfully deleted.")
                 }
             })
         }

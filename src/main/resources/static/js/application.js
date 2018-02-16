@@ -8,3 +8,31 @@ $(document).ready(function () {
         }
     })
 });
+
+var Notification = {
+    show: function (message, options) {
+        var $notification = $("#notification");
+        if (options) {
+            if (options.class && typeof options.class === "string") {
+                $notification.addClass(options.class)
+            }
+
+            if (options.css && typeof  options.css == "object") {
+                $notification.css(options.css)
+            }
+        }
+        if (message) {
+            $notification.html(message).addClass("show");
+            setTimeout(function () {
+                Notification.hide();
+            }, 2500)
+        }
+    },
+    hide: function () {
+        $("#notification")
+            .removeClass("show")
+            .removeAttr("class")
+            .removeAttr("style");
+
+    }
+};
