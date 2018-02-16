@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="techBlogger" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <title>Login | TechBlogger</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{/css/font-awesome-4.7.0/css/font-awesome.min.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/css/styleSheet.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/css/media.css}" type="text/css"/>
+
+    <script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/application.js}"></script>
+</head>
+<body>
+
+<div class="login-container">
+    <div class="login-wrapper">
+        <h1>Login</h1>
+
+        <div class="form">
+            <form autocomplete="off">
+                <div class="group">
+                    <label>Username</label>
+                    <input type="email" name="username"
+                           class="text-box" placeholder="Email"/>
+                </div>
+                <div class="group">
+                    <label>Password</label>
+                    <input type="password"
+                           name="password"
+                           class="text-box" placeholder="Password"/>
+                </div>
+                <a href="" class="forgot-password">Forgot password?</a>
+                <input type="submit" value="Login" class="submit"/>
+            </form>
+            <div class="sign-up">
+                <span>Or Sign Up Using</span>
+                <a href="">Sign up</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="layout/main::alert">
+
+</div>
+
+<th:block th:replace="layout/main::footer">
+
+</th:block>
+</body>
+</html>

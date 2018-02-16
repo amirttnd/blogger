@@ -32,8 +32,15 @@
         <div class="social">
             <div class="social-wrapper">
                <span class="share">
-                    <a href="" class="facebook"><i class="fa fa-facebook"></i>&nbsp;Facebook</a>
-                    <a href="" class="twitter"><i class="fa fa-twitter"></i>&nbsp;Twitter</a>
+                    <a href=""
+                       class="twitter">
+                        <i class="fa fa-twitter"></i>&nbsp;Twitter
+                    </a>
+                   <div class="fb-share-button"
+                        data-size="large" data-mobile-iframe="true"
+                        th:attr="data-href=@{/blog/{friendlyUrl}(friendlyUrl=${blog.friendlyUrl})}"
+                        data-layout="button_count">
+                   </div>
                </span>
                 <a href="" class="comment"><i class="fa fa-comment"></i>&nbsp;Comment</a>
             </div>

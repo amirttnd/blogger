@@ -64,13 +64,14 @@
         </nav>
         <div th:fragment="login-button">
             <div class="fixed-button">
-                <a href="" title="Login!"
+                <a target="_self" href="/login.html" title="Login!"
                    class="fa fa-sign-in link login-button"></a>
                 <a href="" onclick="Scroll.toTop()"
                    class="fa fa-arrow-up link goto-top"></a>
             </div>
         </div>
     </header>
+    <div id="fb-root"></div>
 </div>
 
 <div class="search-form" th:fragment="search-box">
@@ -86,7 +87,7 @@
     <div class="footer-wrapper">
         <h2>A community that learn together</h2>
         <ul class="links">
-            <li><a href=""> Blog</a></li>
+            <li><a href="/blogs.html" target="_self"> Blog</a></li>
             <li><a href=""> About</a></li>
             <li><a href=""> Contact</a></li>
             <li><a href=""> Privacy Policy</a></li>
