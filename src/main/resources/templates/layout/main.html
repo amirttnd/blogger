@@ -37,30 +37,40 @@
 <body>
 
 <div th:fragment="main-menu">
-    <div class="brand">
-        <div class="brand-wrapper">
-            <h1 class="title">
-                <span class="first">Tech</span><span class="second">blogger</span>
-            </h1>
+    <header class="header">
+        <div class="brand">
+            <div class="brand-wrapper">
+                <h1 class="title">
+                    <span class="first">Tech</span><span class="second">blogger</span>
+                </h1>
 
-            <p class="description">A Community For One Purpose. One Mission. One Dream.</p>
+                <p class="description">A Community For One Purpose. One Mission. One Dream.</p>
+            </div>
         </div>
-    </div>
 
-    <nav id="navigation" class="main-navigation">
-        <div id="primary-menu" class="menu">
-            <ul class="nav-menu">
-                <li><a href="">JAVA</a></li>
-                <li><a href="">Spring Boot</a></li>
-                <li><a href="">Angular JS</a></li>
-                <li><a href="">Hibernate</a></li>
-                <li><a href="">jQuery</a></li>
-                <li><a href="">iOS</a></li>
-                <li><a href="">Interview Q</a></li>
+        <nav id="navigation" class="main-navigation">
+            <div id="primary-menu" class="menu">
+                <ul class="nav-menu">
+                    <li><a href="">JAVA</a></li>
+                    <li><a href="">Spring Boot</a></li>
+                    <li><a href="">Angular JS</a></li>
+                    <li><a href="">Hibernate</a></li>
+                    <li><a href="">jQuery</a></li>
+                    <li><a href="">iOS</a></li>
+                    <li><a href="">Interview Q</a></li>
 
-            </ul>
+                </ul>
+            </div>
+        </nav>
+        <div th:fragment="login-button">
+            <div class="fixed-button">
+                <a href="" title="Login!"
+                   class="fa fa-sign-in link login-button"></a>
+                <a href="" onclick="Scroll.toTop()"
+                   class="fa fa-arrow-up link goto-top"></a>
+            </div>
         </div>
-    </nav>
+    </header>
 </div>
 
 <div class="search-form" th:fragment="search-box">

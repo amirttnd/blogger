@@ -595,7 +595,7 @@ span.divider.divider.divider.divider {
 .blog-area .right-panel .search-form .search-box {
     box-sizing: border-box;
     display: block;
-    width: 100%;
+    width: 70%;
     max-width: 100%;
     padding: 15px 15px;
     margin: 0;
@@ -608,10 +608,17 @@ span.divider.divider.divider.divider {
     background-color: white;
     background-size: 18px;
     border-radius: 30px;
+    transition: width 250ms linear;
+    -webkit-transition: width 250ms linear;
 }
 
-.search-box:focus {
+.full-width {
+    width: 100%;
+}
+
+.blog-area .right-panel .search-form .search-box:focus {
     outline: 0;
+    width: 100%;
 }
 
 .blog-area .right-panel .related-categories {
@@ -1154,7 +1161,7 @@ article .breadcrumb a:hover {
     margin: 0 auto;
 }
 
-#navigation.fixed {
+header.header.fixed #navigation {
     position: fixed;
     border: 0;
     width: 100%;
@@ -1231,4 +1238,43 @@ article .breadcrumb a:hover {
         bottom: 0;
         opacity: 0;
     }
+}
+
+.fixed-button {
+    position: fixed;
+    right: 1.5em;
+    z-index: 1;
+}
+
+.fixed-button .link {
+    position: fixed;
+    right: 1.5em;
+    word-break: break-all;
+    background: #e07844;
+    color: white;
+    width: 3em;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 50%;
+    line-height: 3em;
+}
+
+.fixed-button .link:hover {
+    box-shadow: 0 0 8px 3px #ccc;
+}
+
+.fixed-button .login-button {
+    bottom: 2em;
+}
+
+.fixed-button .goto-top {
+    bottom: 5.5em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 300ms linear;
+}
+
+.header.fixed .goto-top {
+    visibility: visible;
+    opacity: 1;
 }

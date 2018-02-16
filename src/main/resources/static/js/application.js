@@ -1,13 +1,18 @@
 $(document).ready(function () {
-    //$('html,body').animate({scrollTop: 65}, 1000);
     $(window).scroll(function () {
         if ($(window).scrollTop() >= 135) {
-            $("#navigation").addClass("fixed")
+            $("header.header").addClass("fixed")
         } else {
-            $("#navigation").removeClass("fixed")
+            $("header.header").removeClass("fixed")
         }
     })
 });
+
+var Scroll = {
+    toTop: function () {
+        $('html,body').animate({scrollTop: 0}, 1000);
+    }
+};
 
 var Notification = {
     show: function (message, options) {
