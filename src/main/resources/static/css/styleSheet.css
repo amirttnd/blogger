@@ -1301,6 +1301,7 @@ header.header.fixed #navigation {
     margin-bottom: 1em;
     font-weight: bold;
     font-family: inherit;
+    color: #666;
 }
 
 .login-container .login-wrapper .form {
@@ -1367,4 +1368,10 @@ header.header.fixed #navigation {
     border-radius: 30px;
     margin-top: 2em;
     margin-bottom: 1em;
+}
+
+.login-container > .logo {
+    float: right;
+    margin-right: 11px;
+    margin-top: 6px;  font-size: 13px;
 }

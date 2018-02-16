@@ -10,11 +10,23 @@
 
     <script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/application.js}"></script>
+    <style type="text/css">
+        body {
+            background: #BBD2C5; /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #292E49, #536976, #BBD2C5); /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #292E49, #536976, #BBD2C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        }
+    </style>
 </head>
 <body>
 
 <div class="login-container">
+     <span class="logo"><span class="first">Tech</span><span class="second">blogger</span>
+            </span>
+
     <div class="login-wrapper">
+
         <h1>Login</h1>
 
         <div class="form">
@@ -34,7 +46,7 @@
                 <input type="submit" value="Login" class="submit"/>
             </form>
             <div class="sign-up">
-                <span>Or Sign Up Using</span>
+                <span>Don't have an account</span>
                 <a href="">Sign up</a>
             </div>
         </div>
