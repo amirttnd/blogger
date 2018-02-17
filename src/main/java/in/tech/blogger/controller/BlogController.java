@@ -1,10 +1,12 @@
 package in.tech.blogger.controller;
 
+import in.tech.blogger.constant.Constants;
 import in.tech.blogger.query.BlogQuery;
 import in.tech.blogger.service.BlogService;
 import in.tech.blogger.service.CategoryService;
 import in.tech.blogger.vo.BlogVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,6 +31,7 @@ public class BlogController {
     }
 
     @RequestMapping("/blog/list")
+    @Secured(Constants.ADMIN_ROLE)
     String list() {
         return "/blog/list";
     }

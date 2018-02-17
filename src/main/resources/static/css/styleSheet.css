@@ -1292,6 +1292,12 @@ header.header.fixed #navigation {
     font-family: 'Lato', sans-serif;
 }
 
+.login-container .form-error {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+}
+
 .login-container .login-wrapper {
     padding: 2em 4em;
 }

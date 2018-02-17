@@ -14,7 +14,7 @@ public class User {
 
 
     @Id
-    Long id;
+    String id;
 
     String fullName;
 
@@ -35,11 +35,11 @@ public class User {
         }
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -88,5 +88,17 @@ public class User {
             authorities = Optional.ofNullable(authorities).orElse(new ArrayList<>());
             authorities.add(role);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
+                ", enabled=" + enabled +
+                ", password='" + password + '\'' +
+                ", authorities=" + authorities +
+                '}';
     }
 }

@@ -75,4 +75,21 @@ public class UserModel {
     public void setRepeatPassword(String repeatPassword) {
         this.repeatPassword = repeatPassword;
     }
+
+    public Boolean isSamePassword() {
+        return this.password != null && this.repeatPassword != null && password.equals(repeatPassword) && !password.isEmpty();
+    }
+
+    @Override
+    public String toString() {
+        return "UserModel{" +
+                "id='" + id + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
+                ", enabled=" + enabled +
+                ", password='" + password + '\'' +
+                ", repeatPassword='" + repeatPassword + '\'' +
+                ", authorities=" + authorities +
+                '}';
+    }
 }

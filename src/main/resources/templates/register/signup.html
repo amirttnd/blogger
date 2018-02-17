@@ -19,14 +19,17 @@
     <th:block th:replace="/layout/register::register-logo"></th:block>
 
     <div class="login-wrapper">
+        <p class="form-error" th:if="${error!=null}" th:inline="text">
+            <i class="fa fa-warning"/>&nbsp;[[${error}]]
+        </p>
 
         <h1>Sign Up</h1>
 
         <div class="form">
-            <form autocomplete="off">
+            <form autocomplete="off" action="/doSignUp" method="post">
                 <div class="group">
                     <label>Username</label>
-                    <input type="email" name="email"
+                    <input type="email" name="email" th:value="${session.user.email}"
                            class="text-box" placeholder="Email"/>
                 </div>
                 <div class="group">

@@ -1,7 +1,5 @@
 package in.tech.blogger;
 
-import in.tech.blogger.repository.CategoryRepository;
-import in.tech.blogger.service.BlogService;
 import in.tech.blogger.service.BootstrapService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,21 +7,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.data.mongodb.config.EnableMongoAuditing;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 @EnableMongoRepositories
 @EnableMongoAuditing
 @EnableAspectJAutoProxy
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(securedEnabled = true)
 public class BloggerApplication implements CommandLineRunner {
-
-    @Autowired
-    CategoryRepository categoryRepository;
-
-    @Autowired
-    BlogService blogService;
 
     @Autowired
     BootstrapService bootstrapService;
@@ -38,4 +36,10 @@ public class BloggerApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         bootstrapService.initializeRole();
     }
+
+    @Bean
+    BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
 }

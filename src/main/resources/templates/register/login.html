@@ -23,7 +23,7 @@
         <h1>Login</h1>
 
         <div class="form">
-            <form autocomplete="off">
+            <form autocomplete="off" th:action="@{/doLogin}" method="post">
                 <div class="group">
                     <label>Username</label>
                     <input type="email" name="email"
