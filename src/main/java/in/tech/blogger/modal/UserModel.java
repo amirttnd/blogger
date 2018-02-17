@@ -1,16 +1,8 @@
-package in.tech.blogger.domain;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
+package in.tech.blogger.modal;
 
 import java.util.List;
 
-@Document(collection = "user")
-public class User {
-
-
-    @Id
+public class UserModel {
     Long id;
 
     String firstName;
@@ -21,8 +13,7 @@ public class User {
 
     Boolean enabled = true;
 
-    @DBRef
-    List<Role> authorities;
+    List<String> roleIds;
 
     public Long getId() {
         return id;
@@ -57,6 +48,9 @@ public class User {
     }
 
     public Boolean getEnabled() {
+        if (enabled == null) {
+            return false;
+        }
         return enabled;
     }
 
@@ -64,11 +58,11 @@ public class User {
         this.enabled = enabled;
     }
 
-    public List<Role> getAuthorities() {
-        return authorities;
+    public List<String> getRoleIds() {
+        return roleIds;
     }
 
-    public void setAuthorities(List<Role> authorities) {
-        this.authorities = authorities;
+    public void setRoleIds(List<String> roleIds) {
+        this.roleIds = roleIds;
     }
 }
