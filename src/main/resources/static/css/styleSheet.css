@@ -1333,6 +1333,8 @@ header.header.fixed #navigation {
     border-bottom: 2px solid #ccc;
     font-weight: bold;
     font-size: 17px;
+    color: #e0784f;
+    font-family: serif;
 }
 
 .login-container .login-wrapper .form .text-box:focus {
