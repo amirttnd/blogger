@@ -1,8 +1,11 @@
 package in.tech.blogger.controller;
 
 
+import in.tech.blogger.modal.UserModel;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class RegisterController {
@@ -26,4 +29,10 @@ public class RegisterController {
     String resetPassword() {
         return "/register/resetPassword";
     }
+
+    @RequestMapping(value = "/doSignUp", method = RequestMethod.POST)
+    String doSignUp(@RequestBody UserModel userModel) {
+        return "/register/resetPassword";
+    }
+
 }

@@ -5,13 +5,15 @@ import java.util.List;
 public class UserModel {
     Long id;
 
-    String firstName;
-
-    String lastName;
+    String fullName;
 
     String email;
 
     Boolean enabled = true;
+
+    String password;
+
+    String repeatPassword;
 
     List<String> roleIds;
 
@@ -23,20 +25,12 @@ public class UserModel {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getEmail() {
@@ -64,5 +58,21 @@ public class UserModel {
 
     public void setRoleIds(List<String> roleIds) {
         this.roleIds = roleIds;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRepeatPassword() {
+        return repeatPassword;
+    }
+
+    public void setRepeatPassword(String repeatPassword) {
+        this.repeatPassword = repeatPassword;
     }
 }

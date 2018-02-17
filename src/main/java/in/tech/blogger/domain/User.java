@@ -13,13 +13,13 @@ public class User {
     @Id
     Long id;
 
-    String firstName;
-
-    String lastName;
+    String fullName;
 
     String email;
 
     Boolean enabled = true;
+
+    String password;
 
     @DBRef
     List<Role> authorities;
@@ -32,20 +32,12 @@ public class User {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getEmail() {
@@ -70,5 +62,13 @@ public class User {
 
     public void setAuthorities(List<Role> authorities) {
         this.authorities = authorities;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
