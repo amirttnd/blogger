@@ -3,6 +3,7 @@ package in.tech.blogger.domain;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
@@ -12,6 +13,7 @@ public class Role {
     @Id
     String id;
 
+    @Indexed
     String authority;
 
     @CreatedDate
@@ -19,6 +21,15 @@ public class Role {
 
     @LastModifiedDate
     Date lastUpdated;
+
+
+    public Role() {
+
+    }
+
+    public Role(String authority) {
+        this.authority = authority;
+    }
 
     public String getId() {
         return id;

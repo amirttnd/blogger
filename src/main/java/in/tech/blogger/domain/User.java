@@ -1,10 +1,13 @@
 package in.tech.blogger.domain;
 
+import in.tech.blogger.modal.UserModel;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Document(collection = "user")
 public class User {
@@ -23,6 +26,14 @@ public class User {
 
     @DBRef
     List<Role> authorities;
+
+    public void bind(UserModel userModel) {
+        if (userModel != null) {
+            this.email = userModel.getEmail();
+            this.fullName = userModel.getFullName();
+            this.enabled = userModel.getEnabled();
+        }
+    }
 
     public Long getId() {
         return id;
@@ -70,5 +81,12 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void addToAuthorities(Role role) {
+        if (role != null) {
+            authorities = Optional.ofNullable(authorities).orElse(new ArrayList<>());
+            authorities.add(role);
+        }
     }
 }

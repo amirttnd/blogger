@@ -4,10 +4,14 @@ import in.tech.blogger.domain.Role;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface RoleRepository extends MongoRepository<Role, String> {
 
-    String findById(String id);
+    Role findById(String id);
 
-    String findByAuthority(String authority);
+    Role findByAuthority(String authority);
+
+    List<Role> findAllByAuthorityIn(List<String> authority);
 }

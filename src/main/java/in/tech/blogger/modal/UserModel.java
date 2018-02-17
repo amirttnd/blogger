@@ -3,7 +3,7 @@ package in.tech.blogger.modal;
 import java.util.List;
 
 public class UserModel {
-    Long id;
+    String id;
 
     String fullName;
 
@@ -15,13 +15,13 @@ public class UserModel {
 
     String repeatPassword;
 
-    List<String> roleIds;
+    List<String> authorities;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -52,12 +52,12 @@ public class UserModel {
         this.enabled = enabled;
     }
 
-    public List<String> getRoleIds() {
-        return roleIds;
+    public List<String> getAuthorities() {
+        return authorities;
     }
 
-    public void setRoleIds(List<String> roleIds) {
-        this.roleIds = roleIds;
+    public void setAuthorities(List<String> authorities) {
+        this.authorities = authorities;
     }
 
     public String getPassword() {
