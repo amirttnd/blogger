@@ -1303,7 +1303,8 @@ header.header.fixed #navigation {
     font-family: inherit;
     color: #666;
 }
-.login-container .login-wrapper h1 p{
+
+.login-container .login-wrapper h1 p {
     margin: 6px 0 0 0;
     padding: 0;
     font-size: 14px;
@@ -1377,10 +1378,16 @@ header.header.fixed #navigation {
     border-radius: 30px;
     margin-top: 2em;
     margin-bottom: 1em;
+    outline: 0;
+}
+
+.login-container .login-wrapper .form .submit:hover {
+    box-shadow: 0px 2px 3px 0px #ccc;
 }
 
 .login-container > .logo {
     float: right;
     margin-right: 11px;
-    margin-top: 6px;  font-size: 13px;
+    margin-top: 6px;
+    font-size: 13px;
 }
