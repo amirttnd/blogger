@@ -34,7 +34,8 @@ angular
                     email: self.user.email,
                     fullName: self.user.fullName,
                     enabled: self.user.enabled,
-                    authorities: authorities
+                    authorities: authorities,
+                    password: self.user.passwd
                 };
                 User.save(params, function (response) {
                     console.log(response)
