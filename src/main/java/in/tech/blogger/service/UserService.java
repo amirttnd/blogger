@@ -32,7 +32,7 @@ public class UserService implements UserDetailsService {
     BCryptPasswordEncoder passwordEncoder;
 
     public User save(UserModel userModel) {
-        Optional<User> userOptional = Optional.ofNullable(userRepository.findById(userModel.getId()));
+        Optional<User> userOptional = Optional.ofNullable(userRepository.findByEmail(userModel.getEmail()));
         User user = userOptional.orElse(new User());
         user.bind(userModel);
         List<Role> authorities = roleRepository.findAllByAuthorityIn(userModel.getAuthorities());
@@ -42,6 +42,10 @@ public class UserService implements UserDetailsService {
             user.setAuthorities(authorities);
         }
         return userRepository.save(user);
+    }
+
+    public List<User> findAll() {
+        return userRepository.findAll();
     }
 
     @Override

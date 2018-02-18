@@ -1,5 +1,6 @@
 package in.tech.blogger.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -47,6 +48,7 @@ public class Role {
         this.authority = authority;
     }
 
+    @JsonIgnore
     public Date getDateCreated() {
         return dateCreated;
     }
@@ -55,6 +57,7 @@ public class Role {
         this.dateCreated = dateCreated;
     }
 
+    @JsonIgnore
     public Date getLastUpdated() {
         return lastUpdated;
     }

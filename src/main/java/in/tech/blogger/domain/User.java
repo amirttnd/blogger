@@ -1,12 +1,16 @@
 package in.tech.blogger.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import in.tech.blogger.modal.UserModel;
 import in.tech.blogger.util.BeanUtils;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,6 +31,12 @@ public class User {
 
     @DBRef
     List<Role> authorities;
+
+    @CreatedDate
+    Date dateCreated;
+
+    @LastModifiedDate
+    Date lastUpdated;
 
     public void bind(UserModel userModel) {
         if (userModel != null) {
@@ -77,6 +87,7 @@ public class User {
         this.authorities = authorities;
     }
 
+    @JsonIgnore
     public String getPassword() {
         return password;
     }
@@ -90,6 +101,22 @@ public class User {
             authorities = Optional.ofNullable(authorities).orElse(new ArrayList<>());
             authorities.add(role);
         }
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public Date getLastUpdated() {
+        return lastUpdated;
+    }
+
+    public void setLastUpdated(Date lastUpdated) {
+        this.lastUpdated = lastUpdated;
     }
 
     @Override
