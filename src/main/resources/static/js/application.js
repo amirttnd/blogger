@@ -6,10 +6,6 @@ $(document).ready(function () {
             $("header.header").removeClass("fixed")
         }
     });
-
-    $(".right-nav-bar li").click(function () {
-        $(this).toggleClass("open")
-    })
 });
 
 (function (d, s, id) {
@@ -52,5 +48,11 @@ var Notification = {
             .removeAttr("class")
             .removeAttr("style");
 
+    }
+};
+
+var MainMenu = {
+    openSubMenu: function ($this) {
+        $($this).toggleClass("open")
     }
 };
