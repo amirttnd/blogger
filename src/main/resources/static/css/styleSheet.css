@@ -434,16 +434,7 @@ label {
     padding: 0;
     margin: 0 0 0 3em;
     font-size: 0;
-}
-
-.main-navigation li {
     display: inline-block;
-    position: relative;
-    font-size: 16px;
-}
-
-.main-navigation ul li:last-child {
-    border-right: 0;
 }
 
 .main-navigation a {
@@ -456,9 +447,55 @@ label {
     letter-spacing: 1px;
 }
 
-.main-navigation a:hover {
+.main-navigation .nav-menu a:hover, .main-navigation .sub-menu a:hover {
     color: white;
     background: #d65a1c;
+}
+
+
+.main-navigation .right-nav-bar {
+    float: right;
+}
+
+.main-navigation .right-nav-bar > li:hover .sub-menu {
+    display: block;
+}
+
+.main-navigation .right-nav-bar .sub-menu {
+    display: none;
+    position: absolute;
+    background: #e07844;
+    right: 10px;
+    left: auto;
+    margin-top: 0;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
+}
+
+.main-navigation .right-nav-bar .sub-menu li {
+    display: block;
+}
+
+.main-navigation .right-nav-bar .sub-menu li a {
+    padding: 8px 17px;
+    font-size: 12px;
+    min-width: 11em;
+    text-align: left;
+    border-bottom: 1px solid;
+    width: 100%;
+}
+
+.main-navigation .right-nav-bar .sub-menu li:last-child a {
+    border-bottom: 0;
+}
+
+.main-navigation li {
+    display: inline-block;
+    position: relative;
+    font-size: 16px;
+}
+
+.main-navigation ul li:last-child {
+    border-right: 0;
 }
 
 .header-image {
@@ -1402,12 +1439,12 @@ header.header.fixed #navigation {
     font-size: 13px;
 }
 
-.wrapper .missing-page{
+.wrapper .missing-page {
     min-height: 20em;
     margin-top: 2em;
 }
 
-.wrapper .missing-page h1{
+.wrapper .missing-page h1 {
     margin: 0;
     padding: 0 0 6px 0;
     color: #444;
@@ -1416,13 +1453,13 @@ header.header.fixed #navigation {
     font-size: 26px;
 }
 
-.wrapper .missing-page p{
+.wrapper .missing-page p {
     color: #444;
     font-size: 20px;
     font-family: serif;
 }
 
-.wrapper .missing-page p a{
+.wrapper .missing-page p a {
     display: block;
     font-size: 14px;
     margin-top: 6px;

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
 <head lang="en" th:fragment="head">
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -59,6 +60,25 @@
                     <li><a href="">iOS</a></li>
                     <li><a href="">Interview Q</a></li>
 
+                </ul>
+                <ul class="right-nav-bar" sec:authorize="isAuthenticated()">
+                    <li>
+                        <a href="">
+                            <span class="fa fa-user"></span>
+                            <span class="fa fa-caret-down"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="" sec:authentication="name"></a>
+                            </li>
+                            <li sec:authorize="hasRole('ROLE_ADMIN')">
+                                <a href="/admin/index" target="_blank">Admin</a>
+                            </li>
+                            <li>
+                                <a href="/logout.html">logout</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </nav>
