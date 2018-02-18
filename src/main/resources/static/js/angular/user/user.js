@@ -1,7 +1,7 @@
 angular
     .module("techBlogger")
-    .factory("User", ["resource", function ($resource) {
-        return $resource("/api/user/:action/:email", {email: "@email"}, {
+    .factory("User", ["$resource", function ($resource) {
+        return $resource("/api/user/:action/:id", {id: "@id"}, {
             "list": {
                 method: "GET",
                 params: {
