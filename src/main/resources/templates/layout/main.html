@@ -52,7 +52,11 @@
         <nav id="navigation" class="main-navigation">
             <div id="primary-menu" class="menu">
                 <ul class="nav-menu">
-                    <li onclick="MainMenu.openSubMenu(this)"><a>JAVA</a>
+                    <li>
+                        <a>
+                            JAVA
+                            <i class="fa fa-caret-down">&nbsp;</i>
+                        </a>
                         <ul class="sub-menu">
                             <li>
                                 <a>Exception handling</a>
@@ -63,7 +67,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li onclick="MainMenu.openSubMenu(this)">
+                    <li>
                         <a>Spring Boot</a>
                         <ul class="sub-menu">
                             <li>
@@ -74,15 +78,15 @@
                             </li>
                         </ul>
                     </li>
-                    <li onclick="MainMenu.openSubMenu(this)"><a>Angular JS</a></li>
-                    <li onclick="MainMenu.openSubMenu(this)"><a>Hibernate</a></li>
-                    <li onclick="MainMenu.openSubMenu(this)"><a>jQuery</a></li>
-                    <li onclick="MainMenu.openSubMenu(this)"><a>iOS</a></li>
-                    <li onclick="MainMenu.openSubMenu(this)"><a>Interview Q</a></li>
+                    <li><a>Angular JS</a></li>
+                    <li><a>Hibernate</a></li>
+                    <li><a>jQuery</a></li>
+                    <li><a>iOS</a></li>
+                    <li><a>Interview Q</a></li>
 
                 </ul>
                 <ul class="nav-menu right-nav-bar" sec:authorize="isAuthenticated()">
-                    <li onclick="MainMenu.openSubMenu(this)">
+                    <li>
                         <a>
                             <span class="fa fa-user"></span>
                             <span class="fa fa-caret-down"></span>

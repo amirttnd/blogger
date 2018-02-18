@@ -50,10 +50,3 @@ var Notification = {
 
     }
 };
-
-var MainMenu = {
-    openSubMenu: function (self) {
-        $(self).not().siblings().removeClass("open");
-        $(self).toggleClass("open");
-    }
-};

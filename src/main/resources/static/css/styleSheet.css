@@ -434,6 +434,18 @@ label {
     font-size: 0;
     display: inline-block;
 }
+.main-navigation .nav-menu li {
+    display: inline-block;
+    font-size: 16px;
+}
+
+.main-navigation .nav-menu> li:hover .sub-menu{
+    display: block;
+}
+
+.main-navigation .nav-menu li:last-child {
+    border-right: 0;
+}
 
 .main-navigation .nav-menu a {
     display: inline-block;
@@ -452,31 +464,25 @@ label {
 
 .main-navigation .right-nav-bar {
     float: right;
+    position: relative;
 }
 
-.main-navigation .nav-menu .sub-menu::before {
-    content: '';
-    position: absolute;
-    top: -9px;
-    left: 16px;
-    border-bottom: 12px solid #e07844;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-}
 
 .main-navigation .nav-menu .sub-menu {
     display: none;
     position: absolute;
     background: #e07844;
-    margin-top: 10px;
+    margin-top: 0px;
     box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
     z-index: 1;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 
-.main-navigation .nav-menu.right-nav-bar .sub-menu::before {
-    right: 18px;
-    left: auto;
-}
+/*.main-navigation .nav-menu.right-nav-bar .sub-menu::before {*/
+    /*right: 18px;*/
+    /*left: auto;*/
+/*}*/
 
 .main-navigation .nav-menu.right-nav-bar .sub-menu {
     right: 0;
@@ -485,14 +491,6 @@ label {
 
 .main-navigation .nav-menu .sub-menu li {
     display: block;
-}
-
-.main-navigation .nav-menu.right-nav-bar > li {
-    position: relative;
-}
-
-.main-navigation .nav-menu.right-nav-bar .sub-menu li:first-child a:hover {
-    background: transparent;
 }
 
 .main-navigation .nav-menu li.open .sub-menu {
@@ -511,15 +509,6 @@ label {
 
 .main-navigation .nav-menu .sub-menu li:last-child a {
     border-bottom: 0;
-}
-
-.main-navigation .nav-menu li {
-    display: inline-block;
-    font-size: 16px;
-}
-
-.main-navigation .nav-menu li:last-child {
-    border-right: 0;
 }
 
 .header-image {
