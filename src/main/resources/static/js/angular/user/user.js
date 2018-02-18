@@ -19,6 +19,11 @@ angular
                 params: {
                     action: "findBy"
                 }
+            },
+            "roles": {
+                params: {
+                    action: "roles"
+                }
             }
         })
     }]);

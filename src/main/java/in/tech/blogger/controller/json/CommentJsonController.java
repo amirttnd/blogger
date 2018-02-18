@@ -1,5 +1,6 @@
 package in.tech.blogger.controller.json;
 
+import in.tech.blogger.constant.Constants;
 import in.tech.blogger.domain.Comment;
 import in.tech.blogger.modal.CommentModel;
 import in.tech.blogger.service.CommentService;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -33,6 +35,7 @@ public class CommentJsonController {
 
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @Secured(Constants.AUTHOR_ROLE)
     ResponseEntity<Map<String, Object>> delete(@PathVariable String id) {
         Map<String, Object> responseMap = new HashMap<>();
         Boolean status = commentService.delete(id);

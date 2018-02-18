@@ -40,7 +40,6 @@ public class UserJsonController {
     ResponseEntity<Map<String, Object>> findBy(@RequestParam String email) {
         Map<String, Object> responseMap = new HashMap<>();
         responseMap.put("user", userService.findBy(email));
-        responseMap.put("roles", roleService.findAll());
         return new ResponseEntity<Map<String, Object>>(responseMap, HttpStatus.OK);
     }
 
@@ -50,6 +49,13 @@ public class UserJsonController {
         User user = userService.save(userModel);
         responseMap.put("status", user != null);
         responseMap.put("user", user);
+        return new ResponseEntity<Map<String, Object>>(responseMap, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/roles", method = RequestMethod.GET)
+    ResponseEntity<Map<String, Object>> roles() {
+        Map<String, Object> responseMap = new HashMap<>();
+        responseMap.put("roles", roleService.findAll());
         return new ResponseEntity<Map<String, Object>>(responseMap, HttpStatus.OK);
     }
 }

@@ -26,6 +26,7 @@ public class BlogController {
     BlogService blogService;
 
     @RequestMapping("/blog/edit")
+    @Secured(Constants.ADMIN_ROLE)
     String edit() {
         return "/blog/edit";
     }

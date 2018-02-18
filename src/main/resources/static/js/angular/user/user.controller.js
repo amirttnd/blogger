@@ -14,10 +14,13 @@ angular
         self.edit = function () {
             var email = $location.search()["email"];
 
+            User.roles(function (response) {
+                self.roles = response.roles;
+            });
+
             if (email) {
                 User.findBy({email: email}, function (response) {
                     self.user = response.user;
-                    self.roles = response.roles;
                 })
             }
         };

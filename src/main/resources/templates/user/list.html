@@ -24,7 +24,7 @@
     <form data-ng-submit="userCtrl.search()" autocomplete="off">
         <div class=" input-group">
             <input type="text" class="search-query form-control " value="" name="query" ng-model="userCtrl.query"
-                   placeholder="search by email of fullName"/>
+                   placeholder="search by email or fullName"/>
             <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">Search</button>
             </span>
@@ -64,9 +64,6 @@
                 <a target="_self"
                    href="/user/edit?email={{user.email}}"
                    class="fa fa-edit"></a>
-                &nbsp;
-                <a  class="fa fa-trash"></a>
-
             </td>
         </tr>
         </tbody>
