@@ -1,6 +1,7 @@
 package in.tech.blogger.domain;
 
 import in.tech.blogger.modal.UserModel;
+import in.tech.blogger.util.BeanUtils;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -32,6 +33,7 @@ public class User {
             this.email = userModel.getEmail();
             this.fullName = userModel.getFullName();
             this.enabled = userModel.getEnabled();
+            this.password = BeanUtils.getPasswordEncoder().encode(userModel.getPassword());
         }
     }
 

@@ -35,7 +35,6 @@ public class UserService implements UserDetailsService {
         Optional<User> userOptional = Optional.ofNullable(userRepository.findById(userModel.getId()));
         User user = userOptional.orElse(new User());
         user.bind(userModel);
-        user.setPassword(passwordEncoder.encode(userModel.getPassword()));
         List<Role> authorities = roleRepository.findAllByAuthorityIn(userModel.getAuthorities());
         if (authorities != null && authorities.size() == 0) {
             user.addToAuthorities(roleRepository.findByAuthority(Constants.USER_ROLE));
