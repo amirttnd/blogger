@@ -45,9 +45,7 @@ public class User {
             this.email = userModel.getEmail();
             this.fullName = userModel.getFullName();
             this.enabled = userModel.getEnabled();
-            if (userModel.getPassword() != null) {
-                this.password = BeanUtils.getPasswordEncoder().encode(userModel.getPassword());
-            }
+            setPassword(userModel.getPassword());
         }
     }
 
@@ -97,7 +95,9 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        if (password != null && !password.isEmpty()) {
+            this.password = BeanUtils.getPasswordEncoder().encode(password);
+        }
     }
 
     public void addToAuthorities(Role role) {
