@@ -43,6 +43,12 @@ public class RegisterController {
         return "/register/resetPassword";
     }
 
+    @RequestMapping(value = {"/403"})
+    String accessDenied() {
+        return "/register/accessDenied";
+    }
+
+
     @RequestMapping(value = "/doSignUp", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     ModelAndView doSignUp(@ModelAttribute UserModel user, RedirectAttributes redirectAttributes, HttpSession session) {
         String redirectUrl = "redirect:/signup.html";

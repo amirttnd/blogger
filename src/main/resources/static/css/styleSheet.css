@@ -1154,7 +1154,7 @@ article .breadcrumb a:hover {
 
 .wrapper {
     display: block;
-    padding: 60px 0;
+    padding: 2em 4em;
     width: 90%;
     margin: 0 auto;
 }
@@ -1401,3 +1401,29 @@ header.header.fixed #navigation {
     margin-top: 6px;
     font-size: 13px;
 }
+
+.wrapper .missing-page{
+    min-height: 20em;
+    margin-top: 2em;
+}
+
+.wrapper .missing-page h1{
+    margin: 0;
+    padding: 0 0 6px 0;
+    color: #444;
+    border-bottom: 2px solid #e07844;
+    font-weight: inherit;
+    font-size: 26px;
+}
+
+.wrapper .missing-page p{
+    color: #444;
+    font-size: 14px;
+}
+
+.wrapper .missing-page p a{
+    display: block;
+    font-size: 14px;
+    margin-top: 4px;
+}
+

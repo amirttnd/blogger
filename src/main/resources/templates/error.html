@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <meta th:replace="layout/admin::viewport"/>
+    <th:block th:include="layout/main::head"/>
+    <title>Blogs</title>
+</head>
+<body>
+<th:block th:include="layout/main::main-menu"/>
+
+<div class="wrapper">
+    <div class="missing-page">
+        <h1>
+            <a target="_self" href="/blog.html" class="fa fa-home"></a> Oops! (404)
+        </h1>
+
+        <p>
+            Looks like this page is missing. Report error or back to home.
+            <a href="">Contact to
+                <span class="logo"><span class="first">Tech</span><span class="second">blogger</span>
+            </span> Administrator.
+            </a>
+        </p>
+    </div>
+</div>
+<th:block th:replace="layout/main::footer"/>
+</body>
+</html>
