@@ -58,10 +58,10 @@ public class UserService implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(
                 user.getEmail(),
                 user.getPassword(),
-                true,
-                true,
-                true,
-                true,
+                user.getEnabled(),
+                user.getEnabled(),
+                user.getEnabled(),
+                user.getEnabled(),
                 auths
         );
     }

@@ -1349,6 +1349,10 @@ header.header.fixed #navigation {
     border-bottom: 2px solid #666;
 }
 
+.login-container .login-wrapper .remember-me {
+    color: #666;
+}
+
 .login-container .login-wrapper .forgot-password {
     float: right;
     color: #666;

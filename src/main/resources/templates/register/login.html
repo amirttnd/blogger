@@ -19,6 +19,10 @@
 
 
     <div class="login-wrapper">
+        <p class="form-error" th:if="${param.failed!=null}">
+            <i class="fa fa-warning"/>&nbsp;
+            Invalid username or password
+        </p>
 
         <h1>Login</h1>
 
@@ -35,6 +39,10 @@
                            name="password"
                            class="text-box" placeholder="Password"/>
                 </div>
+                <span class="remember-me">
+                    <input type="checkbox" name="rememberMe" checked="checked"/>
+                    Remember me?
+                </span>
                 <a href="/forgotPassword.html" class="forgot-password">Forgot password?</a>
                 <input type="submit" value="Login" class="submit"/>
             </form>
