@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="techBlogger" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+
+    <title>Create or Edit your blog</title>
+
+    <th:block th:replace="layout/admin::common_head"/>
+
+</head>
+<body>
+<div th:replace="layout/admin::adminHeader"></div>
+<div class="container" ng-controller="UserController as userCtrl" ng-init="userCtrl.edit()">
+
+    <ol class="breadcrumb">
+        <li><a href="#">Admin</a></li>
+        <li><a th:href="@{/user/list}" target="_self">Users</a></li>
+        <li>Edit</li>
+    </ol>
+
+    <div class="col-md-6">
+        <form data-ng-submit="userCtrl.save()">
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" class="form-control" required="required"
+                       ng-model="userCtrl.user.email"
+                       placeholder="Enter email" name="email"/>
+            </div>
+            <div class="form-group">
+                <label>Full Name:</label>
+                <input type="text"
+                       ng-model="userCtrl.user.fullName"
+                       class="form-control" name="fullName"/>
+            </div>
+
+            <div class="form-group">
+                <label>Roles</label>
+                <tags-input ng-model="userCtrl.user.authorities"
+                            min-length="4"
+                            display-property="authority">
+                    <auto-complete source="userCtrl.roles"></auto-complete>
+                </tags-input>
+            </div>
+
+            <div class="checkbox">
+                <label><input type="checkbox" ng-model="userCtrl.user.enabled"/> Enabled</label>
+
+            </div>
+            <button type="submit"
+                    ng-disabled="!userCtrl.user.email"
+                    class="btn btn-default">Save</button>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>

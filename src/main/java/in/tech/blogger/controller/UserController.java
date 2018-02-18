@@ -11,4 +11,9 @@ public class UserController {
     String list() {
         return "/user/list";
     }
+
+    @RequestMapping("/edit")
+    String edit() {
+        return "/user/edit";
+    }
 }

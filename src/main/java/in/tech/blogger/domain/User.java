@@ -6,6 +6,7 @@ import in.tech.blogger.util.BeanUtils;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Document(collection = "user")
+@CompoundIndex(def = "{email:'text',fullName:'text'}", name = "search_index")
 public class User {
 
 
@@ -43,7 +45,9 @@ public class User {
             this.email = userModel.getEmail();
             this.fullName = userModel.getFullName();
             this.enabled = userModel.getEnabled();
-            this.password = BeanUtils.getPasswordEncoder().encode(userModel.getPassword());
+            if (userModel.getPassword() != null) {
+                this.password = BeanUtils.getPasswordEncoder().encode(userModel.getPassword());
+            }
         }
     }
 

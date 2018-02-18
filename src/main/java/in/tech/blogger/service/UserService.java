@@ -36,6 +36,7 @@ public class UserService implements UserDetailsService {
         User user = userOptional.orElse(new User());
         user.bind(userModel);
         List<Role> authorities = roleRepository.findAllByAuthorityIn(userModel.getAuthorities());
+        user.setAuthorities(null);
         if (authorities != null && authorities.size() == 0) {
             user.addToAuthorities(roleRepository.findByAuthority(Constants.USER_ROLE));
         } else {

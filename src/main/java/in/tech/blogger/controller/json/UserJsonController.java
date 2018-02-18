@@ -1,12 +1,13 @@
 package in.tech.blogger.controller.json;
 
+import in.tech.blogger.domain.User;
+import in.tech.blogger.modal.UserModel;
+import in.tech.blogger.service.RoleService;
 import in.tech.blogger.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +18,9 @@ public class UserJsonController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    RoleService roleService;
 
     @RequestMapping("/list")
     ResponseEntity<Map<String, Object>> findAll() {
@@ -36,6 +40,16 @@ public class UserJsonController {
     ResponseEntity<Map<String, Object>> findBy(@RequestParam String email) {
         Map<String, Object> responseMap = new HashMap<>();
         responseMap.put("user", userService.findBy(email));
+        responseMap.put("roles", roleService.findAll());
+        return new ResponseEntity<Map<String, Object>>(responseMap, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    ResponseEntity<Map<String, Object>> save(@RequestBody UserModel userModel) {
+        Map<String, Object> responseMap = new HashMap<>();
+        User user = userService.save(userModel);
+        responseMap.put("status", user != null);
+        responseMap.put("user", user);
         return new ResponseEntity<Map<String, Object>>(responseMap, HttpStatus.OK);
     }
 }
