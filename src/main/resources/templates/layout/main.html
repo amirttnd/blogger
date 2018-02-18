@@ -52,16 +52,36 @@
         <nav id="navigation" class="main-navigation">
             <div id="primary-menu" class="menu">
                 <ul class="nav-menu">
-                    <li><a href="">JAVA</a></li>
-                    <li><a href="">Spring Boot</a></li>
-                    <li><a href="">Angular JS</a></li>
-                    <li><a href="">Hibernate</a></li>
-                    <li><a href="">jQuery</a></li>
-                    <li><a href="">iOS</a></li>
-                    <li><a href="">Interview Q</a></li>
+                    <li onclick="MainMenu.openSubMenu(this)"><a>JAVA</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a>Exception handling</a>
+                            </li>
+
+                            <li>
+                                <a>Threading</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li onclick="MainMenu.openSubMenu(this)">
+                        <a>Spring Boot</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a>Exception handling</a>
+                            </li>
+                            <li>
+                                <a>Threading</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li onclick="MainMenu.openSubMenu(this)"><a>Angular JS</a></li>
+                    <li onclick="MainMenu.openSubMenu(this)"><a>Hibernate</a></li>
+                    <li onclick="MainMenu.openSubMenu(this)"><a>jQuery</a></li>
+                    <li onclick="MainMenu.openSubMenu(this)"><a>iOS</a></li>
+                    <li onclick="MainMenu.openSubMenu(this)"><a>Interview Q</a></li>
 
                 </ul>
-                <ul class="right-nav-bar" sec:authorize="isAuthenticated()">
+                <ul class="nav-menu right-nav-bar" sec:authorize="isAuthenticated()">
                     <li onclick="MainMenu.openSubMenu(this)">
                         <a>
                             <span class="fa fa-user"></span>
@@ -69,7 +89,7 @@
                         </a>
                         <ul class="sub-menu">
                             <li>
-                                <a href="" sec:authentication="name"></a>
+                                <a sec:authentication="name"></a>
                             </li>
                             <li sec:authorize="hasRole('ROLE_ADMIN')">
                                 <a href="/admin/index" target="_blank">Admin</a>

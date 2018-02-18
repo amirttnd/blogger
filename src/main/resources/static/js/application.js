@@ -52,7 +52,8 @@ var Notification = {
 };
 
 var MainMenu = {
-    openSubMenu: function ($this) {
-        $($this).toggleClass("open")
+    openSubMenu: function (self) {
+        $(self).not().siblings().removeClass("open");
+        $(self).toggleClass("open");
     }
 };
