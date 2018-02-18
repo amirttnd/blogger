@@ -6,6 +6,10 @@ $(document).ready(function () {
             $("header.header").removeClass("fixed")
         }
     });
+
+    $(".right-nav-bar li").click(function () {
+        $(this).toggleClass("open")
+    })
 });
 
 (function (d, s, id) {
