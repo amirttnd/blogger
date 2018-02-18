@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
 <head lang="en" th:fragment="common_head">
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -63,6 +64,24 @@
                 </li>
                 <li><a target="_self" th:href="@{/category/tree}">Category</a></li>
                 <li><a target="_self" href="/user/list">Users</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" target="_self" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user"></i>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="">
+                                <span sec:authentication="name"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/logout.html}" target="_self">logout</a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </nav>

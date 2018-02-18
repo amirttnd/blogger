@@ -33,4 +33,6 @@ dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '1.5.10.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: '1.5.10.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '1.0.0.RELEASE'
+    compile group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity4', version: '2.1.2.RELEASE'
+
 }
