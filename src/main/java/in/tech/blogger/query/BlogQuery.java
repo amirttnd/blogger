@@ -3,6 +3,7 @@ package in.tech.blogger.query;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.TextCriteria;
@@ -115,10 +116,9 @@ public class BlogQuery {
     public Query build() {
         Query textQuery = new Query();
 
-        Pageable pageRequest = new PageRequest(getPage(), this.max);
+        Pageable pageRequest = new PageRequest(getPage(), this.max, Sort.Direction.ASC, "dateCreated");
 
         Criteria criteria = new Criteria();
-
 
         if (onlyPublished != null) {
             textQuery.addCriteria(criteria.where("isPublished").is(getOnlyPublished()));
@@ -151,6 +151,7 @@ public class BlogQuery {
 
         return textQuery;
     }
+
 
     @Override
     public String toString() {

@@ -20,6 +20,6 @@ spring:
   address: localhost:8080
   data:
     mongodb:
-      uri: mongodb://localhost/blogger
+      uri: ${MONGO_DATABASE_URL}
       repositories:
         enabled: true

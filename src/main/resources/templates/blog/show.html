@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html ng-app="techBlogger" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head lang="en">
-    <title th:text="${blogVO.blog.shortHeading}+ ' - '+ ${blogVO.blog.title}"></title>
+    <title th:inline="text">
+        <th:block th:if="${blogVO.blog!=null}">
+            [[${blogVO.blog.shortHeading}+ ' - '+ ${blogVO.blog.title}]]
+        </th:block>
+    </title>
     <th:block th:replace="layout/main::head"/>
-    <script type="text/javascript" th:inline="javascript">
+    <script type="text/javascript" th:inline="javascript" th:if="${blogVO.blog!=null}">
         window.friendlyUrl =/*[[${blogVO.blog.friendlyUrl}]]*/;
         window.blogId =/*[[${blogVO.blog.id}]]*/;
     </script>
@@ -12,25 +16,26 @@
 
 <th:block th:include="layout/main::main-menu"/>
 
-<div class="blog-area" th:with="blog=${blogVO.blog},comments=${blogVO.comments}"
-     ng-controller="BlogController as blogCtrl" ng-init="blogCtrl.comments()">
-    <div class="blog">
-        <article>
+<th:block th:if="${blogVO.blog}">
+    <div class="blog-area" th:with="blog=${blogVO.blog},comments=${blogVO.comments}"
+         ng-controller="BlogController as blogCtrl" ng-init="blogCtrl.comments()">
+        <div class="blog">
+            <article>
 
-            <div class="blog-entry">
-                <th:block th:replace="/blog/fragment/header::header(${blog},${comments})"/>
+                <div class="blog-entry">
+                    <th:block th:replace="/blog/fragment/header::header(${blog},${comments})"/>
 
-                <div class="blog-content" th:utext="${blog.content}">
+                    <div class="blog-content" th:utext="${blog.content}">
 
+                    </div>
+
+                    <div th:replace="/blog/fragment/tags::tags(${blog.tags})">
+
+                    </div>
                 </div>
-
-                <div th:replace="/blog/fragment/tags::tags(${blog.tags})">
-
-                </div>
-            </div>
-        </article>
-        <div class="social">
-            <div class="social-wrapper">
+            </article>
+            <div class="social">
+                <div class="social-wrapper">
                <span class="share">
                     <a href=""
                        class="twitter">
@@ -42,198 +47,189 @@
                         data-layout="button_count">
                    </div>
                </span>
-                <a href="" class="comment"><i class="fa fa-comment"></i>&nbsp;Comment</a>
+                    <a href="" class="comment"><i class="fa fa-comment"></i>&nbsp;Comment</a>
+                </div>
             </div>
-        </div>
-        <div class="related-blog" th:if="${#lists.isEmpty(blogVO.recommendations)==false}"
-             th:with="recommendations=${blogVO.recommendations}">
-            <h2>Recommend for you</h2>
+            <div class="related-blog" th:if="${#lists.isEmpty(blogVO.recommendations)==false}"
+                 th:with="recommendations=${blogVO.recommendations}">
+                <h2>Recommend for you</h2>
 
-            <div class="related-blog-wrapper">
-                <ul>
-                    <li th:each="recommendation:${recommendations}">
-                        <h1 class="head" th:inline="text">
-                            [[${recommendation.shortHeading}]]
-                        </h1>
+                <div class="related-blog-wrapper">
+                    <ul>
+                        <li th:each="recommendation:${recommendations}">
+                            <h1 class="head" th:inline="text">
+                                [[${recommendation.shortHeading}]]
+                            </h1>
 
-                        <div class="content">
-                            <h3 th:inline="text">
-                                [[${recommendation.title}]]
-                            </h3>
+                            <div class="content">
+                                <h3 th:inline="text">
+                                    [[${recommendation.title}]]
+                                </h3>
 
-                            <p th:inline="text">
-                                [[${recommendation.briefIntroduction}]]
-                            </p>
+                                <p th:inline="text">
+                                    [[${recommendation.briefIntroduction}]]
+                                </p>
 
-                        </div>
-                        <div class="bottom">
+                            </div>
+                            <div class="bottom">
                             <span>
                                 <i class="fa fa-calendar"></i>
                                 &nbsp;&nbsp;
                                 <span th:text="${#dates.format(recommendation.dateCreated,'MMMM  dd, yyyy')}"></span>
                             </span>
-                            <a th:href="@{/blog/{friendlyUrl}(friendlyUrl=${recommendation.friendlyUrl})}">Read more</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="comment-area" ng-controller="CommentController as commentCtrl" ng-init="commentCtrl.list()"
-             data-ng-cloak="">
-            <h2>Post Comment</h2>
-
-            <div class="comment-wrapper">
-                <div class="comment-header">
-                    <h3><i class="fa fa-comment">&nbsp;&nbsp;</i>Comments ({{commentCtrl.totalComments}})</h3>
+                                <a th:href="@{/blog/{friendlyUrl}(friendlyUrl=${recommendation.friendlyUrl})}">Read
+                                    more</a>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-                <ul class="comments">
-                    <li class="comment-row comment-form">
-                        <div class="reply-box">
-                            <p>Leave a comment</p>
+            </div>
+            <div class="comment-area" ng-controller="CommentController as commentCtrl" ng-init="commentCtrl.list()"
+                 data-ng-cloak="">
+                <h2>Post Comment</h2>
 
-                            <form name="saveCommentForm" data-ng-submit="commentCtrl.save()">
-                                <input type="email" name="email" ng-model="commentCtrl.commentModel.email"
-                                       placeholder="Email" class="email text"/>
-                                <input type="text" name="fullName" ng-model="commentCtrl.commentModel.fullName"
-                                       placeholder="Full name" class="full-name text"/>
+                <div class="comment-wrapper">
+                    <div class="comment-header">
+                        <h3><i class="fa fa-comment">&nbsp;&nbsp;</i>Comments ({{commentCtrl.totalComments}})</h3>
+                    </div>
+                    <ul class="comments">
+                        <li class="comment-row comment-form">
+                            <div class="reply-box">
+                                <p>Leave a comment</p>
+
+                                <form name="saveCommentForm" data-ng-submit="commentCtrl.save()">
+                                    <input type="email" name="email" ng-model="commentCtrl.commentModel.email"
+                                           placeholder="Email" class="email text"/>
+                                    <input type="text" name="fullName" ng-model="commentCtrl.commentModel.fullName"
+                                           placeholder="Full name" class="full-name text"/>
                                 <textarea name="comment" ng-model="commentCtrl.commentModel.comment"
                                           placeholder="Enter comment"></textarea>
-                                <input type="url" ng-model="commentCtrl.commentModel.websiteURL"
-                                       placeholder="Website URL" class="web-site-url text"/>
+                                    <input type="url" ng-model="commentCtrl.commentModel.websiteURL"
+                                           placeholder="Website URL" class="web-site-url text"/>
 
-                                <input type="submit" class="btn" value="As guest reply"/>
-                                <i ng-show="commentCtrl.commentModel.isInProgress"
-                                   class="fa fa-spinner fa-spin"/>
-                            </form>
-                        </div>
-                    </li>
-                    <li class="comment-row"
-                        ng-repeat="_comment in commentCtrl.comments track by $index"
-                        ng-hide="_comment.comment.isDeleted">
-                        <img src="/images/user-icon.png"/>
+                                    <input type="submit" class="btn" value="As guest reply"/>
+                                    <i ng-show="commentCtrl.commentModel.isInProgress"
+                                       class="fa fa-spinner fa-spin"/>
+                                </form>
+                            </div>
+                        </li>
+                        <li class="comment-row"
+                            ng-repeat="_comment in commentCtrl.comments track by $index"
+                            ng-hide="_comment.comment.isDeleted">
+                            <img src="/images/user-icon.png"/>
 
-                        <div class="display-comment">
-                            <span class="user-name">{{_comment.comment.email}}</span>
+                            <div class="display-comment">
+                                <span class="user-name">{{_comment.comment.email}}</span>
 
-                            <span class="date"><i class="fa fa-calendar">&nbsp;</i>{{_comment.comment.dateCreated|date}}</span>
+                                <span class="date"><i class="fa fa-calendar">&nbsp;</i>{{_comment.comment.dateCreated|date}}</span>
 
-                            <p class="comment-text">
-                                {{_comment.comment.comment}}
-                            </p>
-                            <a data-ng-show="_comment.comment.websiteURL"
-                               target="_blank"
-                               data-ng-href="{{_comment.comment.websiteURL}}" class="website-url">
-                                {{_comment.comment.websiteURL}}
-                            </a>
-
-                            <div class="btn-group">
-                                <a href="" data-ng-click="_comment.canShowReply=true">
-                                    <i class="fa fa-reply"></i>
-                                </a>
-                                <a href="" data-ng-click="commentCtrl.delete(_comment.comment)">
-                                    <i class="fa fa-trash"></i>
+                                <p class="comment-text">
+                                    {{_comment.comment.comment}}
+                                </p>
+                                <a data-ng-show="_comment.comment.websiteURL"
+                                   target="_blank"
+                                   data-ng-href="{{_comment.comment.websiteURL}}" class="website-url">
+                                    {{_comment.comment.websiteURL}}
                                 </a>
 
-                                <div class="reply-box" ng-show="_comment.canShowReply">
-                                    <p>Leave a reply</p>
-                                    <input type="email" required="required" ng-model="_comment.reply.email"
-                                           placeholder="Email" class="email text"/>
-                                    <input type="text" required="required" ng-model="_comment.reply.fullName"
-                                           placeholder="Full name" class="full-name text"/>
+                                <div class="btn-group">
+                                    <a href="" data-ng-click="_comment.canShowReply=true">
+                                        <i class="fa fa-reply"></i>
+                                    </a>
+                                    <a href="" data-ng-click="commentCtrl.delete(_comment.comment)">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+
+                                    <div class="reply-box" ng-show="_comment.canShowReply">
+                                        <p>Leave a reply</p>
+                                        <input type="email" required="required" ng-model="_comment.reply.email"
+                                               placeholder="Email" class="email text"/>
+                                        <input type="text" required="required" ng-model="_comment.reply.fullName"
+                                               placeholder="Full name" class="full-name text"/>
                                     <textarea required="required" ng-model="_comment.reply.comment"
                                               placeholder="Enter comment"></textarea>
 
 
-                                    <input type="button"
-                                           data-ng-click="commentCtrl.saveReply(_comment, _comment.replies)"
-                                           class="btn" value="As guest reply"/>
-                                    <i ng-show="_comment.reply.isInProgress"
-                                       class="fa fa-spinner fa-spin"></i>
+                                        <input type="button"
+                                               data-ng-click="commentCtrl.saveReply(_comment, _comment.replies)"
+                                               class="btn" value="As guest reply"/>
+                                        <i ng-show="_comment.reply.isInProgress"
+                                           class="fa fa-spinner fa-spin"></i>
 
+                                    </div>
                                 </div>
+
+
                             </div>
+                            <ul class="reply">
+                                <li class="reply-row" ng-repeat="reply in _comment.replies track by $index"
+                                    ng-hide="reply.isDeleted">
+                                    <img src="/images/user-icon.png"/>
 
-
-                        </div>
-                        <ul class="reply">
-                            <li class="reply-row" ng-repeat="reply in _comment.replies track by $index"
-                                ng-hide="reply.isDeleted">
-                                <img src="/images/user-icon.png"/>
-
-                                <div class="display-comment">
-                                    <span class="user-name">{{reply.email}}</span>
+                                    <div class="display-comment">
+                                        <span class="user-name">{{reply.email}}</span>
                                     <span class="date"><i class="fa fa-calendar">
                                         &nbsp;</i>{{reply.dateCreated|date}}</span>
 
-                                    <p class="comment-text">
-                                        {{reply.comment}}
-                                    </p>
+                                        <p class="comment-text">
+                                            {{reply.comment}}
+                                        </p>
 
-                                    <div class="btn-group">
-                                        <a href="" data-ng-click="commentCtrl.delete(reply)">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
+                                        <div class="btn-group">
+                                            <a href="" data-ng-click="commentCtrl.delete(reply)">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
 
+                </div>
             </div>
+
         </div>
+        <div class="right-panel right">
+            <th:block th:replace="layout/main::search-box">
 
-    </div>
-    <div class="right-panel right">
-        <th:block th:replace="layout/main::search-box">
+            </th:block>
 
-        </th:block>
-
-        <ul class="sub-categories">
-            <li class="sub-category">
-                <h1>Exception Handling</h1>
-                <ul class="sub-category-blog">
-                    <li>
-                        <a href=""> <i class="fa fa-hand-o-right">&nbsp;</i>Try block</a>
-                    </li>
-                    <li>
-                        <a href=""> <i class="fa fa-hand-o-right">&nbsp;</i>Try block</a>
-                    </li>
-                    <li>
-                        <a href=""> <i class="fa fa-hand-o-right">&nbsp;</i>Try block</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="sub-category">
-                <h1>Exception Handling</h1>
-                <ul class="sub-category-blog">
-                    <li>
-                        <a href=""> <i class="fa fa-hand-o-right">&nbsp;</i>Try block</a>
-                    </li>
-                    <li>
-                        <a href=""> <i class="fa fa-hand-o-right">&nbsp;</i>Try block</a>
-                    </li>
-                    <li>
-                        <a href=""> <i class="fa fa-hand-o-right">&nbsp;</i>Try block</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-
-        <div class="related-categories">
-            <div class="title">
-                <span>Try to Explore</span>
-            </div>
-            <ul class="tags">
-                <li th:each="relatedCategory:${blog.sortedCategories}">
-                    <a target="_self" class="tag-info" th:href="@{/blogs(categoryId=${relatedCategory.id})}"
-                       th:text="${relatedCategory.name}">
-                    </a>
+            <ul class="sub-categories" th:inline="text">
+                <li class="sub-category">
+                    <h1>[[${blogVO.blog.category.name}]]</h1>
+                    <ul class="sub-category-blog">
+                        <li th:each="blogVO:${@blogService.findAllByCategory(blogVO.blog.category)}"
+                            th:with="blog=${blogVO.blog}">
+                            <a target="_self"
+                               th:href="@{/blog/{friendlyUrl}(friendlyUrl=${blog.friendlyUrl})}">
+                                <i class="fa fa-hand-o-right">&nbsp;</i>[[${blog.shortHeading}]]
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
+
+            <div class="related-categories">
+                <div class="title">
+                    <span>Try to Explore</span>
+                </div>
+                <ul class="tags">
+                    <li th:each="relatedCategory:${blog.sortedCategories}">
+                        <a target="_self" class="tag-info" th:href="@{/blogs(categoryId=${relatedCategory.id})}"
+                           th:text="${relatedCategory.name}">
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
+</th:block>
+<th:block th:if="${blogVO.blog==null}">
+    <div th:replace="/layout/main::missing-page">
+
+    </div>
+</th:block>
 <div th:replace="layout/main::alert">
 
 </div>

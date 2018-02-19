@@ -41,9 +41,7 @@ public class BlogController {
     ModelAndView index(@ModelAttribute BlogQuery blogQuery) {
         ModelAndView modelAndView = new ModelAndView("/blog/blogs");
         blogQuery.setOnlyPublished(true);
-
         List<BlogVO> blogs = blogService.search(blogQuery);
-
         modelAndView.addObject("blogs", blogs);
         return modelAndView;
     }
@@ -54,5 +52,4 @@ public class BlogController {
         modelAndView.addObject("blogVO", blogService.findAndIncView(friendlyUrl));
         return modelAndView;
     }
-
 }

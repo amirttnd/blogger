@@ -13,6 +13,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,32 +46,30 @@ public class BlogService {
         return null;
     }
 
-    public List<Blog> findAll() {
-        return blogRepository.findAll();
-    }
-
     public Blog findById(String id) {
         return blogRepository.findById(id);
     }
 
-    public List<Blog> findAllByCategory(String id) {
-        Category category = categoryRepository.findById(id);
-        return blogRepository.findAllByCategory(category);
-    }
-
-    public Blog findByFriendlyUrl(String friendlyUrl) {
-        return blogRepository.findByFriendlyUrl(friendlyUrl);
+    public List<BlogVO> findAllByCategory(Category category) {
+        BlogQuery blogQuery = new BlogQuery();
+        blogQuery.setOnlyPublished(true);
+        blogQuery.setFieldsToExclude(Arrays.asList("content", "briefIntroduction", "relatedCategories"));
+        blogQuery.setCategoryId(category.getId());
+        blogQuery.setMax(20);
+        return search(blogQuery);
     }
 
     public BlogVO findAndIncView(String friendlyUrl) {
         BlogVO blogVO = new BlogVO();
         Blog blog = blogRepository.findByFriendlyUrl(friendlyUrl);
-        blog.incViews();
-        blogRepository.save(blog);
+        if (blog != null) {
+            blog.incViews();
+            blogRepository.save(blog);
 
-        blogVO.setBlog(blog);
-        blogVO.setComments(commentService.countByReferenceId(blog.getId()));
-        blogVO.setRecommendations(blogRepository.findAllByCategoryAndIsRecommended(blog.getCategory(), true));
+            blogVO.setBlog(blog);
+            blogVO.setComments(commentService.countByReferenceId(blog.getId()));
+            blogVO.setRecommendations(blogRepository.findAllByCategoryAndIsRecommended(blog.getCategory(), true));
+        }
         return blogVO;
     }
 

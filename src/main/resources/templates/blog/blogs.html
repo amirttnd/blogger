@@ -11,30 +11,41 @@
 
 
 <div class="blog-area">
-    <div class="blog">
-        <article th:each="blogVO:${blogs}" th:with="blog=${blogVO.blog}">
-            <div class="blog-entry">
-                <th:block th:replace="/blog/fragment/header::header(${blog}, ${blogVO.comments})"/>
+    <th:block th:if="${#lists.isEmpty(blogs)==false}">
+        <div class="blog">
+            <article th:each="blogVO:${blogs}" th:with="blog=${blogVO.blog}">
+                <div class="blog-entry">
+                    <th:block th:replace="/blog/fragment/header::header(${blog}, ${blogVO.comments})"/>
 
-                <div class="blog-content">
-                    <div th:utext="${blog.briefIntroduction}"></div>
+                    <div class="blog-content">
+                        <div th:utext="${blog.briefIntroduction}"></div>
 
-                    <div th:replace="/blog/fragment/tags::tags(${blog.tags})">
+                        <div th:replace="/blog/fragment/tags::tags(${blog.tags})">
 
+                        </div>
+                        <a th:href="@{/blog/{friendlyUrl}(friendlyUrl=${blog.friendlyUrl})}" class="more">
+                            Continue reading
+                        </a>
                     </div>
-                    <a th:href="@{/blog/{friendlyUrl}(friendlyUrl=${blog.friendlyUrl})}" class="more">
-                        Continue reading
-                    </a>
                 </div>
-            </div>
-        </article>
+            </article>
 
-    </div>
-    <div class="right-panel right">
-        <th:block th:replace="layout/main::search-box">
+        </div>
+        <div class="right-panel right">
+            <th:block th:replace="layout/main::search-box">
+
+            </th:block>
+        </div>
+    </th:block>
+
+    <th:block th:if="${#lists.isEmpty(blogs)}">
+
+        <th:block th:replace="layout/main::empty-search-result">
 
         </th:block>
-    </div>
+
+    </th:block>
+
 </div>
 <th:block th:replace="layout/main::footer"/>
 </body>

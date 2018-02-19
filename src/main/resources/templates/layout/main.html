@@ -38,7 +38,7 @@
 <body>
 
 <div th:fragment="main-menu">
-    <header class="header">
+    <header class="header" th:with="tree=${@categoryService.tree()}">
         <div class="brand">
             <div class="brand-wrapper">
                 <h1 class="title">
@@ -52,38 +52,22 @@
         <nav id="navigation" class="main-navigation">
             <div id="primary-menu" class="menu">
                 <ul class="nav-menu">
-                    <li>
+                    <li th:each="_category:${tree}" th:inline="text">
                         <a>
-                            JAVA
-                            <i class="fa fa-caret-down">&nbsp;</i>
+                            [[${_category.category.name}]]
+                            <i class="fa fa-caret-down" th:if="${_category.subCategories.size()>0}">
+                                &nbsp;
+                            </i>
                         </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a>Exception handling</a>
-                            </li>
-
-                            <li>
-                                <a>Threading</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a>Spring Boot</a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a>Exception handling</a>
-                            </li>
-                            <li>
-                                <a>Threading</a>
+                        <ul class="sub-menu" th:if="${_category.subCategories.size()>0}">
+                            <li th:each="_subCategory:${_category.subCategories}">
+                                <a target="_self"
+                                   th:href="@{/blogs(categoryId=${_subCategory.id})}">
+                                    [[${_subCategory.name}]]
+                                </a>
                             </li>
                         </ul>
                     </li>
-                    <li><a>Angular JS</a></li>
-                    <li><a>Hibernate</a></li>
-                    <li><a>jQuery</a></li>
-                    <li><a>iOS</a></li>
-                    <li><a>Interview Q</a></li>
-
                 </ul>
                 <ul class="nav-menu right-nav-bar" sec:authorize="isAuthenticated()">
                     <li>
@@ -99,7 +83,7 @@
                                 <a href="/admin/index" target="_blank">Admin</a>
                             </li>
                             <li>
-                                <a href="/logout.html">logout</a>
+                                <a href="/logout.html">LOGOUT</a>
                             </li>
                         </ul>
                     </li>
@@ -146,6 +130,46 @@
 
 <div th:fragment="alert">
     <div id="notification">
+    </div>
+</div>
+
+<div th:fragment="missing-page">
+    <div class="wrapper">
+        <div class="missing-page">
+            <h1>
+                <a target="_self" href="/blog.html" class="fa fa-home"></a> Oops! (404)
+            </h1>
+
+            <p>
+                Looks like this page is missing. Report error or back to home.
+                <a href="">Contact to
+                    <span class="logo"><span class="first">Tech</span><span class="second">blogger</span></span>
+                    Administrator.
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="empty-search-result">
+
+    <div class="ignore-padding wrapper">
+        <div class="missing-page">
+            <th:block th:replace="layout/main::search-box">
+
+            </th:block>
+            <h1>
+                <a target="_self" href="/blog.html" class="fa fa-home"></a> Oops! Search result is empty
+            </h1>
+
+            <p>
+                <a href="">Contact to
+                        <span class="logo"><span class="first">Tech</span><span class="second">blogger</span>
+                        </span>
+                    Administrator.
+                </a>
+            </p>
+        </div>
     </div>
 </div>
 </body>

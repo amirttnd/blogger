@@ -1,5 +1,6 @@
 package in.tech.blogger.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import in.tech.blogger.vo.CategoryVO;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.CreatedDate;
@@ -43,6 +44,7 @@ public class Category implements Persistable<String> {
     Date lastUpdated;
 
     @Override
+    @JsonIgnore
     public boolean isNew() {
         return id == null;
     }
@@ -98,6 +100,7 @@ public class Category implements Persistable<String> {
         this.friendlyUrl = friendlyUrl;
     }
 
+    @JsonIgnore
     public Date getDateCreated() {
         return dateCreated;
     }
@@ -106,6 +109,7 @@ public class Category implements Persistable<String> {
         this.dateCreated = dateCreated;
     }
 
+    @JsonIgnore
     public Date getLastUpdated() {
         return lastUpdated;
     }
