@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html ng-app="techBlogger" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html ng-app="techBlogger"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head lang="en">
     <title th:inline="text">
         <th:block th:if="${blogVO.blog!=null}">
@@ -136,7 +138,8 @@
                                     <a href="" data-ng-click="_comment.canShowReply=true">
                                         <i class="fa fa-reply"></i>
                                     </a>
-                                    <a href="" data-ng-click="commentCtrl.delete(_comment.comment)">
+                                    <a sec:authorize="hasRole('ROLE_ADMIN')" href=""
+                                       data-ng-click="commentCtrl.delete(_comment.comment)">
                                         <i class="fa fa-trash"></i>
                                     </a>
 
@@ -146,7 +149,7 @@
                                                placeholder="Email" class="email text"/>
                                         <input type="text" required="required" ng-model="_comment.reply.fullName"
                                                placeholder="Full name" class="full-name text"/>
-                                    <textarea required="required" ng-model="_comment.reply.comment"
+                                        <textarea required="required" ng-model="_comment.reply.comment"
                                               placeholder="Enter comment"></textarea>
 
 
@@ -176,7 +179,7 @@
                                         </p>
 
                                         <div class="btn-group">
-                                            <a href="" data-ng-click="commentCtrl.delete(reply)">
+                                            <a sec:authorize="hasRole('ROLE_ADMIN')" href="" data-ng-click="commentCtrl.delete(reply)">
                                                 <i class="fa fa-trash"></i>
                                             </a>
                                         </div>
