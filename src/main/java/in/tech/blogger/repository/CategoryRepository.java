@@ -12,10 +12,10 @@ public interface CategoryRepository extends MongoRepository<Category, String> {
 
     List<Category> findAll(Sort sort);
 
-    @Query(value = "{'parent':null}")
-    List<Category> getCategoryParents();
+    @Query(value = "{'parent':null,active:?0}")
+    List<Category> getCategoryParents(boolean active);
 
-    List<Category> findAllByParent(Category category);
+    List<Category> findAllByParentAndActive(Category category,boolean active);
 
     Category findById(String id);
 

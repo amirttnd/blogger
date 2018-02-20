@@ -58,11 +58,15 @@ public class BlogService {
     }
 
     public List<BlogVO> findAllByCategory(Category category) {
+        return findAllByCategory(category, 20);
+    }
+
+    public List<BlogVO> findAllByCategory(Category category, Integer max) {
         BlogQuery blogQuery = new BlogQuery();
         blogQuery.setOnlyPublished(true);
         blogQuery.setFieldsToExclude(Arrays.asList("content", "briefIntroduction", "relatedCategories"));
         blogQuery.setCategoryId(category.getId());
-        blogQuery.setMax(20);
+        blogQuery.setMax(max);
         return search(blogQuery);
     }
 

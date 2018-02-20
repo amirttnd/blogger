@@ -23,6 +23,9 @@ public class CategoryService {
     @Autowired
     BlogRepository blogRepository;
 
+    @Autowired
+    CacheService cacheService;
+
     public Category save(CategoryModel categoryModel) {
         if (categoryModel.getName() != null) {
             Category category = new Category();
@@ -31,6 +34,7 @@ public class CategoryService {
             category.setName(categoryModel.getName());
             category.setLevel(1);
             category.setFriendlyUrl(Utils.toFriendlyURL(category.getName()));
+            cacheService.expireCategoryTree();
             return categoryRepository.save(category);
         }
         return null;
@@ -40,6 +44,7 @@ public class CategoryService {
         Category category = categoryRepository.findById(categoryModel.getId());
         if (categoryModel.getName() != null) {
             category.setName(categoryModel.getName());
+            cacheService.expireCategoryTree();
             return categoryRepository.save(category);
         }
         return null;
@@ -54,6 +59,7 @@ public class CategoryService {
             child.setName(categoryModel.getName());
             child.setLevel(parent.getLevel() + 1);
             child.setFriendlyUrl(Utils.toFriendlyURL(parent.getName() + " " + child.getName()));
+            cacheService.expireCategoryTree();
             return categoryRepository.save(child);
         }
         return null;
@@ -63,7 +69,8 @@ public class CategoryService {
         Category category = categoryRepository.findById(id);
         if (category != null) {
             category.setActive(!category.getActive());
-            return categoryRepository.save(category);
+            category = categoryRepository.save(category);
+            cacheService.expireCategoryTree();
         }
         return category;
     }
@@ -72,24 +79,25 @@ public class CategoryService {
         Category category = categoryRepository.findById(id);
         if (category != null) {
             categoryRepository.delete(category);
+            cacheService.expireCategoryTree();
             return true;
         }
         return false;
     }
 
-    public List<Category> getCategoryParents() {
-        return categoryRepository.getCategoryParents();
+    public List<Category> getCategoryParents(boolean active) {
+        return categoryRepository.getCategoryParents(active);
     }
 
     public List<CategoryTreeVO> tree() {
         List<CategoryTreeVO> treeVOs = new ArrayList<>();
         CategoryTreeVO categoryTreeVO = null;
-        List<Category> parents = getCategoryParents();
+        List<Category> parents = getCategoryParents(true);
         List<Category> subCategories = new ArrayList<>();
         for (Category parent : parents) {
             categoryTreeVO = new CategoryTreeVO();
             categoryTreeVO.setCategory(parent);
-            subCategories = categoryRepository.findAllByParent(parent);
+            subCategories = categoryRepository.findAllByParentAndActive(parent, true);
             for (Category subCategory : subCategories) {
                 categoryTreeVO.addToSubcategories(subCategory);
             }
