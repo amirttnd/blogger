@@ -20,6 +20,8 @@ public class BlogQuery {
 
     String query;
 
+    String categoryQ;
+
     String categoryId;
 
     Boolean onlyPublished = true;
@@ -113,6 +115,14 @@ public class BlogQuery {
         return (int) Math.floor(offset / max);
     }
 
+    public String getCategoryQ() {
+        return categoryQ;
+    }
+
+    public void setCategoryQ(String categoryQ) {
+        this.categoryQ = categoryQ;
+    }
+
     public Query build() {
         Query textQuery = new Query();
 
@@ -139,6 +149,10 @@ public class BlogQuery {
 
         if (categoryId != null) {
             textQuery.addCriteria(criteria.where("category.id").is(categoryId));
+        }
+
+        if (categoryQ != null) {
+            textQuery.addCriteria(criteria.where("inCategories").in(categoryQ));
         }
 
         if (fieldsToExclude != null) {

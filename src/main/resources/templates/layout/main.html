@@ -53,7 +53,8 @@
             <div id="primary-menu" class="menu">
                 <ul class="nav-menu">
                     <li th:each="_category:${tree}" th:inline="text">
-                        <a>
+                        <a target="_self"
+                           th:href="@{/blogs(categoryQ=${_category.category.friendlyUrl})}">
                             [[${_category.category.name}]]
                             <i class="fa fa-caret-down" th:if="${_category.subCategories.size()>0}">
                                 &nbsp;
@@ -62,7 +63,7 @@
                         <ul class="sub-menu" th:if="${_category.subCategories.size()>0}">
                             <li th:each="_subCategory:${_category.subCategories}">
                                 <a target="_self"
-                                   th:href="@{/blogs(categoryId=${_subCategory.id})}">
+                                   th:href="@{/blogs(categoryQ=${_subCategory.friendlyUrl})}">
                                     [[${_subCategory.name}]]
                                 </a>
                             </li>
