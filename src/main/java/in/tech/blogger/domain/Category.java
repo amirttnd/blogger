@@ -13,7 +13,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 @Document(collection = "category")
 public class Category implements Persistable<String> {
@@ -120,6 +123,20 @@ public class Category implements Persistable<String> {
 
     public CategoryVO toCategoryVO() {
         return new CategoryVO(this);
+    }
+
+    public static List<Category> breadcrumb(Category category){
+        List<Category> list = new ArrayList<>();
+        Category next = category;
+        while (next != null) {
+            list.add(next);
+            next = next.getParent();
+            System.out.println(next);
+        }
+        Collections.sort(list, (o1, o2) -> {
+            return Long.compare(o1.dateCreated.getTime(), o2.dateCreated.getTime());
+        });
+        return list;
     }
 
     @Override

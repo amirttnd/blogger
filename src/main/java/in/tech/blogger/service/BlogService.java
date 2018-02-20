@@ -46,11 +46,9 @@ public class BlogService {
             blog.bind(blogModel);
             blog.setCategory(category);
             blog.setUser(userRepository.findByEmail(blogModel.getUsername()));
-
-            if (category.getParent() != null) {
-                inCategories.add(category.getParent().getFriendlyUrl());
+            for (Category cate : Category.breadcrumb(category)) {
+                inCategories.add(cate.getFriendlyUrl());
             }
-            inCategories.add(category.getFriendlyUrl());
             blog.setInCategories(inCategories);
             blog.setRelatedCategories(relatedCategories);
             blogRepository.save(blog);

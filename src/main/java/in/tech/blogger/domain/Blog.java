@@ -15,7 +15,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
 import java.lang.reflect.Field;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 import java.util.stream.Collectors;
 
 
@@ -252,17 +255,7 @@ public class Blog implements Persistable<String> {
     }
 
     public List<Category> getBreadcrumb() {
-        List<Category> list = new ArrayList<>();
-        Category next = category;
-        while (next != null) {
-            list.add(next);
-            next = next.getParent();
-            System.out.println(next);
-        }
-        Collections.sort(list, (o1, o2) -> {
-            return Long.compare(o1.dateCreated.getTime(), o2.dateCreated.getTime());
-        });
-        return list;
+        return Category.breadcrumb(category);
     }
 
     @Override

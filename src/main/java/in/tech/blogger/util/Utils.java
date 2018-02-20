@@ -1,8 +1,5 @@
 package in.tech.blogger.util;
 
-import in.tech.blogger.aware.ApplicationContextHolder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 import java.text.Normalizer;
 import java.util.Map;
 import java.util.NavigableMap;
