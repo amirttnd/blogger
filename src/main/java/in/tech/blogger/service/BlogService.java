@@ -34,12 +34,19 @@ public class BlogService {
 
     public Blog save(BlogModel blogModel) {
         if (blogModel.getShortHeading() != null) {
+            List<String> inCategories = new ArrayList<>();
             Category category = categoryRepository.findById(blogModel.getCategoryId());
             List<Category> relatedCategories = categoryRepository.findAllByIdInList(blogModel.getRelatedCategories());
             Optional<Blog> blogOptional = Optional.ofNullable(blogRepository.findById(blogModel.getId()));
             Blog blog = blogOptional.orElse(new Blog());
             blog.bind(blogModel);
             blog.setCategory(category);
+
+            if (category.getParent() != null) {
+                inCategories.add(category.getParent().getFriendlyUrl());
+            }
+            inCategories.add(category.getFriendlyUrl());
+            blog.setInCategories(inCategories);
             blog.setRelatedCategories(relatedCategories);
             blogRepository.save(blog);
         }

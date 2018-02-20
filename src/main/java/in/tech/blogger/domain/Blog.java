@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 
 
 @Document(collection = "blog")
-@CompoundIndex(def = "{shortHeading:'text', title:'text', briefIntroduction:'text', tags:'text'}", name = "search_index")
+@CompoundIndex(def = "{shortHeading:'text', title:'text', briefIntroduction:'text', tags:'text',inCategories:'text'}", name = "search_index")
 public class Blog implements Persistable<String> {
 
     @Id
@@ -64,6 +64,9 @@ public class Blog implements Persistable<String> {
     Date lastUpdated;
 
     Boolean isRecommended;
+
+    @Indexed
+    List<String> inCategories;
 
     Long views = 0l;
 
@@ -240,6 +243,14 @@ public class Blog implements Persistable<String> {
             fields.add(field.getName());
         }
         return fields;
+    }
+
+    public List<String> getInCategories() {
+        return inCategories;
+    }
+
+    public void setInCategories(List<String> inCategories) {
+        this.inCategories = inCategories;
     }
 
     @Override

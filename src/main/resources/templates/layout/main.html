@@ -92,7 +92,8 @@
         </nav>
         <div th:fragment="login-button">
             <div class="fixed-button">
-                <a target="_self" href="/login.html" title="Login!"
+                <a th:if="${#authorization.expression('isAuthenticated()')==false}" target="_self" href="/login.html"
+                   title="Login!"
                    class="fa fa-sign-in link login-button"></a>
                 <a href="javascript:void(0)" onclick="Scroll.toTop()"
                    class="fa fa-arrow-circle-up link goto-top"></a>
