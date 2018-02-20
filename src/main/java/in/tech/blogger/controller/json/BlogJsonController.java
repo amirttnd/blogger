@@ -43,6 +43,7 @@ public class BlogJsonController {
         blogQuery.setOnlyPublished(null);
         List<BlogVO> blogs = blogService.search(blogQuery);
         responseMap.put("blogs", blogs);
+        responseMap.put("total", blogService.count(blogQuery));
         return new ResponseEntity<Map<String, Object>>(responseMap, HttpStatus.OK);
     }
 

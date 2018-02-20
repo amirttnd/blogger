@@ -100,6 +100,10 @@ public class BlogService {
         return blogVOs;
     }
 
+    public long count(BlogQuery blogQuery) {
+        return mongoTemplate.count(blogQuery.build(), Blog.class);
+    }
+
     public Blog toggleRecommendation(String id) {
         Blog blog = blogRepository.findById(id);
         if (blog != null) {

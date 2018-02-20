@@ -43,6 +43,7 @@ public class BlogController {
         blogQuery.setOnlyPublished(true);
         List<BlogVO> blogs = blogService.search(blogQuery);
         modelAndView.addObject("blogs", blogs);
+        modelAndView.addObject("total", blogService.count(blogQuery));
         return modelAndView;
     }
 
