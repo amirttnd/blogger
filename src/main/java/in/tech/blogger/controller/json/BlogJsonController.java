@@ -1,5 +1,6 @@
 package in.tech.blogger.controller.json;
 
+import in.tech.blogger.constant.Constants;
 import in.tech.blogger.domain.Blog;
 import in.tech.blogger.modal.BlogModel;
 import in.tech.blogger.query.BlogQuery;
@@ -9,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,8 +27,10 @@ public class BlogJsonController {
 
 
     @RequestMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
-    ResponseEntity<Map<String, Object>> save(@RequestBody BlogModel blogModel) {
+    @Secured(Constants.AUTHOR_ROLE)
+    ResponseEntity<Map<String, Object>> save(@RequestBody BlogModel blogModel, Principal principal) {
         Map<String, Object> responseMap = new LinkedHashMap<>();
+        blogModel.setUsername(principal.getName());
         Blog blog = blogService.save(blogModel);
         responseMap.put("status", blog != null);
         responseMap.put("blog", blog);
@@ -51,6 +56,7 @@ public class BlogJsonController {
     }
 
     @RequestMapping(value = "/toggleRecommendation", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    @Secured(Constants.AUTHOR_ROLE)
     ResponseEntity<Map<String, Object>> toggle(@RequestParam String id) {
         Map<String, Object> responseMap = new LinkedHashMap<>();
         Blog blog = blogService.toggleRecommendation(id);

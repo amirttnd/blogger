@@ -8,19 +8,22 @@
     <div class="breadcrumb">
         <a target="_self" href="/blog.html"><i class="fa fa-home"></i></a>
         <span class="divider">|</span>
-        <th:block th:if="${blog.category.parent!=null}">
+        <th:block th:each="category,iterStat:${blog.getBreadcrumb()}">
             <a target="_self"
-               th:href="@{/blogs(categoryQ=${blog.category.parent.friendlyUrl})}"
-               th:text="${blog.category.parent.name}"></a>
-            <span class="divider">|</span>
+               th:href="@{/blogs(categoryQ=${category.friendlyUrl})}"
+               th:text="${category.name}">
+            </a>
+            <span class="divider" th:if="${iterStat.last==false}">|</span>
         </th:block>
 
-        <a target="_self" th:href="@{/blogs(categoryQ=${blog.category.friendlyUrl})}" th:text="${blog.category.name}"></a>
+
+        <!--<a target="_self" th:href="@{/blogs(categoryQ=${blog.category.friendlyUrl})}"-->
+        <!--th:text="${blog.category.name}"></a>-->
     </div>
     <div class="blog-meta">
         <span>
             <i class="fa fa-eye"></i>
-            <a>
+            <a th:href="@{/blog/{friendlyUrl}(friendlyUrl=${blog.friendlyUrl})}" target="_self">
                 <th:block th:text="${blog.prettyFormatViews}"/>
                 Views
             </a>
@@ -28,13 +31,15 @@
         <span class="divider"></span>
         <span>
             <i class="fa fa-calendar"></i>
-            <a th:text="${#dates.format(blog.dateCreated,'MMMM dd, yyyy')}"></a>
+            <a th:href="@{/blog/{friendlyUrl}(friendlyUrl=${blog.friendlyUrl})}" target="_self"
+               th:text="${#dates.format(blog.dateCreated,'MMMM dd, yyyy')}"></a>
         </span>
 
         <span class="divider"></span>
         <span>
             <i class="fa fa-comment-o"></i>
-            <a th:inline="text">[[${comments}]] COMMENT</a>
+            <a th:href="@{/blog/{friendlyUrl}(friendlyUrl=${blog.friendlyUrl})}" target="_self"
+               th:inline="text">[[${comments}]] COMMENT</a>
         </span>
     </div>
 </div>

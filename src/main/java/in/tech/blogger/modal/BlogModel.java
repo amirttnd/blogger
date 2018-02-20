@@ -25,6 +25,8 @@ public class BlogModel {
 
     Boolean isRecommended;
 
+    String username;
+
 
     public String getId() {
         return id;
@@ -107,6 +109,14 @@ public class BlogModel {
 
     public void setIsRecommended(Boolean isRecommended) {
         this.isRecommended = isRecommended;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Override

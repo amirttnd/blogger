@@ -9,7 +9,7 @@
 </head>
 <body>
 <div th:replace="layout/admin::adminHeader"></div>
-<div class="container" ng-controller="BlogController as blogCtrl" ng-init="blogCtrl.list()">
+<div class="container" ng-controller="BlogController as blogCtrl" ng-init="blogCtrl.list()" ng-cloak="">
     <ol class="breadcrumb">
         <li><a href="#">Admin</a></li>
         <li>Blogs</li>
@@ -51,11 +51,12 @@
         <tbody>
         <tr ng-repeat="blogVO in blogCtrl.blogs track by $index">
             <td class="col-md-3">
-                {{blogVO.blog.category.parent.name}}
-                <span>&nbsp;/&nbsp;</span>
-                <a href="/category/show?friendlyUrl={{blogVO.blog.category.friendlyUrl}}"
-                   target="_self">{{blogVO.blog.category.name}}</a>
-
+                <a href="/category/show?friendlyUrl={{category.friendlyUrl}}"
+                   target="_self"
+                   ng-repeat="category in blogVO.blog.breadcrumb track by $index">
+                    {{category.name}}
+                    <span ng-if="$last==false"> / </span>
+                </a>
             </td>
             <td><a href="/blog/edit?id={{blogVO.blog.id}}" target="_self"> {{blogVO.blog.shortHeading}}</a></td>
             <td>

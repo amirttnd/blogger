@@ -7,6 +7,7 @@ import in.tech.blogger.modal.BlogModel;
 import in.tech.blogger.query.BlogQuery;
 import in.tech.blogger.repository.BlogRepository;
 import in.tech.blogger.repository.CategoryRepository;
+import in.tech.blogger.repository.UserRepository;
 import in.tech.blogger.vo.BlogVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -30,6 +31,9 @@ public class BlogService {
     CommentService commentService;
 
     @Autowired
+    UserRepository userRepository;
+
+    @Autowired
     MongoTemplate mongoTemplate;
 
     public Blog save(BlogModel blogModel) {
@@ -41,6 +45,7 @@ public class BlogService {
             Blog blog = blogOptional.orElse(new Blog());
             blog.bind(blogModel);
             blog.setCategory(category);
+            blog.setUser(userRepository.findByEmail(blogModel.getUsername()));
 
             if (category.getParent() != null) {
                 inCategories.add(category.getParent().getFriendlyUrl());
