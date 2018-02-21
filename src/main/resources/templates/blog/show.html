@@ -219,7 +219,7 @@
                 </div>
                 <ul class="tags">
                     <li th:each="relatedCategory:${blog.sortedCategories}">
-                        <a target="_self" class="tag-info" th:href="@{/blogs(categoryId=${relatedCategory.id})}"
+                        <a target="_self" class="tag-info" th:href="@{/blogs(categoryQ=${relatedCategory.friendlyUrl})}"
                            th:text="${relatedCategory.name}">
                         </a>
                     </li>

@@ -38,7 +38,7 @@ public class BlogController {
         return "/blog/list";
     }
 
-    @RequestMapping(value = {"/blog", "/blog.html", "/blogs", "/blogs.html", "/search.html", "/search"})
+    @RequestMapping(value = {"/", "/blog", "/blog.html", "/blogs", "/blogs.html", "/search.html", "/search"})
     ModelAndView index(@ModelAttribute BlogQuery blogQuery, HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView("/blog/blogs");
         blogQuery.setOnlyPublished(true);
