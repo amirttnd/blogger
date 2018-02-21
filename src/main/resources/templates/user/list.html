@@ -68,6 +68,9 @@
         </tr>
         </tbody>
     </table>
+
+    <div ng-if="userCtrl.total>userCtrl.max" paging="" page="userCtrl.currentPage" page-size="10" total="userCtrl.total"
+         paging-action="userCtrl.list(page-1)"></div>
 </div>
 </body>
 </html>

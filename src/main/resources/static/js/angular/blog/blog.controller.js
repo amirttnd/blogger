@@ -13,7 +13,7 @@ angular
         self.max = 10;
 
         self.list = function (page) {
-            page = page ? page - 1 : 0;
+            page = page || 0;
 
             var params = {page: page, max: self.max};
 
@@ -30,13 +30,7 @@ angular
 
         self.search = function () {
             $location.search({query: self.query});
-
-            Blog.list({query: self.query, max: self.max}, function (response) {
-                self.blogs = response.blogs;
-                self.total = response.total;
-
-            })
-
+            self.list(0)
         };
 
         self.edit = function () {

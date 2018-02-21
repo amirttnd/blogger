@@ -4,11 +4,27 @@ angular
         var self = this;
         self.users = [];
 
-        self.list = function () {
-            User.list(function (response) {
+        self.currentPage = 1;
+        self.max = 10;
+
+        self.list = function (page) {
+            page = page || 0;
+            var params = {page: page, max: self.max};
+
+            if ($location.search()["query"]) {
+                self.query = params.query = $location.search()["query"];
+            }
+
+            User.list(params, function (response) {
                 self.users = response.users;
-                console.log(self.users)
+                self.currentPage = page + 1;
+                self.total = response.total;
             })
+        };
+
+        self.search = function () {
+            $location.search({query: self.query});
+            self.list(0);
         };
 
         self.edit = function () {

@@ -18,7 +18,7 @@ public class UserQuery {
 
     int max = 10;
 
-    int offset = 0;
+    int page = 0;
 
     public String getId() {
         return id;
@@ -52,19 +52,12 @@ public class UserQuery {
         this.max = max;
     }
 
-    public int getOffset() {
-        return offset;
-    }
-
-    public void setOffset(int offset) {
-        this.offset = offset;
-    }
-
     public int getPage() {
-        if (offset == 0 || offset < max) {
-            return 0;
-        }
-        return (int) Math.floor(offset / max);
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
     }
 
     public Query build() {
@@ -72,7 +65,7 @@ public class UserQuery {
 
         Criteria criteria = new Criteria();
 
-        PageRequest pageRequest = new PageRequest(getPage(), max, new Sort(Sort.Direction.ASC, "dateCreated"));
+        PageRequest pageRequest = new PageRequest(page, max, new Sort(Sort.Direction.ASC, "dateCreated"));
 
         if (id != null) {
             textQuery.addCriteria(Criteria.where("id").is(id));
