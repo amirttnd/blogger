@@ -76,9 +76,9 @@ public class CategoryJsonController {
     }
 
     @RequestMapping(value = "/show", method = RequestMethod.GET)
-    ResponseEntity<Map<String, Object>> show(@RequestParam String friendlyUrl) {
+    ResponseEntity<Map<String, Object>> show(@RequestParam String friendlyUrl, @RequestParam(defaultValue = "0") Integer page) {
         Map<String, Object> responseMap = new HashMap<>();
-        CategoryVO categoryVO = categoryService.detail(friendlyUrl);
+        CategoryVO categoryVO = categoryService.detail(friendlyUrl, page);
         responseMap.put("category", categoryVO);
         return new ResponseEntity<Map<String, Object>>(responseMap, HttpStatus.OK);
     }

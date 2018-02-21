@@ -3,14 +3,25 @@ angular
     .controller("CategoryController", ["Blog", "Category", "$scope", "$location", function (Blog, Category, $scope, $location) {
         var self = this;
         self.category = {};
+        self.currentPage = 0;
+        self.max = 10;
+        self.totalBlogs = 0;
 
-        self.show = function () {
+        self.show = function (page) {
+
+            page = page || 0;
 
             var friendlyUrl = $location.search()["friendlyUrl"];
 
-            Category.show({friendlyUrl: friendlyUrl}, function (response) {
+            Category.show({friendlyUrl: friendlyUrl, page: page}, function (response) {
                 self.category = response.category;
+                self.totalBlogs = response.category.totalBlogs || 0;
+                self.currentPage = page + 1
             })
+        };
+
+        self.moreBlogs = function (page) {
+            self.show(page);
         };
 
         self.toggleRecommendation = function (blog) {

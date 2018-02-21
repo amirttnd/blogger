@@ -61,7 +61,7 @@ public class BlogService {
     }
 
     public List<BlogVO> findAllByCategory(Category category) {
-        return findAllByCategory(category, 20);
+        return findAllByCategory(category, 30);
     }
 
     public List<BlogVO> findAllByCategory(Category category, Integer max) {

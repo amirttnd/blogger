@@ -1,5 +1,6 @@
 package in.tech.blogger.service;
 
+import in.tech.blogger.constant.Constants;
 import in.tech.blogger.domain.Blog;
 import in.tech.blogger.domain.Category;
 import in.tech.blogger.modal.CategoryModel;
@@ -9,6 +10,8 @@ import in.tech.blogger.util.Utils;
 import in.tech.blogger.vo.CategoryTreeVO;
 import in.tech.blogger.vo.CategoryVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -106,13 +109,15 @@ public class CategoryService {
         return treeVOs;
     }
 
-    public CategoryVO detail(String friendlyUrl) {
+    public CategoryVO detail(String friendlyUrl, Integer page) {
         CategoryVO categoryVO = new CategoryVO();
         if (friendlyUrl != null) {
+            PageRequest pageRequest = new PageRequest(page, Constants.MAX, Sort.Direction.DESC, "dateCreated");
             Category category = categoryRepository.findByFriendlyUrl(friendlyUrl);
             categoryVO.bind(category);
-            List<Blog> blogs = blogRepository.findAllByCategory(category);
+            List<Blog> blogs = blogRepository.findAllByCategory(category, pageRequest);
             categoryVO.setBlogs(blogs);
+            categoryVO.setTotalBlogs(blogRepository.countByCategory(category));
         }
         return categoryVO;
     }

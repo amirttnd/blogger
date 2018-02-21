@@ -23,6 +23,8 @@ public class CategoryVO {
     Date dateCreated;
     Date lastUpdated;
 
+    Integer totalBlogs;
+
     List<Blog> blogs;
 
     public CategoryVO() {
@@ -71,6 +73,14 @@ public class CategoryVO {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public Integer getTotalBlogs() {
+        return totalBlogs;
+    }
+
+    public void setTotalBlogs(Integer totalBlogs) {
+        this.totalBlogs = totalBlogs;
     }
 
     public Boolean getActive() {
