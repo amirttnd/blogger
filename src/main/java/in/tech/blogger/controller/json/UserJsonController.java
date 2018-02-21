@@ -2,6 +2,7 @@ package in.tech.blogger.controller.json;
 
 import in.tech.blogger.domain.User;
 import in.tech.blogger.modal.UserModel;
+import in.tech.blogger.query.UserQuery;
 import in.tech.blogger.service.RoleService;
 import in.tech.blogger.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +24,10 @@ public class UserJsonController {
     RoleService roleService;
 
     @RequestMapping("/list")
-    ResponseEntity<Map<String, Object>> findAll() {
+    ResponseEntity<Map<String, Object>> list(@ModelAttribute UserQuery userQuery) {
         Map<String, Object> responseMap = new HashMap<>();
-        responseMap.put("users", userService.findAll());
+        responseMap.put("users", userService.search(userQuery));
+        responseMap.put("total", userService.count(userQuery));
         return new ResponseEntity<Map<String, Object>>(responseMap, HttpStatus.OK);
     }
 

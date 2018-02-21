@@ -75,11 +75,11 @@ public class UserQuery {
         PageRequest pageRequest = new PageRequest(getPage(), max, new Sort(Sort.Direction.ASC, "dateCreated"));
 
         if (id != null) {
-            textQuery.addCriteria(criteria.where("id").is(id));
+            textQuery.addCriteria(Criteria.where("id").is(id));
         }
 
         if (email != null) {
-            textQuery.addCriteria(criteria.where("email").is(email));
+            textQuery.addCriteria(Criteria.where("email").is(email));
         }
 
         if (query != null) {
