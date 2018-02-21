@@ -30,7 +30,7 @@ public class BlogQuery {
 
     Integer max = 10;
 
-    Integer offset = 0;
+    Integer page = 0;
 
     public String getQuery() {
         return query != null ? query.trim() : "";
@@ -83,14 +83,6 @@ public class BlogQuery {
         this.max = max;
     }
 
-    public Integer getOffset() {
-        return offset;
-    }
-
-    public void setOffset(Integer offset) {
-        this.offset = offset;
-    }
-
     public Boolean getOnlyPublished() {
         if (onlyPublished == null) {
             return false;
@@ -108,13 +100,6 @@ public class BlogQuery {
         }
     }
 
-    public int getPage() {
-        if (offset == 0 || offset < max) {
-            return 0;
-        }
-        return (int) Math.floor(offset / max);
-    }
-
     public String getCategoryQ() {
         return categoryQ;
     }
@@ -123,10 +108,18 @@ public class BlogQuery {
         this.categoryQ = categoryQ;
     }
 
+    public Integer getPage() {
+        return page;
+    }
+
+    public void setPage(Integer page) {
+        this.page = page;
+    }
+
     public Query build() {
         Query textQuery = new Query();
 
-        Pageable pageRequest = new PageRequest(getPage(), this.max, Sort.Direction.ASC, "dateCreated");
+        Pageable pageRequest = new PageRequest(page, this.max, Sort.Direction.ASC, "dateCreated");
 
         Criteria criteria = new Criteria();
 
@@ -177,7 +170,6 @@ public class BlogQuery {
                 ", onlyPublished=" + onlyPublished +
                 ", fieldsToExclude=" + fieldsToExclude +
                 ", max=" + max +
-                ", offset=" + offset +
                 '}';
     }
 }

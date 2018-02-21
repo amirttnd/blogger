@@ -9,23 +9,32 @@ angular
         self.blog.relatedCategories = [];
 
         self.blog.category = {};
+        self.currentPage = 0;
+        self.max = 10;
 
-        self.list = function () {
-            var params = {};
+        self.list = function (page) {
+            page = page ? page - 1 : 0;
+
+            var params = {page: page, max: self.max};
 
             if ($location.search()["query"]) {
                 self.query = params.query = $location.search()["query"];
             }
 
             Blog.list(params, function (response) {
-                self.blogs = response.blogs
+                self.blogs = response.blogs;
+                self.currentPage = page + 1;
+                self.total = response.total;
             })
         };
 
         self.search = function () {
             $location.search({query: self.query});
-            Blog.list({query: self.query}, function (response) {
+
+            Blog.list({query: self.query, max: self.max}, function (response) {
                 self.blogs = response.blogs;
+                self.total = response.total;
+
             })
 
         };
