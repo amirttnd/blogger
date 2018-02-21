@@ -25,7 +25,7 @@ public class BloggerApplication implements CommandLineRunner {
 
     @Autowired
     BootstrapService bootstrapService;
-
+    
     Logger logger = LoggerFactory.getLogger(BloggerApplication.class);
 
     public static void main(String[] args) {

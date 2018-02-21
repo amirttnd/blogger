@@ -4,9 +4,11 @@ import in.tech.blogger.constant.Constants;
 import in.tech.blogger.domain.Role;
 import in.tech.blogger.domain.User;
 import in.tech.blogger.modal.UserModel;
+import in.tech.blogger.query.UserQuery;
 import in.tech.blogger.repository.RoleRepository;
 import in.tech.blogger.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -30,6 +32,9 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     BCryptPasswordEncoder passwordEncoder;
+
+    @Autowired
+    MongoTemplate mongoTemplate;
 
     public User save(UserModel userModel) {
         Optional<User> userOptional = Optional.ofNullable(userRepository.findByEmail(userModel.getEmail()));
@@ -62,6 +67,14 @@ public class UserService implements UserDetailsService {
             return userRepository.findByEmail(email);
         }
         return null;
+    }
+
+    public List<User> search(UserQuery userQuery) {
+        return mongoTemplate.find(userQuery.build(), User.class);
+    }
+
+    public long count(UserQuery userQuery) {
+        return mongoTemplate.count(userQuery.build(), User.class);
     }
 
     @Override
