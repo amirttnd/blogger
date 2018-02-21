@@ -108,7 +108,7 @@
 <div class="search-form" th:fragment="search-box">
     <form action="/blogs.html" method="get" autocomplete="off">
         <input type="text"
-               th:value="${param.query!=null?param.query[0]:''}"
+               th:value="${param.query!=null?param?.query[0]:''}"
                name="query"
                placeholder="Search blog...!" class="search-box"/>
     </form>

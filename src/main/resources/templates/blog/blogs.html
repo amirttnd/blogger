@@ -29,7 +29,22 @@
                     </div>
                 </div>
             </article>
-
+            <ul th:inline="text" class="pagination" th:if="${totalPages}>1">
+                <li>
+                    <a th:if="${currentPage}==1" class="fa fa-angle-double-left disabled"></a>
+                    <a th:href="@{/blogs.html(page=${currentPage-1})}" th:if="${currentPage}>1"
+                       class="fa fa-angle-double-left"></a>
+                </li>
+                <li th:each="page:${#numbers.sequence(1,totalPages)}" class="fa"
+                    th:classappend="${page}==${currentPage}?'active':''">
+                    <a th:href="@{/blogs.html(page=${page})}">[[${page}]]</a>
+                </li>
+                <li>
+                    <a th:if="${currentPage}==${totalPages}" class="fa fa-angle-double-right disabled"></a>
+                    <a th:href="@{/blogs.html(page=${currentPage+1})}" th:if="${currentPage}!=${totalPages}"
+                       class="fa fa-angle-double-right"></a>
+                </li>
+            </ul>
         </div>
         <div class="right-panel right">
             <th:block th:replace="layout/main::search-box">
