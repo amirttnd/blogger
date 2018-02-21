@@ -119,7 +119,7 @@ public class BlogQuery {
     public Query build() {
         Query textQuery = new Query();
 
-        Pageable pageRequest = new PageRequest(page, this.max, Sort.Direction.ASC, "dateCreated");
+        Pageable pageRequest = new PageRequest(page, this.max, Sort.Direction.DESC, "dateCreated");
 
         Criteria criteria = new Criteria();
 

@@ -26,6 +26,7 @@
                 <div class="col-md-8">
                     <form data-ng-submit="blogCtrl.save()">
                         <input type="hidden" ng-value="blogCtrl.blog.id"/>
+
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="shortHeading">Short Heading:</label>
@@ -149,6 +150,11 @@
                                         <span>{{node.category.name}}</span>
                                     </a>
                                     <span class="actions btn-group">
+                                          <button type="button"
+                                                  data-ng-click="blogCtrl.setCategory(node.category)"
+                                                  class="btn btn-warning btn-xs">
+                                              Category
+                                          </button>
                                         <button type="button"
                                                 data-ng-click="blogCtrl.addToRelatedCategory(node.category)"
                                                 class="btn btn-info btn-xs">

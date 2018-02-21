@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -38,7 +39,7 @@ public class BlogController {
     }
 
     @RequestMapping(value = {"/blog", "/blog.html", "/blogs", "/blogs.html", "/search.html", "/search"})
-    ModelAndView index(@ModelAttribute BlogQuery blogQuery) {
+    ModelAndView index(@ModelAttribute BlogQuery blogQuery, HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView("/blog/blogs");
         blogQuery.setOnlyPublished(true);
         List<BlogVO> blogs = blogService.search(blogQuery);
