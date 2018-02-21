@@ -20,10 +20,6 @@ angular
             })
         };
 
-        self.moreBlogs = function (page) {
-            self.show(page);
-        };
-
         self.toggleRecommendation = function (blog) {
             Blog.toggleRecommendation({id: blog.id}, function (response) {
                     blog.isRecommended = response.blog.isRecommended

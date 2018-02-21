@@ -113,7 +113,7 @@ public class BlogQuery {
     }
 
     public void setPage(Integer page) {
-        this.page = page;
+        this.page = page != null ? page : 0;
     }
 
     public Query build() {

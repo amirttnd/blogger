@@ -23,7 +23,7 @@ public class CategoryVO {
     Date dateCreated;
     Date lastUpdated;
 
-    Integer totalBlogs;
+    long totalBlogs;
 
     List<Blog> blogs;
 
@@ -75,13 +75,6 @@ public class CategoryVO {
         this.id = id;
     }
 
-    public Integer getTotalBlogs() {
-        return totalBlogs;
-    }
-
-    public void setTotalBlogs(Integer totalBlogs) {
-        this.totalBlogs = totalBlogs;
-    }
 
     public Boolean getActive() {
         return active;
@@ -137,5 +130,13 @@ public class CategoryVO {
 
     public void setLastUpdated(Date lastUpdated) {
         this.lastUpdated = lastUpdated;
+    }
+
+    public long getTotalBlogs() {
+        return totalBlogs;
+    }
+
+    public void setTotalBlogs(long totalBlogs) {
+        this.totalBlogs = totalBlogs;
     }
 }
