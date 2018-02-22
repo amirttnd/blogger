@@ -15,7 +15,7 @@
      ng-init="blogCtrl.list()" ng-cloak="">
 
     <div ng-show="blogCtrl.blogs.length>0">
-        <div class="blog">
+        <div class="blog" infinite-scroll="blogCtrl.nextPage()">
             <article
                     ng-repeat="blogVO in blogCtrl.blogs">
                 <div class="blog-entry">

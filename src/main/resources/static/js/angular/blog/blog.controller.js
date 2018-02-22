@@ -5,41 +5,49 @@ angular
         var firstPage = 1;
 
         self.blog = {};
-
         self.blog.tags = [];
-
         self.blog.relatedCategories = [];
-
         self.blog.category = {};
-
         self.currentPage = firstPage;
-
-        self.max = 10;
+        self.blogs = [];
+        self.pages = 0;
+        self.max = 5;
+        self.isInProgress = false;
 
         self.list = function (page) {
-            page = page || 1;
+            if (!self.isInProgress) {
+                self.isInProgress = true;
+                page = page || firstPage;
 
-            var params = {page: page, max: self.max};
+                var params = {page: page, max: self.max};
 
-            if ($location.search()["query"]) {
-                self.query = params.query = $location.search()["query"];
+                if ($location.search()["query"]) {
+                    self.query = params.query = $location.search()["query"];
+                }
+
+                if ($location.search()["categoryQ"]) {
+                    self.categoryQ = params.categoryQ = $location.search()["categoryQ"];
+                }
+
+                Blog.list(params, function (response) {
+                    self.blogs = _.concat(self.blogs, response.blogs || []);
+                    self.currentPage = page;
+                    self.total = response.total;
+                    self.pages = response.pages;
+                    self.isInProgress = false;
+                });
             }
-
-            if ($location.search()["categoryQ"]) {
-                self.categoryQ = params.categoryQ = $location.search()["categoryQ"];
-
-            }
-
-            Blog.list(params, function (response) {
-                self.blogs = response.blogs;
-                self.currentPage = page;
-                self.total = response.total;
-            })
         };
 
         self.search = function () {
             $location.search({query: self.query});
             self.list(firstPage)
+        };
+
+        self.nextPage = function () {
+            if (self.currentPage < self.pages) {
+                self.list(self.currentPage + 1)
+            }
         };
 
 

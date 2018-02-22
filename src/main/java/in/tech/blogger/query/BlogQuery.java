@@ -116,7 +116,7 @@ public class BlogQuery {
     }
 
     public void setPage(Integer page) {
-        this.page = page != null ? page : 0;
+        this.page = page != null ? page : 1;
     }
 
     public Query build() {

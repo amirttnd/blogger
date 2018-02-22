@@ -16,9 +16,9 @@ public class UserQuery {
 
     String query;
 
-    int max = 10;
+    Integer max = 10;
 
-    int page = 0;
+    Integer page = 1;
 
     public String getId() {
         return id;
@@ -44,15 +44,18 @@ public class UserQuery {
         this.query = query;
     }
 
-    public int getMax() {
+    public Integer getMax() {
         return max;
     }
 
-    public void setMax(int max) {
+    public void setMax(Integer max) {
         this.max = max;
     }
 
-    public int getPage() {
+    public Integer getPage() {
+        if (page != null && page < 1) {
+            return 1;
+        }
         return page;
     }
 
@@ -65,7 +68,7 @@ public class UserQuery {
 
         Criteria criteria = new Criteria();
 
-        PageRequest pageRequest = new PageRequest(page, max, new Sort(Sort.Direction.ASC, "dateCreated"));
+        PageRequest pageRequest = new PageRequest(getPage() - 1, max, new Sort(Sort.Direction.ASC, "dateCreated"));
 
         if (id != null) {
             textQuery.addCriteria(Criteria.where("id").is(id));

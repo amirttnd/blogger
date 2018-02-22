@@ -42,5 +42,14 @@ public class Utils {
         }
         return null;
     }
+
+    public static long pages(long max, long totalResults) {
+        if (totalResults == 0 || max == 0) {
+            return 0;
+        } else if (totalResults < max) {
+            return 1;
+        }
+        return (long) Math.ceil(totalResults / max);
+    }
 }
 

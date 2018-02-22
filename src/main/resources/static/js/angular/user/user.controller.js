@@ -2,13 +2,14 @@ angular
     .module("techBlogger")
     .controller("UserController", ["User", "$location", function (User, $location) {
         var self = this;
-        self.users = [];
+        var firstPage = 1;
 
+        self.users = [];
         self.currentPage = 1;
         self.max = 10;
 
         self.list = function (page) {
-            page = page || 0;
+            page = page || firstPage;
             var params = {page: page, max: self.max};
 
             if ($location.search()["query"]) {
@@ -17,14 +18,14 @@ angular
 
             User.list(params, function (response) {
                 self.users = response.users;
-                self.currentPage = page + 1;
+                self.currentPage = page;
                 self.total = response.total;
             })
         };
 
         self.search = function () {
             $location.search({query: self.query});
-            self.list(0);
+            self.list(firstPage);
         };
 
         self.edit = function () {

@@ -2,6 +2,7 @@ angular
     .module("techBlogger")
     .controller("CategoryController", ["Blog", "Category", "$scope", "$location", function (Blog, Category, $scope, $location) {
         var self = this;
+        var firstPage = 1;
         self.category = {};
         self.currentPage = 0;
         self.max = 10;
@@ -9,14 +10,14 @@ angular
 
         self.show = function (page) {
 
-            page = page || 0;
+            page = page || firstPage;
 
             var friendlyUrl = $location.search()["friendlyUrl"];
 
             Category.show({friendlyUrl: friendlyUrl, page: page}, function (response) {
                 self.category = response.category;
                 self.totalBlogs = response.category.totalBlogs || 0;
-                self.currentPage = page + 1
+                self.currentPage = page
             })
         };
 

@@ -111,9 +111,8 @@ public class CategoryService {
         return treeVOs;
     }
 
-    public CategoryVO detail(String friendlyUrl, Integer page) {
+    public CategoryVO detail(String friendlyUrl, int page) {
         CategoryVO categoryVO = new CategoryVO();
-
         BlogQuery blogQuery = new BlogQuery();
         blogQuery.setCategoryQ(friendlyUrl);
         blogQuery.setPage(page);
