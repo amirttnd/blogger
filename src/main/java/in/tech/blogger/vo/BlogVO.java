@@ -34,6 +34,9 @@ public class BlogVO {
     }
 
     public Long getComments() {
+        if (comments == null) {
+            return 0l;
+        }
         return comments;
     }
 

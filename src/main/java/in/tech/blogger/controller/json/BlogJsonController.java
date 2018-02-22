@@ -40,7 +40,6 @@ public class BlogJsonController {
     @RequestMapping(value = "/list", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     ResponseEntity<Map<String, Object>> list(@ModelAttribute BlogQuery blogQuery) {
         Map<String, Object> responseMap = new LinkedHashMap<>();
-        blogQuery.setOnlyPublished(null);
         List<BlogVO> blogs = blogService.search(blogQuery);
         responseMap.put("blogs", blogs);
         responseMap.put("total", blogService.count(blogQuery));

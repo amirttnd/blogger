@@ -24,13 +24,13 @@ public class BlogQuery {
 
     String categoryId;
 
-    Boolean onlyPublished = true;
+    Boolean onlyPublished;
 
     List<String> fieldsToExclude = Arrays.asList("content", "relatedBlog");
 
     Integer max = 10;
 
-    Integer page = 0;
+    Integer page = 1;
 
     public String getQuery() {
         return query != null ? query.trim() : "";
@@ -109,6 +109,9 @@ public class BlogQuery {
     }
 
     public Integer getPage() {
+        if (page != null && page < 1) {
+            return 1;
+        }
         return page;
     }
 
@@ -119,7 +122,7 @@ public class BlogQuery {
     public Query build() {
         Query textQuery = new Query();
 
-        Pageable pageRequest = new PageRequest(page, this.max, Sort.Direction.DESC, "dateCreated");
+        Pageable pageRequest = new PageRequest(getPage() - 1, this.max, Sort.Direction.DESC, "dateCreated");
 
         Criteria criteria = new Criteria();
 

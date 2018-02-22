@@ -4,7 +4,6 @@ import in.tech.blogger.constant.Constants;
 import in.tech.blogger.query.BlogQuery;
 import in.tech.blogger.service.BlogService;
 import in.tech.blogger.service.CategoryService;
-import in.tech.blogger.vo.BlogVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -12,8 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/")
@@ -40,14 +37,6 @@ public class BlogController {
     @RequestMapping(value = {"/", "/blog", "/blog.html", "/blogs", "/blogs.html", "/search.html", "/search"})
     ModelAndView index(@ModelAttribute BlogQuery blogQuery) {
         ModelAndView modelAndView = new ModelAndView("/blog/blogs");
-        blogQuery.setOnlyPublished(true);
-        if (blogQuery.getPage() > 0) {
-            blogQuery.setPage(blogQuery.getPage() - 1);
-        }
-        List<BlogVO> blogs = blogService.search(blogQuery);
-        modelAndView.addObject("blogs", blogs);
-        modelAndView.addObject("totalPages", (long) Math.floor(blogService.count(blogQuery) / blogQuery.getMax()));
-        modelAndView.addObject("currentPage", blogQuery.getPage() + 1);
         return modelAndView;
     }
 

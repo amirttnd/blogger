@@ -2,6 +2,8 @@ angular
     .module("techBlogger")
     .controller("BlogController", ["Blog", "Category", "Comment", "$scope", "$window", "$location", function (Blog, Category, Comment, $scope, $window, $location) {
         var self = this;
+        var firstPage = 1;
+
         self.blog = {};
 
         self.blog.tags = [];
@@ -9,11 +11,13 @@ angular
         self.blog.relatedCategories = [];
 
         self.blog.category = {};
-        self.currentPage = 0;
+
+        self.currentPage = firstPage;
+
         self.max = 10;
 
         self.list = function (page) {
-            page = page || 0;
+            page = page || 1;
 
             var params = {page: page, max: self.max};
 
@@ -21,17 +25,23 @@ angular
                 self.query = params.query = $location.search()["query"];
             }
 
+            if ($location.search()["categoryQ"]) {
+                self.categoryQ = params.categoryQ = $location.search()["categoryQ"];
+
+            }
+
             Blog.list(params, function (response) {
                 self.blogs = response.blogs;
-                self.currentPage = page + 1;
+                self.currentPage = page;
                 self.total = response.total;
             })
         };
 
         self.search = function () {
             $location.search({query: self.query});
-            self.list(0)
+            self.list(firstPage)
         };
+
 
         self.edit = function () {
             var id = $location.search()['id'];
