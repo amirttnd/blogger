@@ -7,6 +7,8 @@ public class CategoryModel {
 
     Boolean active;
 
+    String creator;
+
     public String getId() {
         return id;
     }
@@ -31,11 +33,21 @@ public class CategoryModel {
         this.active = active;
     }
 
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
+
     @Override
     public String toString() {
-        return "CategoryModal{" +
-                "name='" + name + '\'' +
+        return "CategoryModel{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 ", active=" + active +
+                ", creator='" + creator + '\'' +
                 '}';
     }
 }

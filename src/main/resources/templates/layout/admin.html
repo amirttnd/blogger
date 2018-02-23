@@ -44,6 +44,32 @@
     <script th:src="@{/js/jstree.min.v3.3.4.js}" type="text/javascript"></script>
     <script th:src="@{/js/bootstrap.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/application.js}"></script>
+
+    <script type="text/javascript" th:inline="javascript">
+
+        User = {};
+        User.isAuthenticated =/*[[${#authorization.expression('isAuthenticated()')}]]*/;
+        var principal =/*[[${#authorization.getAuthentication().getPrincipal()}]]*/;
+
+        if (User.isAuthenticated) {
+            User.authorities =/*[[${#authorization.getAuthentication().getAuthorities()}]]*/;
+            User.email = principal.username;
+
+            if (User.authorities) {
+                User.authorities.forEach(function (value, index) {
+                    if (!User.isAdmin) {
+                        User.isAdmin = value.authority == 'ROLE_ADMIN';
+                    }
+
+                    if (!User.isAuthor) {
+                        User.isAuthor = value.authority == 'ROLE_AUTHOR';
+
+                    }
+                })
+            }
+        }
+
+    </script>
 </head>
 <body>
 
@@ -66,7 +92,7 @@
                     </ul>
                 </li>
                 <li><a target="_self" th:href="@{/category/tree}">Category</a></li>
-                <li><a target="_self" href="/user/list">Users</a></li>
+                <li sec:authorize="hasRole('ROLE_ADMIN')"><a target="_self" href="/user/list">Users</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">

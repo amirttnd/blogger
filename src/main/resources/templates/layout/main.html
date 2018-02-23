@@ -36,6 +36,32 @@
 
     <script type="text/javascript" th:src="@{/js/application.js}"></script>
 
+    <script type="text/javascript" th:inline="javascript">
+        $(function () {
+            User = {};
+            User.isAuthenticated =/*[[${#authorization.expression('isAuthenticated()')}]]*/;
+            var principal =/*[[${#authorization.getAuthentication().getPrincipal()}]]*/;
+
+            if (User.isAuthenticated) {
+                User.authorities =/*[[${#authorization.getAuthentication().getAuthorities()}]]*/;
+                User.email = principal.username;
+
+                if (User.authorities) {
+                    User.authorities.forEach(function (value, index) {
+                        if (!User.isAdmin) {
+                            User.isAdmin = value.authority == 'ROLE_ADMIN';
+                        }
+
+                        if (!User.isAuthor) {
+                            User.isAuthor = value.authority == 'ROLE_AUTHOR';
+
+                        }
+                    })
+                }
+            }
+        })
+    </script>
+
 
 </head>
 <body>
@@ -83,7 +109,7 @@
                             <li>
                                 <a sec:authentication="name"></a>
                             </li>
-                            <li sec:authorize="hasRole('ROLE_ADMIN')">
+                            <li sec:authorize="hasRole('ROLE_ADMIN') || hasRole('ROLE_AUTHOR')">
                                 <a href="/admin/index" target="_blank">Admin</a>
                             </li>
                             <li>

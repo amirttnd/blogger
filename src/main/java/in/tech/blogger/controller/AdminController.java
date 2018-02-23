@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/admin")
-@Secured(Constants.ADMIN_ROLE)
+@Secured(value = {Constants.ADMIN_ROLE, Constants.AUTHOR_ROLE})
 public class AdminController {
 
     @RequestMapping("/index")

@@ -23,13 +23,13 @@ public class BlogController {
     BlogService blogService;
 
     @RequestMapping("/blog/edit")
-    @Secured(Constants.ADMIN_ROLE)
+    @Secured(value = {Constants.ADMIN_ROLE, Constants.AUTHOR_ROLE})
     String edit() {
         return "/blog/edit";
     }
 
     @RequestMapping("/blog/list")
-    @Secured(Constants.ADMIN_ROLE)
+    @Secured(value = {Constants.ADMIN_ROLE, Constants.AUTHOR_ROLE})
     String list() {
         return "/blog/list";
     }

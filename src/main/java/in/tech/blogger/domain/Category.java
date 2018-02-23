@@ -40,11 +40,14 @@ public class Category implements Persistable<String> {
     @Indexed
     String friendlyUrl;
 
+    String creator;
+
     @CreatedDate
     Date dateCreated;
 
     @LastModifiedDate
     Date lastUpdated;
+
 
     @Override
     @JsonIgnore
@@ -125,7 +128,7 @@ public class Category implements Persistable<String> {
         return new CategoryVO(this);
     }
 
-    public static List<Category> breadcrumb(Category category){
+    public static List<Category> breadcrumb(Category category) {
         List<Category> list = new ArrayList<>();
         Category next = category;
         while (next != null) {
@@ -139,6 +142,14 @@ public class Category implements Persistable<String> {
         return list;
     }
 
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
+
     @Override
     public String toString() {
         return "Category{" +
@@ -148,6 +159,7 @@ public class Category implements Persistable<String> {
                 ", level=" + level +
                 ", parent=" + parent +
                 ", friendlyUrl='" + friendlyUrl + '\'' +
+                ", creator='" + creator + '\'' +
                 ", dateCreated=" + dateCreated +
                 ", lastUpdated=" + lastUpdated +
                 '}';

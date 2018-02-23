@@ -7,6 +7,7 @@ angular
         self.currentPage = 0;
         self.max = 10;
         self.totalBlogs = 0;
+        self.User = User;
 
         self.show = function (page) {
 
@@ -39,6 +40,7 @@ angular
             if (node.name) {
                 Category.addChild({
                     name: node.name,
+                    creator: User.email,
                     id: parentId
                 }, function (response) {
                     if (response.status) {
@@ -77,7 +79,10 @@ angular
 
         self.newCategory = function () {
             if (self.categoryName) {
-                Category.save({name: self.categoryName}, function (response) {
+                Category.save({
+                    creator: User.email,
+                    name: self.categoryName
+                }, function (response) {
                     self.tree = self.tree || [];
                     if (response.status) {
                         self.tree.push({category: response.category});

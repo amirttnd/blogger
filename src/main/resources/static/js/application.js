@@ -50,3 +50,9 @@ var Notification = {
 
     }
 };
+
+Util = {
+    parseBoolean: function (value) {
+        /^true$/.test(value);
+    }
+};

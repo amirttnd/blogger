@@ -28,6 +28,10 @@ public class CategoryService {
     @Autowired
     CacheService cacheService;
 
+
+    @Autowired
+    UserService userService;
+
     @Autowired
     MongoTemplate mongoTemplate;
 
@@ -39,6 +43,7 @@ public class CategoryService {
             category.setName(categoryModel.getName());
             category.setLevel(1);
             category.setFriendlyUrl(Utils.toFriendlyURL(category.getName()));
+            category.setCreator(categoryModel.getCreator());
             cacheService.expireCategoryTree();
             return categoryRepository.save(category);
         }
@@ -48,6 +53,9 @@ public class CategoryService {
     public Category update(CategoryModel categoryModel) {
         Category category = categoryRepository.findById(categoryModel.getId());
         if (categoryModel.getName() != null) {
+            if (category.getCreator() == null) {
+                category.setCreator(categoryModel.getCreator());
+            }
             category.setName(categoryModel.getName());
             cacheService.expireCategoryTree();
             return categoryRepository.save(category);
@@ -64,6 +72,7 @@ public class CategoryService {
             child.setName(categoryModel.getName());
             child.setLevel(parent.getLevel() + 1);
             child.setFriendlyUrl(Utils.toFriendlyURL(parent.getName() + " " + child.getName()));
+            child.setCreator(categoryModel.getCreator());
             cacheService.expireCategoryTree();
             return categoryRepository.save(child);
         }

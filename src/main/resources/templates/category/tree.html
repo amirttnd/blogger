@@ -39,13 +39,17 @@
                     <span class="actions">
                         <i class="fa fa-plus-circle" data-ng-click="categoryCtrl.allowAddToChild(node)"></i>
 
-                        <i class="fa fa-edit" data-ng-click="categoryCtrl.toggleCanEdit(node.category)"></i>
+                        <i class="fa fa-edit"
+                           data-ng-if="categoryCtrl.User.isAdmin || categoryCtrl.User.email==node.category.creator"
+                           data-ng-click="categoryCtrl.toggleCanEdit(node.category)"></i>
 
                         <i class="fa"
+                           ng-if="categoryCtrl.User.isAdmin || categoryCtrl.User.email==node.category.creator"
                            ng-class="{'fa-toggle-on':node.category.active,'fa-toggle-off':!node.category.active}"
                            data-ng-click="categoryCtrl.toggle(node.category)"></i>
 
                         <i class="fa fa-trash" data-ng-hide="node.subCategories.length>0"
+                           ng-if="categoryCtrl.User.isAdmin"
                            data-ng-click="categoryCtrl.deleteNode(node.category.id)"></i>
                     </span>
                 </span>
@@ -72,10 +76,12 @@
                                 <i class="fa fa-edit" data-ng-click="categoryCtrl.toggleCanEdit(subCategory)"></i>
 
                                 <i class="fa"
+                                   ng-if="categoryCtrl.User.isAdmin || categoryCtrl.User.email==subCategory.creator"
                                    ng-class="{'fa-toggle-on':subCategory.active,'fa-toggle-off':!subCategory.active}"
                                    data-ng-click="categoryCtrl.toggle(subCategory)"></i>
 
-                                <i class="fa fa-trash" data-ng-click="categoryCtrl.deleteNode(subCategory.id)"></i>
+                                <i class="fa fa-trash" ng-if="categoryCtrl.User.isAdmin"
+                                   data-ng-click="categoryCtrl.deleteNode(subCategory.id)"></i>
                             </span>
                         </span>
                     </li>
@@ -92,7 +98,7 @@
             </li>
 
             <li class="new-category-form">
-                <form data-ng-submit="categoryCtrl.newCategory()">
+                <form data-ng-submit="categoryCtrl.newCategory()" autocomplete="off">
                     <div class="form-group">
                         <label for="name"><i class="fa fa-plus-square">&nbsp;</i>Add new category</label>
                         <input type="text"

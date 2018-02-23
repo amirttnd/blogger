@@ -18,21 +18,21 @@ public class CategoryController {
     CategoryService categoryService;
 
     @RequestMapping(value = "/edit")
-    @Secured(Constants.ADMIN_ROLE)
+    @Secured(value = {Constants.ADMIN_ROLE, Constants.AUTHOR_ROLE})
     ModelAndView edit(@ModelAttribute CategoryModel categoryModel) {
         ModelAndView modelAndView = new ModelAndView("/category/edit");
         return modelAndView;
     }
 
     @RequestMapping(value = "/tree")
-    @Secured(Constants.ADMIN_ROLE)
+    @Secured(value = {Constants.ADMIN_ROLE, Constants.AUTHOR_ROLE})
     ModelAndView list() {
         ModelAndView modelAndView = new ModelAndView("/category/tree");
         return modelAndView;
     }
 
     @RequestMapping(value = "/show")
-    @Secured(Constants.ADMIN_ROLE)
+    @Secured(value = {Constants.ADMIN_ROLE, Constants.AUTHOR_ROLE})
     ModelAndView show() {
         ModelAndView modelAndView = new ModelAndView("/category/admin/show");
         return modelAndView;
