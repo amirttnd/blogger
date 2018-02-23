@@ -45,7 +45,9 @@ public class BlogService {
             Blog blog = blogOptional.orElse(new Blog());
             blog.bind(blogModel);
             blog.setCategory(category);
-            blog.setUser(userRepository.findByEmail(blogModel.getUsername()));
+            if (blog.getUser() == null) {
+                blog.setUser(userRepository.findByEmail(blogModel.getUsername()));
+            }
             for (Category cate : Category.breadcrumb(category)) {
                 inCategories.add(cate.getFriendlyUrl());
             }

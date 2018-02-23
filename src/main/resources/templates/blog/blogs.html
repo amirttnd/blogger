@@ -12,9 +12,9 @@
 
 <div class="blog-area"
      ng-controller="BlogController as blogCtrl"
-     ng-init="blogCtrl.list()" ng-cloak="">
+     ng-init="blogCtrl.list()">
 
-    <div ng-show="blogCtrl.blogs.length>0">
+    <div ng-show="blogCtrl.blogs.length>0" ng-cloak="">
         <div class="blog" infinite-scroll="blogCtrl.nextPage()">
             <article
                     ng-repeat="blogVO in blogCtrl.blogs">

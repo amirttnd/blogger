@@ -13,6 +13,7 @@ angular
         self.pages = 0;
         self.max = 1;
         self.isInProgress = false;
+        self.User = User;
 
         self.list = function (page) {
             if (!self.isInProgress) {
