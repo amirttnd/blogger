@@ -450,7 +450,6 @@ label {
 }
 
 .main-navigation .nav-menu a {
-    display: inline-block;
     padding: 13px 15px;
     color: white;
     position: relative;
@@ -1527,5 +1526,8 @@ header.header.fixed #navigation {
     width: 32px;
 }
 
+.desktopNone {
+    display: none;
+}
 
 
