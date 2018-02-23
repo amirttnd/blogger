@@ -57,6 +57,7 @@ public class CategoryService {
                 category.setCreator(categoryModel.getCreator());
             }
             category.setName(categoryModel.getName());
+            category.setFriendlyUrl(Utils.toFriendlyURL(category.getName()));
             cacheService.expireCategoryTree();
             return categoryRepository.save(category);
         }
