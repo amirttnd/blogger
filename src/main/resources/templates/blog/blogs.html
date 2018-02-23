@@ -82,6 +82,9 @@
                     </div>
                 </div>
             </article>
+            <div class="blog-loader" ng-show="blogCtrl.isInProgress">
+                <img th:src="@{/images/ajax-loader.gif}"/>
+            </div>
         </div>
         <div class="right-panel right">
             <th:block th:replace="layout/main::search-box">

@@ -10,6 +10,7 @@ body {
     background: rgba(234, 234, 234, 0.87);
     font-family: 'Lato', sans-serif;
     -webkit-font-smoothing: antialiased;
+    transition: all .2s easy-in-out;
 }
 
 ul {
@@ -1513,8 +1514,17 @@ header.header.fixed #navigation {
     font-weight: 600;
 }
 
-.disabled{
+.disabled {
     opacity: .6;
+}
+
+.blog-area .blog .blog-loader {
+    text-align: center;
+    margin-top: 2em;
+}
+
+.blog-area .blog .blog-loader img {
+    width: 32px;
 }
 
 

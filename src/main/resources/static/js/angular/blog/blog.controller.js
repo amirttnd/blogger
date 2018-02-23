@@ -11,7 +11,7 @@ angular
         self.currentPage = firstPage;
         self.blogs = [];
         self.pages = 0;
-        self.max = 5;
+        self.max = 1;
         self.isInProgress = false;
 
         self.list = function (page) {
