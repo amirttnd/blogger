@@ -202,6 +202,7 @@
 
     .blog-area .blog .comment-area .comment-wrapper {
         padding: 5px 1em;
+        border: 0;
     }
 
     .comments .comment-form .reply-box {
@@ -261,6 +262,15 @@
 
     .login-container .login-wrapper h1{
         font-size: 20px;
+    }
+
+    .blog-area .blog .social{
+        border: 0;
+    }
+
+    .blog-area .blog .related-blog .related-blog-wrapper{
+        border: 0;
+        background: transparent;
     }
 
 }
