@@ -247,4 +247,19 @@
         text-align: center;
     }
 
+    .login-container{
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+    }
+    .login-container .login-wrapper{
+        padding: 2em 1em;
+        max-width: 450px;
+        margin: 0 auto;
+    }
+
+    .login-container .login-wrapper h1{
+        font-size: 20px;
+    }
+
 }
