@@ -32,7 +32,7 @@
         <span>
             <i class="fa fa-calendar"></i>
             <a th:href="@{/blog/{friendlyUrl}(friendlyUrl=${blog.friendlyUrl})}" target="_self"
-               th:text="${#dates.format(blog.dateCreated,'MMMM dd, yyyy')}"></a>
+               th:text="${#dates.format(blog.dateCreated,'MMM dd, yyyy')}"></a>
         </span>
 
         <span class="divider"></span>

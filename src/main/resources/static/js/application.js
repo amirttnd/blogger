@@ -51,8 +51,22 @@ var Notification = {
     }
 };
 
+var Menu = {
+    toggle: function (bool) {
+        if (Util.parseBoolean(bool)) {
+            $(".main-navigation").addClass("show");
+        } else {
+            $(".main-navigation").removeClass("show");
+        }
+    },
+    showChild: function (self) {
+        $(self).find('.sub-menu').slideToggle()
+
+    }
+};
+
 Util = {
     parseBoolean: function (value) {
-        /^true$/.test(value);
+        return /^true$/.test(value);
     }
 };

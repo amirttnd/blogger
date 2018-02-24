@@ -49,7 +49,8 @@
                         data-layout="button_count">
                    </div>
                </span>
-                    <a href="" class="comment"><i class="fa fa-comment"></i>&nbsp;Comment</a>
+                    <a href="" class="comment"><i class="fa fa-comment"></i>
+                        <span class="mobileNone">&nbsp;Comment</span></a>
                 </div>
             </div>
             <div class="related-blog" th:if="${#lists.isEmpty(blogVO.recommendations)==false}"
@@ -193,7 +194,7 @@
             </div>
 
         </div>
-        <div class="right-panel right">
+        <div class="right-panel right mobileNone">
             <th:block th:replace="layout/main::search-box">
 
             </th:block>
