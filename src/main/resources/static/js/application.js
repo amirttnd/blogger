@@ -2,11 +2,8 @@ $(document).ready(function () {
     $(window).scroll(function () {
         if ($(window).scrollTop() >= 135) {
             $("header.header").addClass("fixed");
-            $(".search-form").slideUp()
         } else {
             $("header.header").removeClass("fixed");
-            $(".search-form").slideDown()
-
         }
     });
 });
