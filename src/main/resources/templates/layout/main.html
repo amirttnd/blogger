@@ -69,11 +69,16 @@
         <div class="brand">
             <div class="brand-wrapper">
                 <a onclick="Menu.toggle(true)"
-                        class="fa fa-bars menu-bar desktopNone"></a>
+                   class="fa fa-bars menu-bar desktopNone"></a>
 
                 <h1 class="title">
                     <span class="first">Tech</span><span class="second">blogger</span>
                 </h1>
+
+                <div th:replace="/layout/main::search-box">
+
+                </div>
+
 
                 <p class="description mobileNone">A Community For One Purpose. One Mission. One Dream.</p>
             </div>
@@ -192,9 +197,11 @@
 
     <div class="ignore-padding wrapper">
         <div class="missing-page">
-            <th:block th:replace="layout/main::search-box">
+            <div class="mobileNone">
+                <th:block th:replace="layout/main::search-box">
 
-            </th:block>
+                </th:block>
+            </div>
             <h1>
                 <a target="_self" href="/blog.html" class="fa fa-home"></a> Oops! Search result is empty
             </h1>
