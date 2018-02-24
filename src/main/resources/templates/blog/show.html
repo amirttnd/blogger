@@ -35,6 +35,22 @@
 
                     </div>
                 </div>
+                <div class="author" th:inline="text">
+                    <div class="author-wrapper">
+                        <img src="/images/user-icon.png"/>
+
+                        <div class="about">
+                            <b>By:&nbsp;</b> <a class="name">[[${blog.user.fullName}]]</a>
+
+                            <p class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text </p>
+                            <div class="social">
+                              <a href="">Twitter</a>
+                              <a href="">Linkedin</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </article>
             <div class="social">
                 <div class="social-wrapper">
@@ -151,7 +167,7 @@
                                         <input type="text" required="required" ng-model="_comment.reply.fullName"
                                                placeholder="Full name" class="full-name text"/>
                                         <textarea required="required" ng-model="_comment.reply.comment"
-                                              placeholder="Enter comment"></textarea>
+                                                  placeholder="Enter comment"></textarea>
 
 
                                         <input type="button"
@@ -180,7 +196,8 @@
                                         </p>
 
                                         <div class="btn-group">
-                                            <a sec:authorize="hasRole('ROLE_ADMIN')" href="" data-ng-click="commentCtrl.delete(reply)">
+                                            <a sec:authorize="hasRole('ROLE_ADMIN')" href=""
+                                               data-ng-click="commentCtrl.delete(reply)">
                                                 <i class="fa fa-trash"></i>
                                             </a>
                                         </div>

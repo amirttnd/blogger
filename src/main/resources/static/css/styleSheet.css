@@ -1535,4 +1535,51 @@ header.header.fixed #navigation {
     display: none;
 }
 
+.author {
+    margin-top: 2em;
+    background: #fafafa;
+}
+
+.author .author-wrapper {
+    width: 90%;
+    margin: 0 auto;
+    padding: 1em 0;
+}
+
+.author img {
+    width: 54px;
+    vertical-align: top;
+    margin-right: 18px;
+    display: none;
+}
+
+.author .about {
+    display: inline-block;
+    color: #777;
+}
+
+.author .name {
+    font-weight: 600;
+    color: #e07844;
+    font-style: italic;
+}
+
+.author .text {
+    margin: 9px 0 0 0;
+    color: #333;
+    font-size: 15px;
+    line-height: 22px;
+}
+
+.blog-area .blog .author .social {
+    margin: 4px 0;
+    padding: 4px 0;
+}
+
+.author .social a {
+    color: #999;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
 
