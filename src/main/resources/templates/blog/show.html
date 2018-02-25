@@ -8,7 +8,7 @@
             [[${blogVO.blog.shortHeading}+ ' - '+ ${blogVO.blog.title}]]
         </th:block>
     </title>
-    <th:block th:replace="layout/main::head"/>
+    <th:block th:replace="/layout/main::head"/>
     <script type="text/javascript" th:inline="javascript" th:if="${blogVO.blog!=null}">
         window.friendlyUrl =/*[[${blogVO.blog.friendlyUrl}]]*/;
         window.blogId =/*[[${blogVO.blog.id}]]*/;
@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<th:block th:include="layout/main::main-menu"/>
+<th:block th:include="/layout/main::main-menu"/>
 
 <th:block th:if="${blogVO.blog}">
     <div class="blog-area" th:with="blog=${blogVO.blog},comments=${blogVO.comments}"
@@ -35,22 +35,22 @@
 
                     </div>
                 </div>
-                <div class="author" th:inline="text">
-                    <div class="author-wrapper">
-                        <img src="/images/user-icon.png"/>
+                <!--<div class="author" th:inline="text">-->
+                    <!--<div class="author-wrapper">-->
+                        <!--<img src="/images/user-icon.png"/>-->
 
-                        <div class="about">
-                            <b>By:&nbsp;</b> <a class="name">[[${blog.user.fullName}]]</a>
+                        <!--<div class="about">-->
+                            <!--<b>By:&nbsp;</b> <a class="name">[[${blog.user.fullName}]]</a>-->
 
-                            <p class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text </p>
-                            <div class="social">
-                              <a href="">Twitter</a>
-                              <a href="">Linkedin</a>
+                            <!--<p class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text </p>-->
+                            <!--<div class="social">-->
+                              <!--<a href="">Twitter</a>-->
+                              <!--<a href="">Linkedin</a>-->
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
             </article>
             <div class="social">
                 <div class="social-wrapper">
@@ -212,7 +212,7 @@
 
         </div>
         <div class="right-panel right mobileNone">
-            <th:block th:replace="layout/main::search-box">
+            <th:block th:replace="/layout/main::search-box">
 
             </th:block>
 
@@ -251,11 +251,11 @@
 
     </div>
 </th:block>
-<div th:replace="layout/main::alert">
+<div th:replace="/layout/main::alert">
 
 </div>
 
-<th:block th:replace="layout/main::footer">
+<th:block th:replace="/layout/main::footer">
 
 </th:block>
 </body>

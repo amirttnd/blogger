@@ -5,7 +5,6 @@ import in.tech.blogger.domain.Blog;
 import in.tech.blogger.modal.BlogModel;
 import in.tech.blogger.query.BlogQuery;
 import in.tech.blogger.service.BlogService;
-import in.tech.blogger.util.Utils;
 import in.tech.blogger.vo.BlogVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +17,8 @@ import java.security.Principal;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
+import static in.tech.blogger.util.Utils.pages;
 
 @RestController
 @RequestMapping("/api/blog")
@@ -45,7 +46,7 @@ public class BlogJsonController {
         long total = blogService.count(blogQuery);
         responseMap.put("blogs", blogs);
         responseMap.put("total", total);
-        responseMap.put("pages", Utils.pages(blogQuery.getMax(), total));
+        responseMap.put("pages", pages(blogQuery.getMax(), total));
         return new ResponseEntity<Map<String, Object>>(responseMap, HttpStatus.OK);
     }
 

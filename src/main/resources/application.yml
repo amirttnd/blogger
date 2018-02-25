@@ -1,6 +1,9 @@
 spring:
   profiles:
     active: development
+  thymeleaf:
+    prefix: classpath:/templates
+
 
 ---
 

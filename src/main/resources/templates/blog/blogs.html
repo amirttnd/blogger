@@ -2,12 +2,12 @@
 <html ng-app="techBlogger" xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
     <meta charset="UTF-8"/>
-    <meta th:replace="layout/admin::viewport"/>
-    <th:block th:include="layout/main::head"/>
+    <meta th:replace="/layout/admin::viewport"/>
+    <th:block th:include="/layout/main::head"/>
     <title>Blogs</title>
 </head>
 <body>
-<th:block th:include="layout/main::main-menu"/>
+<th:block th:include="/layout/main::main-menu"/>
 
 
 <div class="blog-area"
@@ -87,7 +87,7 @@
             </div>
         </div>
         <div class="right-panel right mobileNone">
-            <th:block th:replace="layout/main::search-box">
+            <th:block th:replace="/layout/main::search-box">
 
             </th:block>
         </div>
@@ -95,13 +95,13 @@
 
     <div ng-hide="blogCtrl.blogs.length>0">
 
-        <th:block th:replace="layout/main::empty-search-result">
+        <th:block th:replace="/layout/main::empty-search-result">
 
         </th:block>
 
     </div>
 
 </div>
-<th:block th:replace="layout/main::footer"/>
+<th:block th:replace="/layout/main::footer"/>
 </body>
 </html>
