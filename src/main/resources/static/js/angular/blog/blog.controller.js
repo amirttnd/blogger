@@ -11,10 +11,13 @@ angular
         self.currentPage = firstPage;
         self.blogs = [];
         self.pages = 0;
-        self.max = 1;
+        self.max = 10;
         self.isInProgress = false;
         self.User = User;
 
+        /**
+         * Used in front page on blog list page
+         */
         self.list = function (page) {
             if (!self.isInProgress) {
                 self.isInProgress = true;
@@ -40,11 +43,45 @@ angular
             }
         };
 
-        self.search = function () {
-            $location.search({query: self.query});
-            self.list(firstPage)
+
+        /**
+         * Used in admin on blog list page
+         */
+
+        self.getAll = function (page) {
+
+            page = page || firstPage;
+
+            var params = {page: page, max: self.max};
+
+            if ($location.search()["query"]) {
+                self.query = params.query = $location.search()["query"];
+            }
+
+            if ($location.search()["categoryQ"]) {
+                self.categoryQ = params.categoryQ = $location.search()["categoryQ"];
+            }
+
+            Blog.list(params, function (response) {
+                self.blogs = response.blogs || [];
+                self.currentPage = page;
+                self.total = response.total;
+                self.pages = response.pages;
+            });
         };
 
+        /**
+         * Used in admin on blog list page
+         */
+        self.search = function () {
+            $location.search({query: self.query});
+            self.getAll(firstPage)
+        };
+
+
+        /**
+         * Used in front page
+         */
         self.nextPage = function () {
             if (self.currentPage < self.pages) {
                 self.list(self.currentPage + 1)
@@ -58,6 +95,12 @@ angular
                 Blog.get({id: id}, function (response) {
                     self.blog = response.blog || {};
                 })
+            }
+        };
+
+        self.canEdit = function (blog) {
+            if (blog && blog.user) {
+                return User.isAdmin || blog.user.email == User.email;
             }
         };
 
@@ -79,9 +122,20 @@ angular
                 tags: self.blog.tags
             };
 
-            Blog.save(params, function (response) {
-                console.log(response)
-            })
+            if (!self.blog.id || self.canEdit(self.blog)) {
+                Blog.save(params, function (response) {
+                    if (response.blog) {
+                        self.blog = response.blog;
+                        Notification.show("Successfully saved")
+                    } else {
+                        Notification.show("Could not save")
+                    }
+                    console.log(response)
+                })
+            }else{
+                Notification.show("You are not author of this blog.")
+            }
+
         };
 
         self.setCategory = function (category) {

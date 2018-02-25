@@ -9,7 +9,7 @@
 </head>
 <body>
 <div th:replace="/layout/admin::adminHeader"></div>
-<div class="container" ng-controller="BlogController as blogCtrl" ng-init="blogCtrl.list()" ng-cloak="">
+<div class="container" ng-controller="BlogController as blogCtrl" ng-init="blogCtrl.getAll()" ng-cloak="">
     <ol class="breadcrumb">
         <li><a href="#">Admin</a></li>
         <li>Blogs</li>
@@ -44,6 +44,7 @@
             <th>Category</th>
             <th>Heading</th>
             <th>Published</th>
+            <th>Author</th>
             <th>Tags</th>
             <th class="col-md-1">Actions</th>
         </tr>
@@ -58,9 +59,17 @@
                     <span ng-if="$last==false"> / </span>
                 </a>
             </td>
-            <td><a href="/blog/edit?id={{blogVO.blog.id}}" target="_self"> {{blogVO.blog.shortHeading}}</a></td>
+            <td>
+                <a href="/blog/edit?id={{blogVO.blog.id}}" target="_self" ng-if="blogCtrl.canEdit(blogVO.blog)">
+                    {{blogVO.blog.shortHeading}}
+                </a>
+                <span ng-if="!blogCtrl.canEdit(blogVO.blog)">{{blogVO.blog.shortHeading}}</span>
+            </td>
             <td>
                 {{blogVO.blog.isPublished|prettyBool}}
+            </td>
+            <td>
+                {{blogVO.blog.user.email}}
             </td>
             <td>
                 <span ng-repeat="tag in blog.tags track by $index"
@@ -74,8 +83,8 @@
         </tr>
         </tbody>
     </table>
-    <div ng-if="blogCtrl.total>blogCtrl.max" paging="" page="blogCtrl.currentPage" page-size="10" total="blogCtrl.total"
-         paging-action="blogCtrl.list(page-1)"></div>
+    <div ng-if="blogCtrl.total>blogCtrl.max" paging="" page="blogCtrl.currentPage" page-size="blogCtrl.max" total="blogCtrl.total"
+         paging-action="blogCtrl.getAll(page)"></div>
 
 </div>
 </body>

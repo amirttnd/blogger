@@ -53,7 +53,7 @@ public class BlogService {
             }
             blog.setInCategories(inCategories);
             blog.setRelatedCategories(relatedCategories);
-            blogRepository.save(blog);
+            return blogRepository.save(blog);
         }
         return null;
     }
