@@ -1,6 +1,9 @@
 package in.tech.blogger.query;
 
 
+import in.tech.blogger.aware.ApplicationContextHolder;
+import in.tech.blogger.domain.User;
+import in.tech.blogger.repository.UserRepository;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -25,6 +28,8 @@ public class BlogQuery {
     String categoryId;
 
     Boolean onlyPublished;
+
+    String author;
 
     List<String> fieldsToExclude = Arrays.asList("content", "relatedBlog");
 
@@ -94,6 +99,14 @@ public class BlogQuery {
         this.onlyPublished = onlyPublished;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
     public void addToFieldToExclude(String field) {
         if (field != null) {
             fieldsToExclude.add(field);
@@ -151,6 +164,10 @@ public class BlogQuery {
             textQuery.addCriteria(criteria.where("inCategories").in(categoryQ));
         }
 
+        if (author != null && !author.isEmpty()) {
+            textQuery.addCriteria(criteria.where("user").is(getUser()));
+        }
+
         if (fieldsToExclude != null) {
             for (String field : fieldsToExclude) {
                 textQuery.fields().exclude(field);
@@ -162,6 +179,10 @@ public class BlogQuery {
         return textQuery;
     }
 
+    protected User getUser() {
+        return ApplicationContextHolder.getBean("userRepository", UserRepository.class).findByEmail(author);
+    }
+
 
     @Override
     public String toString() {
@@ -169,10 +190,13 @@ public class BlogQuery {
                 "id='" + id + '\'' +
                 ", ids=" + ids +
                 ", query='" + query + '\'' +
+                ", categoryQ='" + categoryQ + '\'' +
                 ", categoryId='" + categoryId + '\'' +
                 ", onlyPublished=" + onlyPublished +
+                ", author='" + author + '\'' +
                 ", fieldsToExclude=" + fieldsToExclude +
                 ", max=" + max +
+                ", page=" + page +
                 '}';
     }
 }

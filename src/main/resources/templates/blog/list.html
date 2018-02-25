@@ -11,8 +11,8 @@
 <div th:replace="/layout/admin::adminHeader"></div>
 <div class="container" ng-controller="BlogController as blogCtrl" ng-init="blogCtrl.getAll()" ng-cloak="">
     <ol class="breadcrumb">
-        <li><a href="#">Admin</a></li>
-        <li>Blogs</li>
+        <li><a href="/admin/index" target="_self">Admin</a></li>
+        <li><a href="/blog/list" target="_self"> Blogs</a></li>
     </ol>
     <div class="row" style="margin-bottom: 10px">
         <div class="col-xs-6">
@@ -69,7 +69,9 @@
                 {{blogVO.blog.isPublished|prettyBool}}
             </td>
             <td>
-                {{blogVO.blog.user.email}}
+                <a href="javascript:void(0)" data-ng-click="blogCtrl.searchByAuthor(blogVO.blog.user.email)">
+                    {{blogVO.blog.user.email}}
+                </a>
             </td>
             <td>
                 <span ng-repeat="tag in blog.tags track by $index"
@@ -83,7 +85,8 @@
         </tr>
         </tbody>
     </table>
-    <div ng-if="blogCtrl.total>blogCtrl.max" paging="" page="blogCtrl.currentPage" page-size="blogCtrl.max" total="blogCtrl.total"
+    <div ng-if="blogCtrl.total>blogCtrl.max" paging="" page="blogCtrl.currentPage" page-size="blogCtrl.max"
+         total="blogCtrl.total"
          paging-action="blogCtrl.getAll(page)"></div>
 
 </div>

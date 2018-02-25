@@ -52,6 +52,7 @@ public class Blog implements Persistable<String> {
     List<String> tags;
 
     @DBRef
+    @Indexed
     User user;
 
     @Indexed

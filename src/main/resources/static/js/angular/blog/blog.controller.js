@@ -33,6 +33,10 @@ angular
                     self.categoryQ = params.categoryQ = $location.search()["categoryQ"];
                 }
 
+                if ($location.search()["author"]) {
+                    self.author = params.author = $location.search()["author"];
+                }
+
                 Blog.list(params, function (response) {
                     self.blogs = _.concat(self.blogs, response.blogs || []);
                     self.currentPage = page;
@@ -62,6 +66,10 @@ angular
                 self.categoryQ = params.categoryQ = $location.search()["categoryQ"];
             }
 
+            if ($location.search()["author"]) {
+                self.author = params.author = $location.search()["author"];
+            }
+
             Blog.list(params, function (response) {
                 self.blogs = response.blogs || [];
                 self.currentPage = page;
@@ -85,6 +93,13 @@ angular
         self.nextPage = function () {
             if (self.currentPage < self.pages) {
                 self.list(self.currentPage + 1)
+            }
+        };
+
+        self.searchByAuthor = function (author) {
+            if (author) {
+                $location.search({author: author});
+                self.getAll(firstPage);
             }
         };
 
@@ -132,7 +147,7 @@ angular
                     }
                     console.log(response)
                 })
-            }else{
+            } else {
                 Notification.show("You are not author of this blog.")
             }
 
