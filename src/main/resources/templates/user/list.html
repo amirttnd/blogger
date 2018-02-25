@@ -44,7 +44,7 @@
         <tbody>
         <tr ng-repeat="user in userCtrl.users track by $index">
             <td class="col-md-3">
-                <a href="/user/edit?email={{user.email}}"
+                <a href="/blog/list?author={{user.email}}"
                    target="_self">{{user.email}}</a>
 
             </td>
