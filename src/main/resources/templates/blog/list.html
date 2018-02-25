@@ -82,6 +82,11 @@
             <td>
                 <a href="/blog/{{blogVO.blog.friendlyUrl}}" target="_blank">Live view</a>
             </td>
+            <td data-ng-if="blogCtrl.User.isAdmin">
+                <a href="javascript:void(0)"
+                   data-ng-click="blogCtrl.delete(blogVO.blog.id)" class="fa fa-trash">
+                </a>
+            </td>
         </tr>
         </tbody>
     </table>

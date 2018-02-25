@@ -25,6 +25,12 @@ angular
                 params: {
                     action: "toggleRecommendation"
                 }
+            },
+            delete: {
+                method: "GET",
+                params: {
+                    action: "delete"
+                }
             }
         })
     }]);

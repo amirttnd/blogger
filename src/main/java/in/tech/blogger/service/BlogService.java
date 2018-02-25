@@ -115,4 +115,11 @@ public class BlogService {
         return null;
     }
 
+    public Boolean delete(String id) {
+        if (id != null) {
+            blogRepository.delete(id);
+            return true;
+        }
+        return false;
+    }
 }

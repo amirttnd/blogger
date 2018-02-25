@@ -119,6 +119,20 @@ angular
             }
         };
 
+        self.delete = function (id) {
+            if (id) {
+                Blog.delete({id: id}, function (response) {
+                        if (response.status) {
+                            self.getAll(self.currentPage);
+                        }
+                        else {
+                            Notification.show("Could not delete delete")
+                        }
+                    }
+                )
+            }
+        };
+
 
         Category.tree(function (response) {
             self.tree = response.tree;
@@ -174,4 +188,5 @@ angular
                 return category.id == id
             });
         };
-    }]);
+    }])
+;

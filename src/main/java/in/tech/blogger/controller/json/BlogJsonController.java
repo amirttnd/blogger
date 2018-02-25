@@ -68,4 +68,12 @@ public class BlogJsonController {
         responseMap.put("blog", blog);
         return new ResponseEntity<Map<String, Object>>(responseMap, HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/delete", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    @Secured(value = {Constants.ADMIN_ROLE})
+    ResponseEntity<Map<String, Object>> delete(@RequestParam String id) {
+        Map<String, Object> responseMap = new LinkedHashMap<>();
+        responseMap.put("status", blogService.delete(id));
+        return new ResponseEntity<Map<String, Object>>(responseMap, HttpStatus.OK);
+    }
 }
