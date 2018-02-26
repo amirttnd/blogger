@@ -244,33 +244,38 @@
         font-size: 12px;
     }
 
-    .blog .blog-entry .blog-content .more{
+    .blog .blog-entry .blog-content .more {
         display: block;
         text-align: center;
     }
 
-    .login-container{
+    .login-container {
         width: 100%;
         margin: 0;
         border-radius: 0;
     }
-    .login-container .login-wrapper{
+
+    .login-container .login-wrapper {
         padding: 2em 1em;
         max-width: 450px;
         margin: 0 auto;
     }
 
-    .login-container .login-wrapper h1{
+    .login-container .login-wrapper h1 {
         font-size: 20px;
     }
 
-    .blog-area .blog .social{
+    .blog-area .blog .social {
         border: 0;
     }
 
-    .blog-area .blog .related-blog .related-blog-wrapper{
+    .blog-area .blog .related-blog .related-blog-wrapper {
         border: 0;
         background: transparent;
     }
 
+    .text-wrapper {
+        margin-top: 4em;
+        width: 90%;
+    }
 }
