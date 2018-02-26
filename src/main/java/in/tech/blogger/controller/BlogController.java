@@ -46,4 +46,11 @@ public class BlogController {
         modelAndView.addObject("blogVO", blogService.findAndIncView(friendlyUrl));
         return modelAndView;
     }
+
+    @RequestMapping(value = {"/about.html","/about"})
+    String aboutUs(){
+        return "/aboutUs";
+    }
+
+
 }

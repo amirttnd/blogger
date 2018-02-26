@@ -1580,5 +1580,50 @@ header.header.fixed #navigation {
     margin-right: 10px;
     font-size: 14px;
 }
+.about-us-container{
+    background: #ffffff;
+}
+.about-us-container header .heading {
+    color: white;
+    background: #e07844;
+}
 
+.about-us-container header .heading .heading-wrapper {
+    line-height: 65px;
+    color: white;
+    background: #e07844;
+    font-size: 23px;
+    width: 80%;
+    margin: 0 auto;
+}
 
+.about-us-wrapper{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.about-us-container header .heading .heading-wrapper .breadcrumb {
+    float: right;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.about-us-container header .heading .heading-wrapper .breadcrumb a {
+    font-size: 14px;
+    color: white;
+    font-weight: normal;
+}
+
+.about-us-container header .heading .heading-wrapper .breadcrumb  .divider{
+    color: #ffffff;
+}
+
+.about-us-wrapper h2{
+    margin: 1em 0;
+    color: darkgray;
+    font-weight: normal;
+}
+
+.about-us-wrapper p{
+    line-height: 2em;
+}

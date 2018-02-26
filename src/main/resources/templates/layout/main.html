@@ -66,8 +66,8 @@
 
 <div th:fragment="main-menu">
     <header class="header" th:with="tree=${@cacheService.categoryTree()}">
-        <div class="brand">
-            <div class="brand-wrapper">
+        <div class="brand" th:fragment="brand">
+            <div class="brand-wrapper" >
                 <a onclick="Menu.toggle(true)"
                    class="fa fa-bars menu-bar desktopNone"></a>
 
