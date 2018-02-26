@@ -52,5 +52,10 @@ public class BlogController {
         return "/aboutUs";
     }
 
+    @RequestMapping(value = {"/contact.html","/contact"})
+    String contactUs(){
+        return "/contactUs";
+    }
+
 
 }

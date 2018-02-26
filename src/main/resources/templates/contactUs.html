@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{/css/font-awesome-4.7.0/css/font-awesome.min.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/css/styleSheet.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/css/media.css}" type="text/css"/>
+
+    <style>
+        body {
+            background: #ffffff;
+        }
+    </style>
+    <title>
+        Contact Us
+    </title>
+</head>
+<body>
+<div class="text-container">
+    <div th:replace="/layout/main::brand">
+
+    </div>
+    <div class="heading">
+        <h1 class="heading-wrapper">
+            Contact Us
+                <span class="breadcrumb">
+                    <a href="/" target="_self">Home</a>
+                    <span class="divider">/</span>
+                    <a>Contact</a>
+
+                </span>
+        </h1>
+
+    </div>
+    <div class="text-wrapper">
+        <h2>- Get In Touch -</h2>
+
+        <p>Contribute with us and earn money.</p>
+
+        <div class="contact-form">
+            <div class="contact-form-wrapper">
+                <form>
+                    <div class="form-group">
+                        <label>Full name:</label>
+                        <input type="text" class="text-box" placeholder="Full name" name="fullName"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="text" class="text-box" placeholder="Email" name="email"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Query:</label>
+                        <textarea placeholder="Write your query" name="query" class="query"></textarea>
+                    </div>
+                    <input type="submit" value="Send" class="submit"/>
+                </form>
+            </div>
+            <div class="contact-info">
+                <ul class="contact-info-wrapper">
+                    <li>
+                        <span class="text">
+                            <label>Call Now</label>
+                            <span>+91-9958123972</span>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="text">
+                            <label>Contact Hours</label>
+                            <span>10 am - 6 pm IST</span>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="text">
+                            <label>Contact Info</label>
+                            <a href="mailto:techblogger@gmail.com">
+                                <span>techblogger@gmail.com</span>
+                            </a>
+                        </span>
+                    </li>
+                </ul>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.386640537048!2d77.27762195020517!3d28.618171982337234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce350a68d8a5f%3A0x8b69261945633c4d!2sAkshardham+Metro+station!5e0!3m2!1sen!2sin!4v1519665298939"
+                        width="400" height="300" frameborder="0" style="border:0"
+                        allowfullscreen="allowfullscreen"></iframe>
+            </div>
+
+        </div>
+
+    </div>
+    <div th:replace="/layout/main::footer">
+
+    </div>
+</div>
+
+</body>
+</html>
