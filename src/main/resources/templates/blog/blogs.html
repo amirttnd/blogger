@@ -91,14 +91,14 @@
 
             </th:block>
 
-            <ul class="sub-categories" th:inline="text" th:with="tree=${@cacheService.categoryTree()}">
-                <li class="sub-category" th:each="_category:${tree}">
-                    <h1>[[${_category.category.name}]]</h1>
+            <ul class="sub-categories" >
+                <li class="sub-category" ng-repeat="_category in blogCtrl.tree">
+                    <h1>{{_category.category.name}}</h1>
                     <ul class="sub-category-blog">
-                        <li th:each="_subCategory:${_category.subCategories}">
+                        <li ng-repeat="_subCategory in _category.subCategories">
                             <a target="_self"
-                               th:href="@{/blogs(categoryQ=${_subCategory.friendlyUrl})}">
-                                [[${_subCategory.name}]]
+                               href="/blogs?categoryQ={{_subCategory.friendlyUrl}}">
+                                {{_subCategory.name}}
                             </a>
                         </li>
                     </ul>
