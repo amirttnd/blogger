@@ -99,7 +99,8 @@
 
     .main-navigation .nav-menu a {
         display: block;
-        background: #d65a1c;
+        background: #b74207;
+        font-weight: 900;
         padding: 1em 20px;
         border-bottom: 1px solid rgba(212, 208, 208, 0.48);
     }
@@ -119,8 +120,9 @@
         display: block;
         width: 100%;
         background: #d6642c;
-        border-bottom: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.31);
         padding: 17px 20px;
+        font-weight: 600;
     }
 
     .blog-area {
