@@ -152,15 +152,19 @@ angular
             };
 
             if (!self.blog.id || self.canEdit(self.blog)) {
-                Blog.save(params, function (response) {
-                    if (response.blog) {
-                        self.blog = response.blog;
-                        Notification.show("Successfully saved")
-                    } else {
-                        Notification.show("Could not save")
-                    }
-                    console.log(response)
-                })
+                if (!self.isInProgress) {
+                    self.isInProgress = true;
+                    Blog.save(params, function (response) {
+                        if (response.blog) {
+                            self.blog = response.blog;
+                            Notification.show("Successfully saved")
+                        } else {
+                            Notification.show("Could not save")
+                        }
+                        self.isInProgress = false;
+                        console.log(response)
+                    })
+                }
             } else {
                 Notification.show("You are not author of this blog.")
             }
