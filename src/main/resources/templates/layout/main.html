@@ -67,12 +67,14 @@
 <div th:fragment="main-menu">
     <header class="header" th:with="tree=${@cacheService.categoryTree()}">
         <div class="brand" th:fragment="brand">
-            <div class="brand-wrapper" >
+            <div class="brand-wrapper">
                 <a onclick="Menu.toggle(true)"
                    class="fa fa-bars menu-bar desktopNone"></a>
 
                 <h1 class="title">
-                    <span class="first">Tech</span><span class="second">blogger</span>
+                    <a href="/blogs.html" target="_self">
+                        <span class="first">Tech</span><span class="second">blogger</span>
+                    </a>
                 </h1>
 
                 <div th:replace="/layout/main::search-box">
