@@ -16,7 +16,6 @@ public class CacheService {
 
     @Cacheable(cacheNames = "categoryTree", sync = true)
     public List<CategoryTreeVO> categoryTree() {
-        System.out.println(">>>>>>>>>>>>> Populating category tree <<<<<<<<<<<<<<<");
         return categoryService.tree();
     }
 

@@ -90,6 +90,20 @@
             <th:block th:replace="/layout/main::search-box">
 
             </th:block>
+
+            <ul class="sub-categories" th:inline="text" th:with="tree=${@cacheService.categoryTree()}">
+                <li class="sub-category" th:each="_category:${tree}">
+                    <h1>[[${_category.category.name}]]</h1>
+                    <ul class="sub-category-blog">
+                        <li th:each="_subCategory:${_category.subCategories}">
+                            <a target="_self"
+                               th:href="@{/blogs(categoryQ=${_subCategory.friendlyUrl})}">
+                                [[${_subCategory.name}]]
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </div>
 
