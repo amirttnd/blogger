@@ -63,7 +63,7 @@
         width: 100%;
     }
 
-    header.header.fixed #navigation {
+    header.header.fixed .main-navigation {
         z-index: 2;
     }
 
