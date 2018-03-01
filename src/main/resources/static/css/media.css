@@ -105,6 +105,10 @@
         border-bottom: 1px solid rgba(212, 208, 208, 0.48);
     }
 
+    .main-navigation .nav-menu a:hover{
+        background: #b74207;
+    }
+
     .main-navigation .nav-menu a .fa-caret-down {
         float: right;
     }
