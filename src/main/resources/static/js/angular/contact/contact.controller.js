@@ -9,7 +9,7 @@ angular
             if (_.size(self.contact) > 0) {
                 Contact.save(self.contact, function (response) {
                     if (response.status) {
-                        self.contact = {};
+                        self.contact = response.contact;
                         Notification.show("Your query has been reported!", {timeout: 5000})
 
                     }
