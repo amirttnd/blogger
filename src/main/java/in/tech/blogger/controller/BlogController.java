@@ -54,7 +54,7 @@ public class BlogController {
 
     @RequestMapping(value = {"/contact.html","/contact"})
     String contactUs(){
-        return "/contactUs";
+        return "/contact";
     }
 
 

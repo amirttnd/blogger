@@ -26,6 +26,7 @@ var Scroll = {
 var Notification = {
     show: function (message, options) {
         var $notification = $("#notification");
+        var timeout = 2500;
         if (options) {
             if (options.class && typeof options.class === "string") {
                 $notification.addClass(options.class)
@@ -34,12 +35,16 @@ var Notification = {
             if (options.css && typeof  options.css == "object") {
                 $notification.css(options.css)
             }
+
+            if (parseInt((options.timeout) > 0)) {
+                timeout = options.timeout
+            }
         }
         if (message) {
             $notification.html(message).addClass("show");
             setTimeout(function () {
                 Notification.hide();
-            }, 2500)
+            }, timeout)
         }
     },
     hide: function () {
