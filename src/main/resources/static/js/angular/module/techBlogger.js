@@ -6,7 +6,8 @@ angular
         'ckeditor',
         'bw.paging',
         "ngSanitize",
-        'infinite-scroll'
+        'infinite-scroll',
+        'ngMessages'
     ])
     .config(function ($locationProvider) {
         $locationProvider.html5Mode({

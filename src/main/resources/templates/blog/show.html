@@ -96,7 +96,8 @@
                                 &nbsp;&nbsp;
                                 <span th:text="${#dates.format(recommendation.dateCreated,'MMMM  dd, yyyy')}"></span>
                             </span>
-                                <a th:href="@{/blog/{friendlyUrl}(friendlyUrl=${recommendation.friendlyUrl})}">Read
+                                <a th:href="@{/blog/{friendlyUrl}(friendlyUrl=${recommendation.friendlyUrl})}"
+                                   target="_self">Read
                                     more</a>
                             </div>
                         </li>
