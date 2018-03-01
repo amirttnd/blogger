@@ -12,7 +12,7 @@
 <div class="container" ng-controller="BlogController as blogCtrl" ng-init="blogCtrl.getAll()" ng-cloak="">
     <ol class="breadcrumb">
         <li><a href="/admin/index" target="_self">Admin</a></li>
-        <li><a href="/blog/list" target="_self"> Blogs</a></li>
+        <li><a href="/blog/list" target="_self"> Blogs ({{blogCtrl.total}})</a></li>
     </ol>
     <div class="row" style="margin-bottom: 10px">
         <div class="col-xs-6">
