@@ -116,7 +116,8 @@
                             <div class="reply-box">
                                 <p>Leave a comment</p>
 
-                                <form name="saveCommentForm" data-ng-submit="saveCommentForm.$valid&amp;&amp;commentCtrl.save()">
+                                <form name="saveCommentForm"
+                                      data-ng-submit="saveCommentForm.$valid&amp;&amp;commentCtrl.save()">
                                     <div class="email">
                                         <input type="email" name="email" ng-model="commentCtrl.commentModel.email"
                                                placeholder="Email" class="text" required="required"/>
@@ -161,7 +162,7 @@
                             <img src="/images/user-icon.png"/>
 
                             <div class="display-comment">
-                                <span class="user-name">{{_comment.comment.email}}</span>
+                                <span class="user-name">{{_comment.comment.fullName}}</span>
 
                                 <span class="date"><i class="fa fa-calendar">&nbsp;</i>{{_comment.comment.dateCreated|date}}</span>
 
@@ -186,31 +187,41 @@
                                     <div class="reply-box" ng-show="_comment.canShowReply">
                                         <p>Leave a reply</p>
 
-                                        <div class="email">
-                                            <input type="email" required="required" ng-model="_comment.reply.email"
-                                                   placeholder="Email" class="text"/>
-                                            <span class="error">
-                                                Email is required
+                                        <form name="saveReply">
+                                            <div class="email">
+                                                <input type="email" name="email"
+                                                       required="required" ng-model="_comment.reply.email"
+                                                       placeholder="Email" class="text"/>
+                                            <span class="error"
+                                                  ng-show="saveReply.email.$touched&amp;&amp;!saveReply.email.$valid">
+                                                Invalid email address
                                             </span>
-                                        </div>
-                                        <div class="full-name">
-                                            <input type="text" required="required" ng-model="_comment.reply.fullName"
-                                                   placeholder="Full name" class="text"/>
-                                            <span class="error">
+                                            </div>
+                                            <div class="full-name">
+                                                <input type="text" required="required"
+                                                       name="fullName"
+                                                       ng-model="_comment.reply.fullName"
+                                                       placeholder="Full name" class="text"/>
+                                            <span class="error"
+                                                  ng-show="saveReply.fullName.$touched&amp;&amp;!saveReply.fullName.$valid">
                                                 Full name is rquired
                                             </span>
-                                        </div>
-                                        <div>
-                                            <textarea required="required" ng-model="_comment.reply.comment"
+                                            </div>
+                                            <div>
+                                            <textarea required="required"
+                                                      name="comment"
+                                                      ng-model="_comment.reply.comment"
                                                       placeholder="Enter comment"></textarea>
-                                            <span class="error">
+                                            <span class="error"
+                                                  ng-show="saveReply.comment.$touched&amp;&amp;!saveReply.comment.$valid">
                                                 Comment is required
                                             </span>
-                                        </div>
+                                            </div>
 
-                                        <input type="button"
-                                               data-ng-click="commentCtrl.saveReply(_comment, _comment.replies)"
-                                               class="btn" value="As guest reply"/>
+                                            <input type="button"
+                                                   data-ng-click="saveReply.$valid&amp;&amp;commentCtrl.saveReply(_comment, _comment.replies)"
+                                                   class="btn" value="As guest reply"/>
+                                        </form>
                                         <i ng-show="_comment.reply.isInProgress"
                                            class="fa fa-spinner fa-spin"></i>
 
@@ -225,7 +236,7 @@
                                     <img src="/images/user-icon.png"/>
 
                                     <div class="display-comment">
-                                        <span class="user-name">{{reply.email}}</span>
+                                        <span class="user-name">{{reply.fullName}}</span>
                                     <span class="date"><i class="fa fa-calendar">
                                         &nbsp;</i>{{reply.dateCreated|date}}</span>
 
