@@ -339,6 +339,15 @@ label {
     line-height: 125%;
 }
 
+.blog-content pre{
+    background: #f3f3f3;
+    padding: 1em;
+    border-radius: 1em;
+    border: 2px outset #efeceb;
+    overflow: auto;
+    max-height: 30em;
+}
+
 .blog-content h1 {
     font-size: 32px;
 }

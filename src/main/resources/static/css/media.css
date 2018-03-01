@@ -105,7 +105,7 @@
         border-bottom: 1px solid rgba(212, 208, 208, 0.48);
     }
 
-    .main-navigation .nav-menu a:hover{
+    .main-navigation .nav-menu a:hover {
         background: #b74207;
     }
 
@@ -172,6 +172,11 @@
 
     .blog-content p {
         font-size: 15px;
+    }
+
+    .blog-content pre {
+        font-size: 12px;
+        border:1px solid #ccc
     }
 
     .footer {
@@ -284,18 +289,19 @@
         margin-top: 4em;
         width: 90%;
     }
-    .contact-form-wrapper{
+
+    .contact-form-wrapper {
         display: block;
         width: 100%;
     }
 
-    .contact-form .contact-info{
+    .contact-form .contact-info {
         width: 100%;
         display: block;
         margin-top: 2em;
     }
 
-    .contact-form .contact-info .contact-info-wrapper li{
+    .contact-form .contact-info .contact-info-wrapper li {
         display: inline-block;
         min-width: 200px;
     }
