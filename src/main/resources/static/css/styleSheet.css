@@ -340,12 +340,13 @@ label {
 }
 
 .blog-content pre{
-    background: #f3f3f3;
+    background: #fdfdfd;
     padding: 1em;
     border-radius: 1em;
-    border: 2px outset #efeceb;
+    border: 1px solid #ccc;
     overflow: auto;
     max-height: 30em;
+    box-shadow: 1px 1px 1px 1px #fdfdfd;
 }
 
 .blog-content h1 {
