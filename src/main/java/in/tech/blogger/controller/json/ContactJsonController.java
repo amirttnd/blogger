@@ -2,15 +2,13 @@ package in.tech.blogger.controller.json;
 
 import in.tech.blogger.domain.Contact;
 import in.tech.blogger.modal.ContactModel;
+import in.tech.blogger.modal.PageModel;
 import in.tech.blogger.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,9 +31,9 @@ public class ContactJsonController {
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    ResponseEntity<Map<String, Object>> list() {
+    ResponseEntity<Map<String, Object>> list(@ModelAttribute PageModel pageModel) {
         Map<String, Object> responseMap = new HashMap<>();
-        responseMap.put("contacts", contactService.findAll(new PageRequest(0, 20)));
+        responseMap.put("contacts", contactService.findAll(new PageRequest(pageModel.getPage()-1, pageModel.getMax())));
         return new ResponseEntity<Map<String, Object>>(responseMap, HttpStatus.OK);
     }
 }
