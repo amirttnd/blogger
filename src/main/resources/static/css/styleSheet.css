@@ -1257,6 +1257,7 @@ article .breadcrumb a:hover {
 .tags a.tag-info:hover {
     background: #f56f2c;
     color: white;
+    text-decoration: none;
 }
 
 .wrapper {

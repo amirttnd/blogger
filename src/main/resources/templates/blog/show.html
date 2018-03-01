@@ -122,18 +122,19 @@
                                     <div class="email">
                                         <input type="email" name="email" ng-model="commentCtrl.commentModel.email"
                                                placeholder="Email" class="text" required="required"/>
-                                        <span class="error"
-                                              ng-show="saveCommentForm.email.$touched&amp;&amp;!saveCommentForm.email.$valid">
-                                            Invalid email address
+                                        <span class="error" ng-show="saveCommentForm.email.$touched"
+                                              ng-messages="saveCommentForm.email.$error">
+                                            <span ng-message="required">Email address is requires</span>
+                                            <span ng-message="email">Invalid email address</span>
                                         </span>
                                     </div>
                                     <div class="full-name">
                                         <input type="text" name="fullName" ng-model="commentCtrl.commentModel.fullName"
                                                required="required"
                                                placeholder="Full name" class=" text"/>
-                                        <span class="error"
-                                              ng-show="saveCommentForm.fullName.$touched&amp;&amp;!saveCommentForm.fullName.$valid">
-                                            Full name is required
+                                        <span class="error" ng-show="saveCommentForm.fullName.$touched"
+                                              ng-messages="saveCommentForm.fullName.$error">
+                                            <span ng-message="required">Full name is required</span>
                                         </span>
                                     </div>
                                     <div>
@@ -148,12 +149,20 @@
                                         </span>
                                     </div>
 
-                                    <input type="url" ng-model="commentCtrl.commentModel.websiteURL"
-                                           placeholder="Website URL" class="web-site-url text"/>
+                                    <div>
+                                        <input type="url" ng-model="commentCtrl.commentModel.websiteURL"
+                                               name="websiteURL"
+                                               placeholder="Website URL" class="web-site-url text"/>
+                                        <span class="error" ng-show="saveCommentForm.websiteURL.$touched"
+                                              ng-messages="saveCommentForm.websiteURL.$error">
+                                            <span ng-message="url">Invalid URL</span>
+                                        </span>
+                                    </div>
 
                                     <input type="submit" class="btn" value="As guest reply"/>
+
                                     <i ng-show="commentCtrl.commentModel.isInProgress"
-                                       class="fa fa-spinner fa-spin"/>
+                                       class="fa fa-spinner fa-spin"></i>
                                 </form>
                             </div>
                         </li>
