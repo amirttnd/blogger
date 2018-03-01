@@ -36,20 +36,20 @@
                     </div>
                 </div>
                 <!--<div class="author" th:inline="text">-->
-                    <!--<div class="author-wrapper">-->
-                        <!--<img src="/images/user-icon.png"/>-->
+                <!--<div class="author-wrapper">-->
+                <!--<img src="/images/user-icon.png"/>-->
 
-                        <!--<div class="about">-->
-                            <!--<b>By:&nbsp;</b> <a class="name">[[${blog.user.fullName}]]</a>-->
+                <!--<div class="about">-->
+                <!--<b>By:&nbsp;</b> <a class="name">[[${blog.user.fullName}]]</a>-->
 
-                            <!--<p class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text </p>-->
-                            <!--<div class="social">-->
-                              <!--<a href="">Twitter</a>-->
-                              <!--<a href="">Linkedin</a>-->
+                <!--<p class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text </p>-->
+                <!--<div class="social">-->
+                <!--<a href="">Twitter</a>-->
+                <!--<a href="">Linkedin</a>-->
 
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
                 <!--</div>-->
             </article>
             <div class="social">
@@ -116,13 +116,36 @@
                             <div class="reply-box">
                                 <p>Leave a comment</p>
 
-                                <form name="saveCommentForm" data-ng-submit="commentCtrl.save()">
-                                    <input type="email" name="email" ng-model="commentCtrl.commentModel.email"
-                                           placeholder="Email" class="email text"/>
-                                    <input type="text" name="fullName" ng-model="commentCtrl.commentModel.fullName"
-                                           placeholder="Full name" class="full-name text"/>
-                                <textarea name="comment" ng-model="commentCtrl.commentModel.comment"
-                                          placeholder="Enter comment"></textarea>
+                                <form name="saveCommentForm" data-ng-submit="saveCommentForm.$valid&amp;&amp;commentCtrl.save()">
+                                    <div class="email">
+                                        <input type="email" name="email" ng-model="commentCtrl.commentModel.email"
+                                               placeholder="Email" class="text" required="required"/>
+                                        <span class="error"
+                                              ng-show="saveCommentForm.email.$touched&amp;&amp;!saveCommentForm.email.$valid">
+                                            Invalid email address
+                                        </span>
+                                    </div>
+                                    <div class="full-name">
+                                        <input type="text" name="fullName" ng-model="commentCtrl.commentModel.fullName"
+                                               required="required"
+                                               placeholder="Full name" class=" text"/>
+                                        <span class="error"
+                                              ng-show="saveCommentForm.fullName.$touched&amp;&amp;!saveCommentForm.fullName.$valid">
+                                            Full name is required
+                                        </span>
+                                    </div>
+                                    <div>
+
+                                        <textarea name="comment"
+                                                  ng-model="commentCtrl.commentModel.comment"
+                                                  required="required"
+                                                  placeholder="Enter comment"></textarea>
+                                          <span class="error"
+                                                ng-show="saveCommentForm.comment.$touched&amp;&amp;!saveCommentForm.comment.$valid">
+                                            Comment is required
+                                        </span>
+                                    </div>
+
                                     <input type="url" ng-model="commentCtrl.commentModel.websiteURL"
                                            placeholder="Website URL" class="web-site-url text"/>
 
@@ -162,13 +185,28 @@
 
                                     <div class="reply-box" ng-show="_comment.canShowReply">
                                         <p>Leave a reply</p>
-                                        <input type="email" required="required" ng-model="_comment.reply.email"
-                                               placeholder="Email" class="email text"/>
-                                        <input type="text" required="required" ng-model="_comment.reply.fullName"
-                                               placeholder="Full name" class="full-name text"/>
-                                        <textarea required="required" ng-model="_comment.reply.comment"
-                                                  placeholder="Enter comment"></textarea>
 
+                                        <div class="email">
+                                            <input type="email" required="required" ng-model="_comment.reply.email"
+                                                   placeholder="Email" class="text"/>
+                                            <span class="error">
+                                                Email is required
+                                            </span>
+                                        </div>
+                                        <div class="full-name">
+                                            <input type="text" required="required" ng-model="_comment.reply.fullName"
+                                                   placeholder="Full name" class="text"/>
+                                            <span class="error">
+                                                Full name is rquired
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <textarea required="required" ng-model="_comment.reply.comment"
+                                                      placeholder="Enter comment"></textarea>
+                                            <span class="error">
+                                                Comment is required
+                                            </span>
+                                        </div>
 
                                         <input type="button"
                                                data-ng-click="commentCtrl.saveReply(_comment, _comment.replies)"

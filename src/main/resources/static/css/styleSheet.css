@@ -999,13 +999,14 @@ a.facebook:hover, a.twitter:hover {
 }
 
 .comments .comment-row .reply-box .text {
-    margin-bottom: 13px;
+    margin-top: 13px;
     border: 1px solid #cccccc;
     height: 38px;
     font-size: 15px;
     padding: 20px 12px;
     font-family: serif;
     border-radius: 4px;
+    width: 100%;
 }
 
 .comments .comment-row .reply-box .text:focus {
@@ -1013,7 +1014,7 @@ a.facebook:hover, a.twitter:hover {
 }
 
 .comments .comment-row .reply-box p {
-    margin: 1.5em 0 13px 0;
+    margin: 1.5em 0 0 0;
     font-size: 17px;
     font-style: italic;
     font-weight: 600;
@@ -1021,17 +1022,27 @@ a.facebook:hover, a.twitter:hover {
 
 .reply-box .full-name, .reply-box .email {
     width: 48%;
+    float: left;
 }
 
 .reply-box .full-name {
     float: right;
 }
 
+.reply-box .full-name .error, .reply-box .email .error {
+    margin-left: 3px;
+}
+
+.error {
+    color: #ff1f04;
+    font-size: 13px;
+}
+
 .comments .reply-box textarea {
     width: 100%;
     min-height: 79px;
     border: 1px solid #ccc;
-    margin-bottom: 9px;
+    margin-top: 13px;
     font-family: serif;
     font-size: 15px;
     padding: 14px 12px;
@@ -1043,7 +1054,7 @@ a.facebook:hover, a.twitter:hover {
 }
 
 .comments .reply-box .btn {
-    margin-top: 0;
+    margin-top: 1em;
 }
 
 .comments .reply-box .web-site-url {
@@ -1712,7 +1723,7 @@ header.header.fixed .main-navigation {
     font-size: 14px;
 }
 
-.contact-form .contact-info iframe{
+.contact-form .contact-info iframe {
     width: 100%;
     height: auto;
 }
