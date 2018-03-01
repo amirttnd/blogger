@@ -355,6 +355,11 @@ label {
     display: inline-block;
 }
 
+.blog-content ol li {
+    list-style-type: disc;
+    line-height: 24px;
+}
+
 .blog-content a:hover {
     color: #444;
     text-decoration: underline;
@@ -625,6 +630,19 @@ label {
     margin-bottom: 1em;
 }
 
+.blog-content blockquote {
+    display: block;
+    margin: 1em 0;
+    border-left: 5px solid #ccc;
+    padding: 1em 1.5em;
+    font-style: italic;
+    color: #666;
+}
+
+.blog .blog-entry .blog-content blockquote p {
+    margin: 0;
+}
+
 .blog .blog-entry .blog-content .more {
     margin-top: 3em;
     display: inline-block;
@@ -780,6 +798,10 @@ span.divider.divider.divider.divider {
     line-height: 26px;
     font-size: 14px;
     color: #444;
+}
+
+.sub-categories .sub-category .sub-category-blog li a:hover {
+    text-decoration: underline;
 }
 
 .sub-categories .sub-category .sub-category-blog li:last-child {
