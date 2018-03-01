@@ -202,30 +202,34 @@
                                                 <input type="email" name="email"
                                                        required="required" ng-model="_comment.reply.email"
                                                        placeholder="Email" class="text"/>
-                                            <span class="error"
-                                                  ng-show="saveReply.email.$touched&amp;&amp;!saveReply.email.$valid">
-                                                Invalid email address
-                                            </span>
+
+                                                <span class="error" ng-show="saveReply.email.$touched"
+                                                      ng-messages="saveReply.email.$error">
+                                                    <span ng-message="email">Invalid email address</span>
+                                                    <span ng-message="required">Email is rquired</span>
+                                                </span>
                                             </div>
                                             <div class="full-name">
                                                 <input type="text" required="required"
                                                        name="fullName"
                                                        ng-model="_comment.reply.fullName"
                                                        placeholder="Full name" class="text"/>
-                                            <span class="error"
-                                                  ng-show="saveReply.fullName.$touched&amp;&amp;!saveReply.fullName.$valid">
-                                                Full name is rquired
-                                            </span>
+
+                                                <span class="error" ng-show="saveReply.fullName.$touched"
+                                                      ng-messages="saveReply.fullName.$error">
+                                                    <span ng-message="required">Full name is rquired</span>
+                                                </span>
                                             </div>
                                             <div>
-                                            <textarea required="required"
-                                                      name="comment"
-                                                      ng-model="_comment.reply.comment"
-                                                      placeholder="Enter comment"></textarea>
-                                            <span class="error"
-                                                  ng-show="saveReply.comment.$touched&amp;&amp;!saveReply.comment.$valid">
-                                                Comment is required
-                                            </span>
+                                                <textarea required="required"
+                                                          name="comment"
+                                                          ng-model="_comment.reply.comment"
+                                                          placeholder="Enter comment"></textarea>
+
+                                                <span class="error" ng-show="saveReply.comment.$touched"
+                                                     ng-messages="saveReply.comment.$error">
+                                                        <span ng-message="required">Comment is rquired</span>
+                                                </span>
                                             </div>
 
                                             <input type="button"
