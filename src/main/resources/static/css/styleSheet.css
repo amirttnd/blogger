@@ -339,7 +339,7 @@ label {
     line-height: 125%;
 }
 
-.blog-content pre{
+.blog-content pre {
     background: #fdfdfd;
     padding: 1em;
     border-radius: 1em;
@@ -347,6 +347,17 @@ label {
     overflow: auto;
     max-height: 30em;
     box-shadow: 1px 1px 1px 1px #fdfdfd;
+}
+
+.blog-content a {
+    color: #f56f2c;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.blog-content a:hover {
+    color: #444;
+    text-decoration: underline;
 }
 
 .blog-content h1 {
