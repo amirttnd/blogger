@@ -27,7 +27,7 @@ public class BlogModel {
 
     String username;
 
-    Short rank = 0;
+    Short rank;
 
 
     public String getId() {
@@ -122,9 +122,6 @@ public class BlogModel {
     }
 
     public Short getRank() {
-        if (rank == null) {
-            return 0;
-        }
         return rank;
     }
 

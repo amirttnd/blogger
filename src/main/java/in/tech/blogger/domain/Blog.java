@@ -271,6 +271,9 @@ public class Blog implements Persistable<String> {
     }
 
     public Short getRank() {
+        if (rank == null) {
+            return 0;
+        }
         return rank;
     }
 
