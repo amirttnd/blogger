@@ -10,6 +10,7 @@ import in.tech.blogger.repository.CategoryRepository;
 import in.tech.blogger.repository.UserRepository;
 import in.tech.blogger.vo.BlogVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
@@ -82,6 +83,8 @@ public class BlogService {
         blogQuery.setFieldsToExclude(Arrays.asList("content", "briefIntroduction", "relatedCategories"));
         blogQuery.setCategoryId(category.getId());
         blogQuery.setMax(max);
+        blogQuery.setSortProperty("rank");
+        blogQuery.setDirection(Sort.Direction.ASC);
         return search(blogQuery);
     }
 

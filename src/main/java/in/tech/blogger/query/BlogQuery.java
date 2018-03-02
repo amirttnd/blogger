@@ -37,6 +37,26 @@ public class BlogQuery {
 
     Integer page = 1;
 
+    String sortProperty = "dateCreated";
+
+    Sort.Direction direction = Sort.Direction.DESC;
+
+    public Sort.Direction getDirection() {
+        return direction;
+    }
+
+    public void setDirection(Sort.Direction direction) {
+        this.direction = direction;
+    }
+
+    public String getSortProperty() {
+        return sortProperty;
+    }
+
+    public void setSortProperty(String sortProperty) {
+        this.sortProperty = sortProperty;
+    }
+
     public String getQuery() {
         return query != null ? query.trim() : "";
     }
@@ -135,7 +155,7 @@ public class BlogQuery {
     public Query build() {
         Query textQuery = new Query();
 
-        Pageable pageRequest = new PageRequest(getPage() - 1, this.max, Sort.Direction.DESC, "dateCreated");
+        Pageable pageRequest = new PageRequest(getPage() - 1, this.max, getDirection(), getSortProperty());
 
         Criteria criteria = new Criteria();
 

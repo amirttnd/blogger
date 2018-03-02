@@ -24,7 +24,7 @@ angular
 
         self.saveBlogRank = function (blog) {
             if (blog) {
-                Blog.partialUpdate({id: blog.id, rank: self.blogRank}, function (response) {
+                Blog.partialUpdate({id: blog.id, rank: blog.rankModel}, function (response) {
                     console.log(response);
                 })
             }

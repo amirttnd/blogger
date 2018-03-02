@@ -44,6 +44,7 @@
             <th>Category</th>
             <th>Heading</th>
             <th>Published</th>
+            <th>CreatedAt</th>
             <th>Author</th>
             <th>Tags</th>
             <th class="col-md-1">Actions</th>
@@ -67,6 +68,9 @@
             </td>
             <td>
                 {{blogVO.blog.isPublished|prettyBool}}
+            </td>
+            <td>
+                {{blogVO.blog.dateCreated|date}}
             </td>
             <td>
                 <a href="javascript:void(0)" data-ng-click="blogCtrl.searchByAuthor(blogVO.blog.user.email)">
