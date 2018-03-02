@@ -148,7 +148,8 @@ angular
                 categoryId: self.blog.category.id,
                 relatedCategories: _.map(self.blog.relatedCategories, "id"),
                 isPublished: self.blog.isPublished,
-                tags: self.blog.tags
+                tags: self.blog.tags,
+                rank: self.blog.rank
             };
 
             if (!self.blog.id || self.canEdit(self.blog)) {

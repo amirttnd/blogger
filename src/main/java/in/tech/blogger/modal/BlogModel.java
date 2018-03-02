@@ -27,6 +27,8 @@ public class BlogModel {
 
     String username;
 
+    Short rank = 0;
+
 
     public String getId() {
         return id;
@@ -117,6 +119,17 @@ public class BlogModel {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Short getRank() {
+        if (rank == null) {
+            return 0;
+        }
+        return rank;
+    }
+
+    public void setRank(Short rank) {
+        this.rank = rank;
     }
 
     @Override

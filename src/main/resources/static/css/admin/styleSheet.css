@@ -259,3 +259,13 @@ span {
         opacity: 0;
     }
 }
+
+.rank-form input[type="text"]{
+    width: 32px;
+    height: 31px;
+    padding: 4px;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    outline: none;
+    text-align: center;
+}

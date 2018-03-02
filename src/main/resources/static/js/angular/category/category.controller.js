@@ -22,6 +22,14 @@ angular
             })
         };
 
+        self.saveBlogRank = function (blog) {
+            if (blog) {
+                Blog.partialUpdate({id: blog.id, rank: self.blogRank}, function (response) {
+                    console.log(response);
+                })
+            }
+        };
+
         self.toggleRecommendation = function (blog) {
             Blog.toggleRecommendation({id: blog.id}, function (response) {
                     blog.isRecommended = response.blog.isRecommended

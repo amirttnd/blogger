@@ -39,6 +39,16 @@ public class BlogJsonController {
         return new ResponseEntity<Map<String, Object>>(responseMap, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/partialUpdate", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+    @Secured(Constants.AUTHOR_ROLE)
+    ResponseEntity<Map<String, Object>> partialUpdate(@RequestBody BlogModel blogModel, Principal principal) {
+        Map<String, Object> responseMap = new LinkedHashMap<>();
+        Blog blog = blogService.partialUpdate(blogModel);
+        responseMap.put("status", blog != null);
+        responseMap.put("blog", blog);
+        return new ResponseEntity<Map<String, Object>>(responseMap, HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/list", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     ResponseEntity<Map<String, Object>> list(@ModelAttribute BlogQuery blogQuery) {
         Map<String, Object> responseMap = new LinkedHashMap<>();

@@ -58,6 +58,16 @@ public class BlogService {
         return null;
     }
 
+    public Blog partialUpdate(BlogModel blogModel) {
+        Blog blog = blogRepository.findById(blogModel.getId());
+        if (blog != null) {
+            blog.partialBind(blogModel);
+            return blogRepository.save(blog);
+        }
+        return null;
+    }
+
+
     public Blog findById(String id) {
         return blogRepository.findById(id);
     }

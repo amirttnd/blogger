@@ -71,6 +71,8 @@ public class Blog implements Persistable<String> {
 
     Long views = 0l;
 
+    Short rank = 0;
+
     public Blog() {
 
     }
@@ -88,6 +90,15 @@ public class Blog implements Persistable<String> {
             tags = blogModel.getTags();
             isPublished = blogModel.getIsPublished();
             friendlyUrl = Utils.toFriendlyURL(shortHeading);
+            rank = blogModel.getRank();
+        }
+    }
+
+    public void partialBind(BlogModel blogModel) {
+        if (blogModel != null) {
+            if (blogModel.getRank() != null) {
+                rank = blogModel.getRank();
+            }
         }
     }
 
@@ -259,6 +270,14 @@ public class Blog implements Persistable<String> {
         return Category.breadcrumb(category);
     }
 
+    public Short getRank() {
+        return rank;
+    }
+
+    public void setRank(Short rank) {
+        this.rank = rank;
+    }
+
     @Override
     public String toString() {
         return "Blog{" +
@@ -276,7 +295,9 @@ public class Blog implements Persistable<String> {
                 ", dateCreated=" + dateCreated +
                 ", lastUpdated=" + lastUpdated +
                 ", isRecommended=" + isRecommended +
+                ", inCategories=" + inCategories +
                 ", views=" + views +
+                ", rank=" + rank +
                 '}';
     }
 }

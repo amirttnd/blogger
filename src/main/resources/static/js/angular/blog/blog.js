@@ -8,6 +8,12 @@ angular
                     action: "save"
                 }
             },
+            partialUpdate: {
+                method: "POST",
+                params: {
+                    action: "partialUpdate"
+                }
+            },
             list: {
                 method: "GET",
                 params: {

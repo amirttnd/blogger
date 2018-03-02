@@ -27,11 +27,12 @@
             <th>Title</th>
             <th>Views</th>
             <th>Tags</th>
+            <th>Rank</th>
             <th class="col-md-1">Recommendation</th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="blog in categoryCtrl.category.blogs">
+        <tr ng-repeat="blog in categoryCtrl.category.blogs|orderBy:'rank' track by $index">
             <td>
                 <a href="/category/show?friendlyUrl={{category.friendlyUrl}}"
                    target="_self"
@@ -51,6 +52,13 @@
                        class="label label-info related-category-label">
                     {{tag}}
                 </span>
+            </td>
+            <td>
+                <form class="rank-form" data-ng-submit="categoryCtrl.saveBlogRank(blog)">
+                    <input type="text" ng-model="categoryCtrl.blogRank" ng-value="blog.rank"/>
+                    &nbsp;
+                    <button type="submit" class="btn btn-warning btn-sm">Save</button>
+                </form>
             </td>
             <td class="col-md-1">
                 <button class="btn btn-success btn-sm pull-right"
