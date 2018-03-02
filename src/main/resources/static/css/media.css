@@ -305,4 +305,19 @@
         display: inline-block;
         min-width: 200px;
     }
+
+    .main-navigation .nav-menu .sub-menu{
+        width: 100%;
+        max-width: 100%;
+        min-width: 100%;
+    }
+
+    .main-navigation .nav-menu .sub-menu li{
+        display: block;
+        width: 100%;
+        float: none;
+    }
+    .main-navigation .nav-menu .sub-menu li a{
+        color: #ffffff;
+    }
 }
