@@ -35,5 +35,6 @@ public class BloggerApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         bootstrapService.initializeRole();
+        bootstrapService.initializeAdmin();
     }
 }
