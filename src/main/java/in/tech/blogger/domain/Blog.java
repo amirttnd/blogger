@@ -90,7 +90,9 @@ public class Blog implements Persistable<String> {
             tags = blogModel.getTags();
             isPublished = blogModel.getIsPublished();
             friendlyUrl = Utils.toFriendlyURL(shortHeading);
-            rank = blogModel.getRank();
+            if (blogModel.getRank() != null) {
+                rank = blogModel.getRank();
+            }
         }
     }
 

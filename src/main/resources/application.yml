@@ -23,6 +23,6 @@ spring:
   address: localhost:8080
   data:
     mongodb:
-      uri: ${MONGO_DATABASE_URL}
+      uri: ${MONGODB_URI}
       repositories:
         enabled: true
