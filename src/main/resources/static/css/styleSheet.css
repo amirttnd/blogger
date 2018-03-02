@@ -502,8 +502,9 @@ label {
 .main-navigation .nav-menu .sub-menu {
     display: none;
     position: absolute;
-    background: #e07844;
-    margin-top: 0px;
+    background: #f9f9f9;
+    margin-top: 0;
+    max-width: 400px;
     box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
     z-index: 1;
     border-bottom-left-radius: 3px;
@@ -516,7 +517,14 @@ label {
 }
 
 .main-navigation .nav-menu .sub-menu li {
+    display: inline-block;
+    width: 50%;
+    float: left;
+}
+
+.main-navigation .nav-menu.right-nav-bar li {
     display: block;
+    width: 100%;
 }
 
 .main-navigation .nav-menu li.open .sub-menu {
@@ -525,17 +533,18 @@ label {
 }
 
 .main-navigation .nav-menu .sub-menu li a {
-    padding: 10px 19px;
-    font-size: 14px;
+    padding: 17px 19px;
+    font-size: 16px;
     min-width: 11em;
     text-align: left;
-    border-bottom: 1px solid;
+    /*border-bottom: 1px solid;*/
     display: block;
     text-transform: none;
+    color: #444;
 }
 
 .main-navigation .nav-menu .sub-menu li:last-child a {
-    border-bottom: 0;
+    /*border-bottom: 0;*/
 }
 
 .header-image {
