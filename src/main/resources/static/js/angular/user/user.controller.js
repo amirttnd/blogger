@@ -7,6 +7,7 @@ angular
         self.users = [];
         self.currentPage = 1;
         self.max = 10;
+        self.isInProgress = false;
 
         self.list = function (page) {
             page = page || firstPage;
@@ -54,9 +55,13 @@ angular
                     authorities: authorities,
                     password: self.user.passwd
                 };
-                User.save(params, function (response) {
-                    console.log(response)
-                })
+                if (!self.isInProgress) {
+                    self.isInProgress = true;
+                    User.save(params, function (response) {
+                        console.log(response)
+                        self.isInProgress = false;
+                    })
+                }
             }
         }
     }]);

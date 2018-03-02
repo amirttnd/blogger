@@ -40,7 +40,7 @@
             </div>
 
             <div class="form-group">
-                <label>Roles</label>
+                <label><Ro></Ro>les</label>
                 <tags-input ng-model="userCtrl.user.authorities"
                             min-length="4"
                             display-property="authority">
@@ -55,7 +55,8 @@
             <button type="submit"
                     ng-disabled="!userCtrl.user.email"
                     class="btn btn-default">Save
-            </button>
+            </button>&nbsp;
+            <i class="fa fa-spinner fa-spin" ng-show="userCtrl.isInProgress"></i>
         </form>
     </div>
 
