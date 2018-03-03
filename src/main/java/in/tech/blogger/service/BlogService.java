@@ -54,6 +54,9 @@ public class BlogService {
             }
             blog.setInCategories(inCategories);
             blog.setRelatedCategories(relatedCategories);
+            if (blog.getRank() == null) {
+                blog.setRank(Short.MAX_VALUE);
+            }
             return blogRepository.save(blog);
         }
         return null;
