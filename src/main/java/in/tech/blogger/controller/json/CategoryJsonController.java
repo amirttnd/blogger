@@ -57,6 +57,15 @@ public class CategoryJsonController {
         return new ResponseEntity<Map<String, Object>>(responseMap, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/partialUpdate", method = RequestMethod.POST)
+    ResponseEntity<Map<String, Object>> partialUpdate(@RequestBody CategoryModel categoryModel) {
+        Map<String, Object> responseMap = new HashMap<>();
+        Category category = categoryService.partialUpdate(categoryModel);
+        responseMap.put("status", category != null);
+        responseMap.put("category", category);
+        return new ResponseEntity<Map<String, Object>>(responseMap, HttpStatus.OK);
+    }
+
 
     @RequestMapping(value = "/toggle", method = RequestMethod.GET)
     ResponseEntity<Map<String, Object>> toggle(@RequestParam String id) {

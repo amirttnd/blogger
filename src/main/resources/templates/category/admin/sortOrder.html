@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app="techBlogger" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <th:block th:replace="/layout/admin::common_head"/>
+
+    <title>Category Tree</title>
+</head>
+<body>
+<div th:replace="/layout/admin::adminHeader"></div>
+<div class="container" ng-controller="CategoryController as categoryCtrl">
+    <ol class="breadcrumb">
+        <li><a href="/admin/index">Admin</a></li>
+        <li><a href="#">Category</a></li>
+        <li>Manage Sort Order</li>
+    </ol>
+    <div ng-cloak="">
+        <div class="category-search-wrapper" data-ng-show="categoryCtrl.tree.length>0">
+            <input class="search form-control" ng-model="search" type="text" placeholder="Search category"/>
+        </div>
+        <ul class="tree">
+            <li class="node" ng-repeat="node in categoryCtrl.tree|filter:search track by $index">
+
+                <span class="text" ng-class="{disabled: !node.category.active}">
+                    <a>
+                        <i class="fa fa-flash"></i>
+
+                        <a target="_self"
+                           href="/category/show?friendlyUrl={{node.category.friendlyUrl}}">
+                            {{node.category.name}}
+                        </a>
+
+                    </a>
+                    <span class="pull-right">
+                        <form class="rank-form" data-ng-submit="categoryCtrl.saveCategoryRank(node.category)">
+                            <input type="text"
+                                   ng-model="node.category.rankModel"
+                                   class="input-sm"
+                                   ng-value="node.category.rank"/>
+                            &nbsp;
+                            <button type="submit" class="btn btn-warning btn-sm">Save</button>
+                            &nbsp;
+
+                        </form>
+                    </span>
+                </span>
+
+
+                <ul class="child">
+                    <li class="node" ng-repeat="subCategory in node.subCategories|filter:search track by $index">
+                        <span class="text" ng-class="{disabled: !subCategory.active}">
+                            <a href="">
+                                <i class="fa fa-flash"></i>
+                                <a target="_self"
+                                   href="/category/show?friendlyUrl={{subCategory.friendlyUrl}}"
+                                   ng-hide="subCategory.canEdit">{{subCategory.name}}</a>
+                            </a>
+                             <span class="pull-right">
+                            <form class="rank-form" data-ng-submit="categoryCtrl.saveCategoryRank(subCategory)">
+                                <input type="text"
+                                       ng-model="subCategory.rankModel"
+                                       class="input-sm"
+                                       ng-value="subCategory.rank"/>
+                                &nbsp;
+                                <button type="submit" class="btn btn-warning btn-sm">Save</button>
+                                &nbsp;
+                            </form>
+                    </span>
+                        </span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<div th:replace="/layout/main::alert"></div>
+</body>
+</html>

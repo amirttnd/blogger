@@ -10,6 +10,7 @@ import in.tech.blogger.util.Utils;
 import in.tech.blogger.vo.CategoryTreeVO;
 import in.tech.blogger.vo.CategoryVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
@@ -42,6 +43,7 @@ public class CategoryService {
             category.setParent(null);
             category.setName(categoryModel.getName());
             category.setLevel(1);
+            category.setRank(Short.MAX_VALUE);
             category.setFriendlyUrl(Utils.toFriendlyURL(category.getName()));
             category.setCreator(categoryModel.getCreator());
             cacheService.expireCategoryTree();
@@ -58,6 +60,16 @@ public class CategoryService {
             }
             category.setName(categoryModel.getName());
             category.setFriendlyUrl(Utils.toFriendlyURL(category.getName()));
+            cacheService.expireCategoryTree();
+            return categoryRepository.save(category);
+        }
+        return null;
+    }
+
+    public Category partialUpdate(CategoryModel categoryModel) {
+        Category category = categoryRepository.findById(categoryModel.getId());
+        if (category != null) {
+            category.partialBind(categoryModel);
             cacheService.expireCategoryTree();
             return categoryRepository.save(category);
         }
@@ -104,15 +116,20 @@ public class CategoryService {
         return categoryRepository.getCategoryParents(active);
     }
 
+    public List<Category> getCategoryParents(boolean active, Sort sort) {
+        return categoryRepository.getCategoryParents(active, sort);
+    }
+
     public List<CategoryTreeVO> tree() {
+        Sort sort = new Sort(Sort.Direction.ASC, "rank");
         List<CategoryTreeVO> treeVOs = new ArrayList<>();
         CategoryTreeVO categoryTreeVO = null;
-        List<Category> parents = getCategoryParents(true);
+        List<Category> parents = getCategoryParents(true, sort);
         List<Category> subCategories = new ArrayList<>();
         for (Category parent : parents) {
             categoryTreeVO = new CategoryTreeVO();
             categoryTreeVO.setCategory(parent);
-            subCategories = categoryRepository.findAllByParentAndActive(parent, true);
+            subCategories = categoryRepository.findAllByParentAndActive(parent, true, sort);
             for (Category subCategory : subCategories) {
                 categoryTreeVO.addToSubcategories(subCategory);
             }

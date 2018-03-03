@@ -1,6 +1,7 @@
 package in.tech.blogger.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import in.tech.blogger.modal.CategoryModel;
 import in.tech.blogger.vo.CategoryVO;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.CreatedDate;
@@ -48,6 +49,16 @@ public class Category implements Persistable<String> {
     @LastModifiedDate
     Date lastUpdated;
 
+    Short rank;
+
+
+    public void partialBind(CategoryModel model) {
+        if (model != null) {
+            if (model.getRank() != null) {
+                rank = model.getRank();
+            }
+        }
+    }
 
     @Override
     @JsonIgnore
@@ -148,6 +159,17 @@ public class Category implements Persistable<String> {
 
     public void setCreator(String creator) {
         this.creator = creator;
+    }
+
+    public Short getRank() {
+        if (rank == null) {
+            return 0;
+        }
+        return rank;
+    }
+
+    public void setRank(Short rank) {
+        this.rank = rank;
     }
 
     @Override

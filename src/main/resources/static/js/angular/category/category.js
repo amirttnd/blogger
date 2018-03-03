@@ -38,6 +38,12 @@ angular
                 params: {
                     action: "show"
                 }
+            },
+            partialUpdate: {
+                method: "POST",
+                params: {
+                    action: "partialUpdate"
+                }
             }
         })
     }]);

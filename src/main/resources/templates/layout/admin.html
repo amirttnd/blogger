@@ -91,7 +91,20 @@
                         <li><a th:href="@{/blog/list}" target="_self">List</a></li>
                     </ul>
                 </li>
-                <li><a target="_self" th:href="@{/category/tree}">Category</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" target="_self" data-toggle="dropdown" href="#">
+                        Category
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a target="_self" th:href="@{/category/tree}">Tree</a>
+                        </li>
+                        <li>
+                            <a target="_self" th:href="@{/category/sortOrder}">Sort order</a>
+                        </li>
+                    </ul>
+                </li>
                 <li sec:authorize="hasRole('ROLE_ADMIN')"><a target="_self" href="/user/list">Users</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

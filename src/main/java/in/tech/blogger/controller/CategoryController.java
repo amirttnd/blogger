@@ -31,6 +31,12 @@ public class CategoryController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/sortOrder")
+    @Secured(value = {Constants.ADMIN_ROLE, Constants.AUTHOR_ROLE})
+    ModelAndView sortOrder() {
+        return new ModelAndView("/category/admin/sortOrder");
+    }
+
     @RequestMapping(value = "/show")
     @Secured(value = {Constants.ADMIN_ROLE, Constants.AUTHOR_ROLE})
     ModelAndView show() {

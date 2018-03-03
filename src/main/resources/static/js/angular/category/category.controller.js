@@ -30,6 +30,16 @@ angular
             }
         };
 
+        self.saveCategoryRank = function (category) {
+            if (category) {
+                Category.partialUpdate({id: category.id, rank: category.rankModel}, function (response) {
+                    if(response.status){
+                        Notification.show("Successfully updated")
+                    }
+                    console.log(response);
+                })
+            }
+        };
         self.toggleRecommendation = function (blog) {
             Blog.toggleRecommendation({id: blog.id}, function (response) {
                     blog.isRecommended = response.blog.isRecommended

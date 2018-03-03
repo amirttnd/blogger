@@ -9,6 +9,8 @@ public class CategoryModel {
 
     String creator;
 
+    Short rank;
+
     public String getId() {
         return id;
     }
@@ -39,6 +41,14 @@ public class CategoryModel {
 
     public void setCreator(String creator) {
         this.creator = creator;
+    }
+
+    public Short getRank() {
+        return rank;
+    }
+
+    public void setRank(Short rank) {
+        this.rank = rank;
     }
 
     @Override
