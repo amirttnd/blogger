@@ -1785,3 +1785,16 @@ header.header.fixed .main-navigation {
     width: 100%;
     height: auto;
 }
+
+.text-wrapper .contributors{
+    list-style-type: disc;
+    padding-left: 2em;
+}
+
+.text-wrapper .contributors li{
+    line-height: 35px;
+}
+
+.text-wrapper .contributors li a{
+    /*padding-left: 2em;*/
+}

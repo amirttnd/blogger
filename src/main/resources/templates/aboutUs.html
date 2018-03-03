@@ -42,7 +42,7 @@
         <h2>- About -</h2>
 
         <p>
-           Aim of this community that provide best articles. That will give you easy starter for build something.
+            Aim of this community that provide best articles. That will give you easy starter for build something.
             <br/>We are constantly focusing on quality of our articles.
             <br/>
             Let us know how we can improve quality and features on our website which will improve your experience.
@@ -51,6 +51,12 @@
 
         </p>
 
+        <h2>- Contributors -</h2>
+        <ul th:inline="text" class="contributors">
+            <li th:each="user:${users}">
+                <a th:href="@{/blogs.html(author=${user.email})}">[[${user.fullName}]]</a>
+            </li>
+        </ul>
     </div>
     <div th:replace="/layout/main::footer">
 
