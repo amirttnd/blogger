@@ -59,7 +59,11 @@ public class CategoryService {
                 category.setCreator(categoryModel.getCreator());
             }
             category.setName(categoryModel.getName());
-            category.setFriendlyUrl(Utils.toFriendlyURL(category.getName()));
+            if (category.getParent() == null) {
+                category.setFriendlyUrl(Utils.toFriendlyURL(category.getName()));
+            } else {
+                category.setFriendlyUrl(Utils.toFriendlyURL(category.getParent().getName() + " " + category.getName()));
+            }
             cacheService.expireCategoryTree();
             return categoryRepository.save(category);
         }
