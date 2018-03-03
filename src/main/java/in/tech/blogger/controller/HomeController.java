@@ -28,4 +28,10 @@ public class HomeController {
 
         return "/contact";
     }
+
+    @RequestMapping(value = {"/privacy.html", "/privacy"})
+    String privacy() {
+
+        return "/privacy";
+    }
 }

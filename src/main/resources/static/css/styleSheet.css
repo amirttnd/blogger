@@ -457,7 +457,7 @@ label {
 .main-navigation {
     font-size: .9em;
     background: #e07844;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 .main-navigation .nav-menu {
@@ -810,7 +810,7 @@ span.divider.divider.divider.divider {
     color: #444;
 }
 
-.sub-categories .sub-category .sub-category-blog li a.selected{
+.sub-categories .sub-category .sub-category-blog li a.selected {
     font-weight: 600;
 }
 
@@ -1786,15 +1786,25 @@ header.header.fixed .main-navigation {
     height: auto;
 }
 
-.text-wrapper .contributors{
+.text-wrapper .contributors {
     list-style-type: disc;
     padding-left: 2em;
 }
 
-.text-wrapper .contributors li{
+.text-wrapper .contributors li {
     line-height: 35px;
 }
 
-.text-wrapper .contributors li a{
-    /*padding-left: 2em;*/
+.privacy-policy {
+    margin-top: 2em;
+}
+
+.privacy-policy strong {
+    color: #e07844;
+    padding:2px 5px 2px 0;
+    display: inline-block;
+}
+
+.privacy-policy .innerText{
+    line-height: 22px;
 }
