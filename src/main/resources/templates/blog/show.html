@@ -283,9 +283,9 @@
                 <li class="sub-category">
                     <h1>[[${blogVO.blog.category.name}]]</h1>
                     <ul class="sub-category-blog">
-                        <li th:each="blogVO:${@blogService.findAllByCategory(blogVO.blog.category)}"
-                            th:with="blog=${blogVO.blog}">
-                            <a target="_self"
+                        <li th:each="_blogVO:${@blogService.findAllByCategory(blogVO.blog.category)}"
+                            th:with="blog=${_blogVO.blog}">
+                            <a target="_self" th:classappend="${blog.id}==${blogVO.blog.id}?'selected':''"
                                th:href="@{/blog/{friendlyUrl}(friendlyUrl=${blog.friendlyUrl})}">
                                 <i class="fa fa-hand-o-right">&nbsp;</i>[[${blog.shortHeading}]]
                             </a>

@@ -810,6 +810,10 @@ span.divider.divider.divider.divider {
     color: #444;
 }
 
+.sub-categories .sub-category .sub-category-blog li a.selected{
+    font-weight: 600;
+}
+
 .sub-categories .sub-category .sub-category-blog li a:hover {
     text-decoration: underline;
 }
