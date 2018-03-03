@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CategoryService {
@@ -59,11 +60,13 @@ public class CategoryService {
                 category.setCreator(categoryModel.getCreator());
             }
             category.setName(categoryModel.getName());
-            if (category.getParent() == null) {
-                category.setFriendlyUrl(Utils.toFriendlyURL(category.getName()));
-            } else {
-                category.setFriendlyUrl(Utils.toFriendlyURL(category.getParent().getName() + " " + category.getName()));
-            }
+
+            String friendlyUrl = Category.breadcrumb(category)
+                    .stream()
+                    .map(Category::getName)
+                    .collect(Collectors.joining(" "));
+
+            category.setFriendlyUrl(Utils.toFriendlyURL(friendlyUrl));
             cacheService.expireCategoryTree();
             return categoryRepository.save(category);
         }
