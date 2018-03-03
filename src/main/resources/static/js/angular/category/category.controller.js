@@ -25,7 +25,7 @@ angular
         self.saveBlogRank = function (blog) {
             if (blog) {
                 Blog.partialUpdate({id: blog.id, rank: blog.rankModel}, function (response) {
-                    console.log(response);
+                    Notification.show("Successfully updated")
                 })
             }
         };
@@ -33,10 +33,9 @@ angular
         self.saveCategoryRank = function (category) {
             if (category) {
                 Category.partialUpdate({id: category.id, rank: category.rankModel}, function (response) {
-                    if(response.status){
+                    if (response.status) {
                         Notification.show("Successfully updated")
                     }
-                    console.log(response);
                 })
             }
         };
