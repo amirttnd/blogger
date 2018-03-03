@@ -1,6 +1,7 @@
 package in.tech.blogger.controller.json;
 
 
+import in.tech.blogger.constant.Constants;
 import in.tech.blogger.domain.Category;
 import in.tech.blogger.modal.CategoryModel;
 import in.tech.blogger.service.CategoryService;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -31,6 +33,7 @@ public class CategoryJsonController {
     }
 
     @RequestMapping(value = "/addChild", method = RequestMethod.GET)
+    @Secured(value = {Constants.ADMIN_ROLE, Constants.AUTHOR_ROLE})
     ResponseEntity<Map<String, Object>> addChild(@ModelAttribute CategoryModel categoryModel) {
         Map<String, Object> responseMap = new HashMap<>();
         Category category = categoryService.addChild(categoryModel);
@@ -40,6 +43,7 @@ public class CategoryJsonController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.GET)
+    @Secured(value = {Constants.ADMIN_ROLE, Constants.AUTHOR_ROLE})
     ResponseEntity<Map<String, Object>> save(@ModelAttribute CategoryModel categoryModel) {
         Map<String, Object> responseMap = new HashMap<>();
         Category category = categoryService.save(categoryModel);
@@ -49,6 +53,7 @@ public class CategoryJsonController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)
+    @Secured(value = {Constants.ADMIN_ROLE, Constants.AUTHOR_ROLE})
     ResponseEntity<Map<String, Object>> update(@ModelAttribute CategoryModel categoryModel) {
         Map<String, Object> responseMap = new HashMap<>();
         Category category = categoryService.update(categoryModel);
@@ -58,6 +63,7 @@ public class CategoryJsonController {
     }
 
     @RequestMapping(value = "/partialUpdate", method = RequestMethod.POST)
+    @Secured(value = {Constants.ADMIN_ROLE, Constants.AUTHOR_ROLE})
     ResponseEntity<Map<String, Object>> partialUpdate(@RequestBody CategoryModel categoryModel) {
         Map<String, Object> responseMap = new HashMap<>();
         Category category = categoryService.partialUpdate(categoryModel);
@@ -68,6 +74,7 @@ public class CategoryJsonController {
 
 
     @RequestMapping(value = "/toggle", method = RequestMethod.GET)
+    @Secured(value = {Constants.ADMIN_ROLE, Constants.AUTHOR_ROLE})
     ResponseEntity<Map<String, Object>> toggle(@RequestParam String id) {
         Map<String, Object> responseMap = new HashMap<>();
         Category category = categoryService.toggle(id);
@@ -77,6 +84,7 @@ public class CategoryJsonController {
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    @Secured(value = {Constants.ADMIN_ROLE, Constants.AUTHOR_ROLE})
     ResponseEntity<Map<String, Boolean>> delete(@RequestParam String id) {
         Map<String, Boolean> responseMap = new HashMap<>();
         Boolean staus = categoryService.delete(id);

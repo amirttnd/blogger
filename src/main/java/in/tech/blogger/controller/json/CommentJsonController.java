@@ -35,7 +35,7 @@ public class CommentJsonController {
 
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-    @Secured(Constants.AUTHOR_ROLE)
+    @Secured(value = {Constants.ADMIN_ROLE, Constants.AUTHOR_ROLE})
     ResponseEntity<Map<String, Object>> delete(@PathVariable String id) {
         Map<String, Object> responseMap = new HashMap<>();
         Boolean status = commentService.delete(id);

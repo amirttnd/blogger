@@ -29,7 +29,7 @@ public class BlogJsonController {
 
 
     @RequestMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
-    @Secured(Constants.AUTHOR_ROLE)
+    @Secured(value = {Constants.ADMIN_ROLE, Constants.AUTHOR_ROLE})
     ResponseEntity<Map<String, Object>> save(@RequestBody BlogModel blogModel, Principal principal) {
         Map<String, Object> responseMap = new LinkedHashMap<>();
         blogModel.setUsername(principal.getName());
@@ -40,7 +40,7 @@ public class BlogJsonController {
     }
 
     @RequestMapping(value = "/partialUpdate", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
-    @Secured(Constants.AUTHOR_ROLE)
+    @Secured(value = {Constants.ADMIN_ROLE, Constants.AUTHOR_ROLE})
     ResponseEntity<Map<String, Object>> partialUpdate(@RequestBody BlogModel blogModel, Principal principal) {
         Map<String, Object> responseMap = new LinkedHashMap<>();
         Blog blog = blogService.partialUpdate(blogModel);
@@ -70,7 +70,7 @@ public class BlogJsonController {
     }
 
     @RequestMapping(value = "/toggleRecommendation", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
-    @Secured(Constants.AUTHOR_ROLE)
+    @Secured(value = {Constants.ADMIN_ROLE, Constants.AUTHOR_ROLE})
     ResponseEntity<Map<String, Object>> toggle(@RequestParam String id) {
         Map<String, Object> responseMap = new LinkedHashMap<>();
         Blog blog = blogService.toggleRecommendation(id);
@@ -80,7 +80,7 @@ public class BlogJsonController {
     }
 
     @RequestMapping(value = "/delete", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
-    @Secured(value = {Constants.ADMIN_ROLE})
+    @Secured(value = {Constants.ADMIN_ROLE, Constants.AUTHOR_ROLE})
     ResponseEntity<Map<String, Object>> delete(@RequestParam String id) {
         Map<String, Object> responseMap = new LinkedHashMap<>();
         responseMap.put("status", blogService.delete(id));
