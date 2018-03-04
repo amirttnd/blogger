@@ -3,6 +3,7 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head lang="en">
+    <meta name="description" th:if="${blogVO.blog!=null}" th:content="${blogVO.blog.shortHeading+' | '+blogVO.blog.title}"/>
     <title th:inline="text">
         <th:block th:if="${blogVO.blog!=null}">
             [[${blogVO.blog.shortHeading}+ ' - '+ ${blogVO.blog.title}]]
