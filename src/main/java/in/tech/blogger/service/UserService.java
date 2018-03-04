@@ -69,6 +69,10 @@ public class UserService implements UserDetailsService {
         return null;
     }
 
+    public List<User> findAllIsEnabled(Boolean enabled) {
+        return userRepository.findAllIsEnabled(enabled);
+    }
+
     public List<User> search(UserQuery userQuery) {
         return mongoTemplate.find(userQuery.build(), User.class);
     }

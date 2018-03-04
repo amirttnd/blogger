@@ -30,7 +30,7 @@ public class HomeController {
     @RequestMapping(value = {"/about.html", "/about"})
     ModelAndView aboutUs() {
         ModelAndView modelAndView = new ModelAndView("/aboutUs");
-        List<User> users = userService.findAll();
+        List<User> users = userService.findAllIsEnabled(true);
         modelAndView.addObject("users", users);
         return modelAndView;
     }
