@@ -13,7 +13,7 @@ public interface UserRepository extends MongoRepository<User, String> {
 
     User findByEmail(String email);
 
-    List<User> findAllIsEnabled(Boolean enabled);
+    List<User> findAllByEnabled(Boolean enabled);
 
     Integer countByEmail(String email);
 

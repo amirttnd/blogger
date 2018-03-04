@@ -70,7 +70,7 @@ public class UserService implements UserDetailsService {
     }
 
     public List<User> findAllIsEnabled(Boolean enabled) {
-        return userRepository.findAllIsEnabled(enabled);
+        return userRepository.findAllByEnabled(enabled);
     }
 
     public List<User> search(UserQuery userQuery) {
