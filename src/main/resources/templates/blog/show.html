@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="techBlogger"
-      xmlns:th="http://www.thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head lang="en">
     <meta name="description" th:if="${blogVO.blog!=null}" th:content="${blogVO.blog.title}"/>
@@ -20,8 +19,7 @@
 <th:block th:include="/layout/main::main-menu"/>
 
 <th:block th:if="${blogVO.blog}">
-    <div class="blog-area" th:with="blog=${blogVO.blog},comments=${blogVO.comments}"
-         ng-controller="BlogController as blogCtrl" ng-init="blogCtrl.comments()">
+    <div class="blog-area" th:with="blog=${blogVO.blog},comments=${blogVO.comments}">
         <div class="blog">
             <article>
 
@@ -105,7 +103,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="comment-area" ng-controller="CommentController as commentCtrl" ng-init="commentCtrl.list()"
+            <div class="comment-area" ng-app="techBlogger" ng-controller="CommentController as commentCtrl" ng-init="commentCtrl.list()"
                  data-ng-cloak="">
                 <h2>Post Comment</h2>
 
