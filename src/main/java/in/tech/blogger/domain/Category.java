@@ -168,6 +168,15 @@ public class Category implements Persistable<String> {
         return rank;
     }
 
+    @JsonIgnore
+    public Category getRoot() {
+        return Category.breadcrumb(this).get(0);
+    }
+
+    public Boolean isParent() {
+        return parent == null;
+    }
+
     public void setRank(Short rank) {
         this.rank = rank;
     }

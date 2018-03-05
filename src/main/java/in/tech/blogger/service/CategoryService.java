@@ -163,4 +163,21 @@ public class CategoryService {
         return categoryVO;
     }
 
+    public CategoryTreeVO getRootCategory(Category category) {
+        if (category != null) {
+            Category root = category.getRoot();
+            if (root != null) {
+                return cacheService
+                        .categoryTree()
+                        .stream()
+                        .filter(categoryTreeVO -> {
+                            return root.getId().equals(categoryTreeVO.getCategory().getId());
+                        })
+                        .findFirst()
+                        .orElse(null);
+            }
+        }
+        return null;
+    }
+
 }

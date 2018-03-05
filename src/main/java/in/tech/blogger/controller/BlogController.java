@@ -4,6 +4,7 @@ import in.tech.blogger.constant.Constants;
 import in.tech.blogger.query.BlogQuery;
 import in.tech.blogger.service.BlogService;
 import in.tech.blogger.service.CategoryService;
+import in.tech.blogger.vo.BlogVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -43,7 +44,10 @@ public class BlogController {
     @RequestMapping("/blog/{friendlyUrl}")
     ModelAndView show(@PathVariable String friendlyUrl) {
         ModelAndView modelAndView = new ModelAndView("/blog/show");
-        modelAndView.addObject("blogVO", blogService.findAndIncView(friendlyUrl));
+        BlogVO blogVO = blogService.findAndIncView(friendlyUrl);
+        modelAndView.addObject("blogVO", blogVO);
+        modelAndView.addObject("rootCategory", categoryService.getRootCategory(blogVO.getCategory()));
+
         return modelAndView;
     }
 }

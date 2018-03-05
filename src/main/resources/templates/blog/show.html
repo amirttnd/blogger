@@ -103,7 +103,8 @@
                     </ul>
                 </div>
             </div>
-            <div class="comment-area" ng-app="techBlogger" ng-controller="CommentController as commentCtrl" ng-init="commentCtrl.list()"
+            <div class="comment-area" ng-app="techBlogger" ng-controller="CommentController as commentCtrl"
+                 ng-init="commentCtrl.list()"
                  data-ng-cloak="">
                 <h2>Post Comment</h2>
 
@@ -226,7 +227,7 @@
                                                           placeholder="Enter comment"></textarea>
 
                                                 <span class="error" ng-show="saveReply.comment.$touched"
-                                                     ng-messages="saveReply.comment.$error">
+                                                      ng-messages="saveReply.comment.$error">
                                                         <span ng-message="required">Comment is required</span>
                                                 </span>
                                             </div>
@@ -293,6 +294,19 @@
                 </li>
             </ul>
 
+            <!--<ul class="sub-categories" th:inline="text">-->
+                <!--<li class="sub-category">-->
+                    <!--<ul class="sub-category-blog">-->
+                        <!--<li th:if="${rootCategory!=null}"-->
+                            <!--th:each="subCategory:${rootCategory.subCategories}">-->
+                            <!--<a target="_self">-->
+                                <!--<i class="fa fa-hand-o-right">&nbsp;</i>[[${subCategory.name}]]-->
+                            <!--</a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+            <!--</ul>-->
+
             <div class="related-categories">
                 <div class="title">
                     <span>Try to Explore</span>
@@ -305,6 +319,7 @@
                     </li>
                 </ul>
             </div>
+
         </div>
     </div>
 </th:block>

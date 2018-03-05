@@ -1,6 +1,8 @@
 package in.tech.blogger.vo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import in.tech.blogger.domain.Blog;
+import in.tech.blogger.domain.Category;
 
 import java.util.List;
 
@@ -42,6 +44,14 @@ public class BlogVO {
 
     public void setComments(Long comments) {
         this.comments = comments;
+    }
+
+    @JsonIgnore
+    public Category getCategory() {
+        if (blog != null) {
+            return blog.getCategory();
+        }
+        return null;
     }
 
     @Override
