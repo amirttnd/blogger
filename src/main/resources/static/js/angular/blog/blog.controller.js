@@ -86,6 +86,18 @@ angular
             self.getAll(firstPage)
         };
 
+        self.isCategorySelected = function () {
+            return typeof $location.search()["categoryQ"] === "string";
+        };
+
+        self.orderBy = function () {
+            if (self.isCategorySelected()) {
+                return "blog.dateCreated";
+            } else {
+                return "-blog.dateCreated"
+            }
+        };
+
 
         /**
          * Used in front page

@@ -39,7 +39,7 @@ public class BlogQuery {
 
     String sortProperty = "dateCreated";
 
-    Sort.Direction direction = Sort.Direction.DESC;
+    Sort.Direction direction = Sort.Direction.ASC;
 
     public Sort.Direction getDirection() {
         return direction;

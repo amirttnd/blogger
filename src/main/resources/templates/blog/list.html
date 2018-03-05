@@ -51,7 +51,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="blogVO in blogCtrl.blogs track by $index">
+        <tr ng-repeat="blogVO in blogCtrl.blogs|orderBy:'-blog.dateCreated' track by $index">
             <td class="col-md-3">
                 <a href="/category/show?friendlyUrl={{category.friendlyUrl}}"
                    target="_self"

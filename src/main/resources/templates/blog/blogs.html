@@ -17,7 +17,7 @@
     <div ng-show="blogCtrl.blogs.length>0" ng-cloak="">
         <div class="blog" infinite-scroll="blogCtrl.nextPage()">
             <article
-                    ng-repeat="blogVO in blogCtrl.blogs">
+                    ng-repeat="blogVO in blogCtrl.blogs|orderBy:blogCtrl.orderBy() track by $index ">
                 <div class="blog-entry">
                     <div>
                         <h1 class="title">
@@ -91,7 +91,7 @@
 
             </th:block>
 
-            <ul class="sub-categories" >
+            <ul class="sub-categories">
                 <li class="sub-category" ng-repeat="_category in blogCtrl.tree">
                     <h1>{{_category.category.name}}</h1>
                     <ul class="sub-category-blog">
