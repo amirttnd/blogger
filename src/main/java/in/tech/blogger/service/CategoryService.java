@@ -164,6 +164,7 @@ public class CategoryService {
     }
 
     public CategoryTreeVO getRootCategory(Category category) {
+        CategoryTreeVO emptyNode = new CategoryTreeVO();
         if (category != null) {
             Category root = category.getRoot();
             if (root != null) {
@@ -174,10 +175,11 @@ public class CategoryService {
                             return root.getId().equals(categoryTreeVO.getCategory().getId());
                         })
                         .findFirst()
-                        .orElse(null);
+                        .orElse(emptyNode);
             }
         }
-        return null;
+        
+        return emptyNode;
     }
 
 }
