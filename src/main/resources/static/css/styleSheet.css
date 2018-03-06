@@ -1832,9 +1832,24 @@ header.header.fixed .main-navigation {
     padding: 11px 13px;
     font-size: 13px;
     overflow: hidden;
+    margin-top: 5px;
+    margin-right: 8px;
 }
 
 .similar-categories .tags .tag-info.selected {
     background: #f56f2c;
     color: white;
+}
+
+.blog-search .sub-category {
+    margin-bottom: 1em;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1em;
+    color: #e07844;
+}
+
+.blog-search .sub-category h3{
+    padding-bottom: 0;
+    margin-bottom: 5px;
+
 }

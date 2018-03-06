@@ -91,12 +91,13 @@
 
             </th:block>
 
-            <ul class="sub-categories">
+            <ul class="similar-categories blog-search">
                 <li class="sub-category" ng-repeat="_category in blogCtrl.tree">
-                    <h1>{{_category.category.name}}</h1>
-                    <ul class="sub-category-blog">
+                    <h3>{{_category.category.name}}</h3>
+                    <ul class="tags">
                         <li ng-repeat="_subCategory in _category.subCategories">
-                            <a target="_self"
+                            <a target="_self" class="tag-info"
+                               ng-class="{'selected':_subCategory.friendlyUrl==blogCtrl.categoryQ}"
                                href="/blogs?categoryQ={{_subCategory.friendlyUrl}}">
                                 {{_subCategory.name}}
                             </a>
