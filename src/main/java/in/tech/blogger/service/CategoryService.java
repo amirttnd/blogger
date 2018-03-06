@@ -178,7 +178,7 @@ public class CategoryService {
                         .orElse(emptyNode);
             }
         }
-        
+
         return emptyNode;
     }
 

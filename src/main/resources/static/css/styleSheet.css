@@ -1821,3 +1821,20 @@ header.header.fixed .main-navigation {
 .privacy-policy .innerText {
     line-height: 22px;
 }
+
+.similar-categories .tags li {
+    display: inline-block;
+    width: 49%;
+}
+
+.similar-categories .tags .tag-info {
+    display: block;
+    padding: 11px 13px;
+    font-size: 13px;
+    overflow: hidden;
+}
+
+.similar-categories .tags .tag-info.selected {
+    background: #f56f2c;
+    color: white;
+}

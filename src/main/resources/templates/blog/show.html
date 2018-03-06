@@ -294,18 +294,18 @@
                 </li>
             </ul>
 
-            <!--<ul class="sub-categories" th:inline="text">-->
-                <!--<li class="sub-category">-->
-                    <!--<ul class="sub-category-blog">-->
-                        <!--<li th:if="${rootCategory!=null}"-->
-                            <!--th:each="subCategory:${rootCategory.subCategories}">-->
-                            <!--<a target="_self">-->
-                                <!--<i class="fa fa-hand-o-right">&nbsp;</i>[[${subCategory.name}]]-->
-                            <!--</a>-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                <!--</li>-->
-            <!--</ul>-->
+            <div class="similar-categories">
+                <ul class="tags" th:inline="text">
+                    <li th:if="${rootCategory!=null}"
+                        th:each="subCategory:${rootCategory.subCategories}">
+                        <a target="_self"
+                           th:href="@{/blog(categoryQ=${subCategory.friendlyUrl})}"
+                           class="tag-info" th:classappend="${subCategory.id}==${blogVO.blog.category.id}?'selected'">
+                            [[${subCategory.name}]]
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
             <div class="related-categories">
                 <div class="title">
